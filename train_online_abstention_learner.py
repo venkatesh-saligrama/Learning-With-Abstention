@@ -83,6 +83,7 @@ for mu in mus:
         n_experts += 1
 
 W_t = np.array([ 1./n_experts ]*n_experts)  # Weights : one for each expert
+l_t = np.array([ 0. ]*n_experts)  # Weights : one for each expert
 n_data_points = test_Y.shape[0]
 print('N data points = ', n_data_points)
 print('W_t shape = ', W_t.shape)
@@ -126,6 +127,20 @@ for i in range(T):
        for j, idx in enumerate(V_t):
            if all_Vt_predictions[ idx ] not in [-1, y_t]:
                W_t[ idx ] = 0
+
+   # TODO update l_t -->
+   for j, idx in enumerate(V_t):
+       if all_Vt_predictions[idx] == -1:
+           l_t[idx] += 1
+
+   for j, idx in enumerate(V_t):
+       if W_t[idx] != 0:
+           W_t[ idx ] = W_t[ idx ] * (1. - eta * l_t[idx] )
+
+   V_t = []
+   for j in range(n_experts):
+       if W_t[j] != 0:
+           V_t.append(j)
 
    '''
    # Always
