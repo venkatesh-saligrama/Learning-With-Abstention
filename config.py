@@ -3,7 +3,7 @@ def get_config():
 
   config = {
   "_comment": "===== MODEL CONFIGURATION =====",
-  "model_dir": "models/cifar_multi_class_lwa_64dim_lambda_opt_minus_one_mu",
+  "model_dir": "/home/anilkag/code/LWA/Post-AISTATS-Experiments/models/cifar_multi_class_lwa_64dim_lambda_opt_minus_one_mu",
 
   "_comment": "===== TRAINING CONFIGURATION =====",
   "tf_random_seed": 451760341,

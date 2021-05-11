@@ -1,5 +1,14 @@
-
+import math
+import numpy as np
+import tensorflow as tf
 from copy import deepcopy
+import config
+
+from resnet import ResnetModel
+
+classes = list(range(0,10))
+config = config.get_config()
+
 def get_model_dir_name(cls, mu, alpha, backbone=False):
     if backbone:
         model_dir = config['model_dir'] + '_backbone_one_sided_formulation(a='+ str(alpha)+',cls=' + str(cls) + ',mu=' + str(mu) + ')'
@@ -111,6 +120,7 @@ def run_model_on_data(Xtst, ytst, cls, _th, mu, alpha):
 
         #print('    test accuracy={:.2f}%, coverage={:.4}'.format(100 * acc, cov))
         #print('  Finished Evaluating adversarial test performance at ({})'.format(datetime.now()))
+    del model
     return y_scores
 
 
@@ -247,7 +257,7 @@ def get_predictions_normalized(lambdas, _predictions):
         for cls in classes:
             _predictions[cls][_lambda] /= sum_scores
 
-def gather_all_predictions(val_X, test_X, alpha, lambdas):
+def gather_all_predictions(val_X, test_X, val_Y, test_Y, alpha, lambdas):
     # Gather all predictions
     _predictions = {}
     for cls in classes:
@@ -272,80 +282,17 @@ def gather_all_predictions(val_X, test_X, alpha, lambdas):
     #get_predictions_normalized(lambdas, _test_predictions)
     return _predictions, _test_predictions
 
-def post_processing_mix_match_one_sided_models_hyperopt(lambdas = [1.0], thresholds = [0.5],
+
+def post_processing_mix_match_one_sided_models_same_lambda_th( val_X, test_X, val_Y, test_Y, lambdas = [1.0], thresholds = [0.5],
         desired_errors = [0.01, 0.02], alpha=0.5):
     print('\n\n Mixing multiple one sided models...')
     
     lambdas = sorted(lambdas)
     thresholds = sorted(thresholds)
-    print('lambdas = ', lambdas)
-    print('thresholds = ', thresholds)
+    #print('lambdas = ', lambdas)
+    #print('thresholds = ', thresholds)
     
-    _predictions, _test_predictions = gather_all_predictions(val_X, test_X, alpha, lambdas)
-                
-    # Will mix-match now on the validation set
-    print('\n\nResults = ')
-    
-    '''
-    - [DONE] Sort lambdas, thresholds
-    - [DONE] Pick initial set of parameters (lambda_1, ..., lambda_10, threshold_1, ..., threshold_10)
-    - [DONE] Find out the performance for this set of params (coverage, error)
-    - [DONE] Navigate to its one neighbours and find out their performance, pick the one with the highest coverage for given error
-    - Do this randomized start couple of times
-    '''
-    target_error = 0.01
-    y = val_Y
-    #y = test_Y
-    
-    space = {}
-    for cls in classes:
-        space['th'+str(cls)] = hp.choice('th'+str(cls), thresholds)
-        space['lambda'+str(cls)] = hp.choice('lambda'+str(cls), lambdas)
-    
-    for error in desired_errors:
-        best_coverage = 0.0
-        best_params   = None
-        
-        def objective(params):
-            cur_error, cur_coverage = get_coverage_error_for_given_parameters_obj( _predictions, params, y )
-            if cur_error <= error:
-                return -cur_coverage
-            else:
-                return 1000.0
-        
-        best = fmin(
-            fn=objective,
-            space=space,
-            algo=tpe.suggest,
-            max_evals=20000
-        )
-        print(best)
-        best_params = space_eval(space, best)
-        
-        if best_params is not None:
-            # Lets evaluate the performance on test data with these parameters
-            best_error, best_coverage = get_coverage_error_for_given_parameters_obj( _predictions, best_params, y )
-            test_error, test_coverage = get_coverage_error_for_given_parameters_obj( _test_predictions, best_params, test_Y )
-            
-
-            print('\n\nFor desired_error=', error, " -> best coverage=", best_coverage, ' at error=', best_error,
-                  ' with params=', best_params)
-            print('For desired_error={:.4}, ==> test cov={:.4}, err=={:.4}'.format(error, test_coverage, test_error) )
-        else:
-            print('For desired_error={:.4}, could not find any parameters'.format(error))
-    
-    
-
-def post_processing_mix_match_one_sided_models_same_lambda_th(lambdas = [1.0], thresholds = [0.5],
-        desired_errors = [0.01, 0.02], alpha=0.5):
-    print('\n\n Mixing multiple one sided models...')
-    
-    lambdas = sorted(lambdas)
-    thresholds = sorted(thresholds)
-    print('lambdas = ', lambdas)
-    print('thresholds = ', thresholds)
-    
-    _predictions, _test_predictions = gather_all_predictions(val_X, test_X, alpha, lambdas)
+    _predictions, _test_predictions = gather_all_predictions(val_X, test_X, val_Y, test_Y, alpha, lambdas)
                 
     # Will mix-match now on the validation set
     print('\n\nResults = ')
@@ -358,14 +305,13 @@ def post_processing_mix_match_one_sided_models_same_lambda_th(lambdas = [1.0], t
     #- Do this randomized start couple of times
     
     thresholds = np.unique(_predictions[classes[0]][lambdas[-1]])[::10]
-    print('thresholds = ', thresholds)
+    #print('thresholds = ', thresholds)
     
     n_lambdas    = len(lambdas)
     n_thresholds = len(thresholds)
     _lambda_idx  = np.random.randint( n_lambdas, size=10 )
     _threshold_idx = np.random.randint( n_thresholds, size=10 )
     
-    max_search_depth = 20000
     y = val_Y
     #y = test_Y
     
@@ -398,108 +344,4 @@ def post_processing_mix_match_one_sided_models_same_lambda_th(lambdas = [1.0], t
         else:
             print('For desired_error={:.4}, could not find any parameters'.format(error))
         
-        
-def post_processing_mix_match_one_sided_models(lambdas = [1.0], thresholds = [0.5],
-        desired_errors = [0.01, 0.02], alpha=0.5):
-    print('\n\n Mixing multiple one sided models...')
-    
-    lambdas = sorted(lambdas)
-    thresholds = sorted(thresholds)
-    print('lambdas = ', lambdas)
-    print('thresholds = ', thresholds)
-    
-    _predictions, _test_predictions = gather_all_predictions(val_X, test_X, alpha, lambdas)
-                
-    # Will mix-match now on the validation set
-    print('\n\nResults = ')
-    
-    
-    #- [DONE] Sort lambdas, thresholds
-    #- [DONE] Pick initial set of parameters (lambda_1, ..., lambda_10, threshold_1, ..., threshold_10)
-    #- [DONE] Find out the performance for this set of params (coverage, error)
-    #- [DONE] Navigate to its one neighbours and find out their performance, pick the one with the highest coverage for given error
-    #- Do this randomized start couple of times
-    
-    
-    n_lambdas    = len(lambdas)
-    n_thresholds = len(thresholds)
-    _lambda_idx  = np.random.randint( n_lambdas, size=10 )
-    _threshold_idx = np.random.randint( n_thresholds, size=10 )
-    
-    max_search_depth = 1000 #20000
-    y = val_Y
-    #y = test_Y
-    
-    for error in desired_errors:
-        best_coverage = 0.0
-        best_params   = None
-        
-        cur_params = (_lambda_idx, _threshold_idx)
-        cur_error, cur_coverage = get_coverage_error_for_given_parameters_pred_max( _predictions, lambdas, thresholds, cur_params, y )
-        
-        #cur_error, cur_coverage = get_coverage_error_for_given_parameters( _predictions, lambdas, thresholds, cur_params, y )
-        #print('cur_error=', cur_error, ' --> cur_coverage=', cur_coverage)
-        if (cur_error <= error) and (cur_coverage > best_coverage):
-            best_coverage, best_params = cur_coverage, deepcopy(cur_params)
-            
-        for d in range(max_search_depth):
-            # find out the performance of all 1-neighbours of this set of variables
-            updated_best_params = False
-            
-            for idx_l in range( 10 ):
-                new_lambda_idx = np.array( _lambda_idx )
-                new_threshold_idx = np.array( _threshold_idx )
-                    
-                cur_idx = new_lambda_idx[idx_l]
-                for dx in [-1, +1]:
-                    if (cur_idx + dx <0) or (cur_idx + dx >=n_lambdas): continue
-                    
-                    new_lambda_idx[idx_l] = cur_idx + dx
-                    
-                    cur_params = (new_lambda_idx, new_threshold_idx)
-                    #cur_error, cur_coverage = get_coverage_error_for_given_parameters( _predictions, lambdas, thresholds, cur_params, y )
-                    cur_error, cur_coverage = get_coverage_error_for_given_parameters_pred_max( _predictions, lambdas, thresholds, cur_params, y )
-                    #print('cur_error=', cur_error, ' --> cur_coverage=', cur_coverage)
-                    if (cur_error <= error) and (cur_coverage > best_coverage):
-                        best_coverage, best_params = cur_coverage, deepcopy(cur_params)
-                        updated_best_params = True
-                    
-            for idx_l in range( 10 ):
-                new_lambda_idx = np.array( _lambda_idx )
-                new_threshold_idx = np.array( _threshold_idx )
-                    
-                cur_idx = new_threshold_idx[idx_l]
-                for dx in [-1, +1]:
-                    if (cur_idx + dx <0) or (cur_idx + dx >=n_thresholds): continue
-                    
-                    new_threshold_idx[idx_l] = cur_idx + dx
-                    
-                    cur_params = (new_lambda_idx, new_threshold_idx)
-                    #cur_error, cur_coverage = get_coverage_error_for_given_parameters( _predictions, lambdas, thresholds, cur_params, y )
-                    cur_error, cur_coverage = get_coverage_error_for_given_parameters_pred_max( _predictions, lambdas, thresholds, cur_params, y )
-                    #print('cur_error=', cur_error, ' --> cur_coverage=', cur_coverage)
-                    if (cur_error <= error) and (cur_coverage > best_coverage):
-                        best_coverage, best_params = cur_coverage, deepcopy(cur_params)           
-                        updated_best_params = True
-                        
-            if updated_best_params == False:
-                _lambda_idx  = np.random.randint( n_lambdas, size=10 )
-                _threshold_idx = np.random.randint( n_thresholds, size=10 )
-                #print('Could not find anything here.. will restart from random place..')
-            else:
-                _lambda_idx, _threshold_idx = best_params
-        
-        if best_params is not None:
-            # Lets evaluate the performance on test data with these parameters
-            _lambda_idx, _threshold_idx = best_params
-            #test_error, test_coverage = get_coverage_error_for_given_parameters( _test_predictions, lambdas, thresholds, best_params, test_Y )
-            test_error, test_coverage = get_coverage_error_for_given_parameters_pred_max( _test_predictions, lambdas, thresholds, best_params, test_Y )
-
-            print('\n\nFor desired_error=', error, " -> best coverage=", best_coverage, ' with params=', best_params)
-            print('For desired_error={:.4}, ==> test cov={:.4}, err=={:.4}'.format(error, test_coverage, test_error) )
-        else:
-            print('For desired_error={:.4}, could not find any parameters'.format(error))
-        
-        
-
 

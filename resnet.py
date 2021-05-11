@@ -1,4 +1,9 @@
 
+import math
+import tensorflow as tf
+import numpy as np
+
+classes = list(range(0,10))
 
 # based on https://github.com/tensorflow/models/tree/master/resnet
 class ResnetModel(object):
