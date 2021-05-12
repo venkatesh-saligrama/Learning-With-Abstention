@@ -71,7 +71,7 @@ Online Learning with Abstention scheme
 '''
 eta = 0.01  # learning rate
 p = 0.3     # bernoulli coin bias
-T = 10 #100     # number of rounds
+T = len(test_Y) #10000     # number of rounds
 
 mu_t_pairs = []
 V_t = []            # All possible experts (mus \times thresholds)
@@ -81,6 +81,8 @@ for mu in mus:
         mu_t_pairs.append( (mu, t) )
         V_t.append( n_experts )
         n_experts += 1
+active_experts = np.arange(n_experts)
+assert(len(active_experts) == n_experts)
 
 W_t = np.array([ 1./n_experts ]*n_experts)  # Weights : one for each expert
 l_t = np.array([ 0. ]*n_experts)            # #of abstaintions for each expert
@@ -107,7 +109,8 @@ for i in range(T):
        If C_t = 1, abstain
        If C_t = 0, sample f_t ~ Pi = w_{t,f} / \sum_f w_{t,f} and play f_t(x_t)
    '''
-   all_equal = np.all( all_Vt_predictions == all_Vt_predictions[0] )
+   #all_equal = np.all( all_Vt_predictions == all_Vt_predictions[ active_experts[0] ] )
+   all_equal = np.all( all_Vt_predictions[active_experts] == all_Vt_predictions[ active_experts[0] ] )
    if all_equal:
        prediction = all_Vt_predictions[0]
    else:
@@ -119,8 +122,8 @@ for i in range(T):
            sample_clf = np.random.choice( n_experts, p=Pi )
            prediction = all_Vt_predictions[ map_idx_to_pred[sample_clf] ] 
 
-   if i%10 == 0:
-       print('round=', i, ' -- example=', data_idx, ' -- prediction=', prediction)
+   if i%100 == 0:
+       print('round=', i, ' -- example=', data_idx, ' -- prediction=', prediction, ' -- #active experts=', len(active_experts))
    '''
    # Update
      If we abstained, then get y_t
@@ -145,9 +148,16 @@ for i in range(T):
            m_t[idx] += 1
 
    #V_t = []
-   #for j in range(n_experts):
-   #    if W_t[j] != 0:
-   #        V_t.append(j)
+   active_experts = []
+   for j in range(n_experts):
+       if W_t[j] != 0:
+           #V_t.append(j)
+           active_experts.append(j)
+   active_experts = np.array( active_experts )
+
+   if len(active_experts) == 0:
+       print('active_experts set is empty... exiting the routine..')
+       break
 
    '''
    # Always
@@ -164,6 +174,7 @@ for i in range(T):
 print('#algo abstained = ', algo_abstained, '/', T)
 print('#algo mistakes = ', algo_error, '/', T)
 print('#of experts with non-zero weights = ', np.count_nonzero(W_t), '/', n_experts)
+print('#of active experts = ', len(active_experts), '/', n_experts)
 print('[experts] #mistakes(min) = ', np.min(m_t), '/', T)
 print('[experts] #mistakes(max) = ', np.max(m_t), '/', T)
 print('[experts] #abstained(min) = ', np.min(l_t), '/', T)
