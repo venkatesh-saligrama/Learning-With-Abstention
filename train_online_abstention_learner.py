@@ -64,14 +64,14 @@ train_X, train_Y = data['train_embd'], data['train_Y']
 del train_X, val_X, test_X
 
 print('np.unique(train_Y) = ', np.unique(train_Y))
-assert(1==2)
+#assert(1==2)
 
 '''
 Online Learning with Abstention scheme
 '''
 eta = 0.01  # learning rate
 p = 0.3     # bernoulli coin bias
-T = 100     # number of rounds
+T = 10 #100     # number of rounds
 
 mu_t_pairs = []
 V_t = []            # All possible experts (mus \times thresholds)
@@ -83,7 +83,10 @@ for mu in mus:
         n_experts += 1
 
 W_t = np.array([ 1./n_experts ]*n_experts)  # Weights : one for each expert
-l_t = np.array([ 0. ]*n_experts)  # Weights : one for each expert
+l_t = np.array([ 0. ]*n_experts)            # #of abstaintions for each expert
+m_t = np.array([ 0. ]*n_experts)            # #of mistakes for each expert
+algo_abstained = 0                          # #of abstaintions for the online learner
+algo_error     = 0                          # #of mistakes for the online learner
 n_data_points = test_Y.shape[0]
 print('N data points = ', n_data_points)
 print('W_t shape = ', W_t.shape)
@@ -116,6 +119,8 @@ for i in range(T):
            sample_clf = np.random.choice( n_experts, p=Pi )
            prediction = all_Vt_predictions[ map_idx_to_pred[sample_clf] ] 
 
+   if i%10 == 0:
+       print('round=', i, ' -- example=', data_idx, ' -- prediction=', prediction)
    '''
    # Update
      If we abstained, then get y_t
@@ -124,23 +129,25 @@ for i in range(T):
            w_{t,f} = 0
    '''
    if prediction == -1:
+       algo_abstained += 1
        for j, idx in enumerate(V_t):
            if all_Vt_predictions[ idx ] not in [-1, y_t]:
                W_t[ idx ] = 0
+   elif prediction != y_t:
+       algo_error += 1
 
-   # TODO update l_t -->
    for j, idx in enumerate(V_t):
        if all_Vt_predictions[idx] == -1:
            l_t[idx] += 1
+           if W_t[idx] != 0:
+               W_t[ idx ] = W_t[ idx ] * (1. - eta)
+       elif all_Vt_predictions[idx] != y_t:
+           m_t[idx] += 1
 
-   for j, idx in enumerate(V_t):
-       if W_t[idx] != 0:
-           W_t[ idx ] = W_t[ idx ] * (1. - eta * l_t[idx] )
-
-   V_t = []
-   for j in range(n_experts):
-       if W_t[j] != 0:
-           V_t.append(j)
+   #V_t = []
+   #for j in range(n_experts):
+   #    if W_t[j] != 0:
+   #        V_t.append(j)
 
    '''
    # Always
@@ -153,4 +160,11 @@ for i in range(T):
    # Need to validate that the best expert is in this set V_t
    # What are the metrics we are reporting?
    '''
-   
+
+print('#algo abstained = ', algo_abstained, '/', T)
+print('#algo mistakes = ', algo_error, '/', T)
+print('#of experts with non-zero weights = ', np.count_nonzero(W_t), '/', n_experts)
+print('[experts] #mistakes(min) = ', np.min(m_t), '/', T)
+print('[experts] #mistakes(max) = ', np.max(m_t), '/', T)
+print('[experts] #abstained(min) = ', np.min(l_t), '/', T)
+print('[experts] #abstained(max) = ', np.max(l_t), '/', T)
