@@ -179,3 +179,8 @@ print('[experts] #mistakes(min) = ', np.min(m_t), '/', T)
 print('[experts] #mistakes(max) = ', np.max(m_t), '/', T)
 print('[experts] #abstained(min) = ', np.min(l_t), '/', T)
 print('[experts] #abstained(max) = ', np.max(l_t), '/', T)
+
+for idx in active_experts:
+    print('[experts=', idx, '] --> mu, t', str(mu_t_pairs[idx]))
+    print('[expert=', idx, '] #mistakes = ', m_t[idx], '/', T)
+    print('[expert=', idx, '] #abstained = ', l_t[idx], '/', T)
