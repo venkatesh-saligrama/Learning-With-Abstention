@@ -3,8 +3,8 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+#import os
+#os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 
 import math
 import random
@@ -16,11 +16,16 @@ from timeit import default_timer as timer
 import numpy as np
 import pickle
 import config
-
-from combine_one_sided_models import post_processing_mix_match_one_sided_models_same_lambda_th
+import argparse
+#from combine_one_sided_models import post_processing_mix_match_one_sided_models_same_lambda_th
 
 import sys
 version = sys.version_info
+
+parser = argparse.ArgumentParser(description='Online LWA Codebase')
+parser.add_argument('-d', '--data', default='./data/', type=str, metavar='DIR', help='path to dataset')
+args = parser.parse_args()
+print('args = ', args)
 
 config = config.get_config()
 classes = list(range(0,10))
@@ -51,13 +56,13 @@ def get_predictions_for_all_experts( scores, mu_t_pairs, V_t, data_idx ):
         map_idx_to_pred[ idx ] = j
     return predictions, map_idx_to_pred 
 
-with open('./data/predictions.bin', 'rb') as fp:
+with open( args.data + 'predictions.bin', 'rb') as fp:
     _predictions = pickle.load( fp )
 
-with open('./data/test_predictions.bin', 'rb') as fp:
+with open( args.data + 'test_predictions.bin', 'rb') as fp:
     _test_predictions = pickle.load( fp )
 
-data = np.load('/home/anilkag/code/rnn_results/aditya/CIFAR-10/std_ce_64_dim_ft.npz', allow_pickle=True,)
+data = np.load( args.data + 'std_ce_64_dim_ft.npz', allow_pickle=True,)
 test_X, test_Y = data['test_embd'], data['test_Y']
 val_X, val_Y = data['val_embd'], data['val_Y']
 train_X, train_Y = data['train_embd'], data['train_Y']
@@ -70,7 +75,8 @@ print('np.unique(train_Y) = ', np.unique(train_Y))
 Online Learning with Abstention scheme
 '''
 eta = 0.01  # learning rate
-p = 0.3     # bernoulli coin bias
+p = 0.02 #0.3     # bernoulli coin bias
+theta = 0.01
 T = len(test_Y) #10000     # number of rounds
 
 mu_t_pairs = []
@@ -86,6 +92,7 @@ assert(len(active_experts) == n_experts)
 
 W_t = np.array([ 1./n_experts ]*n_experts)  # Weights : one for each expert
 l_t = np.array([ 0. ]*n_experts)            # #of abstaintions for each expert
+o_t = np.array([ 0. ]*n_experts)            # #of abstaintions for each expert
 m_t = np.array([ 0. ]*n_experts)            # #of mistakes for each expert
 algo_abstained = 0                          # #of abstaintions for the online learner
 algo_error     = 0                          # #of mistakes for the online learner
@@ -111,7 +118,7 @@ for i in range(T):
    '''
    #all_equal = np.all( all_Vt_predictions == all_Vt_predictions[ active_experts[0] ] )
    all_equal = np.all( all_Vt_predictions[active_experts] == all_Vt_predictions[ active_experts[0] ] )
-   if all_equal:
+   if False : #all_equal:
        prediction = all_Vt_predictions[0]
    else:
        C_t = bernoulli_flip(p)
@@ -135,7 +142,10 @@ for i in range(T):
        algo_abstained += 1
        for j, idx in enumerate(V_t):
            if all_Vt_predictions[ idx ] not in [-1, y_t]:
-               W_t[ idx ] = 0
+               #W_t[ idx ] = 0
+               o_t[ idx ] += 1
+               if o_t[ idx ] > (2*p* theta * T):
+                   W_t[ idx ] = 0
    elif prediction != y_t:
        algo_error += 1
 

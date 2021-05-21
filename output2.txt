@@ -1,0 +1,744 @@
+Config =  {'_comment': '=====ADVERSARIAL EXAMPLES CONFIGURATION=====', 'model_dir': '/home/anilkag/code/LWA/Post-AISTATS-Experiments/models/cifar_multi_class_lwa_64dim_lambda_opt_minus_one_mu', 'tf_random_seed': 451760341, 'np_random_seed': 216105420, 'random_seed': 4557077, 'max_num_training_steps': 100000, 'num_output_steps': 1000, 'num_summary_steps': 1000, 'num_checkpoint_steps': 1000, 'training_batch_size': 200, 'num_eval_examples': 10000, 'eval_batch_size': 200, 'eval_checkpoint_steps': 3000, 'eval_on_cpu': True, 'epsilon': 0.3, 'k': 40, 'a': 0.01, 'random_start': True, 'loss_func': 'xent', 'store_adv_path': 'attack.npy'}
+Mus =  [0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.  1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8
+ 1.9 2.  2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3. ]
+np.unique(train_Y) =  [0 1 2 3 4 5 6 7 8 9]
+N data points =  10000
+W_t shape =  (210,)
+round= 0  -- example= 0  -- prediction= 3  -- #active experts= 210
+round= 100  -- example= 100  -- prediction= -1  -- #active experts= 210
+round= 200  -- example= 200  -- prediction= 5  -- #active experts= 210
+round= 300  -- example= 300  -- prediction= 6  -- #active experts= 210
+round= 400  -- example= 400  -- prediction= 9  -- #active experts= 210
+round= 500  -- example= 500  -- prediction= 4  -- #active experts= 210
+round= 600  -- example= 600  -- prediction= 8  -- #active experts= 210
+round= 700  -- example= 700  -- prediction= 7  -- #active experts= 210
+round= 800  -- example= 800  -- prediction= 7  -- #active experts= 210
+round= 900  -- example= 900  -- prediction= 2  -- #active experts= 210
+round= 1000  -- example= 1000  -- prediction= -1  -- #active experts= 210
+round= 1100  -- example= 1100  -- prediction= 7  -- #active experts= 210
+round= 1200  -- example= 1200  -- prediction= -1  -- #active experts= 210
+round= 1300  -- example= 1300  -- prediction= -1  -- #active experts= 210
+round= 1400  -- example= 1400  -- prediction= -1  -- #active experts= 210
+round= 1500  -- example= 1500  -- prediction= -1  -- #active experts= 210
+round= 1600  -- example= 1600  -- prediction= 8  -- #active experts= 210
+round= 1700  -- example= 1700  -- prediction= -1  -- #active experts= 210
+round= 1800  -- example= 1800  -- prediction= 4  -- #active experts= 210
+round= 1900  -- example= 1900  -- prediction= 8  -- #active experts= 210
+round= 2000  -- example= 2000  -- prediction= -1  -- #active experts= 210
+round= 2100  -- example= 2100  -- prediction= -1  -- #active experts= 210
+round= 2200  -- example= 2200  -- prediction= -1  -- #active experts= 210
+round= 2300  -- example= 2300  -- prediction= 0  -- #active experts= 210
+round= 2400  -- example= 2400  -- prediction= 0  -- #active experts= 210
+round= 2500  -- example= 2500  -- prediction= -1  -- #active experts= 210
+round= 2600  -- example= 2600  -- prediction= 8  -- #active experts= 210
+round= 2700  -- example= 2700  -- prediction= 9  -- #active experts= 210
+round= 2800  -- example= 2800  -- prediction= 4  -- #active experts= 210
+round= 2900  -- example= 2900  -- prediction= 3  -- #active experts= 210
+round= 3000  -- example= 3000  -- prediction= 5  -- #active experts= 210
+round= 3100  -- example= 3100  -- prediction= 0  -- #active experts= 210
+round= 3200  -- example= 3200  -- prediction= 5  -- #active experts= 210
+round= 3300  -- example= 3300  -- prediction= 4  -- #active experts= 210
+round= 3400  -- example= 3400  -- prediction= -1  -- #active experts= 210
+round= 3500  -- example= 3500  -- prediction= 1  -- #active experts= 210
+round= 3600  -- example= 3600  -- prediction= 3  -- #active experts= 210
+round= 3700  -- example= 3700  -- prediction= 3  -- #active experts= 210
+round= 3800  -- example= 3800  -- prediction= -1  -- #active experts= 210
+round= 3900  -- example= 3900  -- prediction= -1  -- #active experts= 210
+round= 4000  -- example= 4000  -- prediction= 0  -- #active experts= 210
+round= 4100  -- example= 4100  -- prediction= 7  -- #active experts= 210
+round= 4200  -- example= 4200  -- prediction= 4  -- #active experts= 210
+round= 4300  -- example= 4300  -- prediction= -1  -- #active experts= 210
+round= 4400  -- example= 4400  -- prediction= -1  -- #active experts= 210
+round= 4500  -- example= 4500  -- prediction= 3  -- #active experts= 210
+round= 4600  -- example= 4600  -- prediction= 4  -- #active experts= 210
+round= 4700  -- example= 4700  -- prediction= 6  -- #active experts= 210
+round= 4800  -- example= 4800  -- prediction= 9  -- #active experts= 210
+round= 4900  -- example= 4900  -- prediction= 3  -- #active experts= 210
+round= 5000  -- example= 5000  -- prediction= 7  -- #active experts= 210
+round= 5100  -- example= 5100  -- prediction= 3  -- #active experts= 210
+round= 5200  -- example= 5200  -- prediction= 3  -- #active experts= 210
+round= 5300  -- example= 5300  -- prediction= -1  -- #active experts= 210
+round= 5400  -- example= 5400  -- prediction= 9  -- #active experts= 210
+round= 5500  -- example= 5500  -- prediction= 8  -- #active experts= 210
+round= 5600  -- example= 5600  -- prediction= 6  -- #active experts= 210
+round= 5700  -- example= 5700  -- prediction= -1  -- #active experts= 210
+round= 5800  -- example= 5800  -- prediction= -1  -- #active experts= 210
+round= 5900  -- example= 5900  -- prediction= 2  -- #active experts= 210
+round= 6000  -- example= 6000  -- prediction= 8  -- #active experts= 210
+round= 6100  -- example= 6100  -- prediction= 1  -- #active experts= 210
+round= 6200  -- example= 6200  -- prediction= -1  -- #active experts= 210
+round= 6300  -- example= 6300  -- prediction= 1  -- #active experts= 210
+round= 6400  -- example= 6400  -- prediction= 0  -- #active experts= 210
+round= 6500  -- example= 6500  -- prediction= 7  -- #active experts= 210
+round= 6600  -- example= 6600  -- prediction= -1  -- #active experts= 210
+round= 6700  -- example= 6700  -- prediction= 6  -- #active experts= 210
+round= 6800  -- example= 6800  -- prediction= 6  -- #active experts= 210
+round= 6900  -- example= 6900  -- prediction= 3  -- #active experts= 210
+round= 7000  -- example= 7000  -- prediction= 8  -- #active experts= 210
+round= 7100  -- example= 7100  -- prediction= 9  -- #active experts= 210
+round= 7200  -- example= 7200  -- prediction= 4  -- #active experts= 210
+round= 7300  -- example= 7300  -- prediction= -1  -- #active experts= 210
+round= 7400  -- example= 7400  -- prediction= -1  -- #active experts= 210
+round= 7500  -- example= 7500  -- prediction= 6  -- #active experts= 210
+round= 7600  -- example= 7600  -- prediction= -1  -- #active experts= 210
+round= 7700  -- example= 7700  -- prediction= 6  -- #active experts= 210
+round= 7800  -- example= 7800  -- prediction= 0  -- #active experts= 210
+round= 7900  -- example= 7900  -- prediction= -1  -- #active experts= 210
+round= 8000  -- example= 8000  -- prediction= -1  -- #active experts= 210
+round= 8100  -- example= 8100  -- prediction= 6  -- #active experts= 210
+round= 8200  -- example= 8200  -- prediction= -1  -- #active experts= 210
+round= 8300  -- example= 8300  -- prediction= -1  -- #active experts= 210
+round= 8400  -- example= 8400  -- prediction= -1  -- #active experts= 210
+round= 8500  -- example= 8500  -- prediction= 4  -- #active experts= 210
+round= 8600  -- example= 8600  -- prediction= 3  -- #active experts= 210
+round= 8700  -- example= 8700  -- prediction= -1  -- #active experts= 210
+round= 8800  -- example= 8800  -- prediction= -1  -- #active experts= 210
+round= 8900  -- example= 8900  -- prediction= 3  -- #active experts= 210
+round= 9000  -- example= 9000  -- prediction= 8  -- #active experts= 210
+round= 9100  -- example= 9100  -- prediction= 9  -- #active experts= 210
+round= 9200  -- example= 9200  -- prediction= 8  -- #active experts= 210
+round= 9300  -- example= 9300  -- prediction= 2  -- #active experts= 210
+round= 9400  -- example= 9400  -- prediction= 6  -- #active experts= 210
+round= 9500  -- example= 9500  -- prediction= 9  -- #active experts= 210
+round= 9600  -- example= 9600  -- prediction= 8  -- #active experts= 210
+round= 9700  -- example= 9700  -- prediction= 0  -- #active experts= 210
+round= 9800  -- example= 9800  -- prediction= 1  -- #active experts= 210
+round= 9900  -- example= 9900  -- prediction= -1  -- #active experts= 210
+#algo abstained =  3085 / 10000
+#algo mistakes =  770 / 10000
+#of experts with non-zero weights =  210 / 210
+#of active experts =  210 / 210
+[experts] #mistakes(min) =  259.0 / 10000
+[experts] #mistakes(max) =  1185.0 / 10000
+[experts] #abstained(min) =  0.0 / 10000
+[experts] #abstained(max) =  2264.0 / 10000
+[experts= 0 ] --> mu, t (0.1, 0.1)
+[expert= 0 ] #mistakes =  1184.0 / 10000
+[expert= 0 ] #abstained =  0.0 / 10000
+[experts= 1 ] --> mu, t (0.1, 0.3)
+[expert= 1 ] #mistakes =  1168.0 / 10000
+[expert= 1 ] #abstained =  24.0 / 10000
+[experts= 2 ] --> mu, t (0.1, 0.4)
+[expert= 2 ] #mistakes =  1097.0 / 10000
+[expert= 2 ] #abstained =  126.0 / 10000
+[experts= 3 ] --> mu, t (0.1, 0.5)
+[expert= 3 ] #mistakes =  936.0 / 10000
+[expert= 3 ] #abstained =  371.0 / 10000
+[experts= 4 ] --> mu, t (0.1, 0.6)
+[expert= 4 ] #mistakes =  741.0 / 10000
+[expert= 4 ] #abstained =  725.0 / 10000
+[experts= 5 ] --> mu, t (0.1, 0.7)
+[expert= 5 ] #mistakes =  574.0 / 10000
+[expert= 5 ] #abstained =  1109.0 / 10000
+[experts= 6 ] --> mu, t (0.1, 0.9)
+[expert= 6 ] #mistakes =  262.0 / 10000
+[expert= 6 ] #abstained =  2263.0 / 10000
+[experts= 7 ] --> mu, t (0.2, 0.1)
+[expert= 7 ] #mistakes =  1184.0 / 10000
+[expert= 7 ] #abstained =  0.0 / 10000
+[experts= 8 ] --> mu, t (0.2, 0.3)
+[expert= 8 ] #mistakes =  1168.0 / 10000
+[expert= 8 ] #abstained =  24.0 / 10000
+[experts= 9 ] --> mu, t (0.2, 0.4)
+[expert= 9 ] #mistakes =  1097.0 / 10000
+[expert= 9 ] #abstained =  127.0 / 10000
+[experts= 10 ] --> mu, t (0.2, 0.5)
+[expert= 10 ] #mistakes =  936.0 / 10000
+[expert= 10 ] #abstained =  371.0 / 10000
+[experts= 11 ] --> mu, t (0.2, 0.6)
+[expert= 11 ] #mistakes =  740.0 / 10000
+[expert= 11 ] #abstained =  725.0 / 10000
+[experts= 12 ] --> mu, t (0.2, 0.7)
+[expert= 12 ] #mistakes =  574.0 / 10000
+[expert= 12 ] #abstained =  1110.0 / 10000
+[experts= 13 ] --> mu, t (0.2, 0.9)
+[expert= 13 ] #mistakes =  262.0 / 10000
+[expert= 13 ] #abstained =  2263.0 / 10000
+[experts= 14 ] --> mu, t (0.3, 0.1)
+[expert= 14 ] #mistakes =  1184.0 / 10000
+[expert= 14 ] #abstained =  0.0 / 10000
+[experts= 15 ] --> mu, t (0.3, 0.3)
+[expert= 15 ] #mistakes =  1169.0 / 10000
+[expert= 15 ] #abstained =  24.0 / 10000
+[experts= 16 ] --> mu, t (0.3, 0.4)
+[expert= 16 ] #mistakes =  1097.0 / 10000
+[expert= 16 ] #abstained =  126.0 / 10000
+[experts= 17 ] --> mu, t (0.3, 0.5)
+[expert= 17 ] #mistakes =  934.0 / 10000
+[expert= 17 ] #abstained =  374.0 / 10000
+[experts= 18 ] --> mu, t (0.3, 0.6)
+[expert= 18 ] #mistakes =  741.0 / 10000
+[expert= 18 ] #abstained =  724.0 / 10000
+[experts= 19 ] --> mu, t (0.3, 0.7)
+[expert= 19 ] #mistakes =  573.0 / 10000
+[expert= 19 ] #abstained =  1110.0 / 10000
+[experts= 20 ] --> mu, t (0.3, 0.9)
+[expert= 20 ] #mistakes =  262.0 / 10000
+[expert= 20 ] #abstained =  2264.0 / 10000
+[experts= 21 ] --> mu, t (0.4, 0.1)
+[expert= 21 ] #mistakes =  1180.0 / 10000
+[expert= 21 ] #abstained =  0.0 / 10000
+[experts= 22 ] --> mu, t (0.4, 0.3)
+[expert= 22 ] #mistakes =  1166.0 / 10000
+[expert= 22 ] #abstained =  20.0 / 10000
+[experts= 23 ] --> mu, t (0.4, 0.4)
+[expert= 23 ] #mistakes =  1105.0 / 10000
+[expert= 23 ] #abstained =  111.0 / 10000
+[experts= 24 ] --> mu, t (0.4, 0.5)
+[expert= 24 ] #mistakes =  953.0 / 10000
+[expert= 24 ] #abstained =  341.0 / 10000
+[experts= 25 ] --> mu, t (0.4, 0.6)
+[expert= 25 ] #mistakes =  761.0 / 10000
+[expert= 25 ] #abstained =  679.0 / 10000
+[experts= 26 ] --> mu, t (0.4, 0.7)
+[expert= 26 ] #mistakes =  599.0 / 10000
+[expert= 26 ] #abstained =  1059.0 / 10000
+[experts= 27 ] --> mu, t (0.4, 0.9)
+[expert= 27 ] #mistakes =  275.0 / 10000
+[expert= 27 ] #abstained =  2188.0 / 10000
+[experts= 28 ] --> mu, t (0.5, 0.1)
+[expert= 28 ] #mistakes =  1180.0 / 10000
+[expert= 28 ] #abstained =  0.0 / 10000
+[experts= 29 ] --> mu, t (0.5, 0.3)
+[expert= 29 ] #mistakes =  1166.0 / 10000
+[expert= 29 ] #abstained =  20.0 / 10000
+[experts= 30 ] --> mu, t (0.5, 0.4)
+[expert= 30 ] #mistakes =  1105.0 / 10000
+[expert= 30 ] #abstained =  111.0 / 10000
+[experts= 31 ] --> mu, t (0.5, 0.5)
+[expert= 31 ] #mistakes =  953.0 / 10000
+[expert= 31 ] #abstained =  341.0 / 10000
+[experts= 32 ] --> mu, t (0.5, 0.6)
+[expert= 32 ] #mistakes =  761.0 / 10000
+[expert= 32 ] #abstained =  680.0 / 10000
+[experts= 33 ] --> mu, t (0.5, 0.7)
+[expert= 33 ] #mistakes =  600.0 / 10000
+[expert= 33 ] #abstained =  1060.0 / 10000
+[experts= 34 ] --> mu, t (0.5, 0.9)
+[expert= 34 ] #mistakes =  275.0 / 10000
+[expert= 34 ] #abstained =  2188.0 / 10000
+[experts= 35 ] --> mu, t (0.6, 0.1)
+[expert= 35 ] #mistakes =  1184.0 / 10000
+[expert= 35 ] #abstained =  0.0 / 10000
+[experts= 36 ] --> mu, t (0.6, 0.3)
+[expert= 36 ] #mistakes =  1173.0 / 10000
+[expert= 36 ] #abstained =  17.0 / 10000
+[experts= 37 ] --> mu, t (0.6, 0.4)
+[expert= 37 ] #mistakes =  1112.0 / 10000
+[expert= 37 ] #abstained =  100.0 / 10000
+[experts= 38 ] --> mu, t (0.6, 0.5)
+[expert= 38 ] #mistakes =  966.0 / 10000
+[expert= 38 ] #abstained =  322.0 / 10000
+[experts= 39 ] --> mu, t (0.6, 0.6)
+[expert= 39 ] #mistakes =  766.0 / 10000
+[expert= 39 ] #abstained =  671.0 / 10000
+[experts= 40 ] --> mu, t (0.6, 0.7)
+[expert= 40 ] #mistakes =  609.0 / 10000
+[expert= 40 ] #abstained =  1037.0 / 10000
+[experts= 41 ] --> mu, t (0.6, 0.9)
+[expert= 41 ] #mistakes =  280.0 / 10000
+[expert= 41 ] #abstained =  2148.0 / 10000
+[experts= 42 ] --> mu, t (0.7, 0.1)
+[expert= 42 ] #mistakes =  1184.0 / 10000
+[expert= 42 ] #abstained =  0.0 / 10000
+[experts= 43 ] --> mu, t (0.7, 0.3)
+[expert= 43 ] #mistakes =  1173.0 / 10000
+[expert= 43 ] #abstained =  17.0 / 10000
+[experts= 44 ] --> mu, t (0.7, 0.4)
+[expert= 44 ] #mistakes =  1112.0 / 10000
+[expert= 44 ] #abstained =  99.0 / 10000
+[experts= 45 ] --> mu, t (0.7, 0.5)
+[expert= 45 ] #mistakes =  966.0 / 10000
+[expert= 45 ] #abstained =  322.0 / 10000
+[experts= 46 ] --> mu, t (0.7, 0.6)
+[expert= 46 ] #mistakes =  766.0 / 10000
+[expert= 46 ] #abstained =  671.0 / 10000
+[experts= 47 ] --> mu, t (0.7, 0.7)
+[expert= 47 ] #mistakes =  610.0 / 10000
+[expert= 47 ] #abstained =  1035.0 / 10000
+[experts= 48 ] --> mu, t (0.7, 0.9)
+[expert= 48 ] #mistakes =  280.0 / 10000
+[expert= 48 ] #abstained =  2147.0 / 10000
+[experts= 49 ] --> mu, t (0.7999999999999999, 0.1)
+[expert= 49 ] #mistakes =  1184.0 / 10000
+[expert= 49 ] #abstained =  0.0 / 10000
+[experts= 50 ] --> mu, t (0.7999999999999999, 0.3)
+[expert= 50 ] #mistakes =  1173.0 / 10000
+[expert= 50 ] #abstained =  17.0 / 10000
+[experts= 51 ] --> mu, t (0.7999999999999999, 0.4)
+[expert= 51 ] #mistakes =  1113.0 / 10000
+[expert= 51 ] #abstained =  98.0 / 10000
+[experts= 52 ] --> mu, t (0.7999999999999999, 0.5)
+[expert= 52 ] #mistakes =  964.0 / 10000
+[expert= 52 ] #abstained =  325.0 / 10000
+[experts= 53 ] --> mu, t (0.7999999999999999, 0.6)
+[expert= 53 ] #mistakes =  766.0 / 10000
+[expert= 53 ] #abstained =  671.0 / 10000
+[experts= 54 ] --> mu, t (0.7999999999999999, 0.7)
+[expert= 54 ] #mistakes =  609.0 / 10000
+[expert= 54 ] #abstained =  1038.0 / 10000
+[experts= 55 ] --> mu, t (0.7999999999999999, 0.9)
+[expert= 55 ] #mistakes =  280.0 / 10000
+[expert= 55 ] #abstained =  2147.0 / 10000
+[experts= 56 ] --> mu, t (0.8999999999999999, 0.1)
+[expert= 56 ] #mistakes =  1179.0 / 10000
+[expert= 56 ] #abstained =  0.0 / 10000
+[experts= 57 ] --> mu, t (0.8999999999999999, 0.3)
+[expert= 57 ] #mistakes =  1166.0 / 10000
+[expert= 57 ] #abstained =  17.0 / 10000
+[experts= 58 ] --> mu, t (0.8999999999999999, 0.4)
+[expert= 58 ] #mistakes =  1107.0 / 10000
+[expert= 58 ] #abstained =  100.0 / 10000
+[experts= 59 ] --> mu, t (0.8999999999999999, 0.5)
+[expert= 59 ] #mistakes =  966.0 / 10000
+[expert= 59 ] #abstained =  316.0 / 10000
+[experts= 60 ] --> mu, t (0.8999999999999999, 0.6)
+[expert= 60 ] #mistakes =  773.0 / 10000
+[expert= 60 ] #abstained =  666.0 / 10000
+[experts= 61 ] --> mu, t (0.8999999999999999, 0.7)
+[expert= 61 ] #mistakes =  612.0 / 10000
+[expert= 61 ] #abstained =  1019.0 / 10000
+[experts= 62 ] --> mu, t (0.8999999999999999, 0.9)
+[expert= 62 ] #mistakes =  285.0 / 10000
+[expert= 62 ] #abstained =  2131.0 / 10000
+[experts= 63 ] --> mu, t (0.9999999999999999, 0.1)
+[expert= 63 ] #mistakes =  1179.0 / 10000
+[expert= 63 ] #abstained =  0.0 / 10000
+[experts= 64 ] --> mu, t (0.9999999999999999, 0.3)
+[expert= 64 ] #mistakes =  1166.0 / 10000
+[expert= 64 ] #abstained =  17.0 / 10000
+[experts= 65 ] --> mu, t (0.9999999999999999, 0.4)
+[expert= 65 ] #mistakes =  1107.0 / 10000
+[expert= 65 ] #abstained =  100.0 / 10000
+[experts= 66 ] --> mu, t (0.9999999999999999, 0.5)
+[expert= 66 ] #mistakes =  967.0 / 10000
+[expert= 66 ] #abstained =  315.0 / 10000
+[experts= 67 ] --> mu, t (0.9999999999999999, 0.6)
+[expert= 67 ] #mistakes =  772.0 / 10000
+[expert= 67 ] #abstained =  667.0 / 10000
+[experts= 68 ] --> mu, t (0.9999999999999999, 0.7)
+[expert= 68 ] #mistakes =  612.0 / 10000
+[expert= 68 ] #abstained =  1020.0 / 10000
+[experts= 69 ] --> mu, t (0.9999999999999999, 0.9)
+[expert= 69 ] #mistakes =  285.0 / 10000
+[expert= 69 ] #abstained =  2129.0 / 10000
+[experts= 70 ] --> mu, t (1.0999999999999999, 0.1)
+[expert= 70 ] #mistakes =  1180.0 / 10000
+[expert= 70 ] #abstained =  0.0 / 10000
+[experts= 71 ] --> mu, t (1.0999999999999999, 0.3)
+[expert= 71 ] #mistakes =  1167.0 / 10000
+[expert= 71 ] #abstained =  17.0 / 10000
+[experts= 72 ] --> mu, t (1.0999999999999999, 0.4)
+[expert= 72 ] #mistakes =  1107.0 / 10000
+[expert= 72 ] #abstained =  100.0 / 10000
+[experts= 73 ] --> mu, t (1.0999999999999999, 0.5)
+[expert= 73 ] #mistakes =  965.0 / 10000
+[expert= 73 ] #abstained =  317.0 / 10000
+[experts= 74 ] --> mu, t (1.0999999999999999, 0.6)
+[expert= 74 ] #mistakes =  771.0 / 10000
+[expert= 74 ] #abstained =  668.0 / 10000
+[experts= 75 ] --> mu, t (1.0999999999999999, 0.7)
+[expert= 75 ] #mistakes =  612.0 / 10000
+[expert= 75 ] #abstained =  1021.0 / 10000
+[experts= 76 ] --> mu, t (1.0999999999999999, 0.9)
+[expert= 76 ] #mistakes =  285.0 / 10000
+[expert= 76 ] #abstained =  2129.0 / 10000
+[experts= 77 ] --> mu, t (1.2, 0.1)
+[expert= 77 ] #mistakes =  1176.0 / 10000
+[expert= 77 ] #abstained =  0.0 / 10000
+[experts= 78 ] --> mu, t (1.2, 0.3)
+[expert= 78 ] #mistakes =  1162.0 / 10000
+[expert= 78 ] #abstained =  18.0 / 10000
+[experts= 79 ] --> mu, t (1.2, 0.4)
+[expert= 79 ] #mistakes =  1111.0 / 10000
+[expert= 79 ] #abstained =  96.0 / 10000
+[experts= 80 ] --> mu, t (1.2, 0.5)
+[expert= 80 ] #mistakes =  965.0 / 10000
+[expert= 80 ] #abstained =  316.0 / 10000
+[experts= 81 ] --> mu, t (1.2, 0.6)
+[expert= 81 ] #mistakes =  774.0 / 10000
+[expert= 81 ] #abstained =  665.0 / 10000
+[experts= 82 ] --> mu, t (1.2, 0.7)
+[expert= 82 ] #mistakes =  613.0 / 10000
+[expert= 82 ] #abstained =  1023.0 / 10000
+[experts= 83 ] --> mu, t (1.2, 0.9)
+[expert= 83 ] #mistakes =  290.0 / 10000
+[expert= 83 ] #abstained =  2118.0 / 10000
+[experts= 84 ] --> mu, t (1.3, 0.1)
+[expert= 84 ] #mistakes =  1176.0 / 10000
+[expert= 84 ] #abstained =  0.0 / 10000
+[experts= 85 ] --> mu, t (1.3, 0.3)
+[expert= 85 ] #mistakes =  1162.0 / 10000
+[expert= 85 ] #abstained =  18.0 / 10000
+[experts= 86 ] --> mu, t (1.3, 0.4)
+[expert= 86 ] #mistakes =  1111.0 / 10000
+[expert= 86 ] #abstained =  96.0 / 10000
+[experts= 87 ] --> mu, t (1.3, 0.5)
+[expert= 87 ] #mistakes =  966.0 / 10000
+[expert= 87 ] #abstained =  315.0 / 10000
+[experts= 88 ] --> mu, t (1.3, 0.6)
+[expert= 88 ] #mistakes =  774.0 / 10000
+[expert= 88 ] #abstained =  665.0 / 10000
+[experts= 89 ] --> mu, t (1.3, 0.7)
+[expert= 89 ] #mistakes =  614.0 / 10000
+[expert= 89 ] #abstained =  1022.0 / 10000
+[experts= 90 ] --> mu, t (1.3, 0.9)
+[expert= 90 ] #mistakes =  290.0 / 10000
+[expert= 90 ] #abstained =  2119.0 / 10000
+[experts= 91 ] --> mu, t (1.4, 0.1)
+[expert= 91 ] #mistakes =  1176.0 / 10000
+[expert= 91 ] #abstained =  0.0 / 10000
+[experts= 92 ] --> mu, t (1.4, 0.3)
+[expert= 92 ] #mistakes =  1162.0 / 10000
+[expert= 92 ] #abstained =  19.0 / 10000
+[experts= 93 ] --> mu, t (1.4, 0.4)
+[expert= 93 ] #mistakes =  1111.0 / 10000
+[expert= 93 ] #abstained =  96.0 / 10000
+[experts= 94 ] --> mu, t (1.4, 0.5)
+[expert= 94 ] #mistakes =  966.0 / 10000
+[expert= 94 ] #abstained =  313.0 / 10000
+[experts= 95 ] --> mu, t (1.4, 0.6)
+[expert= 95 ] #mistakes =  775.0 / 10000
+[expert= 95 ] #abstained =  664.0 / 10000
+[experts= 96 ] --> mu, t (1.4, 0.7)
+[expert= 96 ] #mistakes =  615.0 / 10000
+[expert= 96 ] #abstained =  1021.0 / 10000
+[experts= 97 ] --> mu, t (1.4, 0.9)
+[expert= 97 ] #mistakes =  290.0 / 10000
+[expert= 97 ] #abstained =  2118.0 / 10000
+[experts= 98 ] --> mu, t (1.5, 0.1)
+[expert= 98 ] #mistakes =  1176.0 / 10000
+[expert= 98 ] #abstained =  0.0 / 10000
+[experts= 99 ] --> mu, t (1.5, 0.3)
+[expert= 99 ] #mistakes =  1162.0 / 10000
+[expert= 99 ] #abstained =  19.0 / 10000
+[experts= 100 ] --> mu, t (1.5, 0.4)
+[expert= 100 ] #mistakes =  1111.0 / 10000
+[expert= 100 ] #abstained =  96.0 / 10000
+[experts= 101 ] --> mu, t (1.5, 0.5)
+[expert= 101 ] #mistakes =  965.0 / 10000
+[expert= 101 ] #abstained =  314.0 / 10000
+[experts= 102 ] --> mu, t (1.5, 0.6)
+[expert= 102 ] #mistakes =  775.0 / 10000
+[expert= 102 ] #abstained =  664.0 / 10000
+[experts= 103 ] --> mu, t (1.5, 0.7)
+[expert= 103 ] #mistakes =  615.0 / 10000
+[expert= 103 ] #abstained =  1020.0 / 10000
+[experts= 104 ] --> mu, t (1.5, 0.9)
+[expert= 104 ] #mistakes =  289.0 / 10000
+[expert= 104 ] #abstained =  2122.0 / 10000
+[experts= 105 ] --> mu, t (1.5999999999999999, 0.1)
+[expert= 105 ] #mistakes =  1176.0 / 10000
+[expert= 105 ] #abstained =  0.0 / 10000
+[experts= 106 ] --> mu, t (1.5999999999999999, 0.3)
+[expert= 106 ] #mistakes =  1164.0 / 10000
+[expert= 106 ] #abstained =  15.0 / 10000
+[experts= 107 ] --> mu, t (1.5999999999999999, 0.4)
+[expert= 107 ] #mistakes =  1111.0 / 10000
+[expert= 107 ] #abstained =  93.0 / 10000
+[experts= 108 ] --> mu, t (1.5999999999999999, 0.5)
+[expert= 108 ] #mistakes =  969.0 / 10000
+[expert= 108 ] #abstained =  315.0 / 10000
+[experts= 109 ] --> mu, t (1.5999999999999999, 0.6)
+[expert= 109 ] #mistakes =  777.0 / 10000
+[expert= 109 ] #abstained =  659.0 / 10000
+[experts= 110 ] --> mu, t (1.5999999999999999, 0.7)
+[expert= 110 ] #mistakes =  622.0 / 10000
+[expert= 110 ] #abstained =  1014.0 / 10000
+[experts= 111 ] --> mu, t (1.5999999999999999, 0.9)
+[expert= 111 ] #mistakes =  288.0 / 10000
+[expert= 111 ] #abstained =  2121.0 / 10000
+[experts= 112 ] --> mu, t (1.7, 0.1)
+[expert= 112 ] #mistakes =  1175.0 / 10000
+[expert= 112 ] #abstained =  0.0 / 10000
+[experts= 113 ] --> mu, t (1.7, 0.3)
+[expert= 113 ] #mistakes =  1162.0 / 10000
+[expert= 113 ] #abstained =  16.0 / 10000
+[experts= 114 ] --> mu, t (1.7, 0.4)
+[expert= 114 ] #mistakes =  1111.0 / 10000
+[expert= 114 ] #abstained =  93.0 / 10000
+[experts= 115 ] --> mu, t (1.7, 0.5)
+[expert= 115 ] #mistakes =  969.0 / 10000
+[expert= 115 ] #abstained =  315.0 / 10000
+[experts= 116 ] --> mu, t (1.7, 0.6)
+[expert= 116 ] #mistakes =  776.0 / 10000
+[expert= 116 ] #abstained =  660.0 / 10000
+[experts= 117 ] --> mu, t (1.7, 0.7)
+[expert= 117 ] #mistakes =  622.0 / 10000
+[expert= 117 ] #abstained =  1014.0 / 10000
+[experts= 118 ] --> mu, t (1.7, 0.9)
+[expert= 118 ] #mistakes =  288.0 / 10000
+[expert= 118 ] #abstained =  2120.0 / 10000
+[experts= 119 ] --> mu, t (1.8, 0.1)
+[expert= 119 ] #mistakes =  1185.0 / 10000
+[expert= 119 ] #abstained =  0.0 / 10000
+[experts= 120 ] --> mu, t (1.8, 0.3)
+[expert= 120 ] #mistakes =  1169.0 / 10000
+[expert= 120 ] #abstained =  25.0 / 10000
+[experts= 121 ] --> mu, t (1.8, 0.4)
+[expert= 121 ] #mistakes =  1094.0 / 10000
+[expert= 121 ] #abstained =  128.0 / 10000
+[experts= 122 ] --> mu, t (1.8, 0.5)
+[expert= 122 ] #mistakes =  940.0 / 10000
+[expert= 122 ] #abstained =  366.0 / 10000
+[experts= 123 ] --> mu, t (1.8, 0.6)
+[expert= 123 ] #mistakes =  743.0 / 10000
+[expert= 123 ] #abstained =  712.0 / 10000
+[experts= 124 ] --> mu, t (1.8, 0.7)
+[expert= 124 ] #mistakes =  575.0 / 10000
+[expert= 124 ] #abstained =  1108.0 / 10000
+[experts= 125 ] --> mu, t (1.8, 0.9)
+[expert= 125 ] #mistakes =  259.0 / 10000
+[expert= 125 ] #abstained =  2258.0 / 10000
+[experts= 126 ] --> mu, t (1.9, 0.1)
+[expert= 126 ] #mistakes =  1184.0 / 10000
+[expert= 126 ] #abstained =  0.0 / 10000
+[experts= 127 ] --> mu, t (1.9, 0.3)
+[expert= 127 ] #mistakes =  1168.0 / 10000
+[expert= 127 ] #abstained =  25.0 / 10000
+[experts= 128 ] --> mu, t (1.9, 0.4)
+[expert= 128 ] #mistakes =  1093.0 / 10000
+[expert= 128 ] #abstained =  128.0 / 10000
+[experts= 129 ] --> mu, t (1.9, 0.5)
+[expert= 129 ] #mistakes =  939.0 / 10000
+[expert= 129 ] #abstained =  368.0 / 10000
+[experts= 130 ] --> mu, t (1.9, 0.6)
+[expert= 130 ] #mistakes =  743.0 / 10000
+[expert= 130 ] #abstained =  712.0 / 10000
+[experts= 131 ] --> mu, t (1.9, 0.7)
+[expert= 131 ] #mistakes =  575.0 / 10000
+[expert= 131 ] #abstained =  1106.0 / 10000
+[experts= 132 ] --> mu, t (1.9, 0.9)
+[expert= 132 ] #mistakes =  259.0 / 10000
+[expert= 132 ] #abstained =  2258.0 / 10000
+[experts= 133 ] --> mu, t (2.0, 0.1)
+[expert= 133 ] #mistakes =  1185.0 / 10000
+[expert= 133 ] #abstained =  0.0 / 10000
+[experts= 134 ] --> mu, t (2.0, 0.3)
+[expert= 134 ] #mistakes =  1169.0 / 10000
+[expert= 134 ] #abstained =  25.0 / 10000
+[experts= 135 ] --> mu, t (2.0, 0.4)
+[expert= 135 ] #mistakes =  1093.0 / 10000
+[expert= 135 ] #abstained =  128.0 / 10000
+[experts= 136 ] --> mu, t (2.0, 0.5)
+[expert= 136 ] #mistakes =  941.0 / 10000
+[expert= 136 ] #abstained =  366.0 / 10000
+[experts= 137 ] --> mu, t (2.0, 0.6)
+[expert= 137 ] #mistakes =  743.0 / 10000
+[expert= 137 ] #abstained =  712.0 / 10000
+[experts= 138 ] --> mu, t (2.0, 0.7)
+[expert= 138 ] #mistakes =  575.0 / 10000
+[expert= 138 ] #abstained =  1107.0 / 10000
+[experts= 139 ] --> mu, t (2.0, 0.9)
+[expert= 139 ] #mistakes =  260.0 / 10000
+[expert= 139 ] #abstained =  2257.0 / 10000
+[experts= 140 ] --> mu, t (2.0999999999999996, 0.1)
+[expert= 140 ] #mistakes =  1185.0 / 10000
+[expert= 140 ] #abstained =  0.0 / 10000
+[experts= 141 ] --> mu, t (2.0999999999999996, 0.3)
+[expert= 141 ] #mistakes =  1169.0 / 10000
+[expert= 141 ] #abstained =  25.0 / 10000
+[experts= 142 ] --> mu, t (2.0999999999999996, 0.4)
+[expert= 142 ] #mistakes =  1092.0 / 10000
+[expert= 142 ] #abstained =  129.0 / 10000
+[experts= 143 ] --> mu, t (2.0999999999999996, 0.5)
+[expert= 143 ] #mistakes =  941.0 / 10000
+[expert= 143 ] #abstained =  366.0 / 10000
+[experts= 144 ] --> mu, t (2.0999999999999996, 0.6)
+[expert= 144 ] #mistakes =  742.0 / 10000
+[expert= 144 ] #abstained =  712.0 / 10000
+[experts= 145 ] --> mu, t (2.0999999999999996, 0.7)
+[expert= 145 ] #mistakes =  575.0 / 10000
+[expert= 145 ] #abstained =  1105.0 / 10000
+[experts= 146 ] --> mu, t (2.0999999999999996, 0.9)
+[expert= 146 ] #mistakes =  260.0 / 10000
+[expert= 146 ] #abstained =  2255.0 / 10000
+[experts= 147 ] --> mu, t (2.1999999999999997, 0.1)
+[expert= 147 ] #mistakes =  1184.0 / 10000
+[expert= 147 ] #abstained =  0.0 / 10000
+[experts= 148 ] --> mu, t (2.1999999999999997, 0.3)
+[expert= 148 ] #mistakes =  1168.0 / 10000
+[expert= 148 ] #abstained =  25.0 / 10000
+[experts= 149 ] --> mu, t (2.1999999999999997, 0.4)
+[expert= 149 ] #mistakes =  1091.0 / 10000
+[expert= 149 ] #abstained =  129.0 / 10000
+[experts= 150 ] --> mu, t (2.1999999999999997, 0.5)
+[expert= 150 ] #mistakes =  940.0 / 10000
+[expert= 150 ] #abstained =  368.0 / 10000
+[experts= 151 ] --> mu, t (2.1999999999999997, 0.6)
+[expert= 151 ] #mistakes =  742.0 / 10000
+[expert= 151 ] #abstained =  711.0 / 10000
+[experts= 152 ] --> mu, t (2.1999999999999997, 0.7)
+[expert= 152 ] #mistakes =  575.0 / 10000
+[expert= 152 ] #abstained =  1104.0 / 10000
+[experts= 153 ] --> mu, t (2.1999999999999997, 0.9)
+[expert= 153 ] #mistakes =  260.0 / 10000
+[expert= 153 ] #abstained =  2251.0 / 10000
+[experts= 154 ] --> mu, t (2.3, 0.1)
+[expert= 154 ] #mistakes =  1184.0 / 10000
+[expert= 154 ] #abstained =  0.0 / 10000
+[experts= 155 ] --> mu, t (2.3, 0.3)
+[expert= 155 ] #mistakes =  1166.0 / 10000
+[expert= 155 ] #abstained =  27.0 / 10000
+[experts= 156 ] --> mu, t (2.3, 0.4)
+[expert= 156 ] #mistakes =  1091.0 / 10000
+[expert= 156 ] #abstained =  129.0 / 10000
+[experts= 157 ] --> mu, t (2.3, 0.5)
+[expert= 157 ] #mistakes =  940.0 / 10000
+[expert= 157 ] #abstained =  368.0 / 10000
+[experts= 158 ] --> mu, t (2.3, 0.6)
+[expert= 158 ] #mistakes =  742.0 / 10000
+[expert= 158 ] #abstained =  711.0 / 10000
+[experts= 159 ] --> mu, t (2.3, 0.7)
+[expert= 159 ] #mistakes =  575.0 / 10000
+[expert= 159 ] #abstained =  1103.0 / 10000
+[experts= 160 ] --> mu, t (2.3, 0.9)
+[expert= 160 ] #mistakes =  260.0 / 10000
+[expert= 160 ] #abstained =  2252.0 / 10000
+[experts= 161 ] --> mu, t (2.4, 0.1)
+[expert= 161 ] #mistakes =  1182.0 / 10000
+[expert= 161 ] #abstained =  0.0 / 10000
+[experts= 162 ] --> mu, t (2.4, 0.3)
+[expert= 162 ] #mistakes =  1163.0 / 10000
+[expert= 162 ] #abstained =  27.0 / 10000
+[experts= 163 ] --> mu, t (2.4, 0.4)
+[expert= 163 ] #mistakes =  1089.0 / 10000
+[expert= 163 ] #abstained =  129.0 / 10000
+[experts= 164 ] --> mu, t (2.4, 0.5)
+[expert= 164 ] #mistakes =  940.0 / 10000
+[expert= 164 ] #abstained =  368.0 / 10000
+[experts= 165 ] --> mu, t (2.4, 0.6)
+[expert= 165 ] #mistakes =  742.0 / 10000
+[expert= 165 ] #abstained =  711.0 / 10000
+[experts= 166 ] --> mu, t (2.4, 0.7)
+[expert= 166 ] #mistakes =  575.0 / 10000
+[expert= 166 ] #abstained =  1103.0 / 10000
+[experts= 167 ] --> mu, t (2.4, 0.9)
+[expert= 167 ] #mistakes =  261.0 / 10000
+[expert= 167 ] #abstained =  2252.0 / 10000
+[experts= 168 ] --> mu, t (2.5, 0.1)
+[expert= 168 ] #mistakes =  1182.0 / 10000
+[expert= 168 ] #abstained =  0.0 / 10000
+[experts= 169 ] --> mu, t (2.5, 0.3)
+[expert= 169 ] #mistakes =  1163.0 / 10000
+[expert= 169 ] #abstained =  27.0 / 10000
+[experts= 170 ] --> mu, t (2.5, 0.4)
+[expert= 170 ] #mistakes =  1089.0 / 10000
+[expert= 170 ] #abstained =  130.0 / 10000
+[experts= 171 ] --> mu, t (2.5, 0.5)
+[expert= 171 ] #mistakes =  938.0 / 10000
+[expert= 171 ] #abstained =  370.0 / 10000
+[experts= 172 ] --> mu, t (2.5, 0.6)
+[expert= 172 ] #mistakes =  741.0 / 10000
+[expert= 172 ] #abstained =  711.0 / 10000
+[experts= 173 ] --> mu, t (2.5, 0.7)
+[expert= 173 ] #mistakes =  573.0 / 10000
+[expert= 173 ] #abstained =  1105.0 / 10000
+[experts= 174 ] --> mu, t (2.5, 0.9)
+[expert= 174 ] #mistakes =  262.0 / 10000
+[expert= 174 ] #abstained =  2251.0 / 10000
+[experts= 175 ] --> mu, t (2.6, 0.1)
+[expert= 175 ] #mistakes =  1181.0 / 10000
+[expert= 175 ] #abstained =  0.0 / 10000
+[experts= 176 ] --> mu, t (2.6, 0.3)
+[expert= 176 ] #mistakes =  1162.0 / 10000
+[expert= 176 ] #abstained =  27.0 / 10000
+[experts= 177 ] --> mu, t (2.6, 0.4)
+[expert= 177 ] #mistakes =  1088.0 / 10000
+[expert= 177 ] #abstained =  130.0 / 10000
+[experts= 178 ] --> mu, t (2.6, 0.5)
+[expert= 178 ] #mistakes =  935.0 / 10000
+[expert= 178 ] #abstained =  375.0 / 10000
+[experts= 179 ] --> mu, t (2.6, 0.6)
+[expert= 179 ] #mistakes =  740.0 / 10000
+[expert= 179 ] #abstained =  713.0 / 10000
+[experts= 180 ] --> mu, t (2.6, 0.7)
+[expert= 180 ] #mistakes =  575.0 / 10000
+[expert= 180 ] #abstained =  1104.0 / 10000
+[experts= 181 ] --> mu, t (2.6, 0.9)
+[expert= 181 ] #mistakes =  262.0 / 10000
+[expert= 181 ] #abstained =  2251.0 / 10000
+[experts= 182 ] --> mu, t (2.6999999999999997, 0.1)
+[expert= 182 ] #mistakes =  1181.0 / 10000
+[expert= 182 ] #abstained =  0.0 / 10000
+[experts= 183 ] --> mu, t (2.6999999999999997, 0.3)
+[expert= 183 ] #mistakes =  1162.0 / 10000
+[expert= 183 ] #abstained =  26.0 / 10000
+[experts= 184 ] --> mu, t (2.6999999999999997, 0.4)
+[expert= 184 ] #mistakes =  1090.0 / 10000
+[expert= 184 ] #abstained =  128.0 / 10000
+[experts= 185 ] --> mu, t (2.6999999999999997, 0.5)
+[expert= 185 ] #mistakes =  934.0 / 10000
+[expert= 185 ] #abstained =  376.0 / 10000
+[experts= 186 ] --> mu, t (2.6999999999999997, 0.6)
+[expert= 186 ] #mistakes =  740.0 / 10000
+[expert= 186 ] #abstained =  712.0 / 10000
+[experts= 187 ] --> mu, t (2.6999999999999997, 0.7)
+[expert= 187 ] #mistakes =  577.0 / 10000
+[expert= 187 ] #abstained =  1101.0 / 10000
+[experts= 188 ] --> mu, t (2.6999999999999997, 0.9)
+[expert= 188 ] #mistakes =  262.0 / 10000
+[expert= 188 ] #abstained =  2250.0 / 10000
+[experts= 189 ] --> mu, t (2.8, 0.1)
+[expert= 189 ] #mistakes =  1182.0 / 10000
+[expert= 189 ] #abstained =  0.0 / 10000
+[experts= 190 ] --> mu, t (2.8, 0.3)
+[expert= 190 ] #mistakes =  1163.0 / 10000
+[expert= 190 ] #abstained =  26.0 / 10000
+[experts= 191 ] --> mu, t (2.8, 0.4)
+[expert= 191 ] #mistakes =  1090.0 / 10000
+[expert= 191 ] #abstained =  129.0 / 10000
+[experts= 192 ] --> mu, t (2.8, 0.5)
+[expert= 192 ] #mistakes =  934.0 / 10000
+[expert= 192 ] #abstained =  375.0 / 10000
+[experts= 193 ] --> mu, t (2.8, 0.6)
+[expert= 193 ] #mistakes =  740.0 / 10000
+[expert= 193 ] #abstained =  710.0 / 10000
+[experts= 194 ] --> mu, t (2.8, 0.7)
+[expert= 194 ] #mistakes =  580.0 / 10000
+[expert= 194 ] #abstained =  1098.0 / 10000
+[experts= 195 ] --> mu, t (2.8, 0.9)
+[expert= 195 ] #mistakes =  262.0 / 10000
+[expert= 195 ] #abstained =  2248.0 / 10000
+[experts= 196 ] --> mu, t (2.9, 0.1)
+[expert= 196 ] #mistakes =  1182.0 / 10000
+[expert= 196 ] #abstained =  0.0 / 10000
+[experts= 197 ] --> mu, t (2.9, 0.3)
+[expert= 197 ] #mistakes =  1163.0 / 10000
+[expert= 197 ] #abstained =  26.0 / 10000
+[experts= 198 ] --> mu, t (2.9, 0.4)
+[expert= 198 ] #mistakes =  1088.0 / 10000
+[expert= 198 ] #abstained =  129.0 / 10000
+[experts= 199 ] --> mu, t (2.9, 0.5)
+[expert= 199 ] #mistakes =  934.0 / 10000
+[expert= 199 ] #abstained =  373.0 / 10000
+[experts= 200 ] --> mu, t (2.9, 0.6)
+[expert= 200 ] #mistakes =  741.0 / 10000
+[expert= 200 ] #abstained =  711.0 / 10000
+[experts= 201 ] --> mu, t (2.9, 0.7)
+[expert= 201 ] #mistakes =  580.0 / 10000
+[expert= 201 ] #abstained =  1098.0 / 10000
+[experts= 202 ] --> mu, t (2.9, 0.9)
+[expert= 202 ] #mistakes =  262.0 / 10000
+[expert= 202 ] #abstained =  2247.0 / 10000
+[experts= 203 ] --> mu, t (3.0, 0.1)
+[expert= 203 ] #mistakes =  1182.0 / 10000
+[expert= 203 ] #abstained =  0.0 / 10000
+[experts= 204 ] --> mu, t (3.0, 0.3)
+[expert= 204 ] #mistakes =  1163.0 / 10000
+[expert= 204 ] #abstained =  26.0 / 10000
+[experts= 205 ] --> mu, t (3.0, 0.4)
+[expert= 205 ] #mistakes =  1088.0 / 10000
+[expert= 205 ] #abstained =  129.0 / 10000
+[experts= 206 ] --> mu, t (3.0, 0.5)
+[expert= 206 ] #mistakes =  934.0 / 10000
+[expert= 206 ] #abstained =  373.0 / 10000
+[experts= 207 ] --> mu, t (3.0, 0.6)
+[expert= 207 ] #mistakes =  740.0 / 10000
+[expert= 207 ] #abstained =  712.0 / 10000
+[experts= 208 ] --> mu, t (3.0, 0.7)
+[expert= 208 ] #mistakes =  580.0 / 10000
+[expert= 208 ] #abstained =  1098.0 / 10000
+[experts= 209 ] --> mu, t (3.0, 0.9)
+[expert= 209 ] #mistakes =  262.0 / 10000
+[expert= 209 ] #abstained =  2249.0 / 10000
