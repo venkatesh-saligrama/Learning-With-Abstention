@@ -100,11 +100,15 @@ n_data_points = test_Y.shape[0]
 print('N data points = ', n_data_points)
 print('W_t shape = ', W_t.shape)
 
+data_permutation = np.random.permutation(T)
+print(data_permutation)
+
 for i in range(T):
    # Get context x_t, also have label y_t (dont reveal till abstention)
    # Evaluate f_i(x_t) for each i in V_t 
    #data_idx = random.randint( 0, n_data_points-1 )
-   data_idx = i
+   #data_idx = i
+   data_idx = data_permutation[i]
    y_t = test_Y[ data_idx ]
    all_Vt_predictions, map_idx_to_pred = get_predictions_for_all_experts( _test_predictions, mu_t_pairs, V_t, data_idx )
 
