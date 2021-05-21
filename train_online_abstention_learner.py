@@ -30,7 +30,8 @@ print('args = ', args)
 config = config.get_config()
 classes = list(range(0,10))
 mus = np.linspace(0.1,3,30)
-thresholds = [0.1, 0.3, 0.4, 0.5, 0.6, 0.7, 0.9];
+#thresholds = [0.1, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.88, 0.9];
+thresholds = np.linspace(0.1,0.9,20)
 print('Config = ', config)
 print('Mus = ', mus)
 
@@ -65,7 +66,7 @@ with open( args.data + 'test_predictions.bin', 'rb') as fp:
 
 #thresholds = np.unique(_predictions[classes[0]][mus[-1]])[::10]
 thresholds = np.unique(_predictions[classes[0]][mus[-1]])[::100]
-print('# thresholds = ', len(thresholds))
+print('#thresholds = ', len(thresholds))
 
 data = np.load( args.data + 'std_ce_64_dim_ft.npz', allow_pickle=True,)
 test_X, test_Y = data['test_embd'], data['test_Y']
@@ -218,10 +219,10 @@ if optimal_idx != -1:
 else:
     print('No optimal expert found.')
 
-
-for idx in active_experts:
-    print('[experts=', idx, '] --> mu, t', str(mu_t_pairs[idx]))
-    print('[expert=', idx, '] #mistakes = ', m_t[idx], '/', T)
-    print('[expert=', idx, '] #abstained = ', l_t[idx], '/', T)
+#
+#for idx in active_experts:
+#    print('[experts=', idx, '] --> mu, t', str(mu_t_pairs[idx]))
+#    print('[expert=', idx, '] #mistakes = ', m_t[idx], '/', T)
+#    print('[expert=', idx, '] #abstained = ', l_t[idx], '/', T)
     
 
