@@ -62,6 +62,11 @@ with open( args.data + 'predictions.bin', 'rb') as fp:
 with open( args.data + 'test_predictions.bin', 'rb') as fp:
     _test_predictions = pickle.load( fp )
 
+
+#thresholds = np.unique(_predictions[classes[0]][mus[-1]])[::10]
+thresholds = np.unique(_predictions[classes[0]][mus[-1]])[::100]
+print('# thresholds = ', len(thresholds))
+
 data = np.load( args.data + 'std_ce_64_dim_ft.npz', allow_pickle=True,)
 test_X, test_Y = data['test_embd'], data['test_Y']
 val_X, val_Y = data['val_embd'], data['val_Y']
