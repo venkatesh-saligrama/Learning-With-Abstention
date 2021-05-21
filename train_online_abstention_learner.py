@@ -194,7 +194,29 @@ print('[experts] #mistakes(max) = ', np.max(m_t), '/', T)
 print('[experts] #abstained(min) = ', np.min(l_t), '/', T)
 print('[experts] #abstained(max) = ', np.max(l_t), '/', T)
 
+min_mistakes = np.min(m_t)
+
+optimal_idx = -1
+optimal_mistakes = T
+optimal_abstained = T
+#for idx in active_experts:
+for idx in range(n_experts):
+    if min_mistakes == m_t[idx]:
+        if optimal_abstained > l_t[idx]:
+            optimal_mistakes = m_t[idx]
+            optimal_abstained = l_t[idx]
+            optimal_idx = idx
+
+if optimal_idx != -1:
+    print('[optimal experts] #mistakes = ', optimal_mistakes, '/', T)
+    print('[optimal experts] #abstained = ', optimal_abstained, '/', T)
+else:
+    print('No optimal expert found.')
+
+
 for idx in active_experts:
     print('[experts=', idx, '] --> mu, t', str(mu_t_pairs[idx]))
     print('[expert=', idx, '] #mistakes = ', m_t[idx], '/', T)
     print('[expert=', idx, '] #abstained = ', l_t[idx], '/', T)
+    
+
