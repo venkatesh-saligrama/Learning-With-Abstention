@@ -68,14 +68,14 @@ def get_predictions_for_all_experts( scores, mu_t_pairs, V_t, data_idx ):
     return predictions, map_idx_to_pred 
 
 
-def run_one_experiment( process_id, T, val_Y, test_Y, _predictions,  _test_predictions, return_stats ):
+def run_one_experiment( process_id, T, val_Y, test_Y, _predictions,  _test_predictions, return_stats, p_pow ):
 
     '''
     Online Learning with Abstention scheme
     '''
-
+    p = math.pow( math.log(T)/T, p_pow )
     #T = len(test_Y) #10000     # number of rounds
-    p = math.sqrt(2*math.log(T)/T) # 0.02 #0.3     # bernoulli coin bias
+    #p = math.sqrt(2*math.log(T)/T) # 0.02 #0.3     # bernoulli coin bias
     eta = p #0.01  # learning rate
     theta = 0.01
 
@@ -248,14 +248,14 @@ def run_one_experiment( process_id, T, val_Y, test_Y, _predictions,  _test_predi
     return ( len(active_experts) == 0 ), stats
 
 
-def rerun_if_failed_one_experiment( process_id, T, val_Y, test_Y, _predictions,  _test_predictions, return_stats ):
-    failed, stats = run_one_experiment( process_id, T, val_Y, test_Y, _predictions,  _test_predictions, return_stats )
+def rerun_if_failed_one_experiment( process_id, T, val_Y, test_Y, _predictions,  _test_predictions, return_stats, p ):
+    failed, stats = run_one_experiment( process_id, T, val_Y, test_Y, _predictions,  _test_predictions, return_stats, p )
     cnt = 0
     while failed and (cnt < 3):
-        failed, stats = run_one_experiment( process_id, T, val_Y, test_Y, _predictions,  _test_predictions, return_stats )
+        failed, stats = run_one_experiment( process_id, T, val_Y, test_Y, _predictions,  _test_predictions, return_stats, p )
         cnt += 1
     if not failed: 
-        return_stats[ str(T) + '-r-' + str(process_id) ] = stats
+        return_stats[ str(T) + '-p-' + str(p) + '-r-' + str(process_id) ] = stats
     
 
 if __name__ == '__main__':
@@ -285,12 +285,15 @@ if __name__ == '__main__':
 
     n_runs = 1 #5 #3 #20
     #Ts = [1500] #[500, 1000, 1500]
-    Ts = list( range(500, 10500, 500) )
-    print('Ts = ', Ts)
+    #Ts = list( range(500, 10500, 500) )
+    Ps = [0.05, 0.5] #list( np.arange(0.05, 1.0, 0.05) )
+    T = 1000 #10000
+    print('T = ', T)
+    print('Ps = ', Ps)
     print('n_runs = ', n_runs)
     runs = list(range(n_runs))
     rTs = []
-    for t in Ts:
+    for t in Ps:
         for r in runs: 
             rTs.append( (r, t) )
 
@@ -299,14 +302,14 @@ if __name__ == '__main__':
 
     jobs = []
     for _, rT in enumerate(rTs):
-        process_id, T = rT
+        process_id, p = rT
         #T = 500
         #process_id = 0
         #run_one_experiment( process_id, T, val_Y, test_Y, _predictions,  _test_predictions )
         #p = multiprocessing.Process( target=run_one_experiment, args=( process_id, T, val_Y, test_Y, _predictions,  _test_predictions, return_stats ) )
-        p = multiprocessing.Process( target=rerun_if_failed_one_experiment, args=( process_id, T, val_Y, test_Y, _predictions,  _test_predictions, return_stats ) )
-        jobs.append(p)
-        p.start()
+        pid = multiprocessing.Process( target=rerun_if_failed_one_experiment, args=( process_id, T, val_Y, test_Y, _predictions,  _test_predictions, return_stats, p ) )
+        jobs.append(pid)
+        pid.start()
         #p.join()
 
     for proc in jobs:
@@ -315,7 +318,7 @@ if __name__ == '__main__':
     print( return_stats )
     print('time taken = ', time.time() - start, ' s')
 
-    with open('runs-varying-Ts-20.pickle', 'wb') as handle:
+    with open('runs-varying-Ps-20.pickle', 'wb') as handle:
         pickle.dump(return_stats, handle, protocol=pickle.HIGHEST_PROTOCOL) 
 
     '''
@@ -325,10 +328,10 @@ if __name__ == '__main__':
     '''
 
     print('\nCompiling results..\n')
-    for T in Ts:
+    for p in Ps:
         m_t, a_t, extra_a_t, extra_m_t, valid_runs = 0, 0, 0, 0, 0
         for process_id in runs:
-           key = str(T) + '-r-' + str(process_id)
+           key = str(T) + '-p-' + str(p) + '-r-' + str(process_id)
            if key in return_stats:
                valid_runs += 1
                stats = return_stats[key]
@@ -346,5 +349,5 @@ if __name__ == '__main__':
         m_t /= valid_runs
         a_t /= valid_runs
         extra_a_t /= valid_runs
-        print('\t\tT=', T, ', m_t=', m_t, ', a_t=', a_t, ', extra_a_t=', extra_a_t, ', extra_m_t=', extra_m_t)
+        print('\t\tP=', p, ', m_t=', m_t, ', a_t=', a_t, ', extra_a_t=', extra_a_t, ', extra_m_t=', extra_m_t)
 
