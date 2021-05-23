@@ -300,20 +300,16 @@ if __name__ == '__main__':
     manager = multiprocessing.Manager()
     return_stats = manager.dict()
 
-    jobs = []
-    for _, rT in enumerate(rTs):
-        process_id, p = rT
-        #T = 500
-        #process_id = 0
-        #run_one_experiment( process_id, T, val_Y, test_Y, _predictions,  _test_predictions )
-        #p = multiprocessing.Process( target=run_one_experiment, args=( process_id, T, val_Y, test_Y, _predictions,  _test_predictions, return_stats ) )
-        pid = multiprocessing.Process( target=rerun_if_failed_one_experiment, args=( process_id, T, val_Y, test_Y, _predictions,  _test_predictions, return_stats, p ) )
-        jobs.append(pid)
-        pid.start()
-        #p.join()
+    for p in Ps:
+        jobs = []
+        for process_id in runs:
+            pid = multiprocessing.Process( target=rerun_if_failed_one_experiment, args=( process_id, T, val_Y, test_Y, _predictions,  _test_predictions, return_stats, p ) )
+            jobs.append(pid)
+            pid.start()
 
-    for proc in jobs:
-        proc.join()
+        for proc in jobs:
+            proc.join()
+
     #print(return_stats.values())
     print( return_stats )
     print('time taken = ', time.time() - start, ' s')
