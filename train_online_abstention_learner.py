@@ -41,7 +41,7 @@ config = config.get_config()
 classes = list(range(0,10))
 mus = np.linspace(0.1,3,30)
 #thresholds = [0.1, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.88, 0.9];
-thresholds = np.linspace(0.05,0.95,10)
+thresholds = np.linspace(0.05,0.95,100)
 print('Config = ', config)
 print('Mus = ', mus)
 
@@ -68,14 +68,14 @@ def get_predictions_for_all_experts( scores, mu_t_pairs, V_t, data_idx ):
     return predictions, map_idx_to_pred 
 
 
-def run_one_experiment( process_id, T, val_Y, test_Y, _predictions,  _test_predictions ):
+def run_one_experiment( process_id, T, val_Y, test_Y, _predictions,  _test_predictions, return_stats ):
 
     '''
     Online Learning with Abstention scheme
     '''
 
     #T = len(test_Y) #10000     # number of rounds
-    p = math.sqrt(math.log(T)/T) # 0.02 #0.3     # bernoulli coin bias
+    p = math.sqrt(2*math.log(T)/T) # 0.02 #0.3     # bernoulli coin bias
     eta = p #0.01  # learning rate
     theta = 0.01
 
@@ -201,6 +201,9 @@ def run_one_experiment( process_id, T, val_Y, test_Y, _predictions,  _test_predi
     optimal_mistakes = T
     optimal_abstained = T
 
+    amm_mistake = T
+    amm_abs = T
+
     mistake_matched_abs = T
     mma_mis = T
     #for idx in active_experts:
@@ -211,17 +214,24 @@ def run_one_experiment( process_id, T, val_Y, test_Y, _predictions,  _test_predi
                 optimal_abstained = l_t[idx]
                 optimal_idx = idx
 
-    for idx in range(n_experts):
         if m_t[idx] <= algo_error:
             if mistake_matched_abs > l_t[idx]:
                 mma_mis = m_t[idx]
                 mistake_matched_abs = l_t[idx]
+
+        if l_t[idx] <= algo_abstained:
+            if amm_mistake > m_t[idx]:
+                amm_mistake = m_t[idx]
+                amm_abs = l_t[idx]
+
 
     if optimal_idx != -1:
         print('[optimal experts] #mistakes = ', optimal_mistakes, '/', T)
         print('[optimal experts] #abstained = ', optimal_abstained, '/', T)
         print('Mistake Matched #Abenstions = ', mistake_matched_abs, '/',T)
         print('Mistake Matched #Mistakes = ', mma_mis, '/',T)
+        print('[AMM] #Abenstions = ', amm_abs, '/',T)
+        print('[AMM] #Mistakes = ', amm_mistake, '/',T)
     else:
         print('No optimal expert found.')
 
@@ -230,7 +240,24 @@ def run_one_experiment( process_id, T, val_Y, test_Y, _predictions,  _test_predi
     #    print('[experts=', idx, '] --> mu, t', str(mu_t_pairs[idx]))
     #    print('[expert=', idx, '] #mistakes = ', m_t[idx], '/', T)
     #    print('[expert=', idx, '] #abstained = ', l_t[idx], '/', T)
+    stats = [ algo_error, algo_abstained, 
+              optimal_mistakes, optimal_abstained,
+              mma_mis, mistake_matched_abs,
+              amm_mistake, amm_abs,
+              np.count_nonzero(W_t), len(active_experts), np.min(m_t), np.max(m_t), np.min(l_t), np.max(l_t) ]
+    return ( len(active_experts) == 0 ), stats
+
+
+def rerun_if_failed_one_experiment( process_id, T, val_Y, test_Y, _predictions,  _test_predictions, return_stats ):
+    failed, stats = run_one_experiment( process_id, T, val_Y, test_Y, _predictions,  _test_predictions, return_stats )
+    cnt = 0
+    while failed and (cnt < 3):
+        failed, stats = run_one_experiment( process_id, T, val_Y, test_Y, _predictions,  _test_predictions, return_stats )
+        cnt += 1
+    if not failed: 
+        return_stats[ str(T) + '-r-' + str(process_id) ] = stats
     
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Online LWA Codebase')
     parser.add_argument('-d', '--data', default='./data/', type=str, metavar='DIR', help='path to dataset')
@@ -244,7 +271,6 @@ if __name__ == '__main__':
     with open( args.data + 'test_predictions.bin', 'rb') as fp:
         _test_predictions = pickle.load( fp )
 
-
     #thresholds = np.unique(_predictions[classes[0]][mus[-1]])[::10]
     #thresholds = np.unique(_predictions[classes[0]][mus[-1]])[::100]
     #print('#thresholds = ', len(thresholds))
@@ -255,9 +281,67 @@ if __name__ == '__main__':
     train_X, train_Y = data['train_embd'], data['train_Y']
     del train_X, val_X, test_X
 
-    print('np.unique(train_Y) = ', np.unique(train_Y))
-    #assert(1==2)
+    start = time.time()
 
-    T = 500
-    process_id = 0
-    run_one_experiment( process_id, T, val_Y, test_Y, _predictions,  _test_predictions )
+    n_runs = 5 #3 #20
+    Ts = [1500] #[500, 1000, 1500]
+    runs = list(range(n_runs))
+    rTs = []
+    for t in Ts:
+        for r in runs: 
+            rTs.append( (r, t) )
+
+    manager = multiprocessing.Manager()
+    return_stats = manager.dict()
+
+    jobs = []
+    for _, rT in enumerate(rTs):
+        process_id, T = rT
+        #T = 500
+        #process_id = 0
+        #run_one_experiment( process_id, T, val_Y, test_Y, _predictions,  _test_predictions )
+        #p = multiprocessing.Process( target=run_one_experiment, args=( process_id, T, val_Y, test_Y, _predictions,  _test_predictions, return_stats ) )
+        p = multiprocessing.Process( target=rerun_if_failed_one_experiment, args=( process_id, T, val_Y, test_Y, _predictions,  _test_predictions, return_stats ) )
+        jobs.append(p)
+        p.start()
+        #p.join()
+
+    for proc in jobs:
+        proc.join()
+    #print(return_stats.values())
+    print( return_stats )
+    print('time taken = ', time.time() - start, ' s')
+
+    with open('runs-varying-Ts-20.pickle', 'wb') as handle:
+        pickle.dump(return_stats, handle, protocol=pickle.HIGHEST_PROTOCOL) 
+
+    '''
+    #Statistics
+    #1. M_t = avg_over_runs(our mistakes - opt mistakes), A_t = avg_over_runs(our abstentions - abst of opt mistake maker)
+    #2. Extra abstentions =  avg_over_runs(our abstentions - mistake-matched-abstention)
+    '''
+
+    print('\nCompiling results..\n')
+    for T in Ts:
+        m_t, a_t, extra_a_t, extra_m_t, valid_runs = 0, 0, 0, 0, 0
+        for process_id in runs:
+           key = str(T) + '-r-' + str(process_id)
+           if key in return_stats:
+               valid_runs += 1
+               stats = return_stats[key]
+
+               algo_error, algo_abstained = stats[0], stats[1]
+               optimal_mistakes, optimal_abstained = stats[2], stats[3]
+               mma_mis, mistake_matched_abs = stats[4], stats[5]
+               amm_mis, amm_abs = stats[6], stats[7]
+
+               m_t += ( algo_error - optimal_mistakes ) 
+               a_t += ( algo_abstained - optimal_abstained )
+               extra_a_t += ( algo_abstained - mistake_matched_abs )
+               extra_m_t += ( algo_error - amm_mis )
+
+        m_t /= valid_runs
+        a_t /= valid_runs
+        extra_a_t /= valid_runs
+        print('\t\tT=', T, ', m_t=', m_t, ', a_t=', a_t, ', extra_a_t=', extra_a_t, ', extra_m_t=', extra_m_t)
+
