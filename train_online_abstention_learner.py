@@ -74,11 +74,6 @@ def run_one_experiment( process_id, T, val_Y, test_Y, _predictions,  _test_predi
     Online Learning with Abstention scheme
     '''
 
-    #T = len(test_Y) #10000     # number of rounds
-    p = math.sqrt(2*math.log(T)/T) # 0.02 #0.3     # bernoulli coin bias
-    eta = p #0.01  # learning rate
-    theta = 0.01
-
     mu_t_pairs = []
     V_t = []            # All possible experts (mus \times thresholds)
     n_experts=0
@@ -87,6 +82,12 @@ def run_one_experiment( process_id, T, val_Y, test_Y, _predictions,  _test_predi
             mu_t_pairs.append( (mu, t) )
             V_t.append( n_experts )
             n_experts += 1
+
+    #T = len(test_Y) #10000     # number of rounds
+    #p = math.sqrt(2*math.log(T)/T) # 0.02 #0.3     # bernoulli coin bias
+    p = math.sqrt((math.log(T) * math.log(n_experts))/T)
+    eta = p #0.01  # learning rate
+    theta = 0.01
 
     active_experts = np.arange(n_experts)
     assert(len(active_experts) == n_experts)
@@ -285,7 +286,8 @@ if __name__ == '__main__':
 
     n_runs = 20 #1 #5 #3 #20
     #Ts = [1500] #[500, 1000, 1500]
-    Ts = list( range(500, 10500, 500) )
+    #Ts = list( range(500, 10500, 500) )
+    Ts = list( range(500, 5500, 500) )
     print('Ts = ', Ts)
     print('n_runs = ', n_runs)
     runs = list(range(n_runs))
