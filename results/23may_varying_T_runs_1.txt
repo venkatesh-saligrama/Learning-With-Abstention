@@ -1,0 +1,1966 @@
+Config =  {'_comment': '=====ADVERSARIAL EXAMPLES CONFIGURATION=====', 'model_dir': '/home/anilkag/code/LWA/Post-AISTATS-Experiments/models/cifar_multi_class_lwa_64dim_lambda_opt_minus_one_mu', 'tf_random_seed': 451760341, 'np_random_seed': 216105420, 'random_seed': 4557077, 'max_num_training_steps': 100000, 'num_output_steps': 1000, 'num_summary_steps': 1000, 'num_checkpoint_steps': 1000, 'training_batch_size': 200, 'num_eval_examples': 10000, 'eval_batch_size': 200, 'eval_checkpoint_steps': 3000, 'eval_on_cpu': True, 'epsilon': 0.3, 'k': 40, 'a': 0.01, 'random_start': True, 'loss_func': 'xent', 'store_adv_path': 'attack.npy'}
+Mus =  [0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.  1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8
+ 1.9 2.  2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3. ]
+args =  Namespace(data='/home/anilkag/code/github/LearningWithAbstention/data/')
+Ts =  [500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000, 8500, 9000, 9500, 10000]
+n_runs =  1
+N data points =  10000
+W_t shape =  (3000,)
+[5602  234 7851 ...  941 3971 7863]
+round= 0  -- example= 5602  -- prediction= 4  -- #active experts= 3000
+round= 100  -- example= 6765  -- prediction= 8  -- #active experts= 634
+active_experts set is empty... exiting the routine..
+#algo abstained =  30 / 500
+#algo mistakes =  4 / 500
+#of experts with non-zero weights =  0 / 3000
+#of active experts =  0 / 3000
+[experts] #mistakes(min) =  3.0 / 500
+[experts] #mistakes(max) =  14.0 / 500
+[experts] #abstained(min) =  0.0 / 500
+[experts] #abstained(max) =  34.0 / 500
+[optimal experts] #mistakes =  3.0 / 500
+[optimal experts] #abstained =  26.0 / 500
+Mistake Matched #Abenstions =  22.0 / 500
+Mistake Matched #Mistakes =  4.0 / 500
+[AMM] #Abenstions =  27.0 / 500
+[AMM] #Mistakes =  3.0 / 500
+N data points =  10000
+W_t shape =  (3000,)
+[1045 5855 1048 ... 6069 8568 3718]
+round= 0  -- example= 1045  -- prediction= 5  -- #active experts= 3000
+round= 100  -- example= 52  -- prediction= -1  -- #active experts= 1521
+round= 200  -- example= 352  -- prediction= 0  -- #active experts= 481
+round= 300  -- example= 6090  -- prediction= 1  -- #active experts= 333
+round= 400  -- example= 3264  -- prediction= -1  -- #active experts= 90
+#algo abstained =  159 / 500
+#algo mistakes =  14 / 500
+#of experts with non-zero weights =  87 / 3000
+#of active experts =  87 / 3000
+[experts] #mistakes(min) =  7.0 / 500
+[experts] #mistakes(max) =  51.0 / 500
+[experts] #abstained(min) =  0.0 / 500
+[experts] #abstained(max) =  129.0 / 500
+[optimal experts] #mistakes =  7.0 / 500
+[optimal experts] #abstained =  128.0 / 500
+Mistake Matched #Abenstions =  88.0 / 500
+Mistake Matched #Mistakes =  14.0 / 500
+[AMM] #Abenstions =  129.0 / 500
+[AMM] #Mistakes =  7.0 / 500
+N data points =  10000
+W_t shape =  (3000,)
+[5602  234 7851 ...  941 3971 7863]
+round= 0  -- example= 5602  -- prediction= 4  -- #active experts= 3000
+round= 100  -- example= 6765  -- prediction= 8  -- #active experts= 3000
+round= 200  -- example= 1176  -- prediction= 1  -- #active experts= 1145
+round= 300  -- example= 9917  -- prediction= 2  -- #active experts= 736
+round= 400  -- example= 7070  -- prediction= 7  -- #active experts= 73
+active_experts set is empty... exiting the routine..
+#algo abstained =  87 / 1000
+#algo mistakes =  30 / 1000
+#of experts with non-zero weights =  0 / 3000
+#of active experts =  0 / 3000
+[experts] #mistakes(min) =  16.0 / 1000
+[experts] #mistakes(max) =  62.0 / 1000
+[experts] #abstained(min) =  0.0 / 1000
+[experts] #abstained(max) =  113.0 / 1000
+[optimal experts] #mistakes =  16.0 / 1000
+[optimal experts] #abstained =  101.0 / 1000
+Mistake Matched #Abenstions =  41.0 / 1000
+Mistake Matched #Mistakes =  30.0 / 1000
+[AMM] #Abenstions =  84.0 / 1000
+[AMM] #Mistakes =  20.0 / 1000
+N data points =  10000
+W_t shape =  (3000,)
+[3561 8977 9842 ... 7359 5509 4275]
+round= 0  -- example= 3561  -- prediction= 7  -- #active experts= 3000
+round= 100  -- example= 4675  -- prediction= 4  -- #active experts= 1394
+round= 200  -- example= 7354  -- prediction= 0  -- #active experts= 149
+round= 300  -- example= 9001  -- prediction= 1  -- #active experts= 149
+round= 400  -- example= 4351  -- prediction= 8  -- #active experts= 149
+round= 500  -- example= 8649  -- prediction= -1  -- #active experts= 111
+round= 600  -- example= 2507  -- prediction= -1  -- #active experts= 98
+round= 700  -- example= 3237  -- prediction= 9  -- #active experts= 98
+round= 800  -- example= 3592  -- prediction= -1  -- #active experts= 64
+round= 900  -- example= 7583  -- prediction= 1  -- #active experts= 64
+#algo abstained =  316 / 1000
+#algo mistakes =  30 / 1000
+#of experts with non-zero weights =  64 / 3000
+#of active experts =  64 / 3000
+[experts] #mistakes(min) =  20.0 / 1000
+[experts] #mistakes(max) =  116.0 / 1000
+[experts] #abstained(min) =  0.0 / 1000
+[experts] #abstained(max) =  280.0 / 1000
+[optimal experts] #mistakes =  20.0 / 1000
+[optimal experts] #abstained =  278.0 / 1000
+Mistake Matched #Abenstions =  196.0 / 1000
+Mistake Matched #Mistakes =  30.0 / 1000
+[AMM] #Abenstions =  280.0 / 1000
+[AMM] #Mistakes =  20.0 / 1000
+N data points =  10000
+W_t shape =  (3000,)
+[5602  234 7851 ...  941 3971 7863]
+round= 0  -- example= 5602  -- prediction= 4  -- #active experts= 3000
+round= 100  -- example= 6765  -- prediction= 8  -- #active experts= 3000
+round= 200  -- example= 1176  -- prediction= 1  -- #active experts= 3000
+round= 300  -- example= 9917  -- prediction= 2  -- #active experts= 1069
+round= 400  -- example= 7070  -- prediction= 7  -- #active experts= 736
+round= 500  -- example= 1341  -- prediction= 4  -- #active experts= 681
+round= 600  -- example= 9822  -- prediction= 0  -- #active experts= 539
+active_experts set is empty... exiting the routine..
+#algo abstained =  125 / 2000
+#algo mistakes =  45 / 2000
+#of experts with non-zero weights =  0 / 3000
+#of active experts =  0 / 3000
+[experts] #mistakes(min) =  19.0 / 2000
+[experts] #mistakes(max) =  87.0 / 2000
+[experts] #abstained(min) =  0.0 / 2000
+[experts] #abstained(max) =  191.0 / 2000
+[optimal experts] #mistakes =  19.0 / 2000
+[optimal experts] #abstained =  170.0 / 2000
+Mistake Matched #Abenstions =  59.0 / 2000
+Mistake Matched #Mistakes =  45.0 / 2000
+[AMM] #Abenstions =  123.0 / 2000
+[AMM] #Mistakes =  27.0 / 2000
+N data points =  10000
+W_t shape =  (3000,)
+[ 491 3458 9683 ... 5890  126 4616]
+round= 0  -- example= 491  -- prediction= 0  -- #active experts= 3000
+round= 100  -- example= 5466  -- prediction= 8  -- #active experts= 3000
+round= 200  -- example= 5306  -- prediction= 3  -- #active experts= 1083
+round= 300  -- example= 9108  -- prediction= 2  -- #active experts= 961
+round= 400  -- example= 2188  -- prediction= 9  -- #active experts= 602
+round= 500  -- example= 2769  -- prediction= -1  -- #active experts= 422
+round= 600  -- example= 6577  -- prediction= 1  -- #active experts= 369
+round= 700  -- example= 1998  -- prediction= 8  -- #active experts= 347
+round= 800  -- example= 1859  -- prediction= -1  -- #active experts= 158
+round= 900  -- example= 5851  -- prediction= -1  -- #active experts= 158
+round= 1000  -- example= 750  -- prediction= 9  -- #active experts= 158
+round= 1100  -- example= 4956  -- prediction= 5  -- #active experts= 152
+round= 1200  -- example= 6984  -- prediction= -1  -- #active experts= 152
+round= 1300  -- example= 5230  -- prediction= 8  -- #active experts= 150
+round= 1400  -- example= 9568  -- prediction= 8  -- #active experts= 118
+round= 1500  -- example= 8314  -- prediction= -1  -- #active experts= 118
+round= 1600  -- example= 1531  -- prediction= -1  -- #active experts= 118
+round= 1700  -- example= 8840  -- prediction= -1  -- #active experts= 118
+round= 1800  -- example= 9831  -- prediction= -1  -- #active experts= 118
+round= 1900  -- example= 296  -- prediction= 6  -- #active experts= 118
+#algo abstained =  541 / 2000
+#algo mistakes =  72 / 2000
+#of experts with non-zero weights =  118 / 3000
+#of active experts =  118 / 3000
+[experts] #mistakes(min) =  34.0 / 2000
+[experts] #mistakes(max) =  241.0 / 2000
+[experts] #abstained(min) =  0.0 / 2000
+[experts] #abstained(max) =  597.0 / 2000
+[optimal experts] #mistakes =  34.0 / 2000
+[optimal experts] #abstained =  596.0 / 2000
+Mistake Matched #Abenstions =  378.0 / 2000
+Mistake Matched #Mistakes =  72.0 / 2000
+[AMM] #Abenstions =  536.0 / 2000
+[AMM] #Mistakes =  44.0 / 2000
+N data points =  10000
+W_t shape =  (3000,)
+[5602  234 7851 ...  941 3971 7863]
+round= 0  -- example= 5602  -- prediction= 4  -- #active experts= 3000
+round= 100  -- example= 6765  -- prediction= -1  -- #active experts= 3000
+round= 200  -- example= 1176  -- prediction= 1  -- #active experts= 3000
+active_experts set is empty... exiting the routine..
+#algo abstained =  36 / 1500
+#algo mistakes =  33 / 1500
+#of experts with non-zero weights =  0 / 3000
+#of active experts =  0 / 3000
+[experts] #mistakes(min) =  11.0 / 1500
+[experts] #mistakes(max) =  39.0 / 1500
+[experts] #abstained(min) =  0.0 / 1500
+[experts] #abstained(max) =  80.0 / 1500
+[optimal experts] #mistakes =  11.0 / 1500
+[optimal experts] #abstained =  73.0 / 1500
+Mistake Matched #Abenstions =  6.0 / 1500
+Mistake Matched #Mistakes =  33.0 / 1500
+[AMM] #Abenstions =  36.0 / 1500
+[AMM] #Mistakes =  17.0 / 1500
+N data points =  10000
+W_t shape =  (3000,)
+[8224 9285 5957 ... 9373 3244 9502]
+round= 0  -- example= 8224  -- prediction= 3  -- #active experts= 3000
+round= 100  -- example= 2923  -- prediction= 5  -- #active experts= 1280
+round= 200  -- example= 8923  -- prediction= 6  -- #active experts= 1115
+round= 300  -- example= 7616  -- prediction= -1  -- #active experts= 795
+round= 400  -- example= 4951  -- prediction= 6  -- #active experts= 736
+round= 500  -- example= 1059  -- prediction= 8  -- #active experts= 675
+round= 600  -- example= 8361  -- prediction= -1  -- #active experts= 675
+round= 700  -- example= 4607  -- prediction= 1  -- #active experts= 666
+round= 800  -- example= 5491  -- prediction= 0  -- #active experts= 617
+active_experts set is empty... exiting the routine..
+#algo abstained =  154 / 1500
+#algo mistakes =  43 / 1500
+#of experts with non-zero weights =  0 / 3000
+#of active experts =  0 / 3000
+[experts] #mistakes(min) =  17.0 / 1500
+[experts] #mistakes(max) =  97.0 / 1500
+[experts] #abstained(min) =  0.0 / 1500
+[experts] #abstained(max) =  235.0 / 1500
+[optimal experts] #mistakes =  17.0 / 1500
+[optimal experts] #abstained =  231.0 / 1500
+Mistake Matched #Abenstions =  91.0 / 1500
+Mistake Matched #Mistakes =  43.0 / 1500
+[AMM] #Abenstions =  154.0 / 1500
+[AMM] #Mistakes =  26.0 / 1500
+N data points =  10000
+W_t shape =  (3000,)
+[7670 5665 8878 ... 2851 9982 9226]
+round= 0  -- example= 7670  -- prediction= 6  -- #active experts= 3000
+round= 100  -- example= 7352  -- prediction= 3  -- #active experts= 3000
+round= 200  -- example= 966  -- prediction= 3  -- #active experts= 3000
+round= 300  -- example= 7268  -- prediction= 3  -- #active experts= 1417
+round= 400  -- example= 8353  -- prediction= 7  -- #active experts= 1085
+round= 500  -- example= 9407  -- prediction= 6  -- #active experts= 1085
+round= 600  -- example= 6254  -- prediction= 4  -- #active experts= 981
+round= 700  -- example= 5739  -- prediction= -1  -- #active experts= 960
+round= 800  -- example= 7529  -- prediction= 5  -- #active experts= 452
+round= 900  -- example= 1852  -- prediction= 2  -- #active experts= 426
+round= 1000  -- example= 6301  -- prediction= 1  -- #active experts= 411
+round= 1100  -- example= 8828  -- prediction= -1  -- #active experts= 253
+round= 1200  -- example= 2197  -- prediction= 6  -- #active experts= 251
+round= 1300  -- example= 1697  -- prediction= 9  -- #active experts= 251
+round= 1400  -- example= 3555  -- prediction= 6  -- #active experts= 227
+#algo abstained =  343 / 1500
+#algo mistakes =  73 / 1500
+#of experts with non-zero weights =  227 / 3000
+#of active experts =  227 / 3000
+[experts] #mistakes(min) =  24.0 / 1500
+[experts] #mistakes(max) =  179.0 / 1500
+[experts] #abstained(min) =  0.0 / 1500
+[experts] #abstained(max) =  429.0 / 1500
+[optimal experts] #mistakes =  24.0 / 1500
+[optimal experts] #abstained =  425.0 / 1500
+Mistake Matched #Abenstions =  197.0 / 1500
+Mistake Matched #Mistakes =  73.0 / 1500
+[AMM] #Abenstions =  342.0 / 1500
+[AMM] #Mistakes =  40.0 / 1500
+N data points =  10000
+W_t shape =  (3000,)
+[5602  234 7851 ...  941 3971 7863]
+round= 0  -- example= 5602  -- prediction= 4  -- #active experts= 3000
+round= 100  -- example= 6765  -- prediction= -1  -- #active experts= 3000
+round= 200  -- example= 1176  -- prediction= 1  -- #active experts= 1321
+round= 300  -- example= 9917  -- prediction= 2  -- #active experts= 879
+round= 400  -- example= 7070  -- prediction= 7  -- #active experts= 736
+round= 500  -- example= 1341  -- prediction= 4  -- #active experts= 90
+active_experts set is empty... exiting the routine..
+#algo abstained =  91 / 2500
+#algo mistakes =  35 / 2500
+#of experts with non-zero weights =  0 / 3000
+#of active experts =  0 / 3000
+[experts] #mistakes(min) =  18.0 / 2500
+[experts] #mistakes(max) =  72.0 / 2500
+[experts] #abstained(min) =  0.0 / 2500
+[experts] #abstained(max) =  142.0 / 2500
+[optimal experts] #mistakes =  18.0 / 2500
+[optimal experts] #abstained =  125.0 / 2500
+Mistake Matched #Abenstions =  50.0 / 2500
+Mistake Matched #Mistakes =  35.0 / 2500
+[AMM] #Abenstions =  90.0 / 2500
+[AMM] #Mistakes =  24.0 / 2500
+N data points =  10000
+W_t shape =  (3000,)
+[ 386 9693 9745 ... 5063 3534 9706]
+round= 0  -- example= 386  -- prediction= 7  -- #active experts= 3000
+round= 100  -- example= 9759  -- prediction= 5  -- #active experts= 3000
+round= 200  -- example= 2689  -- prediction= 5  -- #active experts= 3000
+round= 300  -- example= 379  -- prediction= 6  -- #active experts= 1350
+round= 400  -- example= 6795  -- prediction= 9  -- #active experts= 1343
+round= 500  -- example= 1764  -- prediction= 5  -- #active experts= 1262
+round= 600  -- example= 1787  -- prediction= 3  -- #active experts= 1217
+round= 700  -- example= 9611  -- prediction= 8  -- #active experts= 1111
+round= 800  -- example= 2344  -- prediction= 0  -- #active experts= 1054
+round= 900  -- example= 5424  -- prediction= 3  -- #active experts= 807
+round= 1000  -- example= 1048  -- prediction= 1  -- #active experts= 807
+round= 1100  -- example= 9159  -- prediction= 9  -- #active experts= 708
+round= 1200  -- example= 7283  -- prediction= 3  -- #active experts= 708
+round= 1300  -- example= 9068  -- prediction= -1  -- #active experts= 708
+round= 1400  -- example= 9976  -- prediction= 5  -- #active experts= 705
+round= 1500  -- example= 446  -- prediction= -1  -- #active experts= 705
+round= 1600  -- example= 9974  -- prediction= 1  -- #active experts= 705
+round= 1700  -- example= 2542  -- prediction= -1  -- #active experts= 705
+round= 1800  -- example= 1793  -- prediction= -1  -- #active experts= 643
+round= 1900  -- example= 144  -- prediction= 8  -- #active experts= 643
+round= 2000  -- example= 7046  -- prediction= -1  -- #active experts= 593
+round= 2100  -- example= 186  -- prediction= 6  -- #active experts= 588
+round= 2200  -- example= 4625  -- prediction= 4  -- #active experts= 588
+round= 2300  -- example= 7826  -- prediction= 9  -- #active experts= 486
+round= 2400  -- example= 7625  -- prediction= 7  -- #active experts= 486
+#algo abstained =  444 / 2500
+#algo mistakes =  147 / 2500
+#of experts with non-zero weights =  486 / 3000
+#of active experts =  486 / 3000
+[experts] #mistakes(min) =  38.0 / 2500
+[experts] #mistakes(max) =  302.0 / 2500
+[experts] #abstained(min) =  0.0 / 2500
+[experts] #abstained(max) =  726.0 / 2500
+[optimal experts] #mistakes =  38.0 / 2500
+[optimal experts] #abstained =  725.0 / 2500
+Mistake Matched #Abenstions =  269.0 / 2500
+Mistake Matched #Mistakes =  147.0 / 2500
+[AMM] #Abenstions =  443.0 / 2500
+[AMM] #Mistakes =  83.0 / 2500
+N data points =  10000
+W_t shape =  (3000,)
+[5602  234 7851 ...  941 3971 7863]
+round= 0  -- example= 5602  -- prediction= 4  -- #active experts= 3000
+round= 100  -- example= 6765  -- prediction= 8  -- #active experts= 3000
+round= 200  -- example= 1176  -- prediction= 1  -- #active experts= 1408
+round= 300  -- example= 9917  -- prediction= 2  -- #active experts= 961
+round= 400  -- example= 7070  -- prediction= 7  -- #active experts= 961
+round= 500  -- example= 1341  -- prediction= 4  -- #active experts= 908
+round= 600  -- example= 9822  -- prediction= 0  -- #active experts= 847
+round= 700  -- example= 9855  -- prediction= 7  -- #active experts= 830
+round= 800  -- example= 2943  -- prediction= -1  -- #active experts= 764
+round= 900  -- example= 450  -- prediction= 2  -- #active experts= 590
+round= 1000  -- example= 9293  -- prediction= 7  -- #active experts= 517
+round= 1100  -- example= 4326  -- prediction= 7  -- #active experts= 474
+round= 1200  -- example= 4471  -- prediction= 5  -- #active experts= 447
+round= 1300  -- example= 403  -- prediction= 8  -- #active experts= 447
+round= 1400  -- example= 4046  -- prediction= 7  -- #active experts= 416
+round= 1500  -- example= 1528  -- prediction= 2  -- #active experts= 414
+round= 1600  -- example= 5251  -- prediction= 5  -- #active experts= 414
+round= 1700  -- example= 2083  -- prediction= -1  -- #active experts= 414
+round= 1800  -- example= 8713  -- prediction= 2  -- #active experts= 414
+round= 1900  -- example= 7795  -- prediction= -1  -- #active experts= 380
+round= 2000  -- example= 5235  -- prediction= -1  -- #active experts= 379
+round= 2100  -- example= 7919  -- prediction= 6  -- #active experts= 379
+round= 2200  -- example= 3674  -- prediction= 3  -- #active experts= 379
+round= 2300  -- example= 3972  -- prediction= 7  -- #active experts= 379
+round= 2400  -- example= 2627  -- prediction= 7  -- #active experts= 379
+round= 2500  -- example= 5396  -- prediction= -1  -- #active experts= 372
+round= 2600  -- example= 6  -- prediction= 1  -- #active experts= 372
+round= 2700  -- example= 420  -- prediction= 4  -- #active experts= 367
+round= 2800  -- example= 4157  -- prediction= 2  -- #active experts= 339
+round= 2900  -- example= 4941  -- prediction= 6  -- #active experts= 339
+round= 3000  -- example= 553  -- prediction= -1  -- #active experts= 283
+round= 3100  -- example= 7059  -- prediction= -1  -- #active experts= 283
+round= 3200  -- example= 4543  -- prediction= 1  -- #active experts= 223
+round= 3300  -- example= 6149  -- prediction= 7  -- #active experts= 223
+round= 3400  -- example= 5099  -- prediction= 2  -- #active experts= 111
+#algo abstained =  773 / 3500
+#algo mistakes =  130 / 3500
+#of experts with non-zero weights =  102 / 3000
+#of active experts =  102 / 3000
+[experts] #mistakes(min) =  51.0 / 3500
+[experts] #mistakes(max) =  402.0 / 3500
+[experts] #abstained(min) =  0.0 / 3500
+[experts] #abstained(max) =  986.0 / 3500
+[optimal experts] #mistakes =  51.0 / 3500
+[optimal experts] #abstained =  974.0 / 3500
+Mistake Matched #Abenstions =  573.0 / 3500
+Mistake Matched #Mistakes =  128.0 / 3500
+[AMM] #Abenstions =  764.0 / 3500
+[AMM] #Mistakes =  85.0 / 3500
+N data points =  10000
+W_t shape =  (3000,)
+[5602  234 7851 ...  941 3971 7863]
+round= 0  -- example= 5602  -- prediction= 4  -- #active experts= 3000
+round= 100  -- example= 6765  -- prediction= 8  -- #active experts= 3000
+round= 200  -- example= 1176  -- prediction= 1  -- #active experts= 3000
+round= 300  -- example= 9917  -- prediction= 2  -- #active experts= 1626
+round= 400  -- example= 7070  -- prediction= 7  -- #active experts= 1516
+round= 500  -- example= 1341  -- prediction= 4  -- #active experts= 1302
+round= 600  -- example= 9822  -- prediction= 0  -- #active experts= 1199
+round= 700  -- example= 9855  -- prediction= 7  -- #active experts= 1147
+round= 800  -- example= 2943  -- prediction= 9  -- #active experts= 1139
+round= 900  -- example= 450  -- prediction= 2  -- #active experts= 809
+round= 1000  -- example= 9293  -- prediction= 7  -- #active experts= 809
+round= 1100  -- example= 4326  -- prediction= 7  -- #active experts= 710
+round= 1200  -- example= 4471  -- prediction= 5  -- #active experts= 702
+round= 1300  -- example= 403  -- prediction= 8  -- #active experts= 702
+round= 1400  -- example= 4046  -- prediction= -1  -- #active experts= 679
+round= 1500  -- example= 1528  -- prediction= 2  -- #active experts= 673
+round= 1600  -- example= 5251  -- prediction= 5  -- #active experts= 673
+round= 1700  -- example= 2083  -- prediction= -1  -- #active experts= 637
+round= 1800  -- example= 8713  -- prediction= 2  -- #active experts= 637
+round= 1900  -- example= 7795  -- prediction= 5  -- #active experts= 547
+round= 2000  -- example= 5235  -- prediction= -1  -- #active experts= 547
+round= 2100  -- example= 7919  -- prediction= 6  -- #active experts= 547
+round= 2200  -- example= 3674  -- prediction= 3  -- #active experts= 533
+round= 2300  -- example= 3972  -- prediction= 7  -- #active experts= 495
+round= 2400  -- example= 2627  -- prediction= 7  -- #active experts= 493
+round= 2500  -- example= 5396  -- prediction= 1  -- #active experts= 493
+round= 2600  -- example= 6  -- prediction= 1  -- #active experts= 493
+round= 2700  -- example= 420  -- prediction= 4  -- #active experts= 484
+round= 2800  -- example= 4157  -- prediction= 2  -- #active experts= 456
+round= 2900  -- example= 4941  -- prediction= 6  -- #active experts= 348
+round= 3000  -- example= 553  -- prediction= -1  -- #active experts= 348
+round= 3100  -- example= 7059  -- prediction= -1  -- #active experts= 348
+round= 3200  -- example= 4543  -- prediction= 1  -- #active experts= 346
+round= 3300  -- example= 6149  -- prediction= 7  -- #active experts= 346
+round= 3400  -- example= 5099  -- prediction= 2  -- #active experts= 346
+round= 3500  -- example= 2609  -- prediction= 5  -- #active experts= 346
+round= 3600  -- example= 6176  -- prediction= 9  -- #active experts= 268
+round= 3700  -- example= 1834  -- prediction= 9  -- #active experts= 268
+round= 3800  -- example= 1936  -- prediction= -1  -- #active experts= 268
+round= 3900  -- example= 5694  -- prediction= 5  -- #active experts= 268
+#algo abstained =  752 / 4000
+#algo mistakes =  183 / 4000
+#of experts with non-zero weights =  261 / 3000
+#of active experts =  261 / 3000
+[experts] #mistakes(min) =  57.0 / 4000
+[experts] #mistakes(max) =  449.0 / 4000
+[experts] #abstained(min) =  0.0 / 4000
+[experts] #abstained(max) =  1114.0 / 4000
+[optimal experts] #mistakes =  57.0 / 4000
+[optimal experts] #abstained =  1104.0 / 4000
+Mistake Matched #Abenstions =  513.0 / 4000
+Mistake Matched #Mistakes =  182.0 / 4000
+[AMM] #Abenstions =  749.0 / 4000
+[AMM] #Mistakes =  118.0 / 4000
+N data points =  10000
+W_t shape =  (3000,)
+[5602  234 7851 ...  941 3971 7863]
+round= 0  -- example= 5602  -- prediction= 4  -- #active experts= 3000
+round= 100  -- example= 6765  -- prediction= -1  -- #active experts= 3000
+round= 200  -- example= 1176  -- prediction= 1  -- #active experts= 1406
+round= 300  -- example= 9917  -- prediction= 2  -- #active experts= 1115
+round= 400  -- example= 7070  -- prediction= 7  -- #active experts= 920
+round= 500  -- example= 1341  -- prediction= 4  -- #active experts= 886
+round= 600  -- example= 9822  -- prediction= 0  -- #active experts= 769
+round= 700  -- example= 9855  -- prediction= 7  -- #active experts= 747
+round= 800  -- example= 2943  -- prediction= -1  -- #active experts= 682
+round= 900  -- example= 450  -- prediction= 2  -- #active experts= 559
+round= 1000  -- example= 9293  -- prediction= -1  -- #active experts= 555
+round= 1100  -- example= 4326  -- prediction= -1  -- #active experts= 525
+round= 1200  -- example= 4471  -- prediction= 5  -- #active experts= 487
+round= 1300  -- example= 403  -- prediction= 8  -- #active experts= 471
+round= 1400  -- example= 4046  -- prediction= 7  -- #active experts= 469
+round= 1500  -- example= 1528  -- prediction= 2  -- #active experts= 462
+round= 1600  -- example= 5251  -- prediction= 5  -- #active experts= 462
+round= 1700  -- example= 2083  -- prediction= -1  -- #active experts= 453
+round= 1800  -- example= 8713  -- prediction= 2  -- #active experts= 453
+round= 1900  -- example= 7795  -- prediction= -1  -- #active experts= 447
+round= 2000  -- example= 5235  -- prediction= -1  -- #active experts= 447
+round= 2100  -- example= 7919  -- prediction= -1  -- #active experts= 429
+round= 2200  -- example= 3674  -- prediction= 3  -- #active experts= 429
+round= 2300  -- example= 3972  -- prediction= -1  -- #active experts= 424
+round= 2400  -- example= 2627  -- prediction= 7  -- #active experts= 424
+round= 2500  -- example= 5396  -- prediction= 1  -- #active experts= 416
+round= 2600  -- example= 6  -- prediction= -1  -- #active experts= 416
+round= 2700  -- example= 420  -- prediction= 4  -- #active experts= 416
+round= 2800  -- example= 4157  -- prediction= -1  -- #active experts= 416
+round= 2900  -- example= 4941  -- prediction= -1  -- #active experts= 416
+round= 3000  -- example= 553  -- prediction= -1  -- #active experts= 416
+round= 3100  -- example= 7059  -- prediction= -1  -- #active experts= 416
+round= 3200  -- example= 4543  -- prediction= 1  -- #active experts= 389
+round= 3300  -- example= 6149  -- prediction= 7  -- #active experts= 389
+round= 3400  -- example= 5099  -- prediction= 2  -- #active experts= 389
+round= 3500  -- example= 2609  -- prediction= 5  -- #active experts= 361
+round= 3600  -- example= 6176  -- prediction= 9  -- #active experts= 343
+round= 3700  -- example= 1834  -- prediction= 9  -- #active experts= 343
+round= 3800  -- example= 1936  -- prediction= -1  -- #active experts= 307
+round= 3900  -- example= 5694  -- prediction= 5  -- #active experts= 307
+round= 4000  -- example= 2010  -- prediction= 2  -- #active experts= 307
+round= 4100  -- example= 634  -- prediction= 7  -- #active experts= 178
+round= 4200  -- example= 812  -- prediction= 7  -- #active experts= 178
+round= 4300  -- example= 2540  -- prediction= 2  -- #active experts= 178
+round= 4400  -- example= 4994  -- prediction= 7  -- #active experts= 76
+round= 4500  -- example= 9631  -- prediction= 7  -- #active experts= 76
+round= 4600  -- example= 1727  -- prediction= -1  -- #active experts= 76
+round= 4700  -- example= 2108  -- prediction= -1  -- #active experts= 64
+round= 4800  -- example= 7265  -- prediction= -1  -- #active experts= 64
+round= 4900  -- example= 1216  -- prediction= 8  -- #active experts= 30
+#algo abstained =  1096 / 5000
+#algo mistakes =  183 / 5000
+#of experts with non-zero weights =  13 / 3000
+#of active experts =  13 / 3000
+[experts] #mistakes(min) =  82.0 / 5000
+[experts] #mistakes(max) =  582.0 / 5000
+[experts] #abstained(min) =  0.0 / 5000
+[experts] #abstained(max) =  1404.0 / 5000
+[optimal experts] #mistakes =  82.0 / 5000
+[optimal experts] #abstained =  1391.0 / 5000
+Mistake Matched #Abenstions =  870.0 / 5000
+Mistake Matched #Mistakes =  182.0 / 5000
+[AMM] #Abenstions =  1070.0 / 5000
+[AMM] #Mistakes =  138.0 / 5000
+N data points =  10000
+W_t shape =  (3000,)
+[5602  234 7851 ...  941 3971 7863]
+round= 0  -- example= 5602  -- prediction= 4  -- #active experts= 3000
+round= 100  -- example= 6765  -- prediction= 8  -- #active experts= 3000
+round= 200  -- example= 1176  -- prediction= 1  -- #active experts= 961
+round= 300  -- example= 9917  -- prediction= 2  -- #active experts= 895
+round= 400  -- example= 7070  -- prediction= 7  -- #active experts= 880
+round= 500  -- example= 1341  -- prediction= 4  -- #active experts= 717
+round= 600  -- example= 9822  -- prediction= 0  -- #active experts= 578
+round= 700  -- example= 9855  -- prediction= 7  -- #active experts= 578
+round= 800  -- example= 2943  -- prediction= -1  -- #active experts= 491
+round= 900  -- example= 450  -- prediction= 2  -- #active experts= 404
+round= 1000  -- example= 9293  -- prediction= 7  -- #active experts= 383
+round= 1100  -- example= 4326  -- prediction= 7  -- #active experts= 383
+round= 1200  -- example= 4471  -- prediction= 5  -- #active experts= 297
+round= 1300  -- example= 403  -- prediction= 8  -- #active experts= 297
+round= 1400  -- example= 4046  -- prediction= 7  -- #active experts= 290
+round= 1500  -- example= 1528  -- prediction= 2  -- #active experts= 273
+round= 1600  -- example= 5251  -- prediction= -1  -- #active experts= 106
+round= 1700  -- example= 2083  -- prediction= -1  -- #active experts= 106
+round= 1800  -- example= 8713  -- prediction= 2  -- #active experts= 106
+round= 1900  -- example= 7795  -- prediction= -1  -- #active experts= 106
+round= 2000  -- example= 5235  -- prediction= -1  -- #active experts= 103
+active_experts set is empty... exiting the routine..
+#algo abstained =  498 / 3000
+#algo mistakes =  69 / 3000
+#of experts with non-zero weights =  0 / 3000
+#of active experts =  0 / 3000
+[experts] #mistakes(min) =  34.0 / 3000
+[experts] #mistakes(max) =  259.0 / 3000
+[experts] #abstained(min) =  0.0 / 3000
+[experts] #abstained(max) =  591.0 / 3000
+[optimal experts] #mistakes =  34.0 / 3000
+[optimal experts] #abstained =  554.0 / 3000
+Mistake Matched #Abenstions =  391.0 / 3000
+Mistake Matched #Mistakes =  68.0 / 3000
+[AMM] #Abenstions =  492.0 / 3000
+[AMM] #Mistakes =  48.0 / 3000
+N data points =  10000
+W_t shape =  (3000,)
+[9058 6627 5229 ... 8674 6106 9111]
+round= 0  -- example= 9058  -- prediction= 5  -- #active experts= 3000
+round= 100  -- example= 5427  -- prediction= 8  -- #active experts= 3000
+round= 200  -- example= 5949  -- prediction= 6  -- #active experts= 3000
+round= 300  -- example= 1783  -- prediction= 8  -- #active experts= 1675
+round= 400  -- example= 6878  -- prediction= 5  -- #active experts= 1389
+round= 500  -- example= 6270  -- prediction= 6  -- #active experts= 1389
+round= 600  -- example= 1090  -- prediction= 0  -- #active experts= 1176
+round= 700  -- example= 9339  -- prediction= 1  -- #active experts= 979
+round= 800  -- example= 1281  -- prediction= 8  -- #active experts= 928
+round= 900  -- example= 2011  -- prediction= 2  -- #active experts= 832
+round= 1000  -- example= 6443  -- prediction= -1  -- #active experts= 832
+round= 1100  -- example= 5202  -- prediction= 9  -- #active experts= 832
+round= 1200  -- example= 9948  -- prediction= 8  -- #active experts= 832
+round= 1300  -- example= 3989  -- prediction= 2  -- #active experts= 830
+round= 1400  -- example= 9658  -- prediction= 9  -- #active experts= 804
+round= 1500  -- example= 7800  -- prediction= 0  -- #active experts= 804
+round= 1600  -- example= 2840  -- prediction= -1  -- #active experts= 775
+round= 1700  -- example= 4281  -- prediction= 7  -- #active experts= 720
+round= 1800  -- example= 2719  -- prediction= -1  -- #active experts= 720
+round= 1900  -- example= 722  -- prediction= 8  -- #active experts= 667
+round= 2000  -- example= 640  -- prediction= 5  -- #active experts= 667
+round= 2100  -- example= 853  -- prediction= 1  -- #active experts= 604
+round= 2200  -- example= 6692  -- prediction= 6  -- #active experts= 502
+round= 2300  -- example= 1587  -- prediction= -1  -- #active experts= 500
+round= 2400  -- example= 1374  -- prediction= -1  -- #active experts= 486
+round= 2500  -- example= 2056  -- prediction= 5  -- #active experts= 482
+round= 2600  -- example= 5239  -- prediction= -1  -- #active experts= 450
+round= 2700  -- example= 7252  -- prediction= 8  -- #active experts= 450
+round= 2800  -- example= 231  -- prediction= 1  -- #active experts= 90
+round= 2900  -- example= 3446  -- prediction= -1  -- #active experts= 90
+#algo abstained =  575 / 3000
+#algo mistakes =  170 / 3000
+#of experts with non-zero weights =  90 / 3000
+#of active experts =  90 / 3000
+[experts] #mistakes(min) =  48.0 / 3000
+[experts] #mistakes(max) =  368.0 / 3000
+[experts] #abstained(min) =  0.0 / 3000
+[experts] #abstained(max) =  888.0 / 3000
+[optimal experts] #mistakes =  48.0 / 3000
+[optimal experts] #abstained =  887.0 / 3000
+Mistake Matched #Abenstions =  358.0 / 3000
+Mistake Matched #Mistakes =  170.0 / 3000
+[AMM] #Abenstions =  574.0 / 3000
+[AMM] #Mistakes =  100.0 / 3000
+N data points =  10000
+W_t shape =  (3000,)
+[5602  234 7851 ...  941 3971 7863]
+round= 0  -- example= 5602  -- prediction= 4  -- #active experts= 3000
+round= 100  -- example= 6765  -- prediction= 8  -- #active experts= 3000
+round= 200  -- example= 1176  -- prediction= 1  -- #active experts= 3000
+round= 300  -- example= 9917  -- prediction= 2  -- #active experts= 2073
+round= 400  -- example= 7070  -- prediction= 7  -- #active experts= 1698
+round= 500  -- example= 1341  -- prediction= 4  -- #active experts= 1659
+round= 600  -- example= 9822  -- prediction= 0  -- #active experts= 1585
+round= 700  -- example= 9855  -- prediction= 7  -- #active experts= 1513
+round= 800  -- example= 2943  -- prediction= 9  -- #active experts= 1369
+round= 900  -- example= 450  -- prediction= 2  -- #active experts= 1367
+round= 1000  -- example= 9293  -- prediction= 7  -- #active experts= 1302
+round= 1100  -- example= 4326  -- prediction= 7  -- #active experts= 1302
+round= 1200  -- example= 4471  -- prediction= -1  -- #active experts= 1282
+round= 1300  -- example= 403  -- prediction= 8  -- #active experts= 1270
+round= 1400  -- example= 4046  -- prediction= 7  -- #active experts= 1226
+round= 1500  -- example= 1528  -- prediction= 2  -- #active experts= 1179
+round= 1600  -- example= 5251  -- prediction= 5  -- #active experts= 1172
+round= 1700  -- example= 2083  -- prediction= 2  -- #active experts= 1073
+round= 1800  -- example= 8713  -- prediction= 2  -- #active experts= 1073
+round= 1900  -- example= 7795  -- prediction= 5  -- #active experts= 1057
+round= 2000  -- example= 5235  -- prediction= -1  -- #active experts= 1057
+round= 2100  -- example= 7919  -- prediction= 6  -- #active experts= 1057
+round= 2200  -- example= 3674  -- prediction= 3  -- #active experts= 1057
+round= 2300  -- example= 3972  -- prediction= 7  -- #active experts= 1045
+round= 2400  -- example= 2627  -- prediction= 7  -- #active experts= 999
+round= 2500  -- example= 5396  -- prediction= 1  -- #active experts= 999
+round= 2600  -- example= 6  -- prediction= 1  -- #active experts= 999
+round= 2700  -- example= 420  -- prediction= 4  -- #active experts= 989
+round= 2800  -- example= 4157  -- prediction= 2  -- #active experts= 988
+round= 2900  -- example= 4941  -- prediction= 6  -- #active experts= 988
+round= 3000  -- example= 553  -- prediction= -1  -- #active experts= 973
+round= 3100  -- example= 7059  -- prediction= -1  -- #active experts= 916
+round= 3200  -- example= 4543  -- prediction= 1  -- #active experts= 901
+round= 3300  -- example= 6149  -- prediction= 7  -- #active experts= 900
+round= 3400  -- example= 5099  -- prediction= -1  -- #active experts= 900
+round= 3500  -- example= 2609  -- prediction= 5  -- #active experts= 874
+round= 3600  -- example= 6176  -- prediction= 9  -- #active experts= 874
+round= 3700  -- example= 1834  -- prediction= 9  -- #active experts= 874
+round= 3800  -- example= 1936  -- prediction= 3  -- #active experts= 874
+round= 3900  -- example= 5694  -- prediction= 5  -- #active experts= 874
+round= 4000  -- example= 2010  -- prediction= 2  -- #active experts= 874
+round= 4100  -- example= 634  -- prediction= 7  -- #active experts= 874
+round= 4200  -- example= 812  -- prediction= 7  -- #active experts= 874
+round= 4300  -- example= 2540  -- prediction= 2  -- #active experts= 870
+round= 4400  -- example= 4994  -- prediction= 7  -- #active experts= 836
+round= 4500  -- example= 9631  -- prediction= 7  -- #active experts= 803
+round= 4600  -- example= 1727  -- prediction= -1  -- #active experts= 372
+round= 4700  -- example= 2108  -- prediction= 4  -- #active experts= 372
+round= 4800  -- example= 7265  -- prediction= -1  -- #active experts= 372
+round= 4900  -- example= 1216  -- prediction= 8  -- #active experts= 372
+round= 5000  -- example= 9036  -- prediction= -1  -- #active experts= 372
+round= 5100  -- example= 965  -- prediction= -1  -- #active experts= 366
+round= 5200  -- example= 7597  -- prediction= 9  -- #active experts= 346
+round= 5300  -- example= 8433  -- prediction= -1  -- #active experts= 346
+round= 5400  -- example= 7169  -- prediction= 1  -- #active experts= 346
+round= 5500  -- example= 6130  -- prediction= 1  -- #active experts= 346
+round= 5600  -- example= 198  -- prediction= 7  -- #active experts= 346
+round= 5700  -- example= 6403  -- prediction= 4  -- #active experts= 346
+round= 5800  -- example= 3683  -- prediction= 8  -- #active experts= 346
+round= 5900  -- example= 2563  -- prediction= 2  -- #active experts= 346
+round= 6000  -- example= 7302  -- prediction= 6  -- #active experts= 346
+round= 6100  -- example= 5054  -- prediction= 9  -- #active experts= 164
+round= 6200  -- example= 21  -- prediction= 0  -- #active experts= 164
+round= 6300  -- example= 6899  -- prediction= -1  -- #active experts= 164
+round= 6400  -- example= 4152  -- prediction= -1  -- #active experts= 164
+#algo abstained =  1019 / 6500
+#algo mistakes =  373 / 6500
+#of experts with non-zero weights =  164 / 3000
+#of active experts =  164 / 3000
+[experts] #mistakes(min) =  107.0 / 6500
+[experts] #mistakes(max) =  766.0 / 6500
+[experts] #abstained(min) =  0.0 / 6500
+[experts] #abstained(max) =  1834.0 / 6500
+[optimal experts] #mistakes =  107.0 / 6500
+[optimal experts] #abstained =  1828.0 / 6500
+Mistake Matched #Abenstions =  706.0 / 6500
+Mistake Matched #Mistakes =  372.0 / 6500
+[AMM] #Abenstions =  1018.0 / 6500
+[AMM] #Mistakes =  270.0 / 6500
+N data points =  10000
+W_t shape =  (3000,)
+[5602  234 7851 ...  941 3971 7863]
+round= 0  -- example= 5602  -- prediction= 4  -- #active experts= 3000
+round= 100  -- example= 6765  -- prediction= 8  -- #active experts= 3000
+round= 200  -- example= 1176  -- prediction= 1  -- #active experts= 3000
+round= 300  -- example= 9917  -- prediction= 2  -- #active experts= 1115
+round= 400  -- example= 7070  -- prediction= 7  -- #active experts= 895
+round= 500  -- example= 1341  -- prediction= -1  -- #active experts= 866
+round= 600  -- example= 9822  -- prediction= 0  -- #active experts= 736
+round= 700  -- example= 9855  -- prediction= 7  -- #active experts= 736
+round= 800  -- example= 2943  -- prediction= -1  -- #active experts= 645
+round= 900  -- example= 450  -- prediction= 2  -- #active experts= 522
+round= 1000  -- example= 9293  -- prediction= 7  -- #active experts= 522
+round= 1100  -- example= 4326  -- prediction= 7  -- #active experts= 489
+round= 1200  -- example= 4471  -- prediction= 5  -- #active experts= 477
+round= 1300  -- example= 403  -- prediction= 8  -- #active experts= 468
+round= 1400  -- example= 4046  -- prediction= 7  -- #active experts= 438
+round= 1500  -- example= 1528  -- prediction= 2  -- #active experts= 417
+round= 1600  -- example= 5251  -- prediction= 5  -- #active experts= 417
+round= 1700  -- example= 2083  -- prediction= -1  -- #active experts= 417
+round= 1800  -- example= 8713  -- prediction= 2  -- #active experts= 417
+round= 1900  -- example= 7795  -- prediction= -1  -- #active experts= 404
+round= 2000  -- example= 5235  -- prediction= -1  -- #active experts= 400
+round= 2100  -- example= 7919  -- prediction= 6  -- #active experts= 400
+round= 2200  -- example= 3674  -- prediction= -1  -- #active experts= 400
+round= 2300  -- example= 3972  -- prediction= 7  -- #active experts= 395
+round= 2400  -- example= 2627  -- prediction= 7  -- #active experts= 395
+round= 2500  -- example= 5396  -- prediction= 1  -- #active experts= 395
+round= 2600  -- example= 6  -- prediction= 1  -- #active experts= 386
+round= 2700  -- example= 420  -- prediction= 4  -- #active experts= 386
+round= 2800  -- example= 4157  -- prediction= 2  -- #active experts= 386
+round= 2900  -- example= 4941  -- prediction= 6  -- #active experts= 326
+round= 3000  -- example= 553  -- prediction= -1  -- #active experts= 326
+round= 3100  -- example= 7059  -- prediction= -1  -- #active experts= 326
+round= 3200  -- example= 4543  -- prediction= 1  -- #active experts= 326
+round= 3300  -- example= 6149  -- prediction= 7  -- #active experts= 326
+round= 3400  -- example= 5099  -- prediction= 2  -- #active experts= 326
+round= 3500  -- example= 2609  -- prediction= -1  -- #active experts= 250
+round= 3600  -- example= 6176  -- prediction= 9  -- #active experts= 237
+round= 3700  -- example= 1834  -- prediction= 9  -- #active experts= 237
+round= 3800  -- example= 1936  -- prediction= -1  -- #active experts= 237
+round= 3900  -- example= 5694  -- prediction= 5  -- #active experts= 145
+round= 4000  -- example= 2010  -- prediction= 2  -- #active experts= 145
+round= 4100  -- example= 634  -- prediction= 7  -- #active experts= 145
+round= 4200  -- example= 812  -- prediction= 7  -- #active experts= 145
+round= 4300  -- example= 2540  -- prediction= 2  -- #active experts= 145
+round= 4400  -- example= 4994  -- prediction= 7  -- #active experts= 145
+round= 4500  -- example= 9631  -- prediction= 7  -- #active experts= 145
+round= 4600  -- example= 1727  -- prediction= -1  -- #active experts= 145
+round= 4700  -- example= 2108  -- prediction= 4  -- #active experts= 145
+round= 4800  -- example= 7265  -- prediction= -1  -- #active experts= 40
+round= 4900  -- example= 1216  -- prediction= 8  -- #active experts= 37
+round= 5000  -- example= 9036  -- prediction= -1  -- #active experts= 37
+round= 5100  -- example= 965  -- prediction= -1  -- #active experts= 37
+round= 5200  -- example= 7597  -- prediction= 9  -- #active experts= 37
+round= 5300  -- example= 8433  -- prediction= -1  -- #active experts= 37
+round= 5400  -- example= 7169  -- prediction= 1  -- #active experts= 37
+round= 5500  -- example= 6130  -- prediction= 1  -- #active experts= 37
+round= 5600  -- example= 198  -- prediction= 7  -- #active experts= 37
+round= 5700  -- example= 6403  -- prediction= 4  -- #active experts= 37
+round= 5800  -- example= 3683  -- prediction= -1  -- #active experts= 37
+round= 5900  -- example= 2563  -- prediction= 2  -- #active experts= 37
+round= 6000  -- example= 7302  -- prediction= 6  -- #active experts= 37
+round= 6100  -- example= 5054  -- prediction= 9  -- #active experts= 37
+round= 6200  -- example= 21  -- prediction= 0  -- #active experts= 37
+round= 6300  -- example= 6899  -- prediction= -1  -- #active experts= 34
+round= 6400  -- example= 4152  -- prediction= -1  -- #active experts= 34
+round= 6500  -- example= 1967  -- prediction= 7  -- #active experts= 34
+round= 6600  -- example= 9408  -- prediction= 6  -- #active experts= 34
+round= 6700  -- example= 4643  -- prediction= -1  -- #active experts= 34
+round= 6800  -- example= 9895  -- prediction= 4  -- #active experts= 34
+round= 6900  -- example= 2491  -- prediction= 9  -- #active experts= 34
+#algo abstained =  1707 / 7000
+#algo mistakes =  226 / 7000
+#of experts with non-zero weights =  3 / 3000
+#of active experts =  3 / 3000
+[experts] #mistakes(min) =  116.0 / 7000
+[experts] #mistakes(max) =  813.0 / 7000
+[experts] #abstained(min) =  0.0 / 7000
+[experts] #abstained(max) =  1977.0 / 7000
+[optimal experts] #mistakes =  116.0 / 7000
+[optimal experts] #abstained =  1973.0 / 7000
+Mistake Matched #Abenstions =  1359.0 / 7000
+Mistake Matched #Mistakes =  226.0 / 7000
+[AMM] #Abenstions =  1697.0 / 7000
+[AMM] #Mistakes =  163.0 / 7000
+N data points =  10000
+W_t shape =  (3000,)
+[5602  234 7851 ...  941 3971 7863]
+round= 0  -- example= 5602  -- prediction= 4  -- #active experts= 3000
+round= 100  -- example= 6765  -- prediction= 8  -- #active experts= 3000
+round= 200  -- example= 1176  -- prediction= -1  -- #active experts= 3000
+round= 300  -- example= 9917  -- prediction= 2  -- #active experts= 3000
+round= 400  -- example= 7070  -- prediction= 7  -- #active experts= 3000
+round= 500  -- example= 1341  -- prediction= 4  -- #active experts= 3000
+round= 600  -- example= 9822  -- prediction= 0  -- #active experts= 2802
+round= 700  -- example= 9855  -- prediction= 7  -- #active experts= 2802
+round= 800  -- example= 2943  -- prediction= 9  -- #active experts= 2040
+round= 900  -- example= 450  -- prediction= 2  -- #active experts= 1860
+round= 1000  -- example= 9293  -- prediction= 7  -- #active experts= 1860
+round= 1100  -- example= 4326  -- prediction= -1  -- #active experts= 1821
+round= 1200  -- example= 4471  -- prediction= 5  -- #active experts= 1731
+round= 1300  -- example= 403  -- prediction= 8  -- #active experts= 1724
+round= 1400  -- example= 4046  -- prediction= 7  -- #active experts= 1666
+round= 1500  -- example= 1528  -- prediction= 2  -- #active experts= 1573
+round= 1600  -- example= 5251  -- prediction= 5  -- #active experts= 1556
+round= 1700  -- example= 2083  -- prediction= 2  -- #active experts= 1544
+round= 1800  -- example= 8713  -- prediction= 2  -- #active experts= 1492
+round= 1900  -- example= 7795  -- prediction= 5  -- #active experts= 1466
+round= 2000  -- example= 5235  -- prediction= -1  -- #active experts= 1466
+round= 2100  -- example= 7919  -- prediction= 6  -- #active experts= 1466
+round= 2200  -- example= 3674  -- prediction= 3  -- #active experts= 1442
+round= 2300  -- example= 3972  -- prediction= 7  -- #active experts= 1429
+round= 2400  -- example= 2627  -- prediction= 7  -- #active experts= 1378
+round= 2500  -- example= 5396  -- prediction= 1  -- #active experts= 1339
+round= 2600  -- example= 6  -- prediction= 1  -- #active experts= 1309
+round= 2700  -- example= 420  -- prediction= 4  -- #active experts= 1290
+round= 2800  -- example= 4157  -- prediction= 2  -- #active experts= 1234
+round= 2900  -- example= 4941  -- prediction= 6  -- #active experts= 1234
+round= 3000  -- example= 553  -- prediction= -1  -- #active experts= 1234
+round= 3100  -- example= 7059  -- prediction= 6  -- #active experts= 1234
+round= 3200  -- example= 4543  -- prediction= -1  -- #active experts= 1234
+round= 3300  -- example= 6149  -- prediction= 7  -- #active experts= 1234
+round= 3400  -- example= 5099  -- prediction= 2  -- #active experts= 1234
+round= 3500  -- example= 2609  -- prediction= -1  -- #active experts= 1111
+round= 3600  -- example= 6176  -- prediction= 9  -- #active experts= 1026
+round= 3700  -- example= 1834  -- prediction= 9  -- #active experts= 1026
+round= 3800  -- example= 1936  -- prediction= 3  -- #active experts= 1026
+round= 3900  -- example= 5694  -- prediction= 5  -- #active experts= 1026
+round= 4000  -- example= 2010  -- prediction= 2  -- #active experts= 1026
+round= 4100  -- example= 634  -- prediction= 7  -- #active experts= 942
+round= 4200  -- example= 812  -- prediction= 7  -- #active experts= 713
+round= 4300  -- example= 2540  -- prediction= 2  -- #active experts= 713
+round= 4400  -- example= 4994  -- prediction= 7  -- #active experts= 713
+round= 4500  -- example= 9631  -- prediction= 7  -- #active experts= 690
+round= 4600  -- example= 1727  -- prediction= 1  -- #active experts= 685
+round= 4700  -- example= 2108  -- prediction= -1  -- #active experts= 685
+round= 4800  -- example= 7265  -- prediction= -1  -- #active experts= 685
+round= 4900  -- example= 1216  -- prediction= 8  -- #active experts= 638
+round= 5000  -- example= 9036  -- prediction= -1  -- #active experts= 638
+round= 5100  -- example= 965  -- prediction= -1  -- #active experts= 636
+round= 5200  -- example= 7597  -- prediction= 9  -- #active experts= 633
+round= 5300  -- example= 8433  -- prediction= -1  -- #active experts= 633
+round= 5400  -- example= 7169  -- prediction= 1  -- #active experts= 633
+round= 5500  -- example= 6130  -- prediction= 1  -- #active experts= 596
+round= 5600  -- example= 198  -- prediction= 7  -- #active experts= 596
+round= 5700  -- example= 6403  -- prediction= 4  -- #active experts= 596
+round= 5800  -- example= 3683  -- prediction= 8  -- #active experts= 514
+round= 5900  -- example= 2563  -- prediction= 2  -- #active experts= 514
+round= 6000  -- example= 7302  -- prediction= 6  -- #active experts= 514
+round= 6100  -- example= 5054  -- prediction= 9  -- #active experts= 514
+round= 6200  -- example= 21  -- prediction= 0  -- #active experts= 514
+round= 6300  -- example= 6899  -- prediction= -1  -- #active experts= 514
+round= 6400  -- example= 4152  -- prediction= 1  -- #active experts= 514
+round= 6500  -- example= 1967  -- prediction= 7  -- #active experts= 450
+round= 6600  -- example= 9408  -- prediction= -1  -- #active experts= 391
+round= 6700  -- example= 4643  -- prediction= 3  -- #active experts= 391
+round= 6800  -- example= 9895  -- prediction= 4  -- #active experts= 240
+round= 6900  -- example= 2491  -- prediction= 9  -- #active experts= 240
+round= 7000  -- example= 2929  -- prediction= 1  -- #active experts= 154
+round= 7100  -- example= 9774  -- prediction= -1  -- #active experts= 154
+round= 7200  -- example= 7729  -- prediction= 9  -- #active experts= 154
+round= 7300  -- example= 4430  -- prediction= 1  -- #active experts= 154
+round= 7400  -- example= 5409  -- prediction= 1  -- #active experts= 154
+#algo abstained =  1043 / 7500
+#algo mistakes =  481 / 7500
+#of experts with non-zero weights =  154 / 3000
+#of active experts =  154 / 3000
+[experts] #mistakes(min) =  123.0 / 7500
+[experts] #mistakes(max) =  876.0 / 7500
+[experts] #abstained(min) =  0.0 / 7500
+[experts] #abstained(max) =  2130.0 / 7500
+[optimal experts] #mistakes =  123.0 / 7500
+[optimal experts] #abstained =  2124.0 / 7500
+Mistake Matched #Abenstions =  671.0 / 7500
+Mistake Matched #Mistakes =  481.0 / 7500
+[AMM] #Abenstions =  1038.0 / 7500
+[AMM] #Mistakes =  351.0 / 7500
+N data points =  10000
+W_t shape =  (3000,)
+[5602  234 7851 ...  941 3971 7863]
+round= 0  -- example= 5602  -- prediction= 4  -- #active experts= 3000
+round= 100  -- example= 6765  -- prediction= 8  -- #active experts= 3000
+round= 200  -- example= 1176  -- prediction= 1  -- #active experts= 3000
+round= 300  -- example= 9917  -- prediction= 2  -- #active experts= 3000
+round= 400  -- example= 7070  -- prediction= 7  -- #active experts= 2838
+round= 500  -- example= 1341  -- prediction= 4  -- #active experts= 2183
+round= 600  -- example= 9822  -- prediction= 0  -- #active experts= 2183
+round= 700  -- example= 9855  -- prediction= 7  -- #active experts= 2022
+round= 800  -- example= 2943  -- prediction= 9  -- #active experts= 1619
+round= 900  -- example= 450  -- prediction= 2  -- #active experts= 1460
+round= 1000  -- example= 9293  -- prediction= -1  -- #active experts= 1345
+round= 1100  -- example= 4326  -- prediction= 7  -- #active experts= 1345
+round= 1200  -- example= 4471  -- prediction= -1  -- #active experts= 1282
+round= 1300  -- example= 403  -- prediction= 8  -- #active experts= 1055
+round= 1400  -- example= 4046  -- prediction= 7  -- #active experts= 1016
+round= 1500  -- example= 1528  -- prediction= 2  -- #active experts= 1016
+round= 1600  -- example= 5251  -- prediction= 5  -- #active experts= 1010
+round= 1700  -- example= 2083  -- prediction= 2  -- #active experts= 955
+round= 1800  -- example= 8713  -- prediction= 2  -- #active experts= 861
+round= 1900  -- example= 7795  -- prediction= 5  -- #active experts= 843
+round= 2000  -- example= 5235  -- prediction= -1  -- #active experts= 766
+round= 2100  -- example= 7919  -- prediction= 6  -- #active experts= 766
+round= 2200  -- example= 3674  -- prediction= 3  -- #active experts= 712
+round= 2300  -- example= 3972  -- prediction= -1  -- #active experts= 712
+round= 2400  -- example= 2627  -- prediction= 7  -- #active experts= 640
+round= 2500  -- example= 5396  -- prediction= 1  -- #active experts= 638
+round= 2600  -- example= 6  -- prediction= 1  -- #active experts= 616
+round= 2700  -- example= 420  -- prediction= 4  -- #active experts= 610
+round= 2800  -- example= 4157  -- prediction= -1  -- #active experts= 591
+round= 2900  -- example= 4941  -- prediction= 6  -- #active experts= 545
+round= 3000  -- example= 553  -- prediction= -1  -- #active experts= 545
+round= 3100  -- example= 7059  -- prediction= -1  -- #active experts= 545
+round= 3200  -- example= 4543  -- prediction= 1  -- #active experts= 545
+round= 3300  -- example= 6149  -- prediction= 7  -- #active experts= 545
+round= 3400  -- example= 5099  -- prediction= 2  -- #active experts= 545
+round= 3500  -- example= 2609  -- prediction= 5  -- #active experts= 523
+round= 3600  -- example= 6176  -- prediction= 9  -- #active experts= 520
+round= 3700  -- example= 1834  -- prediction= 9  -- #active experts= 520
+round= 3800  -- example= 1936  -- prediction= 3  -- #active experts= 505
+round= 3900  -- example= 5694  -- prediction= 5  -- #active experts= 481
+round= 4000  -- example= 2010  -- prediction= 2  -- #active experts= 481
+round= 4100  -- example= 634  -- prediction= 7  -- #active experts= 478
+round= 4200  -- example= 812  -- prediction= 7  -- #active experts= 478
+round= 4300  -- example= 2540  -- prediction= 2  -- #active experts= 357
+round= 4400  -- example= 4994  -- prediction= 7  -- #active experts= 357
+round= 4500  -- example= 9631  -- prediction= 7  -- #active experts= 325
+round= 4600  -- example= 1727  -- prediction= -1  -- #active experts= 323
+round= 4700  -- example= 2108  -- prediction= 4  -- #active experts= 277
+round= 4800  -- example= 7265  -- prediction= -1  -- #active experts= 264
+round= 4900  -- example= 1216  -- prediction= 8  -- #active experts= 264
+round= 5000  -- example= 9036  -- prediction= -1  -- #active experts= 264
+round= 5100  -- example= 965  -- prediction= -1  -- #active experts= 264
+round= 5200  -- example= 7597  -- prediction= 9  -- #active experts= 250
+round= 5300  -- example= 8433  -- prediction= -1  -- #active experts= 249
+round= 5400  -- example= 7169  -- prediction= -1  -- #active experts= 238
+round= 5500  -- example= 6130  -- prediction= 1  -- #active experts= 238
+round= 5600  -- example= 198  -- prediction= 7  -- #active experts= 238
+round= 5700  -- example= 6403  -- prediction= 4  -- #active experts= 238
+round= 5800  -- example= 3683  -- prediction= 8  -- #active experts= 230
+round= 5900  -- example= 2563  -- prediction= 2  -- #active experts= 230
+round= 6000  -- example= 7302  -- prediction= 6  -- #active experts= 225
+round= 6100  -- example= 5054  -- prediction= 9  -- #active experts= 214
+round= 6200  -- example= 21  -- prediction= 0  -- #active experts= 214
+round= 6300  -- example= 6899  -- prediction= -1  -- #active experts= 214
+round= 6400  -- example= 4152  -- prediction= -1  -- #active experts= 214
+round= 6500  -- example= 1967  -- prediction= 7  -- #active experts= 177
+round= 6600  -- example= 9408  -- prediction= 6  -- #active experts= 174
+round= 6700  -- example= 4643  -- prediction= -1  -- #active experts= 174
+round= 6800  -- example= 9895  -- prediction= 4  -- #active experts= 148
+round= 6900  -- example= 2491  -- prediction= 9  -- #active experts= 94
+round= 7000  -- example= 2929  -- prediction= 1  -- #active experts= 94
+round= 7100  -- example= 9774  -- prediction= -1  -- #active experts= 94
+round= 7200  -- example= 7729  -- prediction= 9  -- #active experts= 94
+round= 7300  -- example= 4430  -- prediction= 1  -- #active experts= 94
+round= 7400  -- example= 5409  -- prediction= 1  -- #active experts= 94
+round= 7500  -- example= 2745  -- prediction= 8  -- #active experts= 94
+round= 7600  -- example= 5823  -- prediction= 5  -- #active experts= 94
+round= 7700  -- example= 1022  -- prediction= 0  -- #active experts= 94
+round= 7800  -- example= 1092  -- prediction= -1  -- #active experts= 94
+round= 7900  -- example= 7271  -- prediction= 7  -- #active experts= 92
+#algo abstained =  1620 / 8000
+#algo mistakes =  349 / 8000
+#of experts with non-zero weights =  92 / 3000
+#of active experts =  92 / 3000
+[experts] #mistakes(min) =  133.0 / 8000
+[experts] #mistakes(max) =  934.0 / 8000
+[experts] #abstained(min) =  0.0 / 8000
+[experts] #abstained(max) =  2283.0 / 8000
+[optimal experts] #mistakes =  133.0 / 8000
+[optimal experts] #abstained =  2276.0 / 8000
+Mistake Matched #Abenstions =  1197.0 / 8000
+Mistake Matched #Mistakes =  349.0 / 8000
+[AMM] #Abenstions =  1617.0 / 8000
+[AMM] #Mistakes =  240.0 / 8000
+N data points =  10000
+W_t shape =  (3000,)
+[5602  234 7851 ...  941 3971 7863]
+round= 0  -- example= 5602  -- prediction= 4  -- #active experts= 3000
+round= 100  -- example= 6765  -- prediction= 8  -- #active experts= 3000
+round= 200  -- example= 1176  -- prediction= 1  -- #active experts= 3000
+round= 300  -- example= 9917  -- prediction= 2  -- #active experts= 1243
+round= 400  -- example= 7070  -- prediction= 7  -- #active experts= 1154
+round= 500  -- example= 1341  -- prediction= 4  -- #active experts= 1038
+round= 600  -- example= 9822  -- prediction= 0  -- #active experts= 1038
+round= 700  -- example= 9855  -- prediction= 7  -- #active experts= 1038
+round= 800  -- example= 2943  -- prediction= -1  -- #active experts= 1038
+round= 900  -- example= 450  -- prediction= 2  -- #active experts= 913
+round= 1000  -- example= 9293  -- prediction= 7  -- #active experts= 899
+round= 1100  -- example= 4326  -- prediction= 7  -- #active experts= 899
+round= 1200  -- example= 4471  -- prediction= 5  -- #active experts= 899
+round= 1300  -- example= 403  -- prediction= 8  -- #active experts= 899
+round= 1400  -- example= 4046  -- prediction= 7  -- #active experts= 899
+round= 1500  -- example= 1528  -- prediction= -1  -- #active experts= 889
+round= 1600  -- example= 5251  -- prediction= 5  -- #active experts= 829
+round= 1700  -- example= 2083  -- prediction= 2  -- #active experts= 741
+round= 1800  -- example= 8713  -- prediction= 2  -- #active experts= 741
+round= 1900  -- example= 7795  -- prediction= -1  -- #active experts= 199
+round= 2000  -- example= 5235  -- prediction= -1  -- #active experts= 197
+round= 2100  -- example= 7919  -- prediction= 6  -- #active experts= 78
+round= 2200  -- example= 3674  -- prediction= 3  -- #active experts= 78
+round= 2300  -- example= 3972  -- prediction= 7  -- #active experts= 78
+round= 2400  -- example= 2627  -- prediction= 7  -- #active experts= 78
+round= 2500  -- example= 5396  -- prediction= 1  -- #active experts= 78
+round= 2600  -- example= 6  -- prediction= 1  -- #active experts= 78
+round= 2700  -- example= 420  -- prediction= 4  -- #active experts= 78
+active_experts set is empty... exiting the routine..
+#algo abstained =  526 / 5500
+#algo mistakes =  137 / 5500
+#of experts with non-zero weights =  0 / 3000
+#of active experts =  0 / 3000
+[experts] #mistakes(min) =  40.0 / 5500
+[experts] #mistakes(max) =  334.0 / 5500
+[experts] #abstained(min) =  0.0 / 5500
+[experts] #abstained(max) =  787.0 / 5500
+[optimal experts] #mistakes =  40.0 / 5500
+[optimal experts] #abstained =  776.0 / 5500
+Mistake Matched #Abenstions =  373.0 / 5500
+Mistake Matched #Mistakes =  134.0 / 5500
+[AMM] #Abenstions =  526.0 / 5500
+[AMM] #Mistakes =  84.0 / 5500
+N data points =  10000
+W_t shape =  (3000,)
+[4988 3683 5242 ... 5262 4149 9768]
+round= 0  -- example= 4988  -- prediction= -1  -- #active experts= 3000
+round= 100  -- example= 2525  -- prediction= -1  -- #active experts= 2840
+round= 200  -- example= 8460  -- prediction= 8  -- #active experts= 1358
+round= 300  -- example= 9913  -- prediction= 7  -- #active experts= 1126
+round= 400  -- example= 7308  -- prediction= 4  -- #active experts= 1022
+round= 500  -- example= 4510  -- prediction= 0  -- #active experts= 867
+round= 600  -- example= 8395  -- prediction= 1  -- #active experts= 867
+round= 700  -- example= 9714  -- prediction= 1  -- #active experts= 846
+round= 800  -- example= 5180  -- prediction= 9  -- #active experts= 846
+round= 900  -- example= 7043  -- prediction= 6  -- #active experts= 846
+round= 1000  -- example= 4027  -- prediction= 4  -- #active experts= 821
+round= 1100  -- example= 7967  -- prediction= -1  -- #active experts= 811
+round= 1200  -- example= 2160  -- prediction= 0  -- #active experts= 763
+round= 1300  -- example= 8509  -- prediction= 6  -- #active experts= 753
+round= 1400  -- example= 1553  -- prediction= 4  -- #active experts= 703
+round= 1500  -- example= 5341  -- prediction= 6  -- #active experts= 691
+round= 1600  -- example= 7902  -- prediction= 2  -- #active experts= 660
+round= 1700  -- example= 7088  -- prediction= 8  -- #active experts= 660
+round= 1800  -- example= 5132  -- prediction= 1  -- #active experts= 636
+round= 1900  -- example= 1933  -- prediction= 3  -- #active experts= 636
+round= 2000  -- example= 9597  -- prediction= 4  -- #active experts= 636
+round= 2100  -- example= 5181  -- prediction= 1  -- #active experts= 636
+round= 2200  -- example= 7592  -- prediction= 9  -- #active experts= 478
+round= 2300  -- example= 2807  -- prediction= -1  -- #active experts= 478
+round= 2400  -- example= 3850  -- prediction= 9  -- #active experts= 463
+round= 2500  -- example= 5920  -- prediction= 8  -- #active experts= 463
+round= 2600  -- example= 2954  -- prediction= 9  -- #active experts= 427
+round= 2700  -- example= 1070  -- prediction= 3  -- #active experts= 361
+round= 2800  -- example= 3059  -- prediction= -1  -- #active experts= 292
+round= 2900  -- example= 3474  -- prediction= -1  -- #active experts= 292
+round= 3000  -- example= 892  -- prediction= -1  -- #active experts= 153
+round= 3100  -- example= 4127  -- prediction= 6  -- #active experts= 139
+round= 3200  -- example= 2297  -- prediction= 7  -- #active experts= 106
+round= 3300  -- example= 3122  -- prediction= 1  -- #active experts= 106
+round= 3400  -- example= 6014  -- prediction= -1  -- #active experts= 106
+round= 3500  -- example= 9587  -- prediction= -1  -- #active experts= 106
+round= 3600  -- example= 1939  -- prediction= -1  -- #active experts= 106
+round= 3700  -- example= 4204  -- prediction= 6  -- #active experts= 106
+round= 3800  -- example= 1530  -- prediction= 3  -- #active experts= 106
+round= 3900  -- example= 7680  -- prediction= -1  -- #active experts= 81
+round= 4000  -- example= 4659  -- prediction= 4  -- #active experts= 81
+round= 4100  -- example= 664  -- prediction= 3  -- #active experts= 81
+round= 4200  -- example= 9946  -- prediction= -1  -- #active experts= 81
+round= 4300  -- example= 4504  -- prediction= -1  -- #active experts= 81
+round= 4400  -- example= 4555  -- prediction= -1  -- #active experts= 81
+round= 4500  -- example= 319  -- prediction= 5  -- #active experts= 81
+round= 4600  -- example= 254  -- prediction= -1  -- #active experts= 81
+round= 4700  -- example= 1662  -- prediction= 3  -- #active experts= 81
+round= 4800  -- example= 6452  -- prediction= -1  -- #active experts= 70
+round= 4900  -- example= 3511  -- prediction= -1  -- #active experts= 70
+round= 5000  -- example= 5387  -- prediction= -1  -- #active experts= 70
+round= 5100  -- example= 1997  -- prediction= 9  -- #active experts= 67
+round= 5200  -- example= 6711  -- prediction= 5  -- #active experts= 67
+round= 5300  -- example= 189  -- prediction= 0  -- #active experts= 67
+round= 5400  -- example= 9312  -- prediction= 9  -- #active experts= 67
+#algo abstained =  1350 / 5500
+#algo mistakes =  200 / 5500
+#of experts with non-zero weights =  67 / 3000
+#of active experts =  67 / 3000
+[experts] #mistakes(min) =  95.0 / 5500
+[experts] #mistakes(max) =  682.0 / 5500
+[experts] #abstained(min) =  0.0 / 5500
+[experts] #abstained(max) =  1613.0 / 5500
+[optimal experts] #mistakes =  95.0 / 5500
+[optimal experts] #abstained =  1611.0 / 5500
+Mistake Matched #Abenstions =  1075.0 / 5500
+Mistake Matched #Mistakes =  199.0 / 5500
+[AMM] #Abenstions =  1350.0 / 5500
+[AMM] #Mistakes =  138.0 / 5500
+N data points =  10000
+W_t shape =  (3000,)
+[5602  234 7851 ...  941 3971 7863]
+round= 0  -- example= 5602  -- prediction= 4  -- #active experts= 3000
+round= 100  -- example= 6765  -- prediction= -1  -- #active experts= 3000
+round= 200  -- example= 1176  -- prediction= 1  -- #active experts= 3000
+round= 300  -- example= 9917  -- prediction= 2  -- #active experts= 2011
+round= 400  -- example= 7070  -- prediction= 7  -- #active experts= 1739
+round= 500  -- example= 1341  -- prediction= 4  -- #active experts= 1629
+round= 600  -- example= 9822  -- prediction= 0  -- #active experts= 1534
+round= 700  -- example= 9855  -- prediction= 7  -- #active experts= 1405
+round= 800  -- example= 2943  -- prediction= -1  -- #active experts= 1343
+round= 900  -- example= 450  -- prediction= 2  -- #active experts= 1297
+round= 1000  -- example= 9293  -- prediction= 7  -- #active experts= 1285
+round= 1100  -- example= 4326  -- prediction= 7  -- #active experts= 1258
+round= 1200  -- example= 4471  -- prediction= 5  -- #active experts= 1183
+round= 1300  -- example= 403  -- prediction= 8  -- #active experts= 1145
+round= 1400  -- example= 4046  -- prediction= 7  -- #active experts= 1109
+round= 1500  -- example= 1528  -- prediction= 2  -- #active experts= 1058
+round= 1600  -- example= 5251  -- prediction= 5  -- #active experts= 1046
+round= 1700  -- example= 2083  -- prediction= 2  -- #active experts= 957
+round= 1800  -- example= 8713  -- prediction= 2  -- #active experts= 924
+round= 1900  -- example= 7795  -- prediction= 5  -- #active experts= 894
+round= 2000  -- example= 5235  -- prediction= -1  -- #active experts= 821
+round= 2100  -- example= 7919  -- prediction= 6  -- #active experts= 784
+round= 2200  -- example= 3674  -- prediction= 3  -- #active experts= 784
+round= 2300  -- example= 3972  -- prediction= 7  -- #active experts= 714
+round= 2400  -- example= 2627  -- prediction= 7  -- #active experts= 659
+round= 2500  -- example= 5396  -- prediction= 1  -- #active experts= 626
+round= 2600  -- example= 6  -- prediction= 1  -- #active experts= 617
+round= 2700  -- example= 420  -- prediction= 4  -- #active experts= 583
+round= 2800  -- example= 4157  -- prediction= 2  -- #active experts= 464
+round= 2900  -- example= 4941  -- prediction= -1  -- #active experts= 443
+round= 3000  -- example= 553  -- prediction= -1  -- #active experts= 443
+round= 3100  -- example= 7059  -- prediction= -1  -- #active experts= 443
+round= 3200  -- example= 4543  -- prediction= 1  -- #active experts= 443
+round= 3300  -- example= 6149  -- prediction= -1  -- #active experts= 443
+round= 3400  -- example= 5099  -- prediction= 2  -- #active experts= 443
+round= 3500  -- example= 2609  -- prediction= 5  -- #active experts= 443
+round= 3600  -- example= 6176  -- prediction= 9  -- #active experts= 302
+round= 3700  -- example= 1834  -- prediction= 9  -- #active experts= 302
+round= 3800  -- example= 1936  -- prediction= -1  -- #active experts= 288
+round= 3900  -- example= 5694  -- prediction= 5  -- #active experts= 229
+round= 4000  -- example= 2010  -- prediction= 2  -- #active experts= 195
+round= 4100  -- example= 634  -- prediction= 7  -- #active experts= 187
+round= 4200  -- example= 812  -- prediction= -1  -- #active experts= 187
+round= 4300  -- example= 2540  -- prediction= 2  -- #active experts= 178
+round= 4400  -- example= 4994  -- prediction= 7  -- #active experts= 178
+round= 4500  -- example= 9631  -- prediction= 7  -- #active experts= 126
+round= 4600  -- example= 1727  -- prediction= -1  -- #active experts= 126
+round= 4700  -- example= 2108  -- prediction= -1  -- #active experts= 126
+round= 4800  -- example= 7265  -- prediction= -1  -- #active experts= 126
+round= 4900  -- example= 1216  -- prediction= 8  -- #active experts= 126
+round= 5000  -- example= 9036  -- prediction= -1  -- #active experts= 126
+round= 5100  -- example= 965  -- prediction= -1  -- #active experts= 126
+round= 5200  -- example= 7597  -- prediction= 9  -- #active experts= 126
+round= 5300  -- example= 8433  -- prediction= -1  -- #active experts= 126
+round= 5400  -- example= 7169  -- prediction= 1  -- #active experts= 126
+round= 5500  -- example= 6130  -- prediction= 1  -- #active experts= 91
+round= 5600  -- example= 198  -- prediction= 7  -- #active experts= 91
+round= 5700  -- example= 6403  -- prediction= 4  -- #active experts= 91
+round= 5800  -- example= 3683  -- prediction= -1  -- #active experts= 89
+round= 5900  -- example= 2563  -- prediction= 2  -- #active experts= 83
+round= 6000  -- example= 7302  -- prediction= 6  -- #active experts= 76
+round= 6100  -- example= 5054  -- prediction= 9  -- #active experts= 63
+round= 6200  -- example= 21  -- prediction= 0  -- #active experts= 63
+round= 6300  -- example= 6899  -- prediction= -1  -- #active experts= 63
+round= 6400  -- example= 4152  -- prediction= -1  -- #active experts= 63
+round= 6500  -- example= 1967  -- prediction= 7  -- #active experts= 63
+round= 6600  -- example= 9408  -- prediction= 6  -- #active experts= 63
+round= 6700  -- example= 4643  -- prediction= -1  -- #active experts= 44
+round= 6800  -- example= 9895  -- prediction= 4  -- #active experts= 44
+round= 6900  -- example= 2491  -- prediction= 9  -- #active experts= 44
+round= 7000  -- example= 2929  -- prediction= 1  -- #active experts= 32
+round= 7100  -- example= 9774  -- prediction= -1  -- #active experts= 32
+round= 7200  -- example= 7729  -- prediction= -1  -- #active experts= 32
+round= 7300  -- example= 4430  -- prediction= 1  -- #active experts= 32
+round= 7400  -- example= 5409  -- prediction= 1  -- #active experts= 32
+round= 7500  -- example= 2745  -- prediction= 8  -- #active experts= 32
+round= 7600  -- example= 5823  -- prediction= 5  -- #active experts= 32
+round= 7700  -- example= 1022  -- prediction= 0  -- #active experts= 32
+round= 7800  -- example= 1092  -- prediction= -1  -- #active experts= 32
+round= 7900  -- example= 7271  -- prediction= 7  -- #active experts= 32
+round= 8000  -- example= 5748  -- prediction= 8  -- #active experts= 32
+round= 8100  -- example= 9454  -- prediction= -1  -- #active experts= 32
+round= 8200  -- example= 8456  -- prediction= -1  -- #active experts= 32
+round= 8300  -- example= 4760  -- prediction= -1  -- #active experts= 32
+round= 8400  -- example= 3013  -- prediction= -1  -- #active experts= 32
+#algo abstained =  1921 / 8500
+#algo mistakes =  322 / 8500
+#of experts with non-zero weights =  32 / 3000
+#of active experts =  32 / 3000
+[experts] #mistakes(min) =  142.0 / 8500
+[experts] #mistakes(max) =  990.0 / 8500
+[experts] #abstained(min) =  0.0 / 8500
+[experts] #abstained(max) =  2432.0 / 8500
+[optimal experts] #mistakes =  142.0 / 8500
+[optimal experts] #abstained =  2424.0 / 8500
+Mistake Matched #Abenstions =  1468.0 / 8500
+Mistake Matched #Mistakes =  319.0 / 8500
+[AMM] #Abenstions =  1920.0 / 8500
+[AMM] #Mistakes =  226.0 / 8500
+N data points =  10000
+W_t shape =  (3000,)
+[5602  234 7851 ...  941 3971 7863]
+round= 0  -- example= 5602  -- prediction= 4  -- #active experts= 3000
+round= 100  -- example= 6765  -- prediction= 8  -- #active experts= 3000
+round= 200  -- example= 1176  -- prediction= 1  -- #active experts= 3000
+round= 300  -- example= 9917  -- prediction= 2  -- #active experts= 1405
+round= 400  -- example= 7070  -- prediction= 7  -- #active experts= 1302
+round= 500  -- example= 1341  -- prediction= -1  -- #active experts= 1166
+round= 600  -- example= 9822  -- prediction= 0  -- #active experts= 1166
+round= 700  -- example= 9855  -- prediction= 7  -- #active experts= 1140
+round= 800  -- example= 2943  -- prediction= 9  -- #active experts= 1136
+round= 900  -- example= 450  -- prediction= 2  -- #active experts= 961
+round= 1000  -- example= 9293  -- prediction= 7  -- #active experts= 950
+round= 1100  -- example= 4326  -- prediction= 7  -- #active experts= 881
+round= 1200  -- example= 4471  -- prediction= -1  -- #active experts= 881
+round= 1300  -- example= 403  -- prediction= 8  -- #active experts= 881
+round= 1400  -- example= 4046  -- prediction= 7  -- #active experts= 823
+round= 1500  -- example= 1528  -- prediction= 2  -- #active experts= 804
+round= 1600  -- example= 5251  -- prediction= 5  -- #active experts= 784
+round= 1700  -- example= 2083  -- prediction= 2  -- #active experts= 784
+round= 1800  -- example= 8713  -- prediction= 2  -- #active experts= 784
+round= 1900  -- example= 7795  -- prediction= 5  -- #active experts= 784
+round= 2000  -- example= 5235  -- prediction= -1  -- #active experts= 752
+round= 2100  -- example= 7919  -- prediction= 6  -- #active experts= 752
+round= 2200  -- example= 3674  -- prediction= 3  -- #active experts= 744
+round= 2300  -- example= 3972  -- prediction= 7  -- #active experts= 742
+round= 2400  -- example= 2627  -- prediction= 7  -- #active experts= 742
+round= 2500  -- example= 5396  -- prediction= 1  -- #active experts= 683
+round= 2600  -- example= 6  -- prediction= 1  -- #active experts= 653
+round= 2700  -- example= 420  -- prediction= 4  -- #active experts= 644
+round= 2800  -- example= 4157  -- prediction= 2  -- #active experts= 627
+round= 2900  -- example= 4941  -- prediction= 6  -- #active experts= 547
+round= 3000  -- example= 553  -- prediction= -1  -- #active experts= 547
+round= 3100  -- example= 7059  -- prediction= -1  -- #active experts= 468
+round= 3200  -- example= 4543  -- prediction= 1  -- #active experts= 381
+round= 3300  -- example= 6149  -- prediction= 7  -- #active experts= 381
+round= 3400  -- example= 5099  -- prediction= 2  -- #active experts= 381
+round= 3500  -- example= 2609  -- prediction= 5  -- #active experts= 361
+round= 3600  -- example= 6176  -- prediction= 9  -- #active experts= 302
+round= 3700  -- example= 1834  -- prediction= 9  -- #active experts= 302
+round= 3800  -- example= 1936  -- prediction= 3  -- #active experts= 302
+round= 3900  -- example= 5694  -- prediction= 5  -- #active experts= 302
+round= 4000  -- example= 2010  -- prediction= 2  -- #active experts= 144
+round= 4100  -- example= 634  -- prediction= 7  -- #active experts= 144
+round= 4200  -- example= 812  -- prediction= 7  -- #active experts= 144
+round= 4300  -- example= 2540  -- prediction= 2  -- #active experts= 144
+round= 4400  -- example= 4994  -- prediction= 7  -- #active experts= 30
+active_experts set is empty... exiting the routine..
+#algo abstained =  781 / 4500
+#algo mistakes =  219 / 4500
+#of experts with non-zero weights =  0 / 3000
+#of active experts =  0 / 3000
+[experts] #mistakes(min) =  68.0 / 4500
+[experts] #mistakes(max) =  500.0 / 4500
+[experts] #abstained(min) =  0.0 / 4500
+[experts] #abstained(max) =  1220.0 / 4500
+[optimal experts] #mistakes =  68.0 / 4500
+[optimal experts] #abstained =  1210.0 / 4500
+Mistake Matched #Abenstions =  523.0 / 4500
+Mistake Matched #Mistakes =  219.0 / 4500
+[AMM] #Abenstions =  775.0 / 4500
+[AMM] #Mistakes =  146.0 / 4500
+N data points =  10000
+W_t shape =  (3000,)
+[1414 2529 2720 ... 1567 5860 4597]
+round= 0  -- example= 1414  -- prediction= 1  -- #active experts= 3000
+round= 100  -- example= 4333  -- prediction= 7  -- #active experts= 3000
+round= 200  -- example= 7664  -- prediction= 2  -- #active experts= 3000
+round= 300  -- example= 9441  -- prediction= 4  -- #active experts= 3000
+round= 400  -- example= 4135  -- prediction= 1  -- #active experts= 1721
+round= 500  -- example= 8759  -- prediction= -1  -- #active experts= 1413
+round= 600  -- example= 9703  -- prediction= 4  -- #active experts= 1339
+round= 700  -- example= 3454  -- prediction= 2  -- #active experts= 1229
+round= 800  -- example= 2146  -- prediction= 2  -- #active experts= 1138
+round= 900  -- example= 9575  -- prediction= 5  -- #active experts= 941
+round= 1000  -- example= 5183  -- prediction= -1  -- #active experts= 941
+round= 1100  -- example= 6808  -- prediction= 0  -- #active experts= 878
+round= 1200  -- example= 4638  -- prediction= 6  -- #active experts= 694
+round= 1300  -- example= 8255  -- prediction= 9  -- #active experts= 694
+round= 1400  -- example= 7776  -- prediction= 5  -- #active experts= 466
+round= 1500  -- example= 6614  -- prediction= 5  -- #active experts= 450
+round= 1600  -- example= 2731  -- prediction= -1  -- #active experts= 450
+round= 1700  -- example= 5456  -- prediction= 1  -- #active experts= 450
+round= 1800  -- example= 5370  -- prediction= 6  -- #active experts= 429
+round= 1900  -- example= 3962  -- prediction= -1  -- #active experts= 429
+round= 2000  -- example= 820  -- prediction= 6  -- #active experts= 429
+round= 2100  -- example= 6533  -- prediction= -1  -- #active experts= 429
+round= 2200  -- example= 1281  -- prediction= 8  -- #active experts= 398
+round= 2300  -- example= 4375  -- prediction= 4  -- #active experts= 398
+round= 2400  -- example= 6919  -- prediction= 4  -- #active experts= 398
+round= 2500  -- example= 6837  -- prediction= -1  -- #active experts= 398
+round= 2600  -- example= 8423  -- prediction= 6  -- #active experts= 354
+round= 2700  -- example= 1225  -- prediction= 6  -- #active experts= 354
+round= 2800  -- example= 8147  -- prediction= 5  -- #active experts= 354
+round= 2900  -- example= 4398  -- prediction= 7  -- #active experts= 348
+round= 3000  -- example= 9347  -- prediction= 8  -- #active experts= 348
+round= 3100  -- example= 2991  -- prediction= -1  -- #active experts= 312
+round= 3200  -- example= 2801  -- prediction= 5  -- #active experts= 312
+round= 3300  -- example= 6839  -- prediction= 8  -- #active experts= 312
+round= 3400  -- example= 3192  -- prediction= 4  -- #active experts= 142
+round= 3500  -- example= 3725  -- prediction= 2  -- #active experts= 123
+round= 3600  -- example= 1529  -- prediction= -1  -- #active experts= 123
+round= 3700  -- example= 9296  -- prediction= 8  -- #active experts= 123
+round= 3800  -- example= 3747  -- prediction= 9  -- #active experts= 123
+round= 3900  -- example= 4111  -- prediction= 4  -- #active experts= 123
+round= 4000  -- example= 1823  -- prediction= -1  -- #active experts= 117
+round= 4100  -- example= 7443  -- prediction= -1  -- #active experts= 117
+round= 4200  -- example= 9137  -- prediction= -1  -- #active experts= 117
+round= 4300  -- example= 4987  -- prediction= 3  -- #active experts= 117
+round= 4400  -- example= 5748  -- prediction= 8  -- #active experts= 114
+#algo abstained =  923 / 4500
+#algo mistakes =  186 / 4500
+#of experts with non-zero weights =  114 / 3000
+#of active experts =  114 / 3000
+[experts] #mistakes(min) =  68.0 / 4500
+[experts] #mistakes(max) =  517.0 / 4500
+[experts] #abstained(min) =  0.0 / 4500
+[experts] #abstained(max) =  1267.0 / 4500
+[optimal experts] #mistakes =  68.0 / 4500
+[optimal experts] #abstained =  1266.0 / 4500
+Mistake Matched #Abenstions =  676.0 / 4500
+Mistake Matched #Mistakes =  186.0 / 4500
+[AMM] #Abenstions =  923.0 / 4500
+[AMM] #Mistakes =  124.0 / 4500
+N data points =  10000
+W_t shape =  (3000,)
+[5602  234 7851 ...  941 3971 7863]
+round= 0  -- example= 5602  -- prediction= 4  -- #active experts= 3000
+round= 100  -- example= 6765  -- prediction= 8  -- #active experts= 3000
+round= 200  -- example= 1176  -- prediction= -1  -- #active experts= 3000
+round= 300  -- example= 9917  -- prediction= 2  -- #active experts= 2780
+round= 400  -- example= 7070  -- prediction= 7  -- #active experts= 2780
+round= 500  -- example= 1341  -- prediction= 4  -- #active experts= 1693
+round= 600  -- example= 9822  -- prediction= 0  -- #active experts= 1536
+round= 700  -- example= 9855  -- prediction= 7  -- #active experts= 1460
+round= 800  -- example= 2943  -- prediction= 9  -- #active experts= 1415
+round= 900  -- example= 450  -- prediction= 2  -- #active experts= 1313
+round= 1000  -- example= 9293  -- prediction= 7  -- #active experts= 1284
+round= 1100  -- example= 4326  -- prediction= 7  -- #active experts= 1284
+round= 1200  -- example= 4471  -- prediction= 5  -- #active experts= 1272
+round= 1300  -- example= 403  -- prediction= -1  -- #active experts= 1217
+round= 1400  -- example= 4046  -- prediction= 7  -- #active experts= 1153
+round= 1500  -- example= 1528  -- prediction= 2  -- #active experts= 1118
+round= 1600  -- example= 5251  -- prediction= 5  -- #active experts= 1077
+round= 1700  -- example= 2083  -- prediction= 2  -- #active experts= 1031
+round= 1800  -- example= 8713  -- prediction= 2  -- #active experts= 1031
+round= 1900  -- example= 7795  -- prediction= 5  -- #active experts= 1012
+round= 2000  -- example= 5235  -- prediction= 1  -- #active experts= 995
+round= 2100  -- example= 7919  -- prediction= 6  -- #active experts= 978
+round= 2200  -- example= 3674  -- prediction= 3  -- #active experts= 965
+round= 2300  -- example= 3972  -- prediction= 7  -- #active experts= 962
+round= 2400  -- example= 2627  -- prediction= 7  -- #active experts= 959
+round= 2500  -- example= 5396  -- prediction= 1  -- #active experts= 873
+round= 2600  -- example= 6  -- prediction= 1  -- #active experts= 827
+round= 2700  -- example= 420  -- prediction= 4  -- #active experts= 827
+round= 2800  -- example= 4157  -- prediction= 2  -- #active experts= 795
+round= 2900  -- example= 4941  -- prediction= 6  -- #active experts= 734
+round= 3000  -- example= 553  -- prediction= -1  -- #active experts= 734
+round= 3100  -- example= 7059  -- prediction= -1  -- #active experts= 683
+round= 3200  -- example= 4543  -- prediction= 1  -- #active experts= 683
+round= 3300  -- example= 6149  -- prediction= 7  -- #active experts= 683
+round= 3400  -- example= 5099  -- prediction= 2  -- #active experts= 683
+round= 3500  -- example= 2609  -- prediction= 5  -- #active experts= 683
+round= 3600  -- example= 6176  -- prediction= 9  -- #active experts= 683
+round= 3700  -- example= 1834  -- prediction= 9  -- #active experts= 683
+round= 3800  -- example= 1936  -- prediction= 3  -- #active experts= 683
+round= 3900  -- example= 5694  -- prediction= 5  -- #active experts= 683
+round= 4000  -- example= 2010  -- prediction= 2  -- #active experts= 680
+round= 4100  -- example= 634  -- prediction= 7  -- #active experts= 680
+round= 4200  -- example= 812  -- prediction= 7  -- #active experts= 658
+round= 4300  -- example= 2540  -- prediction= 2  -- #active experts= 658
+round= 4400  -- example= 4994  -- prediction= 7  -- #active experts= 658
+round= 4500  -- example= 9631  -- prediction= -1  -- #active experts= 653
+round= 4600  -- example= 1727  -- prediction= 1  -- #active experts= 650
+round= 4700  -- example= 2108  -- prediction= 4  -- #active experts= 633
+round= 4800  -- example= 7265  -- prediction= -1  -- #active experts= 616
+round= 4900  -- example= 1216  -- prediction= 8  -- #active experts= 616
+round= 5000  -- example= 9036  -- prediction= -1  -- #active experts= 616
+round= 5100  -- example= 965  -- prediction= -1  -- #active experts= 613
+round= 5200  -- example= 7597  -- prediction= 9  -- #active experts= 613
+round= 5300  -- example= 8433  -- prediction= -1  -- #active experts= 613
+round= 5400  -- example= 7169  -- prediction= 1  -- #active experts= 613
+round= 5500  -- example= 6130  -- prediction= 1  -- #active experts= 607
+round= 5600  -- example= 198  -- prediction= 7  -- #active experts= 607
+round= 5700  -- example= 6403  -- prediction= 4  -- #active experts= 607
+round= 5800  -- example= 3683  -- prediction= 8  -- #active experts= 573
+round= 5900  -- example= 2563  -- prediction= 2  -- #active experts= 573
+round= 6000  -- example= 7302  -- prediction= 6  -- #active experts= 553
+round= 6100  -- example= 5054  -- prediction= 9  -- #active experts= 553
+round= 6200  -- example= 21  -- prediction= 0  -- #active experts= 553
+round= 6300  -- example= 6899  -- prediction= -1  -- #active experts= 553
+round= 6400  -- example= 4152  -- prediction= -1  -- #active experts= 543
+round= 6500  -- example= 1967  -- prediction= 7  -- #active experts= 520
+round= 6600  -- example= 9408  -- prediction= 6  -- #active experts= 520
+round= 6700  -- example= 4643  -- prediction= 3  -- #active experts= 520
+round= 6800  -- example= 9895  -- prediction= -1  -- #active experts= 520
+round= 6900  -- example= 2491  -- prediction= 9  -- #active experts= 517
+round= 7000  -- example= 2929  -- prediction= 1  -- #active experts= 517
+round= 7100  -- example= 9774  -- prediction= -1  -- #active experts= 517
+round= 7200  -- example= 7729  -- prediction= 9  -- #active experts= 517
+round= 7300  -- example= 4430  -- prediction= 1  -- #active experts= 492
+round= 7400  -- example= 5409  -- prediction= 1  -- #active experts= 492
+round= 7500  -- example= 2745  -- prediction= 8  -- #active experts= 492
+round= 7600  -- example= 5823  -- prediction= 5  -- #active experts= 446
+round= 7700  -- example= 1022  -- prediction= 0  -- #active experts= 446
+round= 7800  -- example= 1092  -- prediction= -1  -- #active experts= 434
+round= 7900  -- example= 7271  -- prediction= 7  -- #active experts= 430
+round= 8000  -- example= 5748  -- prediction= 8  -- #active experts= 430
+round= 8100  -- example= 9454  -- prediction= -1  -- #active experts= 430
+round= 8200  -- example= 8456  -- prediction= -1  -- #active experts= 430
+round= 8300  -- example= 4760  -- prediction= -1  -- #active experts= 430
+round= 8400  -- example= 3013  -- prediction= -1  -- #active experts= 430
+round= 8500  -- example= 9393  -- prediction= 4  -- #active experts= 413
+round= 8600  -- example= 6207  -- prediction= 9  -- #active experts= 373
+round= 8700  -- example= 1501  -- prediction= -1  -- #active experts= 373
+round= 8800  -- example= 4718  -- prediction= -1  -- #active experts= 373
+round= 8900  -- example= 7255  -- prediction= 3  -- #active experts= 367
+round= 9000  -- example= 2483  -- prediction= 2  -- #active experts= 348
+round= 9100  -- example= 6064  -- prediction= 5  -- #active experts= 348
+round= 9200  -- example= 1766  -- prediction= 6  -- #active experts= 226
+round= 9300  -- example= 5034  -- prediction= 8  -- #active experts= 226
+round= 9400  -- example= 2708  -- prediction= 4  -- #active experts= 226
+#algo abstained =  1563 / 9500
+#algo mistakes =  484 / 9500
+#of experts with non-zero weights =  159 / 3000
+#of active experts =  159 / 3000
+[experts] #mistakes(min) =  159.0 / 9500
+[experts] #mistakes(max) =  1118.0 / 9500
+[experts] #abstained(min) =  0.0 / 9500
+[experts] #abstained(max) =  2723.0 / 9500
+[optimal experts] #mistakes =  159.0 / 9500
+[optimal experts] #abstained =  2712.0 / 9500
+Mistake Matched #Abenstions =  1226.0 / 9500
+Mistake Matched #Mistakes =  482.0 / 9500
+[AMM] #Abenstions =  1562.0 / 9500
+[AMM] #Mistakes =  378.0 / 9500
+N data points =  10000
+W_t shape =  (3000,)
+[5602  234 7851 ...  941 3971 7863]
+round= 0  -- example= 5602  -- prediction= 4  -- #active experts= 3000
+round= 100  -- example= 6765  -- prediction= 8  -- #active experts= 3000
+round= 200  -- example= 1176  -- prediction= 1  -- #active experts= 3000
+round= 300  -- example= 9917  -- prediction= 2  -- #active experts= 2780
+round= 400  -- example= 7070  -- prediction= 7  -- #active experts= 1589
+round= 500  -- example= 1341  -- prediction= 4  -- #active experts= 1530
+round= 600  -- example= 9822  -- prediction= 0  -- #active experts= 1504
+round= 700  -- example= 9855  -- prediction= 7  -- #active experts= 1438
+round= 800  -- example= 2943  -- prediction= -1  -- #active experts= 1345
+round= 900  -- example= 450  -- prediction= 2  -- #active experts= 1128
+round= 1000  -- example= 9293  -- prediction= 7  -- #active experts= 1035
+round= 1100  -- example= 4326  -- prediction= -1  -- #active experts= 1009
+round= 1200  -- example= 4471  -- prediction= 5  -- #active experts= 1004
+round= 1300  -- example= 403  -- prediction= 8  -- #active experts= 990
+round= 1400  -- example= 4046  -- prediction= 7  -- #active experts= 990
+round= 1500  -- example= 1528  -- prediction= 2  -- #active experts= 944
+round= 1600  -- example= 5251  -- prediction= 5  -- #active experts= 897
+round= 1700  -- example= 2083  -- prediction= -1  -- #active experts= 838
+round= 1800  -- example= 8713  -- prediction= 2  -- #active experts= 838
+round= 1900  -- example= 7795  -- prediction= 5  -- #active experts= 830
+round= 2000  -- example= 5235  -- prediction= -1  -- #active experts= 789
+round= 2100  -- example= 7919  -- prediction= -1  -- #active experts= 759
+round= 2200  -- example= 3674  -- prediction= 3  -- #active experts= 759
+round= 2300  -- example= 3972  -- prediction= 7  -- #active experts= 753
+round= 2400  -- example= 2627  -- prediction= 7  -- #active experts= 753
+round= 2500  -- example= 5396  -- prediction= 1  -- #active experts= 738
+round= 2600  -- example= 6  -- prediction= 1  -- #active experts= 738
+round= 2700  -- example= 420  -- prediction= 4  -- #active experts= 738
+round= 2800  -- example= 4157  -- prediction= 2  -- #active experts= 683
+round= 2900  -- example= 4941  -- prediction= 6  -- #active experts= 681
+round= 3000  -- example= 553  -- prediction= -1  -- #active experts= 653
+round= 3100  -- example= 7059  -- prediction= -1  -- #active experts= 621
+round= 3200  -- example= 4543  -- prediction= 1  -- #active experts= 621
+round= 3300  -- example= 6149  -- prediction= 7  -- #active experts= 611
+round= 3400  -- example= 5099  -- prediction= 2  -- #active experts= 611
+round= 3500  -- example= 2609  -- prediction= 5  -- #active experts= 611
+round= 3600  -- example= 6176  -- prediction= 9  -- #active experts= 570
+round= 3700  -- example= 1834  -- prediction= 9  -- #active experts= 570
+round= 3800  -- example= 1936  -- prediction= 3  -- #active experts= 570
+round= 3900  -- example= 5694  -- prediction= 5  -- #active experts= 570
+round= 4000  -- example= 2010  -- prediction= 2  -- #active experts= 570
+round= 4100  -- example= 634  -- prediction= 7  -- #active experts= 548
+round= 4200  -- example= 812  -- prediction= -1  -- #active experts= 548
+round= 4300  -- example= 2540  -- prediction= 2  -- #active experts= 539
+round= 4400  -- example= 4994  -- prediction= 7  -- #active experts= 509
+round= 4500  -- example= 9631  -- prediction= 7  -- #active experts= 509
+round= 4600  -- example= 1727  -- prediction= -1  -- #active experts= 509
+round= 4700  -- example= 2108  -- prediction= 4  -- #active experts= 454
+round= 4800  -- example= 7265  -- prediction= -1  -- #active experts= 148
+round= 4900  -- example= 1216  -- prediction= -1  -- #active experts= 135
+round= 5000  -- example= 9036  -- prediction= -1  -- #active experts= 127
+round= 5100  -- example= 965  -- prediction= -1  -- #active experts= 127
+round= 5200  -- example= 7597  -- prediction= 9  -- #active experts= 127
+round= 5300  -- example= 8433  -- prediction= -1  -- #active experts= 127
+round= 5400  -- example= 7169  -- prediction= 1  -- #active experts= 127
+round= 5500  -- example= 6130  -- prediction= 1  -- #active experts= 127
+round= 5600  -- example= 198  -- prediction= 7  -- #active experts= 127
+round= 5700  -- example= 6403  -- prediction= 4  -- #active experts= 127
+round= 5800  -- example= 3683  -- prediction= -1  -- #active experts= 125
+round= 5900  -- example= 2563  -- prediction= -1  -- #active experts= 125
+round= 6000  -- example= 7302  -- prediction= 6  -- #active experts= 112
+round= 6100  -- example= 5054  -- prediction= 9  -- #active experts= 112
+round= 6200  -- example= 21  -- prediction= 0  -- #active experts= 112
+round= 6300  -- example= 6899  -- prediction= -1  -- #active experts= 112
+round= 6400  -- example= 4152  -- prediction= -1  -- #active experts= 112
+round= 6500  -- example= 1967  -- prediction= 7  -- #active experts= 112
+round= 6600  -- example= 9408  -- prediction= 6  -- #active experts= 112
+round= 6700  -- example= 4643  -- prediction= -1  -- #active experts= 112
+round= 6800  -- example= 9895  -- prediction= 4  -- #active experts= 112
+round= 6900  -- example= 2491  -- prediction= 9  -- #active experts= 112
+active_experts set is empty... exiting the routine..
+#algo abstained =  1321 / 10000
+#algo mistakes =  313 / 10000
+#of experts with non-zero weights =  0 / 3000
+#of active experts =  0 / 3000
+[experts] #mistakes(min) =  114.0 / 10000
+[experts] #mistakes(max) =  808.0 / 10000
+[experts] #abstained(min) =  0.0 / 10000
+[experts] #abstained(max) =  1966.0 / 10000
+[optimal experts] #mistakes =  114.0 / 10000
+[optimal experts] #abstained =  1962.0 / 10000
+Mistake Matched #Abenstions =  997.0 / 10000
+Mistake Matched #Mistakes =  313.0 / 10000
+[AMM] #Abenstions =  1314.0 / 10000
+[AMM] #Mistakes =  229.0 / 10000
+N data points =  10000
+W_t shape =  (3000,)
+[5887  656 9044 ... 1438 7191 7497]
+round= 0  -- example= 5887  -- prediction= 1  -- #active experts= 3000
+round= 100  -- example= 7894  -- prediction= 1  -- #active experts= 3000
+round= 200  -- example= 8486  -- prediction= 4  -- #active experts= 3000
+round= 300  -- example= 7821  -- prediction= 2  -- #active experts= 3000
+round= 400  -- example= 7904  -- prediction= 1  -- #active experts= 3000
+round= 500  -- example= 4886  -- prediction= 3  -- #active experts= 3000
+round= 600  -- example= 4216  -- prediction= 0  -- #active experts= 1725
+round= 700  -- example= 3025  -- prediction= 6  -- #active experts= 1398
+round= 800  -- example= 6781  -- prediction= 6  -- #active experts= 1376
+round= 900  -- example= 4054  -- prediction= 0  -- #active experts= 1280
+round= 1000  -- example= 1678  -- prediction= -1  -- #active experts= 1212
+round= 1100  -- example= 1157  -- prediction= 7  -- #active experts= 1194
+round= 1200  -- example= 5737  -- prediction= 9  -- #active experts= 1194
+round= 1300  -- example= 1562  -- prediction= 6  -- #active experts= 1180
+round= 1400  -- example= 8183  -- prediction= -1  -- #active experts= 1142
+round= 1500  -- example= 5382  -- prediction= 0  -- #active experts= 1139
+round= 1600  -- example= 8243  -- prediction= 4  -- #active experts= 1113
+round= 1700  -- example= 9055  -- prediction= 6  -- #active experts= 1071
+round= 1800  -- example= 9364  -- prediction= 5  -- #active experts= 1061
+round= 1900  -- example= 4364  -- prediction= -1  -- #active experts= 977
+round= 2000  -- example= 6221  -- prediction= 0  -- #active experts= 967
+round= 2100  -- example= 8317  -- prediction= 2  -- #active experts= 933
+round= 2200  -- example= 9693  -- prediction= 6  -- #active experts= 852
+round= 2300  -- example= 4051  -- prediction= 5  -- #active experts= 852
+round= 2400  -- example= 3255  -- prediction= 5  -- #active experts= 852
+round= 2500  -- example= 9208  -- prediction= 0  -- #active experts= 852
+round= 2600  -- example= 9697  -- prediction= 8  -- #active experts= 838
+round= 2700  -- example= 4246  -- prediction= 5  -- #active experts= 838
+round= 2800  -- example= 2749  -- prediction= 0  -- #active experts= 838
+round= 2900  -- example= 2668  -- prediction= 0  -- #active experts= 697
+round= 3000  -- example= 3349  -- prediction= -1  -- #active experts= 674
+round= 3100  -- example= 4519  -- prediction=N data points =  10000
+W_t shape =  (3000,)
+[5602  234 7851 ...  941 3971 7863]
+round= 0  -- example= 5602  -- prediction= 4  -- #active experts= 3000
+round= 100  -- example= 6765  -- prediction= 8  -- #active experts= 3000
+round= 200  -- example= 1176  -- prediction= 1  -- #active experts= 1406
+round= 300  -- example= 9917  -- prediction= 2  -- #active experts= 1152
+round= 400  -- example= 7070  -- prediction= 7  -- #active experts= 1119
+round= 500  -- example= 1341  -- prediction= 4  -- #active experts= 926
+round= 600  -- example= 9822  -- prediction= 0  -- #active experts= 810
+round= 700  -- example= 9855  -- prediction= 7  -- #active experts= 784
+round= 800  -- example= 2943  -- prediction= -1  -- #active experts= 395
+round= 900  -- example= 450  -- prediction= 2  -- #active experts= 395
+round= 1000  -- example= 9293  -- prediction= 7  -- #active experts= 383
+round= 1100  -- example= 4326  -- prediction= 7  -- #active experts= 383
+round= 1200  -- example= 4471  -- prediction= 5  -- #active experts= 273
+round= 1300  -- example= 403  -- prediction= 8  -- #active experts= 273
+round= 1400  -- example= 4046  -- prediction= 7  -- #active experts= 273
+round= 1500  -- example= 1528  -- prediction= 2  -- #active experts= 269
+round= 1600  -- example= 5251  -- prediction= 5  -- #active experts= 244
+round= 1700  -- example= 2083  -- prediction= -1  -- #active experts= 244
+round= 1800  -- example= 8713  -- prediction= 2  -- #active experts= 242
+round= 1900  -- example= 7795  -- prediction= -1  -- #active experts= 225
+round= 2000  -- example= 5235  -- prediction= -1  -- #active experts= 225
+round= 2100  -- example= 7919  -- prediction= 6  -- #active experts= 225
+round= 2200  -- example= 3674  -- prediction= 3  -- #active experts= 220
+round= 2300  -- example= 3972  -- prediction= 7  -- #active experts= 220
+round= 2400  -- example= 2627  -- prediction= 7  -- #active experts= 220
+round= 2500  -- example= 5396  -- prediction= 1  -- #active experts= 220
+round= 2600  -- example= 6  -- prediction= 1  -- #active experts= 220
+round= 2700  -- example= 420  -- prediction= 4  -- #active experts= 212
+round= 2800  -- example= 4157  -- prediction= 2  -- #active experts= 212
+round= 2900  -- example= 4941  -- prediction= -1  -- #active experts= 212
+round= 3000  -- example= 553  -- prediction= -1  -- #active experts= 212
+round= 3100  -- example= 7059  -- prediction= -1  -- #active experts= 212
+round= 3200  -- example= 4543  -- prediction= 1  -- #active experts= 212
+round= 3300  -- example= 6149  -- prediction= 7  -- #active experts= 212
+round= 3400  -- example= 5099  -- prediction= 2  -- #active experts= 212
+round= 3500  -- example= 2609  -- prediction= -1  -- #active experts= 212
+round= 3600  -- example= 6176  -- prediction= 9  -- #active experts= 212
+round= 3700  -- example= 1834  -- prediction= 9  -- #active experts= 212
+round= 3800  -- example= 1936  -- prediction= -1  -- #active experts= 212
+round= 3900  -- example= 5694  -- prediction= 5  -- #active experts= 194
+round= 4000  -- example= 2010  -- prediction= 2  -- #active experts= 194
+round= 4100  -- example= 634  -- prediction= 7  -- #active experts= 165
+round= 4200  -- example= 812  -- prediction= 7  -- #active experts= 165
+round= 4300  -- example= 2540  -- prediction= 2  -- #active experts= 138
+round= 4400  -- example= 4994  -- prediction= 7  -- #active experts= 138
+round= 4500  -- example= 9631  -- prediction= -1  -- #active experts= 125
+active_experts set is empty... exiting the routine..
+#algo abstained =  1077 / 6000
+#algo mistakes =  148 / 6000
+#of experts with non-zero weights =  0 / 3000
+#of active experts =  0 / 3000
+[experts] #mistakes(min) =  73.0 / 6000
+[experts] #mistakes(max) =  528.0 / 6000
+[experts] #abstained(min) =  0.0 / 6000
+[experts] #abstained(max) =  1282.0 / 6000
+[optimal experts] #mistakes =  73.0 / 6000
+[optimal experts] #abstained =  1271.0 / 6000
+Mistake Matched #Abenstions =  863.0 / 6000
+Mistake Matched #Mistakes =  148.0 / 6000
+[AMM] #Abenstions =  1067.0 / 6000
+[AMM] #Mistakes =  110.0 / 6000
+N data points =  10000
+W_t shape =  (3000,)
+[3167 7903 7141 ... 5681 1105 4564]
+round= 0  -- example= 3167  -- prediction= -1  -- #active experts= 3000
+round= 100  -- example= 2823  -- prediction= 3  -- #active experts= 3000
+round= 200  -- example= 270  -- prediction= 2  -- #active experts= 3000
+round= 300  -- example= 2181  -- prediction= -1  -- #active experts= 2029
+round= 400  -- example= 7397  -- prediction= 4  -- #active experts= 1507
+round= 500  -- example= 2729  -- prediction= 3  -- #active experts= 1427
+round= 600  -- example= 2111  -- prediction= 1  -- #active experts= 1366
+round= 700  -- example= 8552  -- prediction= 6  -- #active experts= 1174
+round= 800  -- example= 5966  -- prediction= 9  -- #active experts= 1174
+round= 900  -- example= 4485  -- prediction= 7  -- #active experts= 1136
+round= 1000  -- example= 1709  -- prediction= 2  -- #active experts= 973
+round= 1100  -- example= 4825  -- prediction= 7  -- #active experts= 883
+round= 1200  -- example= 1004  -- prediction= 8  -- #active experts= 851
+round= 1300  -- example= 7309  -- prediction= -1  -- #active experts= 845
+round= 1400  -- example= 1416  -- prediction= -1  -- #active experts= 845
+round= 1500  -- example= 7594  -- prediction= 0  -- #active experts= 830
+round= 1600  -- example= 8658  -- prediction= 3  -- #active experts= 789
+round= 1700  -- example= 9666  -- prediction= 3  -- #active experts= 781
+round= 1800  -- example= 5385  -- prediction= 2  -- #active experts= 724
+round= 1900  -- example= 4344  -- prediction= 4  -- #active experts= 658
+round= 2000  -- example= 5096  -- prediction= 7  -- #active experts= 652
+round= 2100  -- example= 8500  -- prediction= 4  -- #active experts= 603
+round= 2200  -- example= 708  -- prediction= 8  -- #active experts= 603
+round= 2300  -- example= 9261  -- prediction= 5  -- #active experts= 523
+round= 2400  -- example= 9557  -- prediction= -1  -- #active experts= 523
+round= 2500  -- example= 9391  -- prediction= 9  -- #active experts= 515
+round= 2600  -- example= 5724  -- prediction= 5  -- #active experts= 515
+round= 2700  -- example= 305  -- prediction= 1  -- #active experts= 515
+round= 2800  -- example= 3274  -- prediction= 1  -- #active experts= 515
+round= 2900  -- example= 4619  -- prediction= 9  -- #active experts= 458
+round= 3000  -- example= 6675  -- prediction= 2  -- #active experts= 458
+round= 3100  -- example= 1003  -- prediction= 4  -- #active experts= 449
+round= 3200  -- example= 5055  -- prediction= 0  -- #active experts= 448
+round= 3300  -- example= 2429  -- prediction= 8  -- #active experts= 448
+round= 3400  -- example= 5761  -- prediction= 6  -- #active experts= 356
+round= 3500  -- example= 7642  -- prediction= 9  -- #active experts= 356
+round= 3600  -- example= 1728  -- prediction= 0  -- #active experts= 356
+round= 3700  -- example= 8643  -- prediction= 0  -- #active experts= 356
+round= 3800  -- example= 4986  -- prediction= -1  -- #active experts= 356
+round= 3900  -- example= 5281  -- prediction= -1  -- #active experts= 349
+round= 4000  -- example= 5288  -- prediction= 4  -- #active experts= 348
+round= 4100  -- example= 8132  -- prediction= 8  -- #active experts= 344
+round= 4200  -- example= 6067  -- prediction= 8  -- #active experts= 344
+round= 4300  -- example= 5782  -- prediction= -1  -- #active experts= 344
+round= 4400  -- example= 2891  -- prediction= 7  -- #active experts= 344
+round= 4500  -- example= 8723  -- prediction= 7  -- #active experts= 340
+round= 4600  -- example= 2842  -- prediction= 7  -- #active experts= 340
+round= 4700  -- example= 4118  -- prediction= 0  -- #active experts= 340
+round= 4800  -- example= 3503  -- prediction= 4  -- #active experts= 340
+round= 4900  -- example= 3184  -- prediction= 0  -- #active experts= 340
+round= 5000  -- example= 3105  -- prediction= 1  -- #active experts= 340
+round= 5100  -- example= 9004  -- prediction= -1  -- #active experts= 340
+round= 5200  -- example= 4514  -- prediction= 9  -- #active experts= 340
+round= 5300  -- example= 4169  -- prediction= 5  -- #active experts= 340
+round= 5400  -- example= 8161  -- prediction= 5  -- #active experts= 332
+round= 5500  -- example= 869  -- prediction= 1  -- #active experts=N data points =  10000
+W_t shape =  (3000,)
+[5602  234 7851 ...  941 3971 7863]
+round= 0  -- example= 5602  -- prediction= -1  -- #active experts= 3000
+round= 100  -- example= 6765  -- prediction= 8  -- #active experts= 3000
+round= 200  -- example= 1176  -- prediction= 1  -- #active experts= 3000
+round= 300  -- example= 9917  -- prediction= 2  -- #active experts= 1415
+round= 400  -- example= 7070  -- prediction= 7  -- #active experts= 1390
+round= 500  -- example= 1341  -- prediction= 4  -- #active experts= 1197
+round= 600  -- example= 9822  -- prediction= 0  -- #active experts= 893
+round= 700  -- example= 9855  -- prediction= 7  -- #active experts= 893
+round= 800  -- example= 2943  -- prediction= -1  -- #active experts= 893
+round= 900  -- example= 450  -- prediction= 2  -- #active experts= 658
+round= 1000  -- example= 9293  -- prediction= 7  -- #active experts= 587
+round= 1100  -- example= 4326  -- prediction= 7  -- #active experts= 583
+round= 1200  -- example= 4471  -- prediction= 5  -- #active experts= 583
+round= 1300  -- example= 403  -- prediction= 8  -- #active experts= 583
+round= 1400  -- example= 4046  -- prediction= 7  -- #active experts= 561
+round= 1500  -- example= 1528  -- prediction= 2  -- #active experts= 540
+round= 1600  -- example= 5251  -- prediction= 5  -- #active experts= 540
+round= 1700  -- example= 2083  -- prediction= -1  -- #active experts= 485
+round= 1800  -- example= 8713  -- prediction= 2  -- #active experts= 485
+round= 1900  -- example= 7795  -- prediction= -1  -- #active experts= 473
+round= 2000  -- example= 5235  -- prediction= -1  -- #active experts= 460
+round= 2100  -- example= 7919  -- prediction= 6  -- #active experts= 460
+round= 2200  -- example= 3674  -- prediction= 3  -- #active experts= 457
+round= 2300  -- example= 3972  -- prediction= 7  -- #active experts= 457
+round= 2400  -- example= 2627  -- prediction= 7  -- #active experts= 455
+round= 2500  -- example= 5396  -- prediction= 1  -- #active experts= 455
+round= 2600  -- example= 6  -- prediction= 1  -- #active experts= 442
+round= 2700  -- example= 420  -- prediction= 4  -- #active experts= 442
+round= 2800  -- example= 4157  -- prediction= 2  -- #active experts= 442
+round= 2900  -- example= 4941  -- prediction= 6  -- #active experts= 440
+round= 3000  -- example= 553  -- prediction= -1  -- #active experts= 430
+round= 3100  -- example= 7059  -- prediction= -1  -- #active experts= 398
+round= 3200  -- example= 4543  -- prediction= 1  -- #active experts= 386
+round= 3300  -- example= 6149  -- prediction= 7  -- #active experts= 386
+round= 3400  -- example= 5099  -- prediction= 2  -- #active experts= 386
+round= 3500  -- example= 2609  -- prediction= 5  -- #active experts= 386
+round= 3600  -- example= 6176  -- prediction= 9  -- #active experts= 386
+round= 3700  -- example= 1834  -- prediction= 9  -- #active experts= 386
+round= 3800  -- example= 1936  -- prediction= 3  -- #active experts= 386
+round= 3900  -- example= 5694  -- prediction= 5  -- #active experts= 386
+round= 4000  -- example= 2010  -- prediction= 2  -- #active experts= 386
+round= 4100  -- example= 634  -- prediction= -1  -- #active experts= 355
+round= 4200  -- example= 812  -- prediction= 7  -- #active experts= 355
+round= 4300  -- example= 2540  -- prediction= 2  -- #active experts= 355
+round= 4400  -- example= 4994  -- prediction= 7  -- #active experts= 337
+round= 4500  -- example= 9631  -- prediction= 7  -- #active experts= 337
+round= 4600  -- example= 1727  -- prediction= -1  -- #active experts= 337
+round= 4700  -- example= 2108  -- prediction= 4  -- #active experts= 333
+round= 4800  -- example= 7265  -- prediction= -1  -- #active experts= 333
+round= 4900  -- example= 1216  -- prediction= 8  -- #active experts= 333
+round= 5000  -- example= 9036  -- prediction= -1  -- #active experts= 333
+round= 5100  -- example= 965  -- prediction= -1  -- #active experts= 333
+round= 5200  -- example= 7597  -- prediction= 9  -- #active experts= 330
+round= 5300  -- example= 8433  -- prediction= -1  -- #active experts= 304
+round= 5400  -- example= 7169  -- prediction= -1  -- #active experts= 291
+round= 5500  -- example= 6130  -- prediction= 1  -- #active experts= 291
+round= 5600  -- example= 198  -- prediction= 7  -- #active experts= 291
+round= 5700  -- example= 6403  -- prediction= 4  -- #active experts= 291
+round= 5800  -- example= 3683  -- prediction= 8  -- #active experts= 247
+round= 5900  -- example= 2563  -- prediction= 2  -- #active experts= 247
+round= 6000  -- example= 7302  -- prediction= 6  -- #active experts= 247
+round= 6100  -- example= 5054  -- prediction= 9  -- #active experts= 247
+round= 6200  -- example= 21  -- prediction= 0  -- #active experts= 247
+round= 6300  -- example= 6899  -- prediction= -1  -- #active experts= 247
+round= 6400  -- example= 4152  -- prediction= -1  -- #active experts= 247
+round= 6500  -- example= 1967  -- prediction= 7  -- #active experts= 247
+round= 6600  -- example= 9408  -- prediction= 6  -- #active experts= 247
+round= 6700  -- example= 4643  -- prediction= -1  -- #active experts= 247
+round= 6800  -- example= 9895  -- prediction= 4  -- #active experts= 247
+round= 6900  -- example= 2491  -- prediction= 9  -- #active experts= 247
+round= 7000  -- example= 2929  -- prediction= 1  -- #active experts= 247
+round= 7100  -- example= 9774  -- prediction= -1  -- #active experts= 247
+round= 7200  -- example= 7729  -- prediction= 9  -- #active experts= 167
+round= 7300  -- example= 4430  -- prediction= 1  -- #active experts= 109
+round= 7400  -- example= 5409  -- prediction= 1  -- #active experts= 109
+round= 7500  -- example= 2745  -- prediction= 8  -- #active experts= 90
+round= 7600  -- example= 5823  -- prediction= 5  -- #active experts= 90
+round= 7700  -- example= 1022  -- prediction= 0  -- #active experts= 90
+round= 7800  -- example= 1092  -- prediction= -1  -- #active experts= 90
+round= 7900  -- example= 7271  -- prediction= 7  -- #active experts= 86
+round= 8000  -- example= 5748  -- prediction= 8  -- #active experts= 86
+round= 8100  -- example= 9454  -- prediction= -1  -- #active experts= 86
+round= 8200  -- example= 8456  -- prediction= -1  -- #active experts= 86
+round= 8300  -- example= 4760  -- prediction= -1  -- #active experts= 20
+round= 8400  -- example= 3013  -- prediction= -1  -- #active experts= 20
+round= 8500  -- example= 9393  -- prediction= -1  -- #active experts= 20
+round= 8600  -- example= 6207  -- prediction= 9  -- #active experts= 20
+active_experts set is empty... exiting the routine..
+#algo abstained =  1886 / 9000
+#algo mistakes =  316 / 9000
+#of experts with non-zero weights =  0 / 3000
+#of active experts =  0 / 3000
+[experts] #mistakes(min) =  146.0 / 9000
+[experts] #mistakes(max) =  1013.0 / 9000
+[experts] #abstained(min) =  0.0 / 9000
+[experts] #abstained(max) =  2473.0 / 9000
+[optimal experts] #mistakes =  146.0 / 9000
+[optimal experts] #abstained =  2465.0 / 9000
+Mistake Matched #Abenstions =  1534.0 / 9000
+Mistake Matched #Mistakes =  316.0 / 9000
+[AMM] #Abenstions =  1882.0 / 9000
+[AMM] #Mistakes =  238.0 / 9000
+N data points =  10000
+W_t shape =  (3000,)
+[1732 3605 3442 ... 8561 7947 9519]
+round= 0  -- example= 1732  -- prediction= 1  -- #active experts= 3000
+round= 100  -- example= 7054  -- prediction= 2  -- #active experts= 3000
+round= 200  -- example= 375  -- prediction= -1  -- #active experts= 3000
+round= 300  -- example= 3085  -- prediction= 6  -- #active experts= 2581
+round= 400  -- example= 8432  -- prediction= 7  -- #active experts= 2496
+round= 500  -- example= 3452  -- prediction= 5  -- #active experts= 2153
+round= 600  -- example= 437  -- prediction= 5  -- #active experts= 1932
+round= 700  -- example= 2895  -- prediction= 3  -- #active experts= 1916
+round= 800  -- example= 9919  -- prediction= 4  -- #active experts= 1752
+round= 900  -- example= 9426  -- prediction= 2  -- #active experts= 1751
+round= 1000  -- example= 7630  -- prediction= 9  -- #active experts= 1721
+round= 1100  -- example= 6813  -- prediction= 6  -- #active experts= 1481
+round= 1200  -- example= 9801  -- prediction= -1  -- #active experts= 1398
+round= 1300  -- example= 6484  -- prediction= 8  -- #active experts= 1398
+round= 1400  -- example= 3777  -- prediction= 7  -- #active experts= 332
+round= 5600  -- example= 2496  -- prediction= 9  -- #active experts= 332
+round= 5700  -- example= 1032  -- prediction= -1  -- #active experts= 332
+round= 5800  -- example= 6751  -- prediction= 8  -- #active experts= 332
+round= 5900  -- example= 1939  -- prediction= -1  -- #active experts= 332
+#algo abstained =  1138 / 6000
+#algo mistakes =  278 / 6000
+#of experts with non-zero weights =  332 / 3000
+#of active experts =  332 / 3000
+[experts] #mistakes(min) =  97.0 / 6000
+[experts] #mistakes(max) =  708.0 / 6000
+[experts] #abstained(min) =  0.0 / 6000
+[experts] #abstained(max) =  1717.0 / 6000
+[optimal experts] #mistakes =  97.0 / 6000
+[optimal experts] #abstained =  1716.0 / 6000
+Mistake Matched #Abenstions =  870.0 / 6000
+Mistake Matched #Mistakes =  278.0 / 6000
+[AMM] #Abenstions =  1136.0 / 6000
+[AMM] #Mistakes =  204.0 / 6000
+ -1  -- #active experts= 628
+round= 3200  -- example= 9944  -- prediction= 7  -- #active experts= 628
+round= 3300  -- example= 2289  -- prediction= 1  -- #active experts= 628
+round= 3400  -- example= 4066  -- prediction= -1  -- #active experts= 628
+round= 3500  -- example= 5374  -- prediction= 0  -- #active experts= 628
+round= 3600  -- example= 7023  -- prediction= 2  -- #active experts= 628
+round= 3700  -- example= 1142  -- prediction= 8  -- #active experts= 628
+round= 3800  -- example= 5747  -- prediction= 0  -- #active experts= 628
+round= 3900  -- example= 5015  -- prediction= 2  -- #active experts= 628
+round= 4000  -- example= 3133  -- prediction= 9  -- #active experts= 628
+round= 4100  -- example= 7766  -- prediction= 4  -- #active experts= 628
+round= 4200  -- example= 9626  -- prediction= 1  -- #active experts= 536
+round= 4300  -- example= 5741  -- prediction= 1  -- #active experts= 536
+round= 4400  -- example= 7588  -- prediction= -1  -- #active experts= 536
+round= 4500  -- example= 6240  -- prediction= 2  -- #active experts= 515
+round= 4600  -- example= 4254  -- prediction= 8  -- #active experts= 515
+round= 4700  -- example= 6381  -- prediction= 1  -- #active experts= 515
+round= 4800  -- example= 6960  -- prediction= 9  -- #active experts= 515
+round= 4900  -- example= 5696  -- prediction= 7  -- #active experts= 515
+round= 5000  -- example= 7666  -- prediction= -1  -- #active experts= 515
+round= 5100  -- example= 9997  -- prediction= 5  -- #active experts= 515
+round= 5200  -- example= 5300  -- prediction= 9  -- #active experts= 515
+round= 5300  -- example= 9176  -- prediction= 8  -- #active experts= 515
+round= 5400  -- example= 6849  -- prediction= 4  -- #active experts= 515
+round= 5500  -- example= 981  -- prediction= 9  -- #active experts= 515
+round= 5600  -- example= 9786  -- prediction= 6  -- #active experts= 515
+round= 5700  -- example= 102  -- prediction= 6  -- #active experts= 515
+round= 5800  -- example= 9261  -- prediction= 5  -- #active experts= 377
+round= 5900  -- example= 5788  -- prediction= 0  -- #active experts= 377
+round= 6000  -- example= 9603  -- prediction= 2  -- #active experts= 377
+round= 6100  -- example= 1273  -- prediction= -1  -- #active experts= 357
+round= 6200  -- example= 2827  -- prediction= 5  -- #active experts= 357
+round= 6300  -- example= 4907  -- prediction= 5  -- #active experts= 345
+round= 6400  -- example= 8251  -- prediction= 3  -- #active experts= 345
+round= 6500  -- example= 1042  -- prediction= -1  -- #active experts= 335
+round= 6600  -- example= 3052  -- prediction= -1  -- #active experts= 335
+round= 6700  -- example= 9652  -- prediction= -1  -- #active experts= 335
+round= 6800  -- example= 8244  -- prediction= 4  -- #active experts= 335
+round= 6900  -- example= 883  -- prediction= -1  -- #active experts= 305
+round= 7000  -- example= 3502  -- prediction= -1  -- #active experts= 292
+round= 7100  -- example= 310  -- prediction= -1  -- #active experts= 279
+round= 7200  -- example= 7342  -- prediction= 7  -- #active experts= 250
+round= 7300  -- example= 1614  -- prediction= 1  -- #active experts= 250
+round= 7400  -- example= 9468  -- prediction= -1  -- #active experts= 250
+round= 7500  -- example= 5351  -- prediction= 7  -- #active experts= 250
+round= 7600  -- example= 5177  -- prediction= 4  -- #active experts= 246
+round= 7700  -- example= 2067  -- prediction= -1  -- #active experts= 246
+round= 7800  -- example= 4012  -- prediction= -1  -- #active experts= 246
+round= 7900  -- example= 4748  -- prediction= -1  -- #active experts= 240
+round= 8000  -- example= 7761  -- prediction= -1  -- #active experts= 240
+round= 8100  -- example= 9961  -- prediction= 3  -- #active experts= 220
+round= 8200  -- example= 680  -- prediction= -1  -- #active experts= 220
+round= 8300  -- example= 7878  -- prediction= 1  -- #active experts= 216
+round= 8400  -- example= 161  -- prediction= 1  -- #active experts= 216
+round= 8500  -- example= 8629  -- prediction= -1  -- #active experts= 216
+round= 8600  -- example= 8112  -- prediction= -1  -- #active experts= 216
+round= 8700  -- example= 8902  -- prediction= 6  -- #active experts= 216
+round= 8800  -- example= 9127  -- prediction= 8  -- #active experts= 216
+round= 8900  -- example= 6391  -- prediction= 9  -- #active experts= 188
+round= 9000  -- example= 4353  -- prediction= 6  -- #active experts= 169
+round= 9100  -- example= 3441  -- prediction= 0  -- #active experts= 169
+round= 9200  -- example= 2706  -- prediction= 3  -- #active experts= 169
+round= 9300  -- example= 8781  -- prediction= 6  -- #active experts= 169
+round= 9400  -- example= 5569  -- prediction= 0  -- #active experts= 98
+round= 9500  -- example= 3670  -- prediction= 9  -- #active experts= 98
+round= 9600  -- example= 6665  -- prediction= 4  -- #active experts= 98
+round= 9700  -- example= 283  -- prediction= 1  -- #active experts= 98
+round= 9800  -- example= 1445  -- prediction= 3  -- #active experts= 98
+round= 9900  -- example= 4807  -- prediction= 8  -- #active experts= 98
+#algo abstained =  1908 / 10000
+#algo mistakes =  443 / 10000
+#of experts with non-zero weights =  98 / 3000
+#of active experts =  98 / 3000
+[experts] #mistakes(min) =  162.0 / 10000
+[experts] #mistakes(max) =  1185.0 / 10000
+[experts] #abstained(min) =  0.0 / 10000
+[experts] #abstained(max) =  2892.0 / 10000
+[optimal experts] #mistakes =  162.0 / 10000
+[optimal experts] #abstained =  2881.0 / 10000
+Mistake Matched #Abenstions =  1521.0 / 10000
+Mistake Matched #Mistakes =  443.0 / 10000
+[AMM] #Abenstions =  1890.0 / 10000
+[AMM] #Mistakes =  339.0 / 10000
+ 1398
+round= 1500  -- example= 4596  -- prediction= 7  -- #active experts= 1398
+round= 1600  -- example= 6872  -- prediction= 6  -- #active experts= 1341
+round= 1700  -- example= 8128  -- prediction= -1  -- #active experts= 1286
+round= 1800  -- example= 612  -- prediction= 8  -- #active experts= 1226
+round= 1900  -- example= 7273  -- prediction= 4  -- #active experts= 1205
+round= 2000  -- example= 9485  -- prediction= 7  -- #active experts= 1186
+round= 2100  -- example= 694  -- prediction= 8  -- #active experts= 1184
+round= 2200  -- example= 5713  -- prediction= 5  -- #active experts= 1171
+round= 2300  -- example= 4222  -- prediction= 8  -- #active experts= 1150
+round= 2400  -- example= 4833  -- prediction= -1  -- #active experts= 1119
+round= 2500  -- example= 8337  -- prediction= 3  -- #active experts= 1066
+round= 2600  -- example= 9621  -- prediction= 6  -- #active experts= 1066
+round= 2700  -- example= 502  -- prediction= 5  -- #active experts= 1066
+round= 2800  -- example= 6538  -- prediction= 3  -- #active experts= 887
+round= 2900  -- example= 6854  -- prediction= 0  -- #active experts= 887
+round= 3000  -- example= 8472  -- prediction= 2  -- #active experts= 885
+round= 3100  -- example= 7861  -- prediction= 0  -- #active experts= 776
+round= 3200  -- example= 4347  -- prediction= 8  -- #active experts= 660
+round= 3300  -- example= 2244  -- prediction= 9  -- #active experts= 645
+round= 3400  -- example= 5424  -- prediction= -1  -- #active experts= 645
+round= 3500  -- example= 9454  -- prediction= -1  -- #active experts= 645
+round= 3600  -- example= 953  -- prediction= -1  -- #active experts= 617
+round= 3700  -- example= 3563  -- prediction= 6  -- #active experts= 617
+round= 3800  -- example= 4712  -- prediction= 4  -- #active experts= 593
+round= 3900  -- example= 9331  -- prediction= 7  -- #active experts= 593
+round= 4000  -- example= 4193  -- prediction= -1  -- #active experts= 504
+round= 4100  -- example= 4355  -- prediction= -1  -- #active experts= 482
+round= 4200  -- example= 3440  -- prediction= 2  -- #active experts= 385
+round= 4300  -- example= 4096  -- prediction= 8  -- #active experts= 369
+round= 4400  -- example= 9292  -- prediction= 7  -- #active experts= 369
+round= 4500  -- example= 8083  -- prediction= 9  -- #active experts= 369
+round= 4600  -- example= 2521  -- prediction= 9  -- #active experts= 329
+round= 4700  -- example= 735  -- prediction= 4  -- #active experts= 329
+round= 4800  -- example= 1552  -- prediction= -1  -- #active experts= 329
+round= 4900  -- example= 3670  -- prediction= 9  -- #active experts= 280
+round= 5000  -- example= 2898  -- prediction= 8  -- #active experts= 169
+round= 5100  -- example= 8045  -- prediction= 5  -- #active experts= 169
+round= 5200  -- example= 461  -- prediction= 6  -- #active experts= 169
+round= 5300  -- example= 3844  -- prediction= 2  -- #active experts= 169
+round= 5400  -- example= 2173  -- prediction= 3  -- #active experts= 169
+round= 5500  -- example= 1376  -- prediction= 9  -- #active experts= 169
+round= 5600  -- example= 442  -- prediction= 9  -- #active experts= 150
+round= 5700  -- example= 2665  -- prediction= 1  -- #active experts= 150
+round= 5800  -- example= 7112  -- prediction= -1  -- #active experts= 140
+round= 5900  -- example= 5295  -- prediction= 0  -- #active experts= 120
+round= 6000  -- example= 8807  -- prediction= 6  -- #active experts= 120
+round= 6100  -- example= 4689  -- prediction= -1  -- #active experts= 120
+round= 6200  -- example= 1330  -- prediction= 2  -- #active experts= 120
+round= 6300  -- example= 3986  -- prediction= 7  -- #active experts= 120
+round= 6400  -- example= 2107  -- prediction= 3  -- #active experts= 120
+round= 6500  -- example= 309  -- prediction= -1  -- #active experts= 120
+round= 6600  -- example= 9934  -- prediction= 4  -- #active experts= 120
+round= 6700  -- example= 9921  -- prediction= 0  -- #active experts= 113
+round= 6800  -- example= 6572  -- prediction= 4  -- #active experts= 113
+round= 6900  -- example= 3544  -- prediction= 1  -- #active experts= 113
+round= 7000  -- example= 6362  -- prediction= 4  -- #active experts= 113
+round= 7100  -- example= 3726  -- prediction= -1  -- #active experts= 113
+round= 7200  -- example= 4186  -- prediction= 7  -- #active experts= 76
+round= 7300  -- example= 2083  -- prediction= -1  -- #active experts= 76
+round= 7400  -- example= 3330  -- prediction= 5  -- #active experts= 76
+round= 7500  -- example= 1048  -- prediction= 1  -- #active experts= 76
+round= 7600  -- example= 884  -- prediction= 9  -- #active experts= 76
+round= 7700  -- example= 365  -- prediction= 4  -- #active experts= 60
+round= 7800  -- example= 9213  -- prediction= 2  -- #active experts= 60
+round= 7900  -- example= 6419  -- prediction= -1  -- #active experts= 60
+round= 8000  -- example= 6191  -- prediction= 0  -- #active experts= 60
+round= 8100  -- example= 2064  -- prediction= 8  -- #active experts= 51
+round= 8200  -- example= 2136  -- prediction= -1  -- #active experts= 51
+round= 8300  -- example= 8933  -- prediction= -1  -- #active experts= 51
+round= 8400  -- example= 6925  -- prediction= 2  -- #active experts= 51
+round= 8500  -- example= 217  -- prediction= 9  -- #active experts= 51
+round= 8600  -- example= 6978  -- prediction= 4  -- #active experts= 51
+round= 8700  -- example= 6674  -- prediction= 5  -- #active experts= 51
+round= 8800  -- example= 955  -- prediction= 7  -- #active experts= 51
+round= 8900  -- example= 1962  -- prediction= 6  -- #active experts= 51
+#algo abstained =  1828 / 9000
+#algo mistakes =  403 / 9000
+#of experts with non-zero weights =  51 / 3000
+#of active experts =  51 / 3000
+[experts] #mistakes(min) =  142.0 / 9000
+[experts] #mistakes(max) =  1055.0 / 9000
+[experts] #abstained(min) =  0.0 / 9000
+[experts] #abstained(max) =  2592.0 / 9000
+[optimal experts] #mistakes =  142.0 / 9000
+[optimal experts] #abstained =  2584.0 / 9000
+Mistake Matched #Abenstions =  1339.0 / 9000
+Mistake Matched #Mistakes =  397.0 / 9000
+[AMM] #Abenstions =  1822.0 / 9000
+[AMM] #Mistakes =  276.0 / 9000
+{'500-r-0': [14, 159, 7.0, 128.0, 14.0, 88.0, 7.0, 129.0, 87, 87, 7.0, 51.0, 0.0, 129.0], '1000-r-0': [30, 316, 20.0, 278.0, 30.0, 196.0, 20.0, 280.0, 64, 64, 20.0, 116.0, 0.0, 280.0], '2000-r-0': [72, 541, 34.0, 596.0, 72.0, 378.0, 44.0, 536.0, 118, 118, 34.0, 241.0, 0.0, 597.0], '1500-r-0': [73, 343, 24.0, 425.0, 73.0, 197.0, 40.0, 342.0, 227, 227, 24.0, 179.0, 0.0, 429.0], '2500-r-0': [147, 444, 38.0, 725.0, 147.0, 269.0, 83.0, 443.0, 486, 486, 38.0, 302.0, 0.0, 726.0], '3500-r-0': [130, 773, 51.0, 974.0, 128.0, 573.0, 85.0, 764.0, 102, 102, 51.0, 402.0, 0.0, 986.0], '4000-r-0': [183, 752, 57.0, 1104.0, 182.0, 513.0, 118.0, 749.0, 261, 261, 57.0, 449.0, 0.0, 1114.0], '5000-r-0': [183, 1096, 82.0, 1391.0, 182.0, 870.0, 138.0, 1070.0, 13, 13, 82.0, 582.0, 0.0, 1404.0], '3000-r-0': [170, 575, 48.0, 887.0, 170.0, 358.0, 100.0, 574.0, 90, 90, 48.0, 368.0, 0.0, 888.0], '6500-r-0': [373, 1019, 107.0, 1828.0, 372.0, 706.0, 270.0, 1018.0, 164, 164, 107.0, 766.0, 0.0, 1834.0], '7000-r-0': [226, 1707, 116.0, 1973.0, 226.0, 1359.0, 163.0, 1697.0, 3, 3, 116.0, 813.0, 0.0, 1977.0], '7500-r-0': [481, 1043, 123.0, 2124.0, 481.0, 671.0, 351.0, 1038.0, 154, 154, 123.0, 876.0, 0.0, 2130.0], '8000-r-0': [349, 1620, 133.0, 2276.0, 349.0, 1197.0, 240.0, 1617.0, 92, 92, 133.0, 934.0, 0.0, 2283.0], '5500-r-0': [200, 1350, 95.0, 1611.0, 199.0, 1075.0, 138.0, 1350.0, 67, 67, 95.0, 682.0, 0.0, 1613.0], '8500-r-0': [322, 1921, 142.0, 2424.0, 319.0, 1468.0, 226.0, 1920.0, 32, 32, 142.0, 990.0, 0.0, 2432.0], '4500-r-0': [186, 923, 68.0, 1266.0, 186.0, 676.0, 124.0, 923.0, 114, 114, 68.0, 517.0, 0.0, 1267.0], '9500-r-0': [484, 1563, 159.0, 2712.0, 482.0, 1226.0, 378.0, 1562.0, 159, 159, 159.0, 1118.0, 0.0, 2723.0], '6000-r-0': [278, 1138, 97.0, 1716.0, 278.0, 870.0, 204.0, 1136.0, 332, 332, 97.0, 708.0, 0.0, 1717.0], '10000-r-0': [443, 1908, 162.0, 2881.0, 443.0, 1521.0, 339.0, 1890.0, 98, 98, 162.0, 1185.0, 0.0, 2892.0], '9000-r-0': [403, 1828, 142.0, 2584.0, 397.0, 1339.0, 276.0, 1822.0, 51, 51, 142.0, 1055.0, 0.0, 2592.0]}
+time taken =  1767.3945589065552  s
+
+Compiling results..
+
+		T= 500 , m_t= 7.0 , a_t= 31.0 , extra_a_t= 71.0 , extra_m_t= 7.0
+		T= 1000 , m_t= 10.0 , a_t= 38.0 , extra_a_t= 120.0 , extra_m_t= 10.0
+		T= 1500 , m_t= 49.0 , a_t= -82.0 , extra_a_t= 146.0 , extra_m_t= 33.0
+		T= 2000 , m_t= 38.0 , a_t= -55.0 , extra_a_t= 163.0 , extra_m_t= 28.0
+		T= 2500 , m_t= 109.0 , a_t= -281.0 , extra_a_t= 175.0 , extra_m_t= 64.0
+		T= 3000 , m_t= 122.0 , a_t= -312.0 , extra_a_t= 217.0 , extra_m_t= 70.0
+		T= 3500 , m_t= 79.0 , a_t= -201.0 , extra_a_t= 200.0 , extra_m_t= 45.0
+		T= 4000 , m_t= 126.0 , a_t= -352.0 , extra_a_t= 239.0 , extra_m_t= 65.0
+		T= 4500 , m_t= 118.0 , a_t= -343.0 , extra_a_t= 247.0 , extra_m_t= 62.0
+		T= 5000 , m_t= 101.0 , a_t= -295.0 , extra_a_t= 226.0 , extra_m_t= 45.0
+		T= 5500 , m_t= 105.0 , a_t= -261.0 , extra_a_t= 275.0 , extra_m_t= 62.0
+		T= 6000 , m_t= 181.0 , a_t= -578.0 , extra_a_t= 268.0 , extra_m_t= 74.0
+		T= 6500 , m_t= 266.0 , a_t= -809.0 , extra_a_t= 313.0 , extra_m_t= 103.0
+		T= 7000 , m_t= 110.0 , a_t= -266.0 , extra_a_t= 348.0 , extra_m_t= 63.0
+		T= 7500 , m_t= 358.0 , a_t= -1081.0 , extra_a_t= 372.0 , extra_m_t= 130.0
+		T= 8000 , m_t= 216.0 , a_t= -656.0 , extra_a_t= 423.0 , extra_m_t= 109.0
+		T= 8500 , m_t= 180.0 , a_t= -503.0 , extra_a_t= 453.0 , extra_m_t= 96.0
+		T= 9000 , m_t= 261.0 , a_t= -756.0 , extra_a_t= 489.0 , extra_m_t= 127.0
+		T= 9500 , m_t= 325.0 , a_t= -1149.0 , extra_a_t= 337.0 , extra_m_t= 106.0
+		T= 10000 , m_t= 281.0 , a_t= -973.0 , extra_a_t= 387.0 , extra_m_t= 104.0
