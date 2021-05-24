@@ -283,11 +283,11 @@ if __name__ == '__main__':
 
     start = time.time()
 
-    n_runs = 1 #5 #3 #20
+    n_runs = 20 #1 #5 #3 #20
     #Ts = [1500] #[500, 1000, 1500]
     #Ts = list( range(500, 10500, 500) )
-    Ps = [0.05, 0.5] #list( np.arange(0.05, 1.0, 0.05) )
-    T = 1000 #10000
+    Ps = list( np.arange(0.05, 1.0, 0.05) )
+    T = 10000 #10000
     print('T = ', T)
     print('Ps = ', Ps)
     print('n_runs = ', n_runs)
