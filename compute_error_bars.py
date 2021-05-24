@@ -88,9 +88,9 @@ old_Xs, old_Y1, old_Y2, old_err_Y1, old_err_Y2 = compute_error_bars(  list( rang
 
 fig = plt.figure()
 plt.errorbar(Xs, Y1, yerr=err_Y1, label='new_m_t')
-plt.errorbar(Xs, Y2, yerr=err_Y2, label='new_a_t')
+#plt.errorbar(Xs, Y2, yerr=err_Y2, label='new_a_t')
 plt.errorbar(old_Xs, old_Y1, yerr=old_err_Y1, label='old_m_t')
-plt.errorbar(old_Xs, old_Y2, yerr=old_err_Y2, label='old_a_t')
+#plt.errorbar(old_Xs, old_Y2, yerr=old_err_Y2, label='old_a_t')
 plt.legend(loc='lower right')
 
 plt.savefig( './plots/old_new_exp_together.png' )
