@@ -11,9 +11,31 @@ import tensorflow as tf
 from gas_train_base_learner import get_gas_dataset
 from gas_models import BaselineModel
 
-def eval_test( best_loss, Xtst, ytst, model, sess, saver, model_dir, global_step, args ):
+
+def get_predictions( Xtst, ytst, eval_batch_size, sess, model ):
+    num_eval_examples = len(ytst)
+    num_batches = int(math.ceil(num_eval_examples / eval_batch_size))                 
+    tst_pred = np.empty_like(ytst)
+    for ibatch in range(num_batches):
+        bstart = ibatch * eval_batch_size
+        bend = min(bstart + eval_batch_size, num_eval_examples)
+
+        x_batch = Xtst[bstart:bend, :]
+        y_batch_aux = ytst[bstart:bend]
+        
+        dict_nat = {model.x_input: x_batch, model.y_input_aux: y_batch_aux, model.is_training:False}
+        cur_aux_acc, cur_xent_aux, cur_pred = sess.run([
+            model.accuracy_aux,
+            model.xent_aux, model.predictions_aux], feed_dict = dict_nat)
+
+        tst_pred[bstart:bend] = cur_pred
+    return tst_pred
+
+
+def eval_test( best_loss, Xtst, ytst, model, sess, saver, model_dir, global_step, args, Xtrn, ytrn ):
     num_eval_examples = len(ytst)
     assert( Xtst.shape[0] == num_eval_examples )
+    #tst_pred = np.empty_like(ytst)
 
     eval_batch_size = args.eval_batch_size
     num_batches = int(math.ceil(num_eval_examples / eval_batch_size))                 
@@ -31,6 +53,8 @@ def eval_test( best_loss, Xtst, ytst, model, sess, saver, model_dir, global_step
             model.accuracy_aux,
             model.xent_aux], feed_dict = dict_nat)
 
+        #tst_pred[bstart:bend] = cur_pred
+
         aux_acc += cur_aux_acc
         loss += cur_xent_aux
 
@@ -42,10 +66,25 @@ def eval_test( best_loss, Xtst, ytst, model, sess, saver, model_dir, global_step
         best_loss = loss
         saver.save(sess, os.path.join(model_dir, 'checkpoint'), global_step=global_step)
 
+        tst_pred = get_predictions( Xtst, ytst, eval_batch_size, sess, model )   
+        print('  ---     acc = ', np.mean( tst_pred == ytst ))
+
+        fp_name = os.path.join( args.data, 'tst_pred_wk_' + str(args.weak_baseline) + '.npy' )
+        print('\n\nSaving the new predictions at..', fp_name)
+        np.save( fp_name, tst_pred )
+
+        trn_pred = get_predictions( Xtrn, ytrn, eval_batch_size, sess, model )   
+        print('  ---     trn acc = ', np.mean( trn_pred == ytrn ))
+
+        fp_name = os.path.join( args.data, 'trn_pred_wk_' + str(args.weak_baseline) + '.npy' )
+        print('\n\nSaving the new predictions at..', fp_name)
+        np.save( fp_name, trn_pred )
+
+
     print('   test==> aux-accuracy={:.2f}%, loss={:.4}, best-loss={:.4} '.
           format(100 * aux_acc, loss, best_loss))
     print('  Finished Evaluating adversarial test performance at ({})'.format(datetime.now()))
-    return best_loss
+    return best_loss #, tst_pred, aux_acc
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Online LWA Codebase')
@@ -117,6 +156,6 @@ if __name__ == '__main__':
                 sess.run(train_step, feed_dict=nat_dict)      
 
             prev_loss = best_loss
-            best_loss = eval_test(best_loss, tst_X, tst_y, model, sess, saver, model_dir, global_step, args)
+            best_loss = eval_test(best_loss, tst_X, tst_y, model, sess, saver, model_dir, global_step, args, trn_X, trn_y)
 
 
