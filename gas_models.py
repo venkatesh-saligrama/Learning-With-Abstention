@@ -17,7 +17,7 @@ class FullFeatureModel( Model ):
 
         self.f1 = Dense( 64, activation=tf.nn.relu, input_shape=(n_features, ) )
         self.bn1 = BatchNormalization()
-        self.f2 = Dense( 128, activation=tf.nn.relu )
+        self.f2 = Dense( 16, activation=tf.nn.relu )
         self.bn2 = BatchNormalization()
         self.clf = Dense( n_classes )
 
@@ -50,11 +50,12 @@ if __name__ == '__main__':
     n_features = trn_X.shape[-1]
     n_classes = len( np.unique(trn_y) )
 
-    #model = FullFeatureModel( n_features, n_classes )
     model = FullFeatureModel( n_features, n_classes )
     loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
 
-    model.compile(optimizer='adam', loss=loss_fn, metrics=['accuracy'])
+    #optim = tf.keras.optimizers.SGD( learning_rate=0.01, momentum=0.9, nesterov=True )
+    optim = tf.keras.optimizers.Adam()
+    model.compile(optimizer=optim, loss=loss_fn, metrics=['accuracy'])
     model.fit( trn_X, trn_y, epochs=10 )
 
     test_loss, test_acc = model.evaluate(tst_X,  tst_y, verbose=2)
