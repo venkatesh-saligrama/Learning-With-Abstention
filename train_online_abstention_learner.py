@@ -42,7 +42,8 @@ config = config.get_config()
 classes = list(range(0,10))
 mus = np.linspace(0.1,3,30)
 #thresholds = [0.1, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.88, 0.9];
-thresholds = np.linspace(0.05,0.95,100)
+#thresholds = np.linspace(0.05,0.95,100)
+thresholds = np.linspace(0.8,0.95,20)
 print('Config = ', config)
 print('Mus = ', mus)
 
@@ -109,12 +110,23 @@ def compute_error_bars( Ts, runs, return_stats, label='exp-1-' ):
 
     fig = plt.figure()
     plt.errorbar(Xs, Y1, yerr=err_Y1, label='m_t')
-    plt.errorbar(Xs, Y2, yerr=err_Y2, label='a_t')
-    plt.errorbar(Xs, Y3, yerr=err_Y3, label='extra_a_t')
-    plt.errorbar(Xs, Y4, yerr=err_Y4, label='extra_m_t')
+    #plt.errorbar(Xs, Y2, yerr=err_Y2, label='a_t')
+    #plt.errorbar(Xs, Y3, yerr=err_Y3, label='extra_a_t')
+    #plt.errorbar(Xs, Y4, yerr=err_Y4, label='extra_m_t')
     plt.legend(loc='lower right')
 
-    plt.savefig( './plots/' + label + '.png' )
+    plt.savefig( './plots/' + label + '-mistakes.png' )
+
+
+    fig = plt.figure()
+    #plt.errorbar(Xs, Y1, yerr=err_Y1, label='m_t')
+    plt.errorbar(Xs, Y2, yerr=err_Y2, label='a_t')
+    #plt.errorbar(Xs, Y3, yerr=err_Y3, label='extra_a_t')
+    #plt.errorbar(Xs, Y4, yerr=err_Y4, label='extra_m_t')
+    plt.legend(loc='lower right')
+
+    plt.savefig( './plots/' + label + '-abstentions.png' )
+
 
 
 
@@ -160,7 +172,7 @@ def run_one_experiment( process_id, T, val_Y, test_Y, _predictions,  _test_predi
     #p = math.sqrt(2*math.log(T)/T) # 0.02 #0.3     # bernoulli coin bias
     p = math.sqrt((math.log(T) * math.log(n_experts))/T)
     eta = p #0.01  # learning rate
-    theta = 0.01
+    theta = 0.02 #0.01
 
     active_experts = np.arange(n_experts)
     assert(len(active_experts) == n_experts)
@@ -357,10 +369,11 @@ if __name__ == '__main__':
 
     start = time.time()
 
-    n_runs = 20 #1 #5 #3 #20
-    #Ts = [1500] #[500, 1000, 1500]
+    n_runs = 100 #100 #20 #1 #5 #3 #20
+    #Ts = [500, 1500] #[500, 1000, 1500]
     #Ts = list( range(500, 10500, 500) )
-    Ts = list( range(500, 5500, 500) )
+    #Ts = list( range(500, 5500, 500) )
+    Ts = list( range(250, 2500+250, 250) )
     print('Ts = ', Ts)
     print('n_runs = ', n_runs)
     runs = list(range(n_runs))
@@ -394,7 +407,7 @@ if __name__ == '__main__':
     print( return_stats )
     print('time taken = ', time.time() - start, ' s')
 
-    with open('runs-varying-Ts-20.pickle', 'wb') as handle:
+    with open('runs-varying-Ts-20' + str(time.time()) + '.pickle', 'wb') as handle:
         pickle.dump(return_stats, handle, protocol=pickle.HIGHEST_PROTOCOL) 
 
     '''

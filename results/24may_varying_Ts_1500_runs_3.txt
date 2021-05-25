@@ -1,0 +1,149 @@
+Config =  {'_comment': '=====ADVERSARIAL EXAMPLES CONFIGURATION=====', 'model_dir': '/home/anilkag/code/LWA/Post-AISTATS-Experiments/models/cifar_multi_class_lwa_64dim_lambda_opt_minus_one_mu', 'tf_random_seed': 451760341, 'np_random_seed': 216105420, 'random_seed': 4557077, 'max_num_training_steps': 100000, 'num_output_steps': 1000, 'num_summary_steps': 1000, 'num_checkpoint_steps': 1000, 'training_batch_size': 200, 'num_eval_examples': 10000, 'eval_batch_size': 200, 'eval_checkpoint_steps': 3000, 'eval_on_cpu': True, 'epsilon': 0.3, 'k': 40, 'a': 0.01, 'random_start': True, 'loss_func': 'xent', 'store_adv_path': 'attack.npy'}
+Mus =  [0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.  1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8
+ 1.9 2.  2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3. ]
+args =  Namespace(data='/home/anilkag/code/github/LearningWithAbstention/data/')
+Ts =  [500]
+n_runs =  3
+N data points =  10000
+W_t shape =  (3000,)
+[3431 6017 7875 ...  820 6244 9284]
+round= 0  -- example= 3431  -- prediction= 4  -- #active experts= 3000
+round= 100  -- example= 2684  -- prediction= 3  -- #active experts= 3000
+round= 200  -- example= 696  -- prediction= 8  -- #active experts= 1252
+round= 300  -- example= 1478  -- prediction= 7  -- #active experts= 489
+round= 400  -- example= 9071  -- prediction= 7  -- #active experts= 136
+#algo abstained =  179 / 500
+#algo mistakes =  32 / 500
+#of experts with non-zero weights =  55 / 3000
+#of active experts =  55 / 3000
+[experts] #mistakes(min) =  11.0 / 500
+[experts] #mistakes(max) =  67.0 / 500
+[experts] #abstained(min) =  0.0 / 500
+[experts] #abstained(max) =  148.0 / 500
+[optimal experts] #mistakes =  11.0 / 500
+[optimal experts] #abstained =  147.0 / 500
+Mistake Matched #Abenstions =  59.0 / 500
+Mistake Matched #Mistakes =  32.0 / 500
+[AMM] #Abenstions =  148.0 / 500
+[AMM] #Mistakes =  11.0 / 500
+N data points =  10000
+W_t shape =  (3000,)
+[3431 6017 7875 ...  820 6244 9284]
+round= 0  -- example= 3431  -- prediction= 4  -- #active experts= 3000
+round= 100  -- example= 2684  -- prediction= -1  -- #active experts= 1313
+round= 200  -- example= 696  -- prediction= 8  -- #active experts= 136
+round= 300  -- example= 1478  -- prediction= 7  -- #active experts= 136
+round= 400  -- example= 9071  -- prediction= -1  -- #active experts= 21
+active_experts set is empty... exiting the routine..
+#algo abstained =  222 / 500
+#algo mistakes =  17 / 500
+#of experts with non-zero weights =  0 / 3000
+#of active experts =  0 / 3000
+[experts] #mistakes(min) =  11.0 / 500
+[experts] #mistakes(max) =  67.0 / 500
+[experts] #abstained(min) =  0.0 / 500
+[experts] #abstained(max) =  145.0 / 500
+[optimal experts] #mistakes =  11.0 / 500
+[optimal experts] #abstained =  144.0 / 500
+Mistake Matched #Abenstions =  121.0 / 500
+Mistake Matched #Mistakes =  17.0 / 500
+[AMM] #Abenstions =  145.0 / 500
+[AMM] #Mistakes =  11.0 / 500
+N data points =  10000
+W_t shape =  (3000,)
+[8126 6177 7252 ... 2222 1150 1265]
+round= 0  -- example= 8126  -- prediction= 4  -- #active experts= 3000
+round= 100  -- example= 2345  -- prediction= 1  -- #active experts= 630
+round= 200  -- example= 9352  -- prediction= -1  -- #active experts= 538
+round= 300  -- example= 1038  -- prediction= 2  -- #active experts= 516
+round= 400  -- example= 8049  -- prediction= -1  -- #active experts= 480
+#algo abstained =  212 / 500
+#algo mistakes =  21 / 500
+#of experts with non-zero weights =  476 / 3000
+#of active experts =  476 / 3000
+[experts] #mistakes(min) =  6.0 / 500
+[experts] #mistakes(max) =  65.0 / 500
+[experts] #abstained(min) =  0.0 / 500
+[experts] #abstained(max) =  161.0 / 500
+[optimal experts] #mistakes =  6.0 / 500
+[optimal experts] #abstained =  158.0 / 500
+Mistake Matched #Abenstions =  92.0 / 500
+Mistake Matched #Mistakes =  21.0 / 500
+[AMM] #Abenstions =  161.0 / 500
+[AMM] #Mistakes =  6.0 / 500
+N data points =  10000
+W_t shape =  (3000,)
+[3431 6017 7875 ...  820 6244 9284]
+round= 0  -- example= 3431  -- prediction= 4  -- #active experts= 3000
+round= 100  -- example= 2684  -- prediction= -1  -- #active experts= 539
+round= 200  -- example= 696  -- prediction= 8  -- #active experts= 539
+round= 300  -- example= 1478  -- prediction= -1  -- #active experts= 30
+active_experts set is empty... exiting the routine..
+#algo abstained =  130 / 500
+#algo mistakes =  13 / 500
+#of experts with non-zero weights =  0 / 3000
+#of active experts =  0 / 3000
+[experts] #mistakes(min) =  5.0 / 500
+[experts] #mistakes(max) =  41.0 / 500
+[experts] #abstained(min) =  0.0 / 500
+[experts] #abstained(max) =  90.0 / 500
+[optimal experts] #mistakes =  5.0 / 500
+[optimal experts] #abstained =  89.0 / 500
+Mistake Matched #Abenstions =  54.0 / 500
+Mistake Matched #Mistakes =  13.0 / 500
+[AMM] #Abenstions =  90.0 / 500
+[AMM] #Mistakes =  5.0 / 500
+N data points =  10000
+W_t shape =  (3000,)
+[3693 7965 8232 ... 7994 1692 7873]
+round= 0  -- example= 3693  -- prediction= -1  -- #active experts= 3000
+round= 100  -- example= 422  -- prediction= 8  -- #active experts= 34
+round= 200  -- example= 7770  -- prediction= 9  -- #active experts= 34
+round= 300  -- example= 2292  -- prediction= 5  -- #active experts= 34
+active_experts set is empty... exiting the routine..
+#algo abstained =  156 / 500
+#algo mistakes =  9 / 500
+#of experts with non-zero weights =  0 / 3000
+#of active experts =  0 / 3000
+[experts] #mistakes(min) =  12.0 / 500
+[experts] #mistakes(max) =  47.0 / 500
+[experts] #abstained(min) =  0.0 / 500
+[experts] #abstained(max) =  93.0 / 500
+[optimal experts] #mistakes =  12.0 / 500
+[optimal experts] #abstained =  87.0 / 500
+Mistake Matched #Abenstions =  500 / 500
+Mistake Matched #Mistakes =  500 / 500
+[AMM] #Abenstions =  89.0 / 500
+[AMM] #Mistakes =  12.0 / 500
+N data points =  10000
+W_t shape =  (3000,)
+[1350 2305 7318 ... 9929  639 2428]
+round= 0  -- example= 1350  -- prediction= 4  -- #active experts= 3000
+round= 100  -- example= 1775  -- prediction= 3  -- #active experts= 2201
+round= 200  -- example= 2202  -- prediction= 9  -- #active experts= 747
+round= 300  -- example= 2057  -- prediction= 5  -- #active experts= 79
+round= 400  -- example= 7246  -- prediction= -1  -- #active experts= 64
+#algo abstained =  223 / 500
+#algo mistakes =  19 / 500
+#of experts with non-zero weights =  37 / 3000
+#of active experts =  37 / 3000
+[experts] #mistakes(min) =  13.0 / 500
+[experts] #mistakes(max) =  60.0 / 500
+[experts] #abstained(min) =  0.0 / 500
+[experts] #abstained(max) =  147.0 / 500
+[optimal experts] #mistakes =  13.0 / 500
+[optimal experts] #abstained =  133.0 / 500
+Mistake Matched #Abenstions =  94.0 / 500
+Mistake Matched #Mistakes =  19.0 / 500
+[AMM] #Abenstions =  134.0 / 500
+[AMM] #Mistakes =  13.0 / 500
+{'500-r-2': [32, 179, 11.0, 147.0, 32.0, 59.0, 11.0, 148.0, 55, 55, 11.0, 67.0, 0.0, 148.0], '500-r-1': [21, 212, 6.0, 158.0, 21.0, 92.0, 6.0, 161.0, 476, 476, 6.0, 65.0, 0.0, 161.0], '500-r-0': [19, 223, 13.0, 133.0, 19.0, 94.0, 13.0, 134.0, 37, 37, 13.0, 60.0, 0.0, 147.0]}
+time taken =  102.14792203903198  s
+
+Compiling results..
+
+		T= 500 , m_t= 14.0 , a_t= 58.666666666666664 , extra_a_t= 123.0 , extra_m_t= 42.0
+
+Compiling results..
+
+		T= 500 , m_t= 14.0 ± 6.164414002968976 , a_t= 58.666666666666664 ± 23.907228102721476 , extra_a_t= 123.0 ± 4.242640687119285 , extra_m_t= 14.0 ± 6.164414002968976
