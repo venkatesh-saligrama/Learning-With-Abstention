@@ -15,11 +15,13 @@ class FullFeatureModel( Model ):
     def __init__(self, n_features, n_classes ):
         super(FullFeatureModel, self).__init__()
 
-        self.f1 = Dense( 64, activation=tf.nn.relu, input_shape=(n_features, ) )
+        l2_reg = tf.keras.regularizers.l2( l=0.01 )
+
+        self.f1 = Dense( 64, activation=tf.nn.relu, input_shape=(n_features,), kernel_regularizer=l2_reg )
         self.bn1 = BatchNormalization()
-        self.f2 = Dense( 16, activation=tf.nn.relu )
+        self.f2 = Dense( 16, activation=tf.nn.relu, kernel_regularizer=l2_reg )
         self.bn2 = BatchNormalization()
-        self.clf = Dense( n_classes )
+        self.clf = Dense( n_classes, kernel_regularizer=l2_reg )
 
     def call(self, x):
         x = self.f1(x)
