@@ -31,15 +31,7 @@ def get_gas_dataset( data_path ):
     print('tstn_y', tst_y.shape)
     print('n_unique(y) ', np.unique( tst_y ))
 
-    #clf = svm.SVC()
-    #clf = svm.LinearSVC(C=20.)
-    #clf = svm.LinearSVC( max_iter=10000 )
-    #clf = make_pipeline( StandardScaler(), svm.LinearSVC(C=100., random_state=0) )
-    clf = make_pipeline( MinMaxScaler(), svm.LinearSVC(C=100., random_state=0) )
-
-    clf.fit( trn_X, trn_y )
-    print('Train Accuracy = ',  clf.score( trn_X, trn_y ) )
-    print('Test Accuracy = ',  clf.score( tst_X, tst_y ) )
+    return trn_X, trn_y, tst_X, tst_y
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Online LWA Codebase')
@@ -47,4 +39,16 @@ if __name__ == '__main__':
     args = parser.parse_args()
     print('args = ', args)
 
-    get_gas_dataset( args.data )
+    trn_X, trn_y, tst_X, tst_y = get_gas_dataset( args.data )
+
+    #clf = svm.SVC()
+    #clf = svm.LinearSVC(C=20.)
+    #clf = svm.LinearSVC( max_iter=10000 )
+    #clf = make_pipeline( StandardScaler(), svm.LinearSVC(C=100., random_state=0) )
+
+    clf = make_pipeline( MinMaxScaler(), svm.LinearSVC(C=100., random_state=0) )
+
+    clf.fit( trn_X, trn_y )
+    print('Train Accuracy = ',  clf.score( trn_X, trn_y ) )
+    print('Test Accuracy = ',  clf.score( tst_X, tst_y ) ) 
+
