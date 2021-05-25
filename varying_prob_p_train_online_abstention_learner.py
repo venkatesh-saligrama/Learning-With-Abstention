@@ -26,6 +26,7 @@ import json
 import shutil
 from timeit import default_timer as timer
 
+import matplotlib.pyplot as plt
 
 import multiprocessing
 import numpy as np
@@ -41,9 +42,133 @@ config = config.get_config()
 classes = list(range(0,10))
 mus = np.linspace(0.1,3,30)
 #thresholds = [0.1, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.88, 0.9];
-thresholds = np.linspace(0.05,0.95,100)
+#thresholds = np.linspace(0.05,0.95,100)
+thresholds = np.linspace(0.8,0.95,20)
 print('Config = ', config)
 print('Mus = ', mus)
+
+def compute_error_bars( T, Ps, runs, return_stats, label='exp-1-' ):
+
+    Xs = []
+    Y1, Y2, Y3, Y4 = [], [], [], []
+    err_Y1, err_Y2, err_Y3, err_Y4 = [], [], [], []
+    print('\nCompiling results..\n')
+
+    for p in Ps:
+    #for T in Ts:
+        Xs.append(p)
+
+        #m_t, a_t, extra_a_t, extra_m_t, valid_runs = 0, 0, 0, 0, 0
+        #for process_id in runs:
+
+        m_t, a_t, extra_a_t, extra_m_t, valid_runs = 0, 0, 0, 0, 0
+        A_mt, A_at, A_ex_at, A_ex_mt = [], [], [], []
+        for process_id in runs:
+           key = str(T) + '-p-' + str(p) + '-r-' + str(process_id)
+           #key = str(T) + '-r-' + str(process_id)
+           if key in return_stats:
+               valid_runs += 1
+               stats = return_stats[key]
+
+               algo_error, algo_abstained = stats[0], stats[1]
+               optimal_mistakes, optimal_abstained = stats[2], stats[3]
+               mma_mis, mistake_matched_abs = stats[4], stats[5]
+               amm_mis, amm_abs = stats[6], stats[7]
+
+               m_t += ( algo_error - optimal_mistakes ) 
+               a_t += ( algo_abstained - optimal_abstained )
+               extra_a_t += ( algo_abstained - mistake_matched_abs )
+               extra_m_t += ( algo_error - amm_mis )
+
+
+               A_mt.append( algo_error - optimal_mistakes )
+               A_at.append( algo_abstained - optimal_abstained )
+               A_ex_at.append( algo_abstained - mistake_matched_abs )
+               A_ex_mt.append( algo_error - amm_mis )
+
+        m_t /= valid_runs
+        a_t /= valid_runs
+        extra_a_t /= valid_runs
+        extra_m_t /= valid_runs
+
+        Y1.append(m_t)
+        Y2.append(a_t)
+        Y3.append(extra_a_t)
+        Y4.append(extra_m_t)
+        
+        std_mt = np.std( A_mt )
+        std_at = np.std( A_at )
+        std_ex_at = np.std( A_ex_at )
+        std_ex_mt = np.std( A_ex_mt )
+
+        err_Y1.append( std_mt )
+        err_Y2.append( std_at )
+        err_Y3.append( std_ex_at)
+        err_Y4.append( std_ex_mt)
+
+        pm = u"\u00B1"
+        print('\t\tP=', p, ', m_t=', m_t, pm, std_mt, 
+                           ', a_t=', a_t, pm, std_at,
+                           ', extra_a_t=', extra_a_t, pm, std_ex_at,
+                           ', extra_m_t=', extra_m_t, pm, std_ex_mt)
+
+
+    fig = plt.figure()
+    plt.errorbar(Xs, Y1, yerr=err_Y1, label='m_t')
+    #plt.errorbar(Xs, Y2, yerr=err_Y2, label='a_t')
+    #plt.errorbar(Xs, Y3, yerr=err_Y3, label='extra_a_t')
+    #plt.errorbar(Xs, Y4, yerr=err_Y4, label='extra_m_t')
+    plt.legend(loc='lower right')
+
+    plt.savefig( './plots/' + label + '-mistakes.png' )
+
+
+    fig = plt.figure()
+    #plt.errorbar(Xs, Y1, yerr=err_Y1, label='m_t')
+    plt.errorbar(Xs, Y2, yerr=err_Y2, label='a_t')
+    #plt.errorbar(Xs, Y3, yerr=err_Y3, label='extra_a_t')
+    #plt.errorbar(Xs, Y4, yerr=err_Y4, label='extra_m_t')
+    plt.legend(loc='lower right')
+
+    plt.savefig( './plots/' + label + '-abstentions.png' )
+
+    print('at = ', Y2)
+    print('mt = ', Y1)
+
+    #ax = np.log( a_t ) / np.log(T)
+    b_t = np.array( Y2 )
+    b_t[ b_t <= 0 ] = 1.0
+
+    c_t = np.array( Y1 )
+    c_t[ c_t <= 0 ] = 1.0
+
+    print('ct = ', c_t)
+    print('bt = ', b_t)
+
+    ax = np.log( b_t ) / np.log(T)
+    ay = np.log( c_t ) / np.log(T)
+
+    print('ax = ', ax)
+    print('ay = ', ay)
+
+    #lx = np.linspace(0., 1., 0.1)
+    lx = np.arange(0.0, 1.0, 0.1) 
+    ly = 1. - lx
+
+    fig = plt.figure()
+    plt.plot( ax, ay, 'o', color='black',  label='ln a_t/m_t' )
+    plt.plot( lx, ly, label='x+y=1' )
+    #plt.errorbar(Xs, Y1, yerr=err_Y1, label='m_t')
+    #plt.errorbar(Xs, Y2, yerr=err_Y2, label='a_t')
+    #plt.errorbar(Xs, Y3, yerr=err_Y3, label='extra_a_t')
+    #plt.errorbar(Xs, Y4, yerr=err_Y4, label='extra_m_t')
+    plt.legend(loc='upper right')
+
+    plt.savefig( './plots/' + label + '-rate.png' )
+
+
+
+
 
 def bernoulli_flip(p):
     return True if random.random() < p else False
@@ -77,7 +202,7 @@ def run_one_experiment( process_id, T, val_Y, test_Y, _predictions,  _test_predi
     #T = len(test_Y) #10000     # number of rounds
     #p = math.sqrt(2*math.log(T)/T) # 0.02 #0.3     # bernoulli coin bias
     eta = p #0.01  # learning rate
-    theta = 0.01
+    theta = 0.015
 
     mu_t_pairs = []
     V_t = []            # All possible experts (mus \times thresholds)
@@ -283,11 +408,11 @@ if __name__ == '__main__':
 
     start = time.time()
 
-    n_runs = 20 #1 #5 #3 #20
+    n_runs = 100 #20 #1 #5 #3 #20
     #Ts = [1500] #[500, 1000, 1500]
     #Ts = list( range(500, 10500, 500) )
     Ps = list( np.arange(0.05, 1.0, 0.05) )
-    T = 10000 #10000
+    T = 5000 #1000 #5000 #10000 #10000
     print('T = ', T)
     print('Ps = ', Ps)
     print('n_runs = ', n_runs)
@@ -314,7 +439,7 @@ if __name__ == '__main__':
     print( return_stats )
     print('time taken = ', time.time() - start, ' s')
 
-    with open('runs-varying-Ps-20.pickle', 'wb') as handle:
+    with open('runs-varying-Ps-20' + str(time.time()) + '.pickle', 'wb') as handle:
         pickle.dump(return_stats, handle, protocol=pickle.HIGHEST_PROTOCOL) 
 
     '''
@@ -347,3 +472,4 @@ if __name__ == '__main__':
         extra_a_t /= valid_runs
         print('\t\tP=', p, ', m_t=', m_t, ', a_t=', a_t, ', extra_a_t=', extra_a_t, ', extra_m_t=', extra_m_t)
 
+    compute_error_bars( T, Ps, runs,  return_stats, label='varying-Ps-theta-0.015-T-5K-' + str(time.time()) )  
