@@ -170,7 +170,8 @@ def run_one_experiment( process_id, T, val_Y, test_Y, _predictions,  _test_predi
 
     #T = len(test_Y) #10000     # number of rounds
     #p = math.sqrt(2*math.log(T)/T) # 0.02 #0.3     # bernoulli coin bias
-    p = math.sqrt((math.log(T) * math.log(n_experts))/T)
+    #p = math.sqrt((math.log(T) * math.log(n_experts))/T)
+    p = math.sqrt(1./T)
     eta = p #0.01  # learning rate
     theta = 0.015 #0.02 #0.01
 
@@ -371,7 +372,8 @@ if __name__ == '__main__':
 
     n_runs = 100 #100 #20 #1 #5 #3 #20
     #Ts = [500, 1500] #[500, 1000, 1500]
-    Ts = list( range(500, 10500, 500) )
+    #Ts = list( range(500, 10500, 500) )
+    Ts = list( range(500, 5500, 500) )
     #Ts = list( range(500, 5500, 500) )
     #Ts = list( range(250, 2500+250, 250) )
     print('Ts = ', Ts)

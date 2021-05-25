@@ -49,6 +49,7 @@ def eval_test( best_loss, Xtst, ytst, model, sess, saver, model_dir, global_step
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Online LWA Codebase')
+    parser.add_argument('-wk', '--weak_baseline', default=False, action='store_true')
     parser.add_argument('-d', '--data', default='./data/GAS/', type=str, metavar='DIR', help='path to dataset')
     parser.add_argument('-md', '--model_dir', default='./models/GAS-baseline/', type=str, help='store trained models here')
     parser.add_argument('-b', '--batch_size', default=32, type=int, help='batch size')
@@ -60,8 +61,14 @@ if __name__ == '__main__':
     print('args = ', args)
 
     trn_X, trn_y, tst_X, tst_y = get_gas_dataset( args.data )
+    if args.weak_baseline:
+        n_features = trn_X.shape[-1]
+        trn_X = trn_X[:, :n_features//2]
+        tst_X = tst_X[:, :n_features//2]
     n_features = trn_X.shape[-1]
     n_classes = len( np.unique(trn_y) )
+    print('n_features = ', n_features)
+    print('n_classes = ', n_classes)
 
     tf.reset_default_graph()
     tf.set_random_seed(1234)
@@ -77,6 +84,9 @@ if __name__ == '__main__':
     saver = tf.train.Saver(max_to_keep=3)
 
     model_dir = args.model_dir
+    if args.weak_baseline:
+        model_dir = os.path.join( model_dir, '-weak' )
+
     print('\n\nmodel directory = ', model_dir)
     if not os.path.exists(model_dir): os.makedirs(model_dir)
 
