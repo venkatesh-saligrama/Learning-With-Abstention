@@ -325,12 +325,15 @@ if __name__ == '__main__':
     #thresholds =np.linspace(0, 1, num=100)
     print(thresholds)
 
-    alpha= 0.9999 #0.99
+    alpha= 0.99 #0.9999 #0.99
     desired_errors = [0.005, 0.01, 0.02, 0.10];
+
+    lr = 1e-2 #1e-3
+    max_lr = 1e-4 #1e-5
 
     #train_learning_with_abstention(trn_X, trn_y, tst_X, tst_y, tst_X, tst_y, lambdas = mus, threshold = 0.5, max_num_training_steps=args.epochs,
     train_learning_with_abstention(trn_X, sc_trn_y, tst_X, sc_tst_y, tst_X, sc_tst_y, lambdas = mus, threshold = 0.5, max_num_training_steps=args.epochs,
-            lr=1e-3, max_lr=1e-5, warm_start=False, alpha=alpha, args=args)
+            lr=lr, max_lr=max_lr, warm_start=False, alpha=alpha, args=args)
 
     #x = post_processing_mix_match_one_sided_models_same_lambda_th(lambdas = mus, thresholds = thresholds, 
     #                                                          desired_errors = desired_errors, alpha=alpha)

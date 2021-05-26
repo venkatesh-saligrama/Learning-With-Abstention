@@ -109,8 +109,8 @@ class AbstentionModel( object ):
         y_input = tf.reshape( y_input, [-1] )
         #print('y_input ', y_input)
     
-        n_plus  = tf.reduce_sum( y_input )
-        n_minus = tf.reduce_sum( 1-y_input )
+        n_plus  = 1.+tf.reduce_sum( y_input )
+        n_minus = 1.+tf.reduce_sum( 1-y_input )
         n_total = n_plus + n_minus
     
         #print('y_input * tf.math.log(self.y_out + tol) = ', y_input * tf.math.log(self.y_out + tol))
