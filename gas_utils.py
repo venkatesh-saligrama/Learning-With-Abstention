@@ -4,6 +4,7 @@ from datetime import datetime
 import math
 import argparse
 import numpy as np
+from copy import deepcopy
 
 import tensorflow as tf
 from gas_train_base_learner import get_gas_dataset
@@ -181,7 +182,7 @@ def post_processing_mix_match_one_sided_models_same_lambda_th(val_X, val_Y, test
     #- Do this randomized start couple of times
     
     #thresholds = np.unique(_predictions[classes[0]][lambdas[-1]])[::10]
-    thresholds = np.unique(_predictions[classes[0]][lambdas[-1]]) #[::10]
+    #thresholds = np.unique(_predictions[classes[0]][lambdas[-1]]) #[::10]
     print('thresholds = ', thresholds)
     
     n_lambdas    = len(lambdas)
@@ -205,9 +206,9 @@ def post_processing_mix_match_one_sided_models_same_lambda_th(val_X, val_Y, test
             
                 cur_error, cur_coverage = get_coverage_error_for_given_parameters_pred_max( _predictions, lambdas, thresholds, cur_params, y )
                 #cur_error, cur_coverage = get_coverage_error_for_given_parameters( _predictions, lambdas, thresholds, cur_params, y )
-                print('cur_error=', cur_error, ' --> cur_coverage=', cur_coverage)
+                #print('cur_error=', cur_error, ' --> cur_coverage=', cur_coverage)
                 if (cur_error <= error) and (cur_coverage > best_coverage):
-                    #print('cur_error=', cur_error, ' --> better  cur_coverage=', cur_coverage, ' parmas=', cur_params)
+                    print('cur_error=', cur_error, ' --> better  cur_coverage=', cur_coverage, ' parmas=', cur_params)
                     best_coverage, best_params = cur_coverage, deepcopy(cur_params)
         
         if best_params is not None:

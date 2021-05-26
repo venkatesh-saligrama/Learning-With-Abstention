@@ -2,6 +2,7 @@
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = "3"
 
+from copy import deepcopy
 import argparse
 import numpy as np
 
@@ -164,7 +165,7 @@ class AbstentionModel( object ):
       prod_non_batch_dimensions *= int(x.shape[ii + 1])
     x = tf.reshape(x, [tf.shape(x)[0], -1])
     w = tf.get_variable('ffDW', [prod_non_batch_dimensions, out_dim],
-        self.data_type, initializer=tf.uniform_unit_scaling_initializer(factor=1.0))
+        self.data_type, initializer=tf.truncated_normal_initializer(stddev=0.01))
     b = tf.get_variable('biases', [out_dim], self.data_type, initializer=tf.constant_initializer())
     return tf.nn.xw_plus_b(x, w, b), w, b
 
@@ -231,9 +232,7 @@ class BaselineModel( object ):
       prod_non_batch_dimensions *= int(x.shape[ii + 1])
     x = tf.reshape(x, [tf.shape(x)[0], -1])
     w = tf.get_variable('ffDW', [prod_non_batch_dimensions, out_dim],
-        self.data_type, #initializer=tf.uniform_unit_scaling_initializer(factor=1.0))
-        initializer=tf.truncated_normal_initializer(stddev=0.01))
-        #initializer=tf.truncated_normal(stddev=0.01)) #, shape=(prod_non_batch_dimensions,out_dim)))
+        self.data_type, initializer=tf.truncated_normal_initializer(stddev=0.01))
     b = tf.get_variable('biases', [out_dim], self.data_type, initializer=tf.constant_initializer())
     return tf.nn.xw_plus_b(x, w, b), w, b
 
