@@ -265,9 +265,9 @@ if __name__ == '__main__':
     print('n_features = ', n_features)
     print('n_classes = ', n_classes)
     
-    mus = [1.]
+    #mus = [1.]
     #mus = [0.49, 0.98, 1.67, 1.96, 2.5]
-    #mus = np.linspace(0.1,3,30)
+    mus = np.linspace(0.1,3,30)
     print(mus)
 
     #thresholds = [0.1, 0.3, 0.4, 0.5, 0.6, 0.7, 0.9];
