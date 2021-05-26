@@ -117,7 +117,8 @@ if __name__ == '__main__':
     global_step = tf.contrib.framework.get_or_create_global_step()
     model = BaselineModel( n_features, n_classes, args.weight_decay )
     #train_step = tf.train.AdamOptimizer(args.learning_rate).minimize(model.xent_aux, global_step=global_step, var_list=model.trn_vars)
-    train_step = tf.train.AdamOptimizer(args.learning_rate).minimize(model.xent_aux + model.l2_loss_aux, global_step=global_step, var_list=model.trn_vars)
+    #train_step = tf.train.AdamOptimizer(args.learning_rate).minimize(model.xent_aux + model.l2_loss_aux, global_step=global_step, var_list=model.trn_vars)
+    train_step = tf.train.AdamOptimizer(args.learning_rate).minimize(model.xent_aux + model.l2_loss_aux, global_step=global_step, var_list=model.all_minimization_vars)
 
     best_saver = tf.train.Saver(max_to_keep=3, var_list=tf.trainable_variables())
     saver = tf.train.Saver(max_to_keep=3)
@@ -140,6 +141,8 @@ if __name__ == '__main__':
 
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
+        best_loss = eval_test(best_loss, tst_X, tst_y, model, sess, saver, model_dir, global_step, args, trn_X, trn_y)
+
         for epoch in range(args.epochs):
 
             # Shuffle dataset

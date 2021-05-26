@@ -126,11 +126,14 @@ def train_model(train_X, train_Y, val_X, val_Y, test_X, test_Y, cls,
     # Setting up the data and the model
     global_step = tf.contrib.framework.get_or_create_global_step()
 
+    p_lr = tf.placeholder(tf.float32, shape=[])
+    p_max_lr = tf.placeholder(tf.float32, shape=[])
+
     model = AbstentionModel( n_features, n_classes, threshold=threshold, mu=_lambda, alpha=alpha)
-    max_step = tf.train.AdamOptimizer(max_lr).minimize(model.lambda_opt_xent, var_list=model._lambdas)
+    max_step = tf.train.AdamOptimizer(p_max_lr).minimize(model.lambda_opt_xent, var_list=model._lambdas)
     #max_step = tf.train.AdamOptimizer(1e-3).minimize(model.lambda_opt_xent, var_list=model._lambdas)
     
-    train_step = tf.train.AdamOptimizer(lr).minimize(model.xent, global_step=global_step, var_list=model.all_minimization_vars)
+    train_step = tf.train.AdamOptimizer(p_lr).minimize(model.xent, global_step=global_step, var_list=model.all_minimization_vars)
     #train_step = tf.train.AdamOptimizer(lr).minimize(model.xent, global_step=global_step, var_list=model.trn_vars)
     
     best_saver = tf.train.Saver(max_to_keep=3, var_list=tf.trainable_variables())
@@ -167,10 +170,17 @@ def train_model(train_X, train_Y, val_X, val_Y, test_X, test_Y, cls,
             #print('\n\nSaving the new trained checkpoint..')
             #saver.save(sess, os.path.join(model_dir, 'checkpoint'), global_step=global_step)
 
+        best_loss = eval_test_adversarial(cls, best_loss, test_X, test_Y, model, sess, saver, model_dir, global_step, args)
+
         for ii in range(max_num_training_steps):            
             p = np.random.permutation(len(train_Y))
             pX, pY = train_X[p], train_Y[p]
 
+            #if ii in [ max_num_training_steps//4, max_num_training_steps//2, 3*max_num_training_steps//4 ]:
+            #    max_lr /= 2.
+            #    lr /= 2.
+
+            print('Epoch = ', ii, ' -- lr=', lr, ' -- max_lr=', max_lr)
             for b in range(B): 
                 #x_batch = train_X[ b*batch_size : (b+1)*batch_size ]
                 #y_batch_aux = train_Y[ b*batch_size : (b+1)*batch_size ]
@@ -180,7 +190,7 @@ def train_model(train_X, train_Y, val_X, val_Y, test_X, test_Y, cls,
                 #print( 'unique= ', np.unique(y_batch_aux) )
 
                 nat_dict = {model.x_input: x_batch, model.y_input_aux: y_batch_aux, 
-                            model.is_training:True}
+                            model.is_training:True, p_lr:lr, p_max_lr:max_lr }
                 sess.run(train_step, feed_dict=nat_dict)                
                 sess.run(max_step, feed_dict=nat_dict)                
                 
@@ -255,7 +265,7 @@ if __name__ == '__main__':
     print('n_features = ', n_features)
     print('n_classes = ', n_classes)
     
-    mus = [1.67]
+    mus = [1.]
     #mus = [0.49, 0.98, 1.67, 1.96, 2.5]
     #mus = np.linspace(0.1,3,30)
     print(mus)
@@ -264,12 +274,14 @@ if __name__ == '__main__':
     thresholds =np.linspace(0, 1, num=100)
     print(thresholds)
 
-    alpha= 0.999 #0.99
+    alpha= 0.99999 #0.999 #0.99
     #desired_errors = [0.005, 0.01, 0.02, 0.10];
-    desired_errors = [ 0.3, 0.4 ];
+    desired_errors = [ 0.5 ];
 
-    lr = 1e-3
-    max_lr = 1e-5
+    #lr = 1e-3
+    #max_lr = 1e-5
+    lr = 1e-4
+    max_lr = 1e-6
 
     #train_learning_with_abstention(trn_X, trn_y, tst_X, tst_y, tst_X, tst_y, lambdas = mus, threshold = 0.5, max_num_training_steps=args.epochs,
     train_learning_with_abstention(trn_X, sc_trn_y, tst_X, sc_tst_y, tst_X, sc_tst_y, lambdas = mus, threshold = 0.5, max_num_training_steps=args.epochs,

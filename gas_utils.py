@@ -63,7 +63,7 @@ def run_model_on_data(Xtst, ytst, cls, _th, mu, alpha, args=None):
             raw_sigmoid_scores, cur_cov, cur_acc = sess.run([model.softmax_out, 
                 model.mean_binary_cov, model.mean_binary_acc], feed_dict = dict_nat)
             
-            print('raw_sigmoid_scores = ', raw_sigmoid_scores.shape, np.unique( raw_sigmoid_scores[:,0] )  )
+            print('raw_sigmoid_scores = ', raw_sigmoid_scores.shape, len(np.unique( raw_sigmoid_scores[:,0] ))  )
             y_scores[ bstart:bend ] = raw_sigmoid_scores
 
             acc += cur_acc
@@ -181,6 +181,7 @@ def post_processing_mix_match_one_sided_models_same_lambda_th(val_X, val_Y, test
     #- Do this randomized start couple of times
     
     #thresholds = np.unique(_predictions[classes[0]][lambdas[-1]])[::10]
+    thresholds = np.unique(_predictions[classes[0]][lambdas[-1]]) #[::10]
     print('thresholds = ', thresholds)
     
     n_lambdas    = len(lambdas)
@@ -204,7 +205,7 @@ def post_processing_mix_match_one_sided_models_same_lambda_th(val_X, val_Y, test
             
                 cur_error, cur_coverage = get_coverage_error_for_given_parameters_pred_max( _predictions, lambdas, thresholds, cur_params, y )
                 #cur_error, cur_coverage = get_coverage_error_for_given_parameters( _predictions, lambdas, thresholds, cur_params, y )
-                #print('cur_error=', cur_error, ' --> cur_coverage=', cur_coverage)
+                print('cur_error=', cur_error, ' --> cur_coverage=', cur_coverage)
                 if (cur_error <= error) and (cur_coverage > best_coverage):
                     #print('cur_error=', cur_error, ' --> better  cur_coverage=', cur_coverage, ' parmas=', cur_params)
                     best_coverage, best_params = cur_coverage, deepcopy(cur_params)

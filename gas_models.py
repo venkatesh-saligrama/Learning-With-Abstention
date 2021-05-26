@@ -24,7 +24,6 @@ class AbstentionModel( object ):
     x = x_input
 
     self.trn_vars = []
-    embedding = x
     with tf.variable_scope('logits_f1', reuse=tf.AUTO_REUSE):
         x, w1, b1 = self._fully_connected(x, 64)
         x = tf.nn.relu(x)
@@ -35,6 +34,7 @@ class AbstentionModel( object ):
         x = tf.nn.relu(x)
         self.trn_vars.extend([w1, b1])
 
+    embedding = x
     with tf.variable_scope('logits_f3', reuse=tf.AUTO_REUSE):
         self.pre_softmaxs, w1, b1 = self._fully_connected(x, self.n_classes)
         self.trn_vars.extend([w1, b1])
@@ -185,7 +185,7 @@ class BaselineModel( object ):
     x = x_input
 
     self.trn_vars = []
-    embedding = x
+    #embedding = x
     with tf.variable_scope('logits_f1', reuse=tf.AUTO_REUSE):
         x, w1, b1 = self._fully_connected(x, 64)
         x = tf.nn.relu(x)
@@ -196,6 +196,7 @@ class BaselineModel( object ):
         x = tf.nn.relu(x)
         self.trn_vars.extend([w1, b1])
 
+    embedding = x
     with tf.variable_scope('logit_aux', reuse=tf.AUTO_REUSE):
       pre_softmax_aux, w, b = self._fully_connected(embedding, self.n_classes)
       self.trn_vars.extend([w, b])
@@ -209,7 +210,7 @@ class BaselineModel( object ):
       self.y_input_aux = tf.placeholder(tf.int64, shape=None)
       self.pre_softmax_aux, self.embedding = self._feed_forward(self.x_input)
       self.all_minimization_vars = tf.trainable_variables()
-    
+
     #############################
     # AUXILLIARY CROSS ENTROPY LOSS
     self.l2_loss_aux = tf.add_n([ tf.nn.l2_loss(v) for v in self.trn_vars ]) * self.weight_decay
@@ -230,7 +231,9 @@ class BaselineModel( object ):
       prod_non_batch_dimensions *= int(x.shape[ii + 1])
     x = tf.reshape(x, [tf.shape(x)[0], -1])
     w = tf.get_variable('ffDW', [prod_non_batch_dimensions, out_dim],
-        self.data_type, initializer=tf.uniform_unit_scaling_initializer(factor=1.0))
+        self.data_type, #initializer=tf.uniform_unit_scaling_initializer(factor=1.0))
+        initializer=tf.truncated_normal_initializer(stddev=0.01))
+        #initializer=tf.truncated_normal(stddev=0.01)) #, shape=(prod_non_batch_dimensions,out_dim)))
     b = tf.get_variable('biases', [out_dim], self.data_type, initializer=tf.constant_initializer())
     return tf.nn.xw_plus_b(x, w, b), w, b
 
