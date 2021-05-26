@@ -11,13 +11,8 @@ import tensorflow as tf
 from gas_train_base_learner import get_gas_dataset
 from gas_models import AbstentionModel
 
-def get_model_dir_name(cls, mu, alpha, backbone=False, args=None):
-    if backbone:
-        model_dir = args.model_dir + '_backbone_one_sided_formulation(a='+ str(alpha)+',cls=' + str(cls) + ',mu=' + str(mu) + ')'
-    else:
-        model_dir = args.model_dir + '_one_sided_formulation(a='+ str(alpha)+',cls=' + str(cls) + ',mu=' + str(mu) + ')'
-    return model_dir
-
+from gas_utils import get_model_dir_name
+from gas_utils import post_processing_mix_match_one_sided_models_same_lambda_th
 
 # N = total number of data points
 # S (+ or -)
@@ -108,62 +103,6 @@ def evaluate_one_data_batch(cls, b, B, train_X, train_Y, batch_size, sess, model
     print('    best test loss: {:.2f}'.format(best_loss))
 
 
-
-
-
-def eval_test( best_loss, Xtst, ytst, model, sess, saver, model_dir, global_step, args, Xtrn, ytrn ):
-    num_eval_examples = len(ytst)
-    assert( Xtst.shape[0] == num_eval_examples )
-    #tst_pred = np.empty_like(ytst)
-
-    eval_batch_size = args.eval_batch_size
-    num_batches = int(math.ceil(num_eval_examples / eval_batch_size))                 
-    aux_acc = 0
-    loss = 0
-    for ibatch in range(num_batches):
-        bstart = ibatch * eval_batch_size
-        bend = min(bstart + eval_batch_size, num_eval_examples)
-
-        x_batch = Xtst[bstart:bend, :]
-        y_batch_aux = ytst[bstart:bend]
-        
-        dict_nat = {model.x_input: x_batch, model.y_input_aux: y_batch_aux, model.is_training:False}
-        cur_aux_acc, cur_xent_aux = sess.run([
-            model.accuracy_aux,
-            model.xent_aux], feed_dict = dict_nat)
-
-        #tst_pred[bstart:bend] = cur_pred
-
-        aux_acc += cur_aux_acc
-        loss += cur_xent_aux
-
-    aux_acc /= num_batches
-    loss /= num_batches
-
-    if best_loss > loss : 
-        print('\n\nSaving the new trained checkpoint..')
-        best_loss = loss
-        saver.save(sess, os.path.join(model_dir, 'checkpoint'), global_step=global_step)
-
-        tst_pred = get_predictions( Xtst, ytst, eval_batch_size, sess, model )   
-        print('  ---     acc = ', np.mean( tst_pred == ytst ))
-
-        fp_name = os.path.join( args.data, 'tst_pred_wk_' + str(args.weak_baseline) + '.npy' )
-        print('\n\nSaving the new predictions at..', fp_name)
-        np.save( fp_name, tst_pred )
-
-        trn_pred = get_predictions( Xtrn, ytrn, eval_batch_size, sess, model )   
-        print('  ---     trn acc = ', np.mean( trn_pred == ytrn ))
-
-        fp_name = os.path.join( args.data, 'trn_pred_wk_' + str(args.weak_baseline) + '.npy' )
-        print('\n\nSaving the new predictions at..', fp_name)
-        np.save( fp_name, trn_pred )
-
-
-    print('   test==> aux-accuracy={:.2f}%, loss={:.4}, best-loss={:.4} '.
-          format(100 * aux_acc, loss, best_loss))
-    print('  Finished Evaluating adversarial test performance at ({})'.format(datetime.now()))
-    return best_loss #, tst_pred, aux_acc
 
 def train_model(train_X, train_Y, val_X, val_Y, test_X, test_Y, cls, 
     model_dir, threshold, _lambda, alpha=0.5, max_num_training_steps=21, lr=1e-3, max_lr=1e-5,
@@ -289,9 +228,9 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Abstention training Codebase')
     parser.add_argument('-d', '--data', default='./data/GAS/', type=str, metavar='DIR', help='path to dataset')
     parser.add_argument('-md', '--model_dir', default='./models/abstention/trn_scratch', type=str, help='store trained models here')
-    parser.add_argument('-b', '--batch_size', default=256, type=int, help='batch size')
+    parser.add_argument('-b', '--batch_size', default=64, type=int, help='batch size')
     parser.add_argument('-eb', '--eval_batch_size', default=128, type=int, help='eval batch size')
-    parser.add_argument('-e', '--epochs', default=30, type=int, help='Epochs')
+    parser.add_argument('-e', '--epochs', default=400, type=int, help='Epochs')
     parser.add_argument('-lr', '--learning_rate', default=0.001, type=float, help='learning rate')
     parser.add_argument('-wd', '--weight_decay', default=0.1, type=float, help='weight decay')
     args = parser.parse_args()
@@ -316,24 +255,25 @@ if __name__ == '__main__':
     print('n_features = ', n_features)
     print('n_classes = ', n_classes)
     
-    mus = [0.49]
+    mus = [1.67]
     #mus = [0.49, 0.98, 1.67, 1.96, 2.5]
     #mus = np.linspace(0.1,3,30)
     print(mus)
 
-    thresholds = [0.1, 0.3, 0.4, 0.5, 0.6, 0.7, 0.9];
-    #thresholds =np.linspace(0, 1, num=100)
+    #thresholds = [0.1, 0.3, 0.4, 0.5, 0.6, 0.7, 0.9];
+    thresholds =np.linspace(0, 1, num=100)
     print(thresholds)
 
-    alpha= 0.99 #0.9999 #0.99
-    desired_errors = [0.005, 0.01, 0.02, 0.10];
+    alpha= 0.999 #0.99
+    #desired_errors = [0.005, 0.01, 0.02, 0.10];
+    desired_errors = [ 0.3, 0.4 ];
 
-    lr = 1e-2 #1e-3
-    max_lr = 1e-4 #1e-5
+    lr = 1e-3
+    max_lr = 1e-5
 
     #train_learning_with_abstention(trn_X, trn_y, tst_X, tst_y, tst_X, tst_y, lambdas = mus, threshold = 0.5, max_num_training_steps=args.epochs,
     train_learning_with_abstention(trn_X, sc_trn_y, tst_X, sc_tst_y, tst_X, sc_tst_y, lambdas = mus, threshold = 0.5, max_num_training_steps=args.epochs,
             lr=lr, max_lr=max_lr, warm_start=False, alpha=alpha, args=args)
 
-    #x = post_processing_mix_match_one_sided_models_same_lambda_th(lambdas = mus, thresholds = thresholds, 
-    #                                                          desired_errors = desired_errors, alpha=alpha)
+    x = post_processing_mix_match_one_sided_models_same_lambda_th(tst_X, sc_tst_y, tst_X, sc_tst_y, lambdas = mus, thresholds = thresholds, 
+                          desired_errors = desired_errors, alpha=alpha, args=args)
