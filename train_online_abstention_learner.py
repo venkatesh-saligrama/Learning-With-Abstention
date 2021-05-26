@@ -119,13 +119,14 @@ def compute_error_bars( Ts, runs, return_stats, label='exp-1-' ):
 
 
     fig = plt.figure()
-    #plt.errorbar(Xs, Y1, yerr=err_Y1, label='m_t')
     plt.errorbar(Xs, Y2, yerr=err_Y2, label='a_t')
-    #plt.errorbar(Xs, Y3, yerr=err_Y3, label='extra_a_t')
-    #plt.errorbar(Xs, Y4, yerr=err_Y4, label='extra_m_t')
     plt.legend(loc='lower right')
-
     plt.savefig( './plots/' + label + '-abstentions.png' )
+
+    fig = plt.figure()
+    plt.errorbar(Xs, Y3, yerr=err_Y3, label='extra_a_t')
+    plt.legend(loc='lower right')
+    plt.savefig( './plots/' + label + '-mistake-matched-extra-abstentions.png' )
 
 
 
@@ -370,10 +371,11 @@ if __name__ == '__main__':
 
     start = time.time()
 
-    n_runs = 100 #100 #20 #1 #5 #3 #20
+    n_runs = 200 #100 #20 #1 #5 #3 #20
     #Ts = [500, 1500] #[500, 1000, 1500]
     #Ts = list( range(500, 10500, 500) )
-    Ts = list( range(500, 5500, 500) )
+    #Ts = list( range(500, 5500, 500) )
+    Ts = list( range(250, 5250, 250) )
     #Ts = list( range(500, 5500, 500) )
     #Ts = list( range(250, 2500+250, 250) )
     print('Ts = ', Ts)
