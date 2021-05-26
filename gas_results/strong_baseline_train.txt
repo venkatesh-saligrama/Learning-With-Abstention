@@ -1,0 +1,360 @@
+args =  Namespace(batch_size=128, data='./data/GAS/', epochs=100, eval_batch_size=128, learning_rate=0.001, model_dir='./models/GAS-baseline/', weak_baseline=False, weight_decay=0.001)
+trn_X (9546, 128)
+trn_y (9546,)
+n_unique(y)  [0. 1. 2. 3. 4. 5.]
+tst_X (4364, 128)
+tstn_y (4364,)
+n_unique(y)  [0. 1. 2. 3. 4. 5.]
+n_features =  128
+n_classes =  6
+
+
+model directory =  ./models/GAS-baseline/
+
+
+restore model directory =  ./models/GAS-baseline/
+
+
+Saving the new trained checkpoint..
+  ---     acc =  0.1578826764436297
+
+
+Saving the new predictions at.. ./data/GAS/tst_pred_wk_False.npy
+  ---     trn acc =  0.10842237586423632
+
+
+Saving the new predictions at.. ./data/GAS/trn_pred_wk_False.npy
+   test==> aux-accuracy=15.38%, loss=451.5, best-loss=15.38% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:26.498365)
+
+
+Saving the new trained checkpoint..
+  ---     acc =  0.6642988084326306
+
+
+Saving the new predictions at.. ./data/GAS/tst_pred_wk_False.npy
+  ---     trn acc =  0.8912633563796355
+
+
+Saving the new predictions at.. ./data/GAS/trn_pred_wk_False.npy
+   test==> aux-accuracy=65.79%, loss=120.3, best-loss=65.79% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:27.041189)
+
+
+Saving the new trained checkpoint..
+  ---     acc =  0.696608615948671
+
+
+Saving the new predictions at.. ./data/GAS/tst_pred_wk_False.npy
+  ---     trn acc =  0.9613450659962288
+
+
+Saving the new predictions at.. ./data/GAS/trn_pred_wk_False.npy
+   test==> aux-accuracy=68.94%, loss=117.7, best-loss=68.94% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:27.538761)
+
+
+Saving the new trained checkpoint..
+  ---     acc =  0.7557286892758937
+
+
+Saving the new predictions at.. ./data/GAS/tst_pred_wk_False.npy
+  ---     trn acc =  0.9610307982401005
+
+
+Saving the new predictions at.. ./data/GAS/trn_pred_wk_False.npy
+   test==> aux-accuracy=74.91%, loss=96.65, best-loss=74.91% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:28.007671)
+
+
+Saving the new trained checkpoint..
+  ---     acc =  0.7841429880843263
+
+
+Saving the new predictions at.. ./data/GAS/tst_pred_wk_False.npy
+  ---     trn acc =  0.9808296668761785
+
+
+Saving the new predictions at.. ./data/GAS/trn_pred_wk_False.npy
+   test==> aux-accuracy=77.68%, loss=94.68, best-loss=77.68% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:28.492929)
+   test==> aux-accuracy=69.68%, loss=135.5, best-loss=77.68% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:28.762239)
+   test==> aux-accuracy=67.97%, loss=142.0, best-loss=77.68% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:29.005448)
+   test==> aux-accuracy=76.63%, loss=94.06, best-loss=77.68% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:29.234026)
+   test==> aux-accuracy=74.61%, loss=117.2, best-loss=77.68% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:29.481825)
+   test==> aux-accuracy=74.52%, loss=102.8, best-loss=77.68% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:29.749740)
+   test==> aux-accuracy=76.21%, loss=96.26, best-loss=77.68% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:29.961498)
+
+
+Saving the new trained checkpoint..
+  ---     acc =  0.8347846012832264
+
+
+Saving the new predictions at.. ./data/GAS/tst_pred_wk_False.npy
+  ---     trn acc =  0.9078147915357218
+
+
+Saving the new predictions at.. ./data/GAS/trn_pred_wk_False.npy
+   test==> aux-accuracy=83.69%, loss=96.41, best-loss=83.69% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:30.477320)
+   test==> aux-accuracy=77.43%, loss=85.84, best-loss=83.69% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:30.741948)
+   test==> aux-accuracy=76.90%, loss=93.71, best-loss=83.69% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:31.013300)
+   test==> aux-accuracy=78.90%, loss=88.12, best-loss=83.69% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:31.246490)
+   test==> aux-accuracy=79.23%, loss=88.29, best-loss=83.69% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:31.511624)
+   test==> aux-accuracy=72.29%, loss=142.5, best-loss=83.69% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:31.763964)
+   test==> aux-accuracy=74.45%, loss=122.3, best-loss=83.69% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:32.017156)
+   test==> aux-accuracy=72.71%, loss=140.5, best-loss=83.69% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:32.273140)
+   test==> aux-accuracy=73.42%, loss=128.4, best-loss=83.69% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:32.533179)
+
+
+Saving the new trained checkpoint..
+  ---     acc =  0.8464711274060495
+
+
+Saving the new predictions at.. ./data/GAS/tst_pred_wk_False.npy
+  ---     trn acc =  0.974020532160067
+
+
+Saving the new predictions at.. ./data/GAS/trn_pred_wk_False.npy
+   test==> aux-accuracy=84.40%, loss=114.3, best-loss=84.40% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:33.067315)
+   test==> aux-accuracy=81.85%, loss=95.3, best-loss=84.40% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:33.317940)
+   test==> aux-accuracy=70.45%, loss=147.9, best-loss=84.40% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:33.615908)
+   test==> aux-accuracy=76.61%, loss=103.4, best-loss=84.40% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:33.881160)
+   test==> aux-accuracy=78.71%, loss=106.7, best-loss=84.40% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:34.136606)
+
+
+Saving the new trained checkpoint..
+  ---     acc =  0.8595325389550871
+
+
+Saving the new predictions at.. ./data/GAS/tst_pred_wk_False.npy
+  ---     trn acc =  0.9846008799497171
+
+
+Saving the new predictions at.. ./data/GAS/trn_pred_wk_False.npy
+   test==> aux-accuracy=86.10%, loss=86.71, best-loss=86.10% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:34.648287)
+   test==> aux-accuracy=82.88%, loss=86.22, best-loss=86.10% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:34.937414)
+   test==> aux-accuracy=76.64%, loss=112.2, best-loss=86.10% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:35.217074)
+   test==> aux-accuracy=75.72%, loss=146.5, best-loss=86.10% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:35.473777)
+   test==> aux-accuracy=78.64%, loss=104.2, best-loss=86.10% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:35.719205)
+   test==> aux-accuracy=81.26%, loss=95.64, best-loss=86.10% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:35.989099)
+   test==> aux-accuracy=77.96%, loss=97.98, best-loss=86.10% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:36.207052)
+   test==> aux-accuracy=83.68%, loss=93.4, best-loss=86.10% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:36.451697)
+
+
+Saving the new trained checkpoint..
+  ---     acc =  0.870531622364803
+
+
+Saving the new predictions at.. ./data/GAS/tst_pred_wk_False.npy
+  ---     trn acc =  0.9892101403729311
+
+
+Saving the new predictions at.. ./data/GAS/trn_pred_wk_False.npy
+   test==> aux-accuracy=86.96%, loss=88.42, best-loss=86.96% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:36.926671)
+   test==> aux-accuracy=86.44%, loss=93.48, best-loss=86.96% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:37.192347)
+   test==> aux-accuracy=77.63%, loss=116.2, best-loss=86.96% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:37.430991)
+   test==> aux-accuracy=80.95%, loss=97.83, best-loss=86.96% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:37.705749)
+   test==> aux-accuracy=79.53%, loss=104.4, best-loss=86.96% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:37.954744)
+   test==> aux-accuracy=82.35%, loss=113.8, best-loss=86.96% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:38.196430)
+   test==> aux-accuracy=85.86%, loss=79.7, best-loss=86.96% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:38.459723)
+   test==> aux-accuracy=84.42%, loss=92.3, best-loss=86.96% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:38.765529)
+   test==> aux-accuracy=85.22%, loss=93.61, best-loss=86.96% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:39.053152)
+
+
+Saving the new trained checkpoint..
+  ---     acc =  0.8719065077910174
+
+
+Saving the new predictions at.. ./data/GAS/tst_pred_wk_False.npy
+  ---     trn acc =  0.9930861093651792
+
+
+Saving the new predictions at.. ./data/GAS/trn_pred_wk_False.npy
+   test==> aux-accuracy=87.09%, loss=83.21, best-loss=87.09% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:39.613335)
+   test==> aux-accuracy=81.99%, loss=132.0, best-loss=87.09% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:39.877612)
+   test==> aux-accuracy=85.95%, loss=82.23, best-loss=87.09% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:40.105613)
+   test==> aux-accuracy=75.73%, loss=121.6, best-loss=87.09% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:40.342311)
+   test==> aux-accuracy=82.95%, loss=144.7, best-loss=87.09% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:40.567292)
+
+
+Saving the new trained checkpoint..
+  ---     acc =  0.8767186067827681
+
+
+Saving the new predictions at.. ./data/GAS/tst_pred_wk_False.npy
+  ---     trn acc =  0.994343180389692
+
+
+Saving the new predictions at.. ./data/GAS/trn_pred_wk_False.npy
+   test==> aux-accuracy=87.56%, loss=82.54, best-loss=87.56% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:41.121031)
+   test==> aux-accuracy=79.55%, loss=134.1, best-loss=87.56% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:41.378111)
+   test==> aux-accuracy=77.19%, loss=117.6, best-loss=87.56% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:41.628041)
+
+
+Saving the new trained checkpoint..
+  ---     acc =  0.8835930339138405
+
+
+Saving the new predictions at.. ./data/GAS/tst_pred_wk_False.npy
+  ---     trn acc =  0.9891053844542217
+
+
+Saving the new predictions at.. ./data/GAS/trn_pred_wk_False.npy
+   test==> aux-accuracy=88.23%, loss=79.04, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:42.185325)
+   test==> aux-accuracy=83.27%, loss=95.21, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:42.479970)
+   test==> aux-accuracy=81.15%, loss=114.0, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:42.767725)
+   test==> aux-accuracy=86.18%, loss=106.3, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:43.027894)
+   test==> aux-accuracy=85.57%, loss=93.8, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:43.289225)
+   test==> aux-accuracy=84.40%, loss=99.06, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:43.555365)
+   test==> aux-accuracy=75.22%, loss=143.8, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:43.815127)
+   test==> aux-accuracy=79.58%, loss=121.8, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:44.076442)
+   test==> aux-accuracy=86.49%, loss=94.14, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:44.320338)
+   test==> aux-accuracy=86.40%, loss=97.89, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:44.575326)
+   test==> aux-accuracy=84.06%, loss=110.7, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:44.820677)
+   test==> aux-accuracy=82.08%, loss=109.4, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:45.077242)
+   test==> aux-accuracy=82.98%, loss=114.7, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:45.325381)
+   test==> aux-accuracy=80.51%, loss=117.5, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:45.546315)
+   test==> aux-accuracy=83.41%, loss=105.7, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:45.766215)
+   test==> aux-accuracy=87.25%, loss=97.24, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:46.011428)
+   test==> aux-accuracy=87.16%, loss=96.8, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:46.263048)
+   test==> aux-accuracy=84.96%, loss=110.3, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:46.511041)
+   test==> aux-accuracy=78.74%, loss=142.4, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:46.792917)
+   test==> aux-accuracy=86.31%, loss=101.2, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:47.073871)
+   test==> aux-accuracy=76.82%, loss=151.0, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:47.330304)
+   test==> aux-accuracy=84.02%, loss=111.7, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:47.600781)
+   test==> aux-accuracy=77.20%, loss=138.7, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:47.855233)
+   test==> aux-accuracy=80.57%, loss=121.0, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:48.101631)
+   test==> aux-accuracy=80.66%, loss=138.1, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:48.353752)
+   test==> aux-accuracy=85.35%, loss=110.0, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:48.638777)
+   test==> aux-accuracy=81.88%, loss=123.7, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:48.896425)
+   test==> aux-accuracy=85.75%, loss=112.9, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:49.164043)
+   test==> aux-accuracy=84.17%, loss=114.8, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:49.440508)
+   test==> aux-accuracy=86.18%, loss=100.7, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:49.694769)
+   test==> aux-accuracy=85.48%, loss=110.6, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:49.931000)
+   test==> aux-accuracy=86.62%, loss=106.6, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:50.132850)
+   test==> aux-accuracy=84.97%, loss=119.3, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:50.358976)
+   test==> aux-accuracy=86.38%, loss=112.8, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:50.617414)
+   test==> aux-accuracy=86.80%, loss=101.9, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:50.875547)
+   test==> aux-accuracy=87.00%, loss=102.2, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:51.127986)
+   test==> aux-accuracy=85.26%, loss=104.9, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:51.412774)
+   test==> aux-accuracy=84.03%, loss=122.0, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:51.676719)
+   test==> aux-accuracy=85.95%, loss=120.0, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:51.929616)
+   test==> aux-accuracy=87.60%, loss=104.9, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:52.199060)
+   test==> aux-accuracy=86.66%, loss=106.3, best-loss=88.23% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:52.433813)
+
+
+Saving the new trained checkpoint..
+  ---     acc =  0.891384051329056
+
+
+Saving the new predictions at.. ./data/GAS/tst_pred_wk_False.npy
+  ---     trn acc =  0.9951812277393672
+
+
+Saving the new predictions at.. ./data/GAS/trn_pred_wk_False.npy
+   test==> aux-accuracy=88.99%, loss=94.22, best-loss=88.99% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:52.981508)
+   test==> aux-accuracy=88.32%, loss=97.94, best-loss=88.99% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:53.231102)
+   test==> aux-accuracy=83.57%, loss=128.0, best-loss=88.99% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:53.487884)
+   test==> aux-accuracy=85.17%, loss=115.5, best-loss=88.99% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:53.783163)
+   test==> aux-accuracy=87.93%, loss=99.87, best-loss=88.99% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:54.031236)
+   test==> aux-accuracy=85.26%, loss=113.8, best-loss=88.99% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:54.320295)
+   test==> aux-accuracy=87.57%, loss=102.2, best-loss=88.99% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:54.588240)
+   test==> aux-accuracy=84.82%, loss=114.8, best-loss=88.99% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:54.857678)
+   test==> aux-accuracy=86.00%, loss=113.0, best-loss=88.99% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:55.112747)
+   test==> aux-accuracy=84.68%, loss=120.5, best-loss=88.99% 
+  Finished Evaluating adversarial test performance at (2021-05-26 11:59:55.349151)

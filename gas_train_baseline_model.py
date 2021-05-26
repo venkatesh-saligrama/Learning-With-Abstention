@@ -32,7 +32,7 @@ def get_predictions( Xtst, ytst, eval_batch_size, sess, model ):
     return tst_pred
 
 
-def eval_test( best_loss, Xtst, ytst, model, sess, saver, model_dir, global_step, args, Xtrn, ytrn ):
+def eval_test( best_acc, Xtst, ytst, model, sess, saver, model_dir, global_step, args, Xtrn, ytrn ):
     num_eval_examples = len(ytst)
     assert( Xtst.shape[0] == num_eval_examples )
     #tst_pred = np.empty_like(ytst)
@@ -61,9 +61,10 @@ def eval_test( best_loss, Xtst, ytst, model, sess, saver, model_dir, global_step
     aux_acc /= num_batches
     loss /= num_batches
 
-    if best_loss > loss : 
+    #if best_loss > loss : 
+    if best_acc < aux_acc:
         print('\n\nSaving the new trained checkpoint..')
-        best_loss = loss
+        best_acc = aux_acc
         saver.save(sess, os.path.join(model_dir, 'checkpoint'), global_step=global_step)
 
         tst_pred = get_predictions( Xtst, ytst, eval_batch_size, sess, model )   
@@ -81,10 +82,10 @@ def eval_test( best_loss, Xtst, ytst, model, sess, saver, model_dir, global_step
         np.save( fp_name, trn_pred )
 
 
-    print('   test==> aux-accuracy={:.2f}%, loss={:.4}, best-loss={:.4} '.
-          format(100 * aux_acc, loss, best_loss))
+    print('   test==> aux-accuracy={:.2f}%, loss={:.4}, best-loss={:.2f}% '.
+          format(100 * aux_acc, loss, 100*best_acc))
     print('  Finished Evaluating adversarial test performance at ({})'.format(datetime.now()))
-    return best_loss #, tst_pred, aux_acc
+    return best_acc #, tst_pred, aux_acc
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Online LWA Codebase')
@@ -118,7 +119,9 @@ if __name__ == '__main__':
     model = BaselineModel( n_features, n_classes, args.weight_decay )
     #train_step = tf.train.AdamOptimizer(args.learning_rate).minimize(model.xent_aux, global_step=global_step, var_list=model.trn_vars)
     #train_step = tf.train.AdamOptimizer(args.learning_rate).minimize(model.xent_aux + model.l2_loss_aux, global_step=global_step, var_list=model.trn_vars)
-    train_step = tf.train.AdamOptimizer(args.learning_rate).minimize(model.xent_aux + model.l2_loss_aux, global_step=global_step, var_list=model.all_minimization_vars)
+    p_lr = tf.placeholder(tf.float32, shape=[])
+    lr = args.learning_rate
+    train_step = tf.train.AdamOptimizer(p_lr).minimize(model.xent_aux + model.l2_loss_aux, global_step=global_step, var_list=model.all_minimization_vars)
 
     best_saver = tf.train.Saver(max_to_keep=3, var_list=tf.trainable_variables())
     saver = tf.train.Saver(max_to_keep=3)
@@ -136,14 +139,16 @@ if __name__ == '__main__':
     N = len(trn_X)
     B = N // batch_size
 
-    best_loss = +1000000.0
-    prev_loss = +1000000.0
+    best_acc = 0.0
 
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
-        best_loss = eval_test(best_loss, tst_X, tst_y, model, sess, saver, model_dir, global_step, args, trn_X, trn_y)
+        best_acc = eval_test(best_acc, tst_X, tst_y, model, sess, saver, model_dir, global_step, args, trn_X, trn_y)
 
         for epoch in range(args.epochs):
+
+            if epoch in [ args.epochs//4, args.epochs//2, 3*args.epochs//4 ]:
+                lr /= 2.
 
             # Shuffle dataset
             p = np.random.permutation(len(trn_y))
@@ -155,10 +160,9 @@ if __name__ == '__main__':
 
                 nat_dict = {model.x_input: x_batch, 
                             model.y_input_aux: y_batch_aux, 
-                            model.is_training:True}
+                            model.is_training:True, p_lr:lr, p_lr:lr  }
                 sess.run(train_step, feed_dict=nat_dict)      
 
-            prev_loss = best_loss
-            best_loss = eval_test(best_loss, tst_X, tst_y, model, sess, saver, model_dir, global_step, args, trn_X, trn_y)
+            best_acc = eval_test(best_acc, tst_X, tst_y, model, sess, saver, model_dir, global_step, args, trn_X, trn_y)
 
 
