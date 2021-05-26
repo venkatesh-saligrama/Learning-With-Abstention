@@ -176,9 +176,9 @@ def train_model(train_X, train_Y, val_X, val_Y, test_X, test_Y, cls,
             p = np.random.permutation(len(train_Y))
             pX, pY = train_X[p], train_Y[p]
 
-            #if ii in [ max_num_training_steps//4, max_num_training_steps//2, 3*max_num_training_steps//4 ]:
-            #    max_lr /= 2.
-            #    lr /= 2.
+            if ii in [ max_num_training_steps//4, max_num_training_steps//2, 3*max_num_training_steps//4 ]:
+                max_lr /= 2.
+                lr /= 2.
 
             print('Epoch = ', ii, ' -- lr=', lr, ' -- max_lr=', max_lr)
             for b in range(B): 
@@ -274,18 +274,18 @@ if __name__ == '__main__':
     thresholds =np.linspace(0, 1, num=100)
     print(thresholds)
 
-    alpha= 0.9999 #0.999 #0.99
+    alpha= 0.999999 #0.999 #0.99
     #desired_errors = [0.005, 0.01, 0.02, 0.10];
-    desired_errors = [ 0.02 ];
+    desired_errors = [ 0.1, 0.2 ];
 
-    #lr = 1e-3
-    #max_lr = 1e-5
-    lr = 1e-4
-    max_lr = 1e-6
+    lr = 1e-3
+    max_lr = 1e-5
+    #lr = 1e-4
+    #max_lr = 1e-6
 
     #train_learning_with_abstention(trn_X, trn_y, tst_X, tst_y, tst_X, tst_y, lambdas = mus, threshold = 0.5, max_num_training_steps=args.epochs,
-    #train_learning_with_abstention(trn_X, sc_trn_y, tst_X, sc_tst_y, tst_X, sc_tst_y, lambdas = mus, threshold = 0.5, max_num_training_steps=args.epochs,
-    #        lr=lr, max_lr=max_lr, warm_start=False, alpha=alpha, args=args)
+    train_learning_with_abstention(trn_X, sc_trn_y, tst_X, sc_tst_y, tst_X, sc_tst_y, lambdas = mus, threshold = 0.5, max_num_training_steps=args.epochs,
+            lr=lr, max_lr=max_lr, warm_start=False, alpha=alpha, args=args)
 
     x = post_processing_mix_match_one_sided_models_same_lambda_th(tst_X, sc_tst_y, tst_X, sc_tst_y, lambdas = mus, thresholds = thresholds, 
                           desired_errors = desired_errors, alpha=alpha, args=args)
