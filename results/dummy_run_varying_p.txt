@@ -1,0 +1,243 @@
+Config =  {'_comment': '=====ADVERSARIAL EXAMPLES CONFIGURATION=====', 'model_dir': '/home/anilkag/code/LWA/Post-AISTATS-Experiments/models/cifar_multi_class_lwa_64dim_lambda_opt_minus_one_mu', 'tf_random_seed': 451760341, 'np_random_seed': 216105420, 'random_seed': 4557077, 'max_num_training_steps': 100000, 'num_output_steps': 1000, 'num_summary_steps': 1000, 'num_checkpoint_steps': 1000, 'training_batch_size': 200, 'num_eval_examples': 10000, 'eval_batch_size': 200, 'eval_checkpoint_steps': 3000, 'eval_on_cpu': True, 'epsilon': 0.3, 'k': 40, 'a': 0.01, 'random_start': True, 'loss_func': 'xent', 'store_adv_path': 'attack.npy'}
+Mus =  [0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.  1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8
+ 1.9 2.  2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3. ]
+args =  Namespace(data='./data/')
+T =  10
+Ps =  [0.05, 0.1, 0.5]
+n_runs =  4
+N data points =  10000
+W_t shape =  (600,)
+[8132 1660 3138 ... 9541 1841 5772]
+round= 0  -- example= 8132  -- prediction= -1  -- #active experts= 600
+#algo abstained =  10 / 10
+#algo mistakes =  0 / 10
+#of experts with non-zero weights =  600 / 600
+#of active experts =  600 / 600
+[experts] #mistakes(min) =  0.0 / 10
+[experts] #mistakes(max) =  0.0 / 10
+[experts] #abstained(min) =  0.0 / 10
+[experts] #abstained(max) =  1.0 / 10
+[optimal experts] #mistakes =  0.0 / 10
+[optimal experts] #abstained =  0.0 / 10
+Mistake Matched #Abenstions =  0.0 / 10
+Mistake Matched #Mistakes =  0.0 / 10
+[AMM] #Abenstions =  0.0 / 10
+[AMM] #Mistakes =  0.0 / 10
+N data points =  10000
+W_t shape =  (600,)
+[8132 1660 3138 ... 9541 1841 5772]
+round= 0  -- example= 8132  -- prediction= -1  -- #active experts= 600
+#algo abstained =  8 / 10
+#algo mistakes =  0 / 10
+#of experts with non-zero weights =  600 / 600
+#of active experts =  600 / 600
+[experts] #mistakes(min) =  0.0 / 10
+[experts] #mistakes(max) =  0.0 / 10
+[experts] #abstained(min) =  0.0 / 10
+[experts] #abstained(max) =  1.0 / 10
+[optimal experts] #mistakes =  0.0 / 10
+[optimal experts] #abstained =  0.0 / 10
+Mistake Matched #Abenstions =  0.0 / 10
+Mistake Matched #Mistakes =  0.0 / 10
+[AMM] #Abenstions =  0.0 / 10
+[AMM] #Mistakes =  0.0 / 10
+N data points =  10000
+W_t shape =  (600,)
+[8132 1660 3138 ... 9541 1841 5772]
+round= 0  -- example= 8132  -- prediction= -1  -- #active experts= 600
+#algo abstained =  10 / 10
+#algo mistakes =  0 / 10
+#of experts with non-zero weights =  600 / 600
+#of active experts =  600 / 600
+[experts] #mistakes(min) =  0.0 / 10
+[experts] #mistakes(max) =  0.0 / 10
+[experts] #abstained(min) =  0.0 / 10
+[experts] #abstained(max) =  1.0 / 10
+[optimal experts] #mistakes =  0.0 / 10
+[optimal experts] #abstained =  0.0 / 10
+Mistake Matched #Abenstions =  0.0 / 10
+Mistake Matched #Mistakes =  0.0 / 10
+[AMM] #Abenstions =  0.0 / 10
+[AMM] #Mistakes =  0.0 / 10
+N data points =  10000
+W_t shape =  (600,)
+[8132 1660 3138 ... 9541 1841 5772]
+round= 0  -- example= 8132  -- prediction= -1  -- #active experts= 600
+#algo abstained =  7 / 10
+#algo mistakes =  0 / 10
+#of experts with non-zero weights =  600 / 600
+#of active experts =  600 / 600
+[experts] #mistakes(min) =  0.0 / 10
+[experts] #mistakes(max) =  0.0 / 10
+[experts] #abstained(min) =  0.0 / 10
+[experts] #abstained(max) =  1.0 / 10
+[optimal experts] #mistakes =  0.0 / 10
+[optimal experts] #abstained =  0.0 / 10
+Mistake Matched #Abenstions =  0.0 / 10
+Mistake Matched #Mistakes =  0.0 / 10
+[AMM] #Abenstions =  0.0 / 10
+[AMM] #Mistakes =  0.0 / 10
+N data points =  10000
+W_t shape =  (600,)
+[8132 1660 3138 ... 9541 1841 5772]
+round= 0  -- example= 8132  -- prediction= -1  -- #active experts= 600
+#algo abstained =  10 / 10
+#algo mistakes =  0 / 10
+#of experts with non-zero weights =  600 / 600
+#of active experts =  600 / 600
+[experts] #mistakes(min) =  0.0 / 10
+[experts] #mistakes(max) =  0.0 / 10
+[experts] #abstained(min) =  0.0 / 10
+[experts] #abstained(max) =  1.0 / 10
+[optimal experts] #mistakes =  0.0 / 10
+[optimal experts] #abstained =  0.0 / 10
+Mistake Matched #Abenstions =  0.0 / 10
+Mistake Matched #Mistakes =  0.0 / 10
+[AMM] #Abenstions =  0.0 / 10
+[AMM] #Mistakes =  0.0 / 10
+N data points =  10000
+W_t shape =  (600,)
+[8132 1660 3138 ... 9541 1841 5772]
+round= 0  -- example= 8132  -- prediction= -1  -- #active experts= 600
+#algo abstained =  8 / 10
+#algo mistakes =  0 / 10
+#of experts with non-zero weights =  600 / 600
+#of active experts =  600 / 600
+[experts] #mistakes(min) =  0.0 / 10
+[experts] #mistakes(max) =  0.0 / 10
+[experts] #abstained(min) =  0.0 / 10
+[experts] #abstained(max) =  1.0 / 10
+[optimal experts] #mistakes =  0.0 / 10
+[optimal experts] #abstained =  0.0 / 10
+Mistake Matched #Abenstions =  0.0 / 10
+Mistake Matched #Mistakes =  0.0 / 10
+[AMM] #Abenstions =  0.0 / 10
+[AMM] #Mistakes =  0.0 / 10
+N data points =  10000
+W_t shape =  (600,)
+[8132 1660 3138 ... 9541 1841 5772]
+round= 0  -- example= 8132  -- prediction= -1  -- #active experts= 600
+#algo abstained =  10 / 10
+#algo mistakes =  0 / 10
+#of experts with non-zero weights =  600 / 600
+#of active experts =  600 / 600
+[experts] #mistakes(min) =  0.0 / 10
+[experts] #mistakes(max) =  0.0 / 10
+[experts] #abstained(min) =  0.0 / 10
+[experts] #abstained(max) =  1.0 / 10
+[optimal experts] #mistakes =  0.0 / 10
+[optimal experts] #abstained =  0.0 / 10
+Mistake Matched #Abenstions =  0.0 / 10
+Mistake Matched #Mistakes =  0.0 / 10
+[AMM] #Abenstions =  0.0 / 10
+[AMM] #Mistakes =  0.0 / 10
+N data points =  10000
+W_t shape =  (600,)
+[8132 1660 3138 ... 9541 1841 5772]
+round= 0  -- example= 8132  -- prediction= -1  -- #active experts= 600
+#algo abstained =  9 / 10
+#algo mistakes =  0 / 10
+#of experts with non-zero weights =  600 / 600
+#of active experts =  600 / 600
+[experts] #mistakes(min) =  0.0 / 10
+[experts] #mistakes(max) =  0.0 / 10
+[experts] #abstained(min) =  0.0 / 10
+[experts] #abstained(max) =  1.0 / 10
+[optimal experts] #mistakes =  0.0 / 10
+[optimal experts] #abstained =  0.0 / 10
+Mistake Matched #Abenstions =  0.0 / 10
+Mistake Matched #Mistakes =  0.0 / 10
+[AMM] #Abenstions =  0.0 / 10
+[AMM] #Mistakes =  0.0 / 10
+N data points =  10000
+W_t shape =  (600,)
+[8132 1660 3138 ... 9541 1841 5772]
+round= 0  -- example= 8132  -- prediction= 8  -- #active experts= 600
+#algo abstained =  7 / 10
+#algo mistakes =  0 / 10
+#of experts with non-zero weights =  600 / 600
+#of active experts =  600 / 600
+[experts] #mistakes(min) =  0.0 / 10
+[experts] #mistakes(max) =  0.0 / 10
+[experts] #abstained(min) =  0.0 / 10
+[experts] #abstained(max) =  1.0 / 10
+[optimal experts] #mistakes =  0.0 / 10
+[optimal experts] #abstained =  0.0 / 10
+Mistake Matched #Abenstions =  0.0 / 10
+Mistake Matched #Mistakes =  0.0 / 10
+[AMM] #Abenstions =  0.0 / 10
+[AMM] #Mistakes =  0.0 / 10
+N data points =  10000
+W_t shape =  (600,)
+[8132 1660 3138 ... 9541 1841 5772]
+round= 0  -- example= 8132  -- prediction= -1  -- #active experts= 600
+#algo abstained =  4 / 10
+#algo mistakes =  0 / 10
+#of experts with non-zero weights =  600 / 600
+#of active experts =  600 / 600
+[experts] #mistakes(min) =  0.0 / 10
+[experts] #mistakes(max) =  0.0 / 10
+[experts] #abstained(min) =  0.0 / 10
+[experts] #abstained(max) =  1.0 / 10
+[optimal experts] #mistakes =  0.0 / 10
+[optimal experts] #abstained =  0.0 / 10
+Mistake Matched #Abenstions =  0.0 / 10
+Mistake Matched #Mistakes =  0.0 / 10
+[AMM] #Abenstions =  0.0 / 10
+[AMM] #Mistakes =  0.0 / 10
+N data points =  10000
+W_t shape =  (600,)
+[8132 1660 3138 ... 9541 1841 5772]
+round= 0  -- example= 8132  -- prediction= 8  -- #active experts= 600
+#algo abstained =  7 / 10
+#algo mistakes =  0 / 10
+#of experts with non-zero weights =  600 / 600
+#of active experts =  600 / 600
+[experts] #mistakes(min) =  0.0 / 10
+[experts] #mistakes(max) =  0.0 / 10
+[experts] #abstained(min) =  0.0 / 10
+[experts] #abstained(max) =  1.0 / 10
+[optimal experts] #mistakes =  0.0 / 10
+[optimal experts] #abstained =  0.0 / 10
+Mistake Matched #Abenstions =  0.0 / 10
+Mistake Matched #Mistakes =  0.0 / 10
+[AMM] #Abenstions =  0.0 / 10
+[AMM] #Mistakes =  0.0 / 10
+N data points =  10000
+W_t shape =  (600,)
+[8132 1660 3138 ... 9541 1841 5772]
+round= 0  -- example= 8132  -- prediction= -1  -- #active experts= 600
+#algo abstained =  5 / 10
+#algo mistakes =  0 / 10
+#of experts with non-zero weights =  600 / 600
+#of active experts =  600 / 600
+[experts] #mistakes(min) =  0.0 / 10
+[experts] #mistakes(max) =  0.0 / 10
+[experts] #abstained(min) =  0.0 / 10
+[experts] #abstained(max) =  1.0 / 10
+[optimal experts] #mistakes =  0.0 / 10
+[optimal experts] #abstained =  0.0 / 10
+Mistake Matched #Abenstions =  0.0 / 10
+Mistake Matched #Mistakes =  0.0 / 10
+[AMM] #Abenstions =  0.0 / 10
+[AMM] #Mistakes =  0.0 / 10
+{'10-p-0.05-r-0': [0, 10, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 600, 600, 0.0, 0.0, 0.0, 1.0], '10-p-0.05-r-2': [0, 8, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 600, 600, 0.0, 0.0, 0.0, 1.0], '10-p-0.05-r-1': [0, 10, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 600, 600, 0.0, 0.0, 0.0, 1.0], '10-p-0.05-r-3': [0, 7, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 600, 600, 0.0, 0.0, 0.0, 1.0], '10-p-0.1-r-1': [0, 10, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 600, 600, 0.0, 0.0, 0.0, 1.0], '10-p-0.1-r-3': [0, 8, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 600, 600, 0.0, 0.0, 0.0, 1.0], '10-p-0.1-r-0': [0, 10, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 600, 600, 0.0, 0.0, 0.0, 1.0], '10-p-0.1-r-2': [0, 9, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 600, 600, 0.0, 0.0, 0.0, 1.0], '10-p-0.5-r-0': [0, 4, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 600, 600, 0.0, 0.0, 0.0, 1.0], '10-p-0.5-r-2': [0, 7, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 600, 600, 0.0, 0.0, 0.0, 1.0], '10-p-0.5-r-3': [0, 7, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 600, 600, 0.0, 0.0, 0.0, 1.0], '10-p-0.5-r-1': [0, 5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 600, 600, 0.0, 0.0, 0.0, 1.0]}
+time taken =  1.7762305736541748  s
+
+Compiling results..
+
+		P= 0.05 , m_t= 0.0 , a_t= 8.75 , extra_a_t= 8.75 , extra_m_t= 0.0
+		P= 0.1 , m_t= 0.0 , a_t= 9.25 , extra_a_t= 9.25 , extra_m_t= 0.0
+		P= 0.5 , m_t= 0.0 , a_t= 5.75 , extra_a_t= 5.75 , extra_m_t= 0.0
+
+Compiling results..
+
+		P= 0.05 , m_t= 0.0 ± 0.0 , a_t= 8.75 ± 1.299038105676658 , extra_a_t= 8.75 ± 1.299038105676658 , extra_m_t= 0.0 ± 0.0
+		P= 0.1 , m_t= 0.0 ± 0.0 , a_t= 9.25 ± 0.82915619758885 , extra_a_t= 9.25 ± 0.82915619758885 , extra_m_t= 0.0 ± 0.0
+		P= 0.5 , m_t= 0.0 ± 0.0 , a_t= 5.75 ± 1.299038105676658 , extra_a_t= 5.75 ± 1.299038105676658 , extra_m_t= 0.0 ± 0.0
+at =  [8.75, 9.25, 5.75]
+mt =  [0.0, 0.0, 0.0]
+ct =  [1. 1. 1.]
+bt =  [8.75 9.25 5.75]
+ax =  [0.94200805 0.96614173 0.75966784]
+ay =  [0. 0. 0.]
