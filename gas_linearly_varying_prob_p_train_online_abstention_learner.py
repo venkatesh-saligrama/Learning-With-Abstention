@@ -17,6 +17,7 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import os
 import math
 import time
 import logging
@@ -26,6 +27,7 @@ import json
 import shutil
 from timeit import default_timer as timer
 
+from gas_train_base_learner import get_gas_dataset
 import matplotlib.pyplot as plt
 
 import multiprocessing
@@ -39,16 +41,16 @@ import sys
 version = sys.version_info
 
 config = config.get_config()
-classes = list(range(0,10))
+classes = list(range(0,6))
 mus = np.linspace(0.1,3,30)
 #thresholds = [0.1, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.88, 0.9];
 #thresholds = np.linspace(0.05,0.95,100)
-#thresholds = np.linspace(0.8,0.95,20)
-thresholds = np.linspace(0.2,0.95,20)
+thresholds = np.linspace(0.8,0.95,20)
 print('Config = ', config)
 print('Mus = ', mus)
 
 def compute_error_bars( T, Ps, runs, return_stats, label='exp-1-' ):
+    base_dir = './gas_plots/'
 
     Xs = []
     Y1, Y2, Y3, Y4,raw_mis, raw_abs = [], [], [], [], [],[]
@@ -129,22 +131,13 @@ def compute_error_bars( T, Ps, runs, return_stats, label='exp-1-' ):
 
     fig = plt.figure()
     plt.errorbar(Xs, Y1, yerr=err_Y1, label='m_t regret')
-    #plt.errorbar(Xs, Y2, yerr=err_Y2, label='a_t')
-    #plt.errorbar(Xs, Y3, yerr=err_Y3, label='extra_a_t')
-    #plt.errorbar(Xs, Y4, yerr=err_Y4, label='extra_m_t')
     plt.legend(loc='lower right')
-
-    plt.savefig( './plots/' + label + '-mistakes.png' )
-
+    plt.savefig( base_dir  + label + '-mistakes.png' )
 
     fig = plt.figure()
-    #plt.errorbar(Xs, Y1, yerr=err_Y1, label='m_t')
     plt.errorbar(Xs, Y2, yerr=err_Y2, label='a_t regret')
-    #plt.errorbar(Xs, Y3, yerr=err_Y3, label='extra_a_t')
-    #plt.errorbar(Xs, Y4, yerr=err_Y4, label='extra_m_t')
     plt.legend(loc='lower right')
-
-    plt.savefig( './plots/' + label + '-abstentions.png' )
+    plt.savefig( base_dir + label + '-abstentions.png' )
 
     print('at = ', Y2)
     print('mt = ', Y1)
@@ -174,67 +167,39 @@ def compute_error_bars( T, Ps, runs, return_stats, label='exp-1-' ):
     fig = plt.figure()
     plt.plot( ax, ay, 'o', color='black',  label='ln a_t vs ln m_t' )
     plt.plot( lx, ly, label='x+y=1' )
-    #plt.errorbar(Xs, Y1, yerr=err_Y1, label='m_t')
-    #plt.errorbar(Xs, Y2, yerr=err_Y2, label='a_t')
-    #plt.errorbar(Xs, Y3, yerr=err_Y3, label='extra_a_t')
-    #plt.errorbar(Xs, Y4, yerr=err_Y4, label='extra_m_t')
     plt.legend(loc='upper right')
-
-    plt.savefig( './plots/' + label + '-rate.png' )
+    plt.savefig( base_dir + label + '-rate.png' )
 
     #rates - join em up
     fig = plt.figure()
     plt.plot( ax, ay,  label='ln a_t-regret vs ln m_t-regret' )
     plt.plot( lx, ly, label='x+y=1' )
-    #plt.errorbar(Xs, Y1, yerr=err_Y1, label='m_t')
-    #plt.errorbar(Xs, Y2, yerr=err_Y2, label='a_t')
-    #plt.errorbar(Xs, Y3, yerr=err_Y3, label='extra_a_t')
-    #plt.errorbar(Xs, Y4, yerr=err_Y4, label='extra_m_t')
     plt.legend(loc='upper right')
-
-    plt.savefig( './plots/' + label + '-rate_join_em_up.png' )
+    plt.savefig( base_dir  + label + '-rate_join_em_up.png' )
 
     #comparative linear scale
-    
     fig = plt.figure()
     plt.plot(raw_abs, raw_mis, label='raw_a_t vs raw m_t')
-    #plt.errorbar(raw_abs, raw_mis, xerr = err_raw_abs, yerr=err_raw_mis, label='Dancers')
-    #plt.errorbar(Xs, Y2, yerr=err_Y2, label='a_t')
-    #plt.errorbar(Xs, Y3, yerr=err_Y3, label='extra_a_t')
-    #plt.errorbar(Xs, Y4, yerr=err_Y4, label='extra_m_t')
     plt.legend(loc='lower right')
-
-    plt.savefig( './plots/' + label + '-comparative_raw_a_vs_m_linear.png' )
+    plt.savefig( base_dir + label + '-comparative_raw_a_vs_m_linear.png' )
     
     #discrete
     fig = plt.figure()
     plt.plot(raw_abs, raw_mis, 'o', color='red', label='raw abs vs raw mistakes')
-    #plt.errorbar(raw_abs, raw_mis, xerr = err_raw_abs, yerr=err_raw_mis, label='Dancers')
-    #plt.errorbar(Xs, Y2, yerr=err_Y2, label='a_t')
-    #plt.errorbar(Xs, Y3, yerr=err_Y3, label='extra_a_t')
-    #plt.errorbar(Xs, Y4, yerr=err_Y4, label='extra_m_t')
     plt.legend(loc='lower right')
-
-    plt.savefig( './plots/' + label + '-comparative_raw_a_vs_m_linear_discrete.png' )
+    plt.savefig( base_dir + label + '-comparative_raw_a_vs_m_linear_discrete.png' )
 
     #excess-vs-excess
     fig = plt.figure()
     plt.plot(Y2, Y1, label='m_t regret v/s a_t regret')
-    #plt.errorbar(Xs, Y2, yerr=err_Y2, label='a_t')
-    #plt.errorbar(Xs, Y3, yerr=err_Y3, label='extra_a_t')
-    #plt.errorbar(Xs, Y4, yerr=err_Y4, label='extra_m_t')
     plt.legend(loc='lower right')
-
-    plt.savefig( './plots/' + label + '-comp_regrets.png' )
+    plt.savefig( base_dir + label + '-comp_regrets.png' )
     
     fig = plt.figure()
     plt.plot(Y2, Y1, 'o', color='green', label='m_t regret v/s a_t regret')
-    #plt.errorbar(Xs, Y2, yerr=err_Y2, label='a_t')
-    #plt.errorbar(Xs, Y3, yerr=err_Y3, label='extra_a_t')
-    #plt.errorbar(Xs, Y4, yerr=err_Y4, label='extra_m_t')
     plt.legend(loc='lower right')
+    plt.savefig( base_dir + label + '-comp_regrets_discrete.png' )
 
-    plt.savefig( './plots/' + label + '-comp_regrets_discrete.png' )
 def bernoulli_flip(p):
     return True if random.random() < p else False
 
@@ -324,7 +289,7 @@ def run_one_experiment( process_id, T, val_Y, test_Y, _predictions,  _test_predi
                sample_clf = np.random.choice( n_experts, p=Pi )
                prediction = all_Vt_predictions[ map_idx_to_pred[sample_clf] ] 
 
-       if i%100 == 0:
+       if (i%1000 == 0) or (i==T-1):
            print('round=', i, ' -- example=', data_idx, ' -- prediction=', prediction, ' -- #active experts=', len(active_experts))
        '''
        # Update
@@ -450,7 +415,7 @@ def rerun_if_failed_one_experiment( process_id, T, val_Y, test_Y, _predictions, 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Online LWA Codebase')
-    parser.add_argument('-d', '--data', default='./data/', type=str, metavar='DIR', help='path to dataset')
+    parser.add_argument('-d', '--data', default='./data/GAS/', type=str, metavar='DIR', help='path to dataset')
     args = parser.parse_args()
     print('args = ', args)
 
@@ -465,19 +430,31 @@ if __name__ == '__main__':
     #thresholds = np.unique(_predictions[classes[0]][mus[-1]])[::100]
     #print('#thresholds = ', len(thresholds))
 
-    data = np.load( args.data + 'std_ce_64_dim_ft.npz', allow_pickle=True,)
-    test_X, test_Y = data['test_embd'], data['test_Y']
-    val_X, val_Y = data['val_embd'], data['val_Y']
-    train_X, train_Y = data['train_embd'], data['train_Y']
-    del train_X, val_X, test_X
+    trn_X, trn_y, tst_X, tst_y = get_gas_dataset( args.data )
+    n_features = trn_X.shape[-1]
+    trn_X = trn_X[:, :n_features//2]
+    tst_X = tst_X[:, :n_features//2]
+    n_features = trn_X.shape[-1]
+
+    fp_name = os.path.join( args.data, 'trn_pred_wk_' + str(False) + '.npy' )
+    sc_trn_y = np.load( fp_name )
+
+    fp_name = os.path.join( args.data, 'tst_pred_wk_' + str(False) + '.npy' )
+    sc_tst_y = np.load( fp_name )
+    print('  ---     trn acc = ', np.mean( sc_trn_y == trn_y ))
+    print('  ---     tst acc = ', np.mean( sc_tst_y == tst_y ))
+
+    del trn_X, tst_X
+    #val_Y, test_Y = tst_y, tst_y
+    val_Y, test_Y = sc_tst_y, sc_tst_y
 
     start = time.time()
 
-    n_runs = 100 #150 #200 #20 #1 #5 #3 #20
+    n_runs = 20 #150 #200 #20 #1 #5 #3 #20
     #Ts = [1500] #[500, 1000, 1500]
     #Ts = list( range(500, 10500, 500) )
-    Ps = list( np.arange(0.005, 0.4, 0.005) )
-    T = 1000 #2000 #1000 #5000 #10000 #10000
+    Ps = list( np.arange(0.005, 0.305, 0.005) )
+    T = 2000 #2000 #2000 #1000 #5000 #10000 #10000
     print('T = ', T)
     print('Ps = ', Ps)
     print('n_runs = ', n_runs)
@@ -536,8 +513,9 @@ if __name__ == '__main__':
         m_t /= valid_runs
         a_t /= valid_runs
         extra_a_t /= valid_runs
+        extra_m_t /= valid_runs
         print('\t\tP=', p, ', m_t=', m_t, ', a_t=', a_t, ', extra_a_t=', extra_a_t, ', extra_m_t=', extra_m_t)
 
-    compute_error_bars( T, Ps, runs,  return_stats, label='linearly-varying-Ps-theta-0.015-T-1K-' + str(time.time()) )  
+    compute_error_bars( T, Ps, runs,  return_stats, label='gas-linearly-varying-Ps-theta-0.015-T-5K-' + str(time.time()) )  
 
 
