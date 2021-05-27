@@ -397,9 +397,10 @@ if __name__ == '__main__':
 
     start = time.time()
 
-    n_runs = 3 #20 #200 #100 #20 #1 #5 #3 #20
-    Ts = [500, 1500] #[500, 1000, 1500]
+    n_runs = 20 #200 #100 #20 #1 #5 #3 #20
+    #Ts = [500, 1500] #[500, 1000, 1500]
     #Ts = list( range(250, 5250, 250) )
+    Ts = list( range(250, 4000, 250) )
     print('Ts = ', Ts)
     print('n_runs = ', n_runs)
     runs = list(range(n_runs))
