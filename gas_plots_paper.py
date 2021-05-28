@@ -395,10 +395,13 @@ def linearly_varying_P_compute_error_bars( T, Ps, runs, return_stats, mistake_le
     plt.savefig( base_dir + label + '-comp_regrets_discrete.png' )
 
 
-def find_experts_at_particular_mistakes( test_Y, _test_predictions, mistake_levels, args, T=2000 ):
+def find_experts_at_particular_mistakes( test_Y, _test_predictions, mistake_levels, args, T=2000 , thresholds=None ):
     classes = list(range(0,6))
     mus = np.linspace(0.1,3,30)
     thresholds = np.linspace(0.8,0.95,20)
+
+    if thresholds is None:
+        thresholds = np.linspace(0.8,0.95,20)
 
 
     mu_t_pairs = []
@@ -510,11 +513,18 @@ if __name__ == '__main__':
 
     thresholds = np.linspace(0.2,0.95,20)
 
-    mistake_levels = list(range(0, 19))
-    abstention_levels = [ 49.66666667, 51.72727273, 51.37837838, 48.15254237, 45.34567901, 42.38947368,  38.27083333, 35.05154639, 32.80412371, 31.56565657, 30.47474747, 30.2,   29.65,  29.4, 29.3,  29.22, 29.09,   29.07, 29.05 ]
-
-    #mistake_levels = list(range(0, 50))
+    #mistake_levels = list(range(0, 19))
     #abstention_levels = [ 49.66666667, 51.72727273, 51.37837838, 48.15254237, 45.34567901, 42.38947368,  38.27083333, 35.05154639, 32.80412371, 31.56565657, 30.47474747, 30.2,   29.65,  29.4, 29.3,  29.22, 29.09,   29.07, 29.05 ]
+
+    #mistake_levels = list(range(80, 120, 1))
+    #'''
+    mistake_levels = list(range(2, 120, 5))
+    abstention_levels = [411.04761905, 383.96      , 337.03      , 290.11      ,
+       272.45      , 258.57      , 247.07      , 237.8       ,
+       228.44      , 219.16      , 208.66      , 197.79      ,
+       188.55      , 179.68      , 172.89      , 168.25      ,
+       165.67      , 164.86      , 164.71      , 164.57      ,
+       164.52      , 164.52      , 164.52      , 164.52      ] #'''
     #simulate_experts_at_time_T( mistake_levels, test_Y, _test_predictions, args, T, thresholds=thresholds, s_runs=100 )
 
 
