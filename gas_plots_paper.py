@@ -147,6 +147,8 @@ def varying_Ps_varying_Thetas_compute_error_bars( Thetas, T, Ps, runs, return_st
     
     #discrete
     fig = plt.figure()
+    print('\n raw_abs = ', raw_abs)
+    print('\n raw_mis = ', raw_mis)
     plt.plot(raw_abs, raw_mis, 'o', color='red', label='raw abs vs raw mistakes')
     plt.plot(abstention_levels, mistake_levels, '^', color='black', label='offline experts')
     plt.legend(loc='lower right')
