@@ -334,7 +334,7 @@ def run_one_experiment( process_id, T, val_Y, test_Y, _predictions,  _test_predi
 
             storage_t.append( i+1 )
             cur_stats = [
-              algo_abstained, algo_error, 
+              algo_error, algo_abstained, 
               optimal_mistakes, optimal_abstained,
               mma_mis, mistake_matched_abs,
               amm_mistake, amm_abs,
@@ -458,10 +458,10 @@ if __name__ == '__main__':
 
     start = time.time()
 
-    checkpoint_steps = 10 #250 
-    n_runs = 10 #200 #100 #20 #1 #5 #3 #20
+    checkpoint_steps = 250 
+    n_runs = 100 #100 #20 #1 #5 #3 #20
     #Ts = list( range(250, 5250, 250) )
-    Ts = [200] #[4000]
+    Ts = [4000]
     print('Ts = ', Ts)
     print('n_runs = ', n_runs)
     runs = list(range(n_runs))
