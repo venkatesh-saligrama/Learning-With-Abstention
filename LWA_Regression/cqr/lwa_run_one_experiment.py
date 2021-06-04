@@ -54,6 +54,7 @@ random_state_train_test = np.arange(20)
 
 dataset_name = 'concrete' # 'community'
 #test_method = 'neural_net' #'cqr_quantile_forest'
-test_method = 'cqr_quantile_net' #'cqr_quantile_forest'
+#test_method = 'cqr_quantile_net' #'cqr_quantile_forest'
+test_method = 'lwa_neural_net' #'cqr_quantile_forest'
 random_state = 12
 run_experiment(dataset_name, test_method, random_state)
