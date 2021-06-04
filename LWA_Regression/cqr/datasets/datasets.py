@@ -327,14 +327,18 @@ def GetDataset(name, base_path):
         y = df['count'].values
     
     if name=="community":
+        print('Path = ', base_path + 'communities_attributes.csv')
         # https://github.com/vbordalo/Communities-Crime/blob/master/Crime_v1.ipynb
         attrib = pd.read_csv(base_path + 'communities_attributes.csv', delim_whitespace = True)
+        print('read attrib')
         data = pd.read_csv(base_path + 'communities.data', names = attrib['attributes'])
+        print('read data')
         data = data.drop(columns=['state','county',
                           'community','communityname',
                           'fold'], axis=1)
         
         data = data.replace('?', np.nan)
+        print('replaced nan')
         
         # Impute mean values for samples with missing values        
         from sklearn.preprocessing import Imputer
@@ -342,10 +346,12 @@ def GetDataset(name, base_path):
         imputer = Imputer(missing_values = 'NaN', strategy = 'mean', axis = 0)
         
         imputer = imputer.fit(data[['OtherPerCap']])
+        print('imputer fit..')
         data[['OtherPerCap']] = imputer.transform(data[['OtherPerCap']])
         data = data.dropna(axis=1)
         X = data.iloc[:, 0:100].values
         y = data.iloc[:, 100].values
+        print('read')
 
         
     X = X.astype(np.float32)
