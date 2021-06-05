@@ -8,9 +8,9 @@ from cqr import helper
 from datasets import datasets
 from sklearn import linear_model
 from nonconformist.nc import NcFactory
-from nonconformist.nc import RegressorNc
+from nonconformist.nc import RegressorNc, LWARegressorNc
 from nonconformist.nc import AbsErrorErrFunc
-from nonconformist.nc import QuantileRegErrFunc
+from nonconformist.nc import QuantileRegErrFunc, LWAQuantileRegErrFunc
 from nonconformist.nc import RegressorNormalizer
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsRegressor
@@ -336,9 +336,10 @@ def run_experiment(dataset_name,
                                                wd=wd,
                                                test_ratio=cv_test_ratio,
                                                random_state=cv_random_state)
-        nc = RegressorNc(model)
+        nc = LWARegressorNc(model, LWAQuantileRegErrFunc())
+        #nc = RegressorNc(model)
 
-        y_lower, y_upper = helper.run_icp(nc, X_train, y_train, X_test, idx_train, idx_cal, significance)
+        y_lower, y_upper = helper.run_lwa_icp(nc, X_train, y_train, X_test, idx_train, idx_cal, significance)
         if plot_results:
             helper.plot_func_data(y_test,y_lower,y_upper,"LWA-Net")
         coverage_lwa_net, length_lwa_net = helper.compute_coverage(y_test,y_lower,y_upper,significance,"LWA-Net")
@@ -349,6 +350,7 @@ def run_experiment(dataset_name,
         length_vec.append(length_net)
         seed_vec.append(seed)
 
+        '''
         normalizer_adapter = helper.LWANet_RegressorAdapter(model=None,
                                                             fit_params=None,
                                                             in_shape = in_shape,
@@ -387,7 +389,7 @@ def run_experiment(dataset_name,
         method_vec.append('LWA-Net-L')
         coverage_vec.append(coverage_net_local)
         length_vec.append(length_net_local)
-        seed_vec.append(seed)
+        seed_vec.append(seed)'''
 
 
 
@@ -742,7 +744,7 @@ def run_experiment(dataset_name,
                      ['CP Neural Net Local', coverage_net_local, length_net_local, seed],
 
                      ['CP LWA Neural Net', coverage_lwa_net, length_lwa_net, seed],
-                     ['CP LWA Neural Net Local', coverage_lwa_net_local, length_lwa_net_local, seed],
+                     #['CP LWA Neural Net Local', coverage_lwa_net_local, length_lwa_net_local, seed],
 
                      ['CP Random Forest', coverage_forest, length_forest, seed],
                      ['CP Random Forest Local', coverage_forest_local, length_forest_local, seed],

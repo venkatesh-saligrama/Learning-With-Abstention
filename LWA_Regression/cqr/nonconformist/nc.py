@@ -203,6 +203,36 @@ class SignErrorErrFunc(RegressionErrFunc):
 		index = min(max(index, 0), nc.shape[0] - 1)
 		return np.vstack([nc[index,0], nc[index,1]])
 
+# LWA CQR symmetric error function
+class LWAQuantileRegErrFunc(RegressionErrFunc):
+    """Calculates conformalized quantile regression error.
+    
+    For each correct output in ``y``, nonconformity is defined as
+    
+    .. math::
+        max{\hat{q}_low - y, y - \hat{q}_high}
+    
+    """
+    def __init__(self):
+        super(LWAQuantileRegErrFunc, self).__init__()
+
+    def apply(self, pg, pf, y):
+        y_lower = -pg #prediction[:,0]
+        y_upper = pf  #prediction[:,-1]
+
+        error_low = y_lower - y
+        error_high = y - y_upper
+        err = np.maximum(error_high,error_low)
+        return err
+
+    def apply_inverse(self, nc, significance):
+        nc = np.sort(nc,0)
+        index = int(np.ceil((1 - significance) * (nc.shape[0] + 1))) - 1
+        index = min(max(index, 0), nc.shape[0] - 1)
+        return np.vstack([nc[index], nc[index]])
+
+
+
 # CQR symmetric error function
 class QuantileRegErrFunc(RegressionErrFunc):
     """Calculates conformalized quantile regression error.
@@ -244,7 +274,7 @@ class QuantileRegAsymmetricErrFunc(RegressionErrFunc):
     def __init__(self):
         super(QuantileRegAsymmetricErrFunc, self).__init__()
 
-    def apply(self, prediction, y):
+    def apply(self, pf, pg, y):
         y_lower = prediction[:,0]
         y_upper = prediction[:,-1]
         
@@ -599,6 +629,83 @@ class RegressorNc(BaseModelNc):
 
 			return intervals
 		else: # Not tested for CQR
+			significance = np.arange(0.01, 1.0, 0.01)
+			intervals = np.zeros((x.shape[0], 2, significance.size))
+
+			for i, s in enumerate(significance):
+				err_dist = self.err_func.apply_inverse(nc, s)
+				err_dist = np.hstack([err_dist] * n_test)
+				err_dist *= norm
+
+				intervals[:, 0, i] = prediction - err_dist[0, :]
+				intervals[:, 1, i] = prediction + err_dist[0, :]
+
+			return intervals
+
+
+
+class LWARegressorNc(BaseModelNc):
+	def __init__(self,
+	             model,
+	             err_func=AbsErrorErrFunc(),
+	             normalizer=None,
+	             beta=1e-6):
+		super(LWARegressorNc, self).__init__(model,
+		                                  err_func,
+		                                  normalizer,
+		                                  beta)
+
+
+	def score(self, x, y=None):
+		"""Calculates the nonconformity score of a set of samples.
+
+		Parameters
+		----------
+		x : numpy array of shape [n_samples, n_features]
+			Inputs of examples for which to calculate a nonconformity score.
+
+		y : numpy array of shape [n_samples]
+			Outputs of examples for which to calculate a nonconformity score.
+
+		Returns
+		-------
+		nc : numpy array of shape [n_samples]
+			Nonconformity scores of samples.
+		"""
+		#pf, pg = self.model.predict(x)
+		pf, pg = self.model.predict_upper_lower(x)
+		n_test = x.shape[0]
+		if self.normalizer is not None:
+			norm = self.normalizer.score(x) + self.beta
+		else:
+			norm = np.ones(n_test)
+		ret_val = self.err_func.apply(pg, pf, y)
+		return ret_val
+
+
+
+	def predict(self, x, nc, significance=None):
+		n_test = x.shape[0]
+		pf, pg = self.model.predict_upper_lower(x)
+
+		y_lower = -pg #prediction[:,0]
+		y_upper = pf  #prediction[:,-1]
+
+		if self.normalizer is not None:
+			norm = self.normalizer.score(x) + self.beta
+		else:
+			norm = np.ones(n_test)
+
+		if significance:
+			intervals = np.zeros((x.shape[0], 2))
+			err_dist = self.err_func.apply_inverse(nc, significance)
+			err_dist = np.hstack([err_dist] * n_test)
+			intervals[:, 0] = y_lower - err_dist[0, :]
+			intervals[:, 1] = y_upper + err_dist[1, :]
+
+			return intervals
+		else: # Not tested for CQR
+			assert(1==2)
 			significance = np.arange(0.01, 1.0, 0.01)
 			intervals = np.zeros((x.shape[0], 2, significance.size))
 

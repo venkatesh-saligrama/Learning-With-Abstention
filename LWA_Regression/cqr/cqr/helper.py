@@ -5,7 +5,7 @@ import numpy as np
 from cqr import torch_models
 from functools import partial
 from cqr import tune_params_cv
-from nonconformist.cp import IcpRegressor
+from nonconformist.cp import IcpRegressor #, LWA_IcpRegressor
 from nonconformist.base import RegressorAdapter
 from skgarden import RandomForestQuantileRegressor
 
@@ -36,6 +36,48 @@ def compute_coverage_len(y_test, y_lower, y_upper):
     coverage = in_the_range / len(y_test) * 100
     avg_length = np.mean(abs(y_upper - y_lower))
     return coverage, avg_length
+
+
+def run_lwa_icp(nc, X_train, y_train, X_test, idx_train, idx_cal, significance, condition=None):
+    """ Run split conformal method
+
+    Parameters
+    ----------
+
+    nc : class of nonconformist object
+    X_train : numpy array, training features (n1Xp)
+    y_train : numpy array, training labels (n1)
+    X_test : numpy array, testing features (n2Xp)
+    idx_train : numpy array, indices of proper training set examples
+    idx_cal : numpy array, indices of calibration set examples
+    significance : float, significance level (e.g. 0.1)
+    condition : function, mapping feature vector to group id
+
+    Returns
+    -------
+
+    y_lower : numpy array, estimated lower bound for the labels (n2)
+    y_upper : numpy array, estimated upper bound for the labels (n2)
+
+    """
+    #icp = LWA_IcpRegressor(nc,condition=condition)
+    icp = IcpRegressor(nc,condition=condition)
+
+    # Fit the ICP using the proper training set
+    icp.fit(X_train[idx_train,:], y_train[idx_train])
+
+    # Calibrate the ICP using the calibration set
+    icp.calibrate(X_train[idx_cal,:], y_train[idx_cal])
+
+    # Produce predictions for the test set, with confidence 90%
+    predictions = icp.predict(X_test, significance=significance)
+
+    y_lower = predictions[:,0]
+    y_upper = predictions[:,1]
+
+    return y_lower, y_upper
+
+
 
 def run_icp(nc, X_train, y_train, X_test, idx_train, idx_cal, significance, condition=None):
     """ Run split conformal method
@@ -369,6 +411,8 @@ class LWANet_RegressorAdapter(RegressorAdapter):
         """
         return self.learner.predict(x)
 
+    def predict_upper_lower(self, x):
+        return self.learner.predict_upper_lower(x)
 
 
 

@@ -406,6 +406,27 @@ class IcpRegressor(BaseIcp, RegressorMixin):
 		return prediction
 
 
+
+'''class LWA_IcpRegressor(BaseIcp, RegressorMixin):
+	def __init__(self, nc_function, condition=None, significance=0.1):
+		super(LWA_IcpRegressor, self).__init__(nc_function, condition)
+		self.significance = significance
+
+	def calibrate(self, x, y, increment=False):
+		self._calibrate_hook(x, y, increment)
+		self._update_calibration_set(x, y, increment)
+		self.nc_function._calibrate( x, y, self.significance )
+
+	def predict(self, x, significance=None):
+		assert(self.significance == significance)
+
+		n_significance = (99 if significance is None
+		                  else np.array(significance).size)
+		assert( n_significance == 1 )
+		prediction = self.nc_function.predict_post_calibrate( x )
+		return prediction '''
+
+
 class OobCpClassifier(IcpClassifier):
 	def __init__(self,
 	             nc_function,

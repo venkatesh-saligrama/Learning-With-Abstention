@@ -289,6 +289,8 @@ class LWA_LearnerOptimized:
         self.loss_history = []
         self.test_loss_history = []
         self.full_loss_history = []
+        self.t_minus = None
+        self.t_plus = None
 
     def fit(self, x, y, epochs, batch_size, verbose=False):
         """ Fit the model to data
@@ -382,7 +384,30 @@ class LWA_LearnerOptimized:
         g = g.cpu().detach().numpy()
         return (f + g)/2.
 
+    def predict_upper_lower(self, x):
+        self.model.eval()
+        f, g = self.model(torch.from_numpy(x).to(self.device).requires_grad_(False))
+        f = f.cpu().detach().numpy()
+        g = g.cpu().detach().numpy()
+        return f, g 
 
+
+'''    def predict_post_calibrate(self, x):
+        assert( self.t_minus is not None )
+        assert( self.t_plus is not None )
+
+        self.model.eval()
+        f, g = self.model(torch.from_numpy(x).to(self.device).requires_grad_(False))
+        f = f.cpu().detach().numpy()
+        g = g.cpu().detach().numpy()
+        
+
+    def calibrate(self, x, y, significance):
+        self.model.eval()
+        f, g = self.model(torch.from_numpy(x).to(self.device).requires_grad_(False))
+        f = f.cpu().detach().numpy()
+        g = g.cpu().detach().numpy()
+	pass '''
 
 
 
