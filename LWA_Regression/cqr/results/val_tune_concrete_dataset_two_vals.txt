@@ -1,0 +1,202 @@
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+CQR Net: Percentage in the range (expecting 90.00): 90.291262
+CQR Net: Average length: 1.520413
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+CQR Net: Percentage in the range (expecting 90.00): 90.291262
+CQR Net: Average length: 0.749347
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+CQR Net: Percentage in the range (expecting 90.00): 90.291262
+CQR Net: Average length: 0.623957
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+CQR Net: Percentage in the range (expecting 90.00): 90.291262
+CQR Net: Average length: 0.662098
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+CQR Net: Percentage in the range (expecting 90.00): 90.291262
+CQR Net: Average length: 0.596012
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+CQR Net: Percentage in the range (expecting 90.00): 90.291262
+CQR Net: Average length: 0.569717
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+CQR Net: Percentage in the range (expecting 90.00): 90.291262
+CQR Net: Average length: 0.564195
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+CQR Net: Percentage in the range (expecting 90.00): 90.291262
+CQR Net: Average length: 0.526688
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+CQR Net: Percentage in the range (expecting 90.00): 90.291262
+CQR Net: Average length: 0.481234
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+CQR Net: Percentage in the range (expecting 90.00): 90.291262
+CQR Net: Average length: 0.487804
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+CQR Net: Percentage in the range (expecting 90.00): 90.291262
+CQR Net: Average length: 0.486278
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+CQR Net: Percentage in the range (expecting 90.00): 90.291262
+CQR Net: Average length: 0.464172
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+CQR Net: Percentage in the range (expecting 90.00): 90.291262
+CQR Net: Average length: 0.508091
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+CQR Net: Percentage in the range (expecting 90.00): 90.291262
+CQR Net: Average length: 0.515163
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+CQR Net: Percentage in the range (expecting 90.00): 90.291262
+CQR Net: Average length: 0.560932
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+CQR Net: Percentage in the range (expecting 90.00): 90.291262
+CQR Net: Average length: 0.538737
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+CQR Net: Percentage in the range (expecting 90.00): 90.291262
+CQR Net: Average length: 0.556162
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+CQR Net: Percentage in the range (expecting 90.00): 90.291262
+CQR Net: Average length: 0.744026
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+CQR Net: Percentage in the range (expecting 90.00): 90.291262
+CQR Net: Average length: 0.779598
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+CQR Net: Percentage in the range (expecting 90.00): 90.291262
+CQR Net: Average length: 1.447740
+ --> CQR Net --> max_cov, max_len, max_theta, 0.8+theta  90.29126213592234 0.4641720310070561 0.11578947368421053 0.9157894736842106
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+LWA-Net: Percentage in the range (expecting 90.00): 90.533981
+LWA-Net: Average length: 0.516566
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+LWA-Net: Percentage in the range (expecting 90.00): 90.291262
+LWA-Net: Average length: 0.511790
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+LWA-Net: Percentage in the range (expecting 90.00): 90.291262
+LWA-Net: Average length: 0.496057
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+LWA-Net: Percentage in the range (expecting 90.00): 90.291262
+LWA-Net: Average length: 0.497361
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+LWA-Net: Percentage in the range (expecting 90.00): 90.291262
+LWA-Net: Average length: 0.520317
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+LWA-Net: Percentage in the range (expecting 90.00): 90.291262
+LWA-Net: Average length: 0.499950
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+LWA-Net: Percentage in the range (expecting 90.00): 90.291262
+LWA-Net: Average length: 0.480848
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+LWA-Net: Percentage in the range (expecting 90.00): 90.291262
+LWA-Net: Average length: 0.491399
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+LWA-Net: Percentage in the range (expecting 90.00): 90.291262
+LWA-Net: Average length: 0.490726
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+LWA-Net: Percentage in the range (expecting 90.00): 90.291262
+LWA-Net: Average length: 0.525026
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+LWA-Net: Percentage in the range (expecting 90.00): 90.291262
+LWA-Net: Average length: 0.513932
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+LWA-Net: Percentage in the range (expecting 90.00): 90.291262
+LWA-Net: Average length: 0.545106
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+LWA-Net: Percentage in the range (expecting 90.00): 90.291262
+LWA-Net: Average length: 0.534125
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+LWA-Net: Percentage in the range (expecting 90.00): 90.291262
+LWA-Net: Average length: 0.552919
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+LWA-Net: Percentage in the range (expecting 90.00): 90.291262
+LWA-Net: Average length: 0.569412
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+LWA-Net: Percentage in the range (expecting 90.00): 90.291262
+LWA-Net: Average length: 0.703466
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+LWA-Net: Percentage in the range (expecting 90.00): 90.291262
+LWA-Net: Average length: 0.586314
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+LWA-Net: Percentage in the range (expecting 90.00): 90.291262
+LWA-Net: Average length: 0.771334
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+LWA-Net: Percentage in the range (expecting 90.00): 90.291262
+LWA-Net: Average length: 0.971853
+concrete
+Ridge relative error: 0.067486
+Size: train (824, 8), test (206, 8)
+LWA-Net: Percentage in the range (expecting 90.00): 90.291262
+LWA-Net: Average length: 0.838178
+ --> LWA Net --> max_cov, max_len, max_lambda  90.29126213592234 0.48084760996178516 0.86

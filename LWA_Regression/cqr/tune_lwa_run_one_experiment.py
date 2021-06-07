@@ -54,20 +54,22 @@ n_vals = 20
 dataset_name = 'concrete'
 test_method = 'cqr_quantile_net'
 max_cov, max_len, max_theta = None, None, None
-for theta in np.linspace(0.0, 0.1, num=n_vals):
-   quantiles_net = [ theta, 1. - 0.1 + theta ]
+for theta in np.linspace(0.0, 0.2, num=n_vals):
+   quantiles_net = [ theta, 0.8 + theta ]
    cur_cov, cur_len = val_run_experiment(dataset_name, test_method, random_state, quantiles_net=quantiles_net)
    if (max_theta is None) :
        max_cov, max_len, max_theta = cur_cov, cur_len, theta
    elif ( cur_cov >= target_cov ) and ( cur_len <= max_len ):
        max_cov, max_len, max_theta = cur_cov, cur_len, theta
-print(' --> CQR Net --> max_cov, max_len, max_theta ',  max_cov, max_len, max_theta )
+print(' --> CQR Net --> max_cov, max_len, max_theta, 0.8+theta ',  max_cov, max_len, max_theta, 0.8+max_theta )
 
-
+#n_vals=40
 test_method = 'lwa_neural_net'
 max_cov, max_len, max_theta = None, None, None
-for theta in np.linspace(4, 99, num=n_vals):
-   _lambda = theta
+#for theta in np.linspace(4, 99, num=n_vals):
+for theta in np.linspace(0.8, 0.99, num=n_vals):
+   #_lambda = theta
+   _lambda = ( theta ) / ( 1. - theta )
    cur_cov, cur_len = val_run_experiment(dataset_name, test_method, random_state, _lambda1=_lambda, _lambda2=_lambda)
    if (max_theta is None) :
        max_cov, max_len, max_theta = cur_cov, cur_len, theta
