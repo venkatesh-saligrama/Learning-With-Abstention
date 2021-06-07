@@ -794,3 +794,200 @@ def run_experiment(dataset_name,
             df = pd.concat([df2, df], ignore_index=True)
 
         df.to_csv(out_name, index=False)
+
+
+
+
+def val_run_experiment(dataset_name,
+                   test_method,
+                   random_state_train_test,
+                   quantiles_net = [0.1, 0.9],              
+                   _lambda1=19.0, _lambda2=19.0, 
+                   save_to_csv=True):
+    """ Estimate prediction intervals and print the average length and coverage
+
+    Parameters
+    ----------
+
+    dataset_name : array of strings, list of datasets
+    test_method  : string, method to be tested, estimating
+                   the 90% prediction interval
+    random_state_train_test : integer, random seed to be used
+    save_to_csv : boolean, save average length and coverage to csv (True)
+                  or not (False)
+
+    """
+
+    dataset_name_vec = []
+    method_vec = []
+    coverage_vec = []
+    length_vec = []
+    seed_vec = []
+
+    seed = random_state_train_test
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+
+
+    # determines the size of test set
+    test_ratio = 0.2
+
+    # conformal prediction miscoverage level
+    significance = 0.1
+    # desired quantile levels, used by the quantile regression methods
+    quantiles = [0.05, 0.95]
+
+    # Random forests parameters (shared by conditional quantile random forests
+    # and conditional mean random forests regression).
+    n_estimators = 1000 # usual random forests n_estimators parameter
+    min_samples_leaf = 1 # default parameter of sklearn
+
+    # Quantile random forests parameters.
+    # See QuantileForestRegressorAdapter class for more details
+    quantiles_forest = [5, 95]
+    CV_qforest = True
+    coverage_factor = 0.85
+    cv_test_ratio = 0.05
+    cv_random_state = 1
+    cv_range_vals = 30
+    cv_num_vals = 10
+
+    # Neural network parameters  (shared by conditional quantile neural network
+    # and conditional mean neural network regression)
+    # See AllQNet_RegressorAdapter and MSENet_RegressorAdapter in helper.py
+    nn_learn_func = torch.optim.Adam
+    epochs = 1000
+    lr = 0.0005
+    hidden_size = 64
+    batch_size = 64
+    dropout = 0.1
+    wd = 1e-6
+
+    # Ask for a reduced coverage when tuning the network parameters by
+    # cross-validation to avoid too conservative initial estimation of the
+    # prediction interval. This estimation will be conformalized by CQR.
+    #quantiles_net = [0.1, 0.9]
+
+    #_lambda1, _lambda2=19.0, 19.0
+
+    # local conformal prediction parameter.
+    # See RegressorNc class for more details.
+    beta = 1
+    beta_net = 1
+
+    # local conformal prediction parameter. The local ridge regression method
+    # uses nearest neighbor regression as the MAD estimator.
+    # Number of neighbors used by nearest neighbor regression.
+    n_neighbors = 11
+
+    print(dataset_name)
+    sys.stdout.flush()
+
+    try:
+        # load the dataset
+        X, y = datasets.GetDataset(dataset_name, base_dataset_path)
+    except:
+        print("CANNOT LOAD DATASET!")
+        return
+
+    # Dataset is divided into test and train data based on test_ratio parameter
+    X_train, X_test, y_train, y_test = train_test_split(X,
+                                                        y,
+                                                        test_size=test_ratio,
+                                                        random_state=random_state_train_test)
+
+
+    # fit a simple ridge regression model (sanity check)
+    model = linear_model.RidgeCV()
+    model = model.fit(X_train, np.squeeze(y_train))
+    predicted_data = model.predict(X_test).astype(np.float32)
+
+    # calculate the normalized mean squared error
+    print("Ridge relative error: %f" % (np.sum((np.squeeze(y_test)-predicted_data)**2)/np.sum(np.squeeze(y_test)**2)))
+    sys.stdout.flush()
+
+    # reshape the data
+    X_train = np.asarray(X_train)
+    y_train = np.asarray(y_train)
+    X_test = np.asarray(X_test)
+    y_test = np.asarray(y_test)
+
+    # input dimensions
+    n_train = X_train.shape[0]
+    in_shape = X_train.shape[1]
+
+    print("Size: train (%d, %d), test (%d, %d)" % (X_train.shape[0], X_train.shape[1], X_test.shape[0], X_test.shape[1]))
+    sys.stdout.flush()
+
+    # set seed for splitting the data into proper train and calibration
+    np.random.seed(seed)
+    idx = np.random.permutation(n_train)
+
+    # divide the data into proper training set and calibration set
+    n_half = int(np.floor(n_train/2))
+    idx_train, idx_cal = idx[:n_half], idx[n_half:2*n_half]
+    
+    # zero mean and unit variance scaling of the train and test features
+    scalerX = StandardScaler()
+    scalerX = scalerX.fit(X_train[idx_train])
+    X_train = scalerX.transform(X_train)
+    X_test = scalerX.transform(X_test)
+    
+    # scale the labels by dividing each by the mean absolute response
+    mean_ytrain = np.mean(np.abs(y_train[idx_train]))
+    y_train = np.squeeze(y_train)/mean_ytrain
+    y_test = np.squeeze(y_test)/mean_ytrain
+   
+    X_test = X_train[ idx_cal ] 
+    y_test = y_train[ idx_cal ] 
+
+    ######################### Neural net
+
+    if 'lwa_neural_net' == test_method:
+
+        model = helper.LWANet_RegressorAdapter(model=None,
+                                               fit_params=None,
+                                               in_shape = in_shape,
+                                               hidden_size = hidden_size,
+                                               learn_func = nn_learn_func,
+                                               epochs = epochs,
+                                               batch_size=batch_size,
+                                               dropout=dropout,
+                                               lr=lr,
+                                               wd=wd,
+                                               test_ratio=cv_test_ratio,
+                                               random_state=cv_random_state, 
+                                               _lambda1=_lambda1, _lambda2=_lambda2 )
+        nc = LWARegressorNc(model, LWAQuantileRegErrFunc())
+        #nc = RegressorNc(model)
+
+        y_lower, y_upper = helper.run_lwa_icp(nc, X_train, y_train, X_test, idx_train, idx_cal, significance)
+        coverage_lwa_net, length_lwa_net = helper.compute_coverage(y_test,y_lower,y_upper,significance,"LWA-Net")
+        return coverage_lwa_net, length_lwa_net
+
+    if 'cqr_quantile_net' == test_method:
+
+        model = helper.AllQNet_RegressorAdapter(model=None,
+                                             fit_params=None,
+                                             in_shape = in_shape,
+                                             hidden_size = hidden_size,
+                                             quantiles = quantiles_net,
+                                             learn_func = nn_learn_func,
+                                             epochs = epochs,
+                                             batch_size=batch_size,
+                                             dropout=dropout,
+                                             lr=lr,
+                                             wd=wd,
+                                             test_ratio=cv_test_ratio,
+                                             random_state=cv_random_state,
+                                             use_rearrangement=False)
+        nc = RegressorNc(model, QuantileRegErrFunc())
+
+        y_lower, y_upper = helper.run_icp(nc, X_train, y_train, X_test, idx_train, idx_cal, significance)
+        coverage_cp_qnet, length_cp_qnet = helper.compute_coverage(y_test,y_lower,y_upper,significance,"CQR Net")
+        return coverage_cp_qnet, length_cp_qnet
+
+
