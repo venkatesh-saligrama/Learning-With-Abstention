@@ -41,6 +41,13 @@ from reproducible_experiments.run_cqr_experiment import run_experiment
 
 test_methods = ['cqr_quantile_net', 'lwa_neural_net']
 dataset_names = ['concrete' ]
+
+theta = 0.115789
+quantiles_net = [theta, 0.8+theta]
+
+theta=0.86
+_lambda= (theta) / (1. - theta)
+_lambda1, _lambda2 = _lambda, _lambda
  
 # vector of random seeds
 #random_state_train_test = np.arange(1) # np.arange(20)
@@ -54,7 +61,9 @@ for test_method_id in range( len( test_methods ) ):
             random_state = random_state_train_test[random_state_train_test_id]
 
             # run an experiment and save average results to CSV file
-            run_experiment(dataset_name, test_method, random_state)
+            run_experiment(dataset_name, test_method, random_state, 
+                      quantiles_net=quantiles_net,
+                      _lambda1=_lambda1, _lambda2=_lambda2 )
 
 '''
 dataset_name = 'concrete' # 'community'

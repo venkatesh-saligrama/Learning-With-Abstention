@@ -40,6 +40,8 @@ plot_results = False
 def run_experiment(dataset_name,
                    test_method,
                    random_state_train_test,
+                   quantiles_net = [0.1, 0.9],
+                   _lambda1=2.0, _lambda2=2.0,
                    save_to_csv=True):
     """ Estimate prediction intervals and print the average length and coverage
 
@@ -148,11 +150,11 @@ def run_experiment(dataset_name,
     # Ask for a reduced coverage when tuning the network parameters by
     # cross-validation to avoid too conservative initial estimation of the
     # prediction interval. This estimation will be conformalized by CQR.
-    quantiles_net = [0.1, 0.9]
+    #quantiles_net = [0.1, 0.9]
 
     #_lambda1, _lambda2=1.0, 1.0
     #_lambda1, _lambda2=2.0, 2.0
-    _lambda1, _lambda2=19.0, 19.0
+    #_lambda1, _lambda2=19.0, 19.0
 
     # local conformal prediction parameter.
     # See RegressorNc class for more details.
