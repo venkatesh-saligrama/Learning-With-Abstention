@@ -83,6 +83,9 @@ def run_experiment(dataset_name,
     coverage_forest_local=0
     length_forest_local=0
 
+    coverage_lwa_net=0
+    length_lwa_net=0 
+
     coverage_cp_qnet=0
     length_cp_qnet=0
     coverage_qnet=0
@@ -147,6 +150,9 @@ def run_experiment(dataset_name,
     # prediction interval. This estimation will be conformalized by CQR.
     quantiles_net = [0.1, 0.9]
 
+    #_lambda1, _lambda2=1.0, 1.0
+    #_lambda1, _lambda2=2.0, 2.0
+    _lambda1, _lambda2=19.0, 19.0
 
     # local conformal prediction parameter.
     # See RegressorNc class for more details.
@@ -335,7 +341,8 @@ def run_experiment(dataset_name,
                                                lr=lr,
                                                wd=wd,
                                                test_ratio=cv_test_ratio,
-                                               random_state=cv_random_state)
+                                               random_state=cv_random_state, 
+                                               _lambda1=_lambda1, _lambda2=_lambda2 )
         nc = LWARegressorNc(model, LWAQuantileRegErrFunc())
         #nc = RegressorNc(model)
 
@@ -346,8 +353,8 @@ def run_experiment(dataset_name,
 
         dataset_name_vec.append(dataset_name)
         method_vec.append('LWA-Net')
-        coverage_vec.append(coverage_net)
-        length_vec.append(length_net)
+        coverage_vec.append(coverage_lwa_net)
+        length_vec.append(length_lwa_net)
         seed_vec.append(seed)
 
         '''

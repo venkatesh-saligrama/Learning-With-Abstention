@@ -13,7 +13,7 @@ from reproducible_experiments.run_cqr_experiment import run_experiment
 
 
 # list methods to test
-test_methods = ['linear',
+'''test_methods = ['linear',
                 'neural_net',
                 'random_forest',
                 'quantile_net',
@@ -24,10 +24,10 @@ test_methods = ['linear',
                 'cqr_asymmetric_rearrangement',
                 'quantile_forest',
                 'cqr_quantile_forest',
-                'cqr_asymmetric_quantile_forest']
+                'cqr_asymmetric_quantile_forest']'''
 
 # list of datasets
-dataset_names = ['meps_19',
+'''dataset_names = ['meps_19',
                  'meps_20',
                  'meps_21',
                  'star',
@@ -37,24 +37,32 @@ dataset_names = ['meps_19',
                  'blog_data',
                  'concrete',
                  'bike',
-                 'community']
+                 'community']'''
 
+test_methods = ['cqr_quantile_net', 'lwa_neural_net']
+dataset_names = ['concrete' ]
+ 
 # vector of random seeds
+#random_state_train_test = np.arange(1) # np.arange(20)
 random_state_train_test = np.arange(20)
 
-#for test_method_id in range(12):
-#    for dataset_name_id in range(11):
-#        for random_state_train_test_id in range(20):
-#            dataset_name = dataset_names[dataset_name_id]
-#            test_method = test_methods[test_method_id]
-#            random_state = random_state_train_test[random_state_train_test_id]
-#
-#            # run an experiment and save average results to CSV file
-#            run_experiment(dataset_name, test_method, random_state)
+for test_method_id in range( len( test_methods ) ):
+    for dataset_name_id in range( len(dataset_names) ):
+        for random_state_train_test_id in range( len( random_state_train_test ) ):
+            dataset_name = dataset_names[dataset_name_id]
+            test_method = test_methods[test_method_id]
+            random_state = random_state_train_test[random_state_train_test_id]
 
+            # run an experiment and save average results to CSV file
+            run_experiment(dataset_name, test_method, random_state)
+
+'''
 dataset_name = 'concrete' # 'community'
-#test_method = 'neural_net' #'cqr_quantile_forest'
-#test_method = 'cqr_quantile_net' #'cqr_quantile_forest'
-test_method = 'lwa_neural_net' #'cqr_quantile_forest'
 random_state = 12
+
+test_method = 'cqr_quantile_net' #'cqr_quantile_forest'
 run_experiment(dataset_name, test_method, random_state)
+
+test_method = 'lwa_neural_net' #'cqr_quantile_forest'
+run_experiment(dataset_name, test_method, random_state)
+'''
