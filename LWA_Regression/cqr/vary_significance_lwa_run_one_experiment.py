@@ -39,10 +39,12 @@ from reproducible_experiments.run_cqr_experiment import run_experiment
                  'bike',
                  'community']'''
 
-#test_methods = ['cqr_quantile_net', 'lwa_neural_net']
-test_methods = ['cqr_quantile_net'] #, 'lwa_neural_net']
+test_methods = ['cqr_quantile_net', 'lwa_neural_net']
+#test_methods = ['cqr_quantile_net'] #, 'lwa_neural_net']
 dataset_names = ['concrete' ]
 #dataset_names = ['bike'] #'concrete'
+
+significance_list = [0.90, 0.925, 0.95, 0.975]
 
 #theta = 0.115789  # concrete
 #theta = 0.094736   # bike
@@ -59,16 +61,26 @@ _lambda1, _lambda2 = _lambda, _lambda
 #random_state_train_test = np.arange(2) # np.arange(20)
 random_state_train_test = np.arange(20)
 
-for test_method_id in range( len( test_methods ) ):
-    for dataset_name_id in range( len(dataset_names) ):
-        for random_state_train_test_id in range( len( random_state_train_test ) ):
-            dataset_name = dataset_names[dataset_name_id]
-            test_method = test_methods[test_method_id]
-            random_state = random_state_train_test[random_state_train_test_id]
+for significance in significance_list:
+    alpha = 1.0 - significance
+    quantiles_net = [ alpha/2 , 1.0 - alpha/2]
+    print(significance, ' --> quantiles_net = ', quantiles_net)
 
-            # run an experiment and save average results to CSV file
-            run_experiment(dataset_name, test_method, random_state, 
+    _lambda = (1.0 - alpha/2) / (alpha/2)
+    _lambda1, _lambda2 = _lambda, _lambda
+    print(significance, ' --> _lambda1, _lambda2 = ', _lambda1, _lambda2)
+
+    for test_method_id in range( len( test_methods ) ):
+        for dataset_name_id in range( len(dataset_names) ):
+            for random_state_train_test_id in range( len( random_state_train_test ) ):
+                dataset_name = dataset_names[dataset_name_id]
+                test_method = test_methods[test_method_id]
+                random_state = random_state_train_test[random_state_train_test_id]
+
+                # run an experiment and save average results to CSV file
+                run_experiment(dataset_name, test_method, random_state, 
                       quantiles_net=quantiles_net,
+                      significance=significance,
                       _lambda1=_lambda1, _lambda2=_lambda2 )
 
 '''

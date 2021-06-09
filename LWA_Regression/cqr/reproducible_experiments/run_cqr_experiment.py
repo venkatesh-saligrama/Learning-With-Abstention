@@ -41,6 +41,7 @@ def run_experiment(dataset_name,
                    test_method,
                    random_state_train_test,
                    quantiles_net = [0.1, 0.9],
+                   significance = 0.1,
                    _lambda1=2.0, _lambda2=2.0,
                    save_to_csv=True):
     """ Estimate prediction intervals and print the average length and coverage
@@ -62,6 +63,7 @@ def run_experiment(dataset_name,
     coverage_vec = []
     length_vec = []
     seed_vec = []
+    significance_vec = []
 
     seed = random_state_train_test
     random.seed(seed)
@@ -117,7 +119,7 @@ def run_experiment(dataset_name,
     test_ratio = 0.2
 
     # conformal prediction miscoverage level
-    significance = 0.1
+    #significance = 0.1
     # desired quantile levels, used by the quantile regression methods
     quantiles = [0.05, 0.95]
 
@@ -258,6 +260,7 @@ def run_experiment(dataset_name,
         coverage_vec.append(coverage_linear_local)
         length_vec.append(length_linear_local)
         seed_vec.append(seed)
+        significance_vec.append( significance )
 
     ######################### Neural net
 
@@ -287,6 +290,7 @@ def run_experiment(dataset_name,
         coverage_vec.append(coverage_net)
         length_vec.append(length_net)
         seed_vec.append(seed)
+        significance_vec.append( significance )
 
         normalizer_adapter = helper.MSENet_RegressorAdapter(model=None,
                                                             fit_params=None,
@@ -327,6 +331,7 @@ def run_experiment(dataset_name,
         coverage_vec.append(coverage_net_local)
         length_vec.append(length_net_local)
         seed_vec.append(seed)
+        significance_vec.append( significance )
 
     ######################### Neural net
 
@@ -358,6 +363,7 @@ def run_experiment(dataset_name,
         coverage_vec.append(coverage_lwa_net)
         length_vec.append(length_lwa_net)
         seed_vec.append(seed)
+        significance_vec.append( significance )
 
         '''
         normalizer_adapter = helper.LWANet_RegressorAdapter(model=None,
@@ -398,7 +404,9 @@ def run_experiment(dataset_name,
         method_vec.append('LWA-Net-L')
         coverage_vec.append(coverage_net_local)
         length_vec.append(length_net_local)
-        seed_vec.append(seed)'''
+        seed_vec.append(seed)
+        significance_vec.append( significance )
+        '''
 
 
 
@@ -419,6 +427,7 @@ def run_experiment(dataset_name,
         coverage_vec.append(coverage_forest)
         length_vec.append(length_forest)
         seed_vec.append(seed)
+        significance_vec.append( significance )
 
         normalizer_adapter = RandomForestRegressor(n_estimators=n_estimators, min_samples_leaf=min_samples_leaf, random_state=0)
         adapter = RandomForestRegressor(n_estimators=n_estimators, min_samples_leaf=min_samples_leaf, random_state=0)
@@ -437,6 +446,7 @@ def run_experiment(dataset_name,
         coverage_vec.append(coverage_forest_local)
         length_vec.append(length_forest_local)
         seed_vec.append(seed)
+        significance_vec.append( significance )
 
     ################## Quantile Net
 
@@ -469,6 +479,7 @@ def run_experiment(dataset_name,
         coverage_vec.append(coverage_qnet)
         length_vec.append(length_qnet)
         seed_vec.append(seed)
+        significance_vec.append( significance )
 
     if 'cqr_quantile_net' == test_method:
 
@@ -500,6 +511,7 @@ def run_experiment(dataset_name,
         length_vec.append(length_cp_qnet)
         seed_vec.append(seed)
 
+        significance_vec.append( significance )
 
     if 'cqr_asymmetric_quantile_net' == test_method:
 
@@ -530,6 +542,7 @@ def run_experiment(dataset_name,
         coverage_vec.append(coverage_cp_sign_qnet)
         length_vec.append(length_cp_sign_qnet)
         seed_vec.append(seed)
+        significance_vec.append( significance )
 
 
     ################### Rearrangement Quantile Net
@@ -563,6 +576,7 @@ def run_experiment(dataset_name,
         coverage_vec.append(coverage_re_qnet)
         length_vec.append(length_re_qnet)
         seed_vec.append(seed)
+        significance_vec.append( significance )
 
     if 'cqr_rearrangement' == test_method:
 
@@ -593,6 +607,7 @@ def run_experiment(dataset_name,
         coverage_vec.append(coverage_cp_re_qnet)
         length_vec.append(length_cp_re_qnet)
         seed_vec.append(seed)
+        significance_vec.append( significance )
 
 
     if 'cqr_asymmetric_rearrangement' == test_method:
@@ -624,6 +639,7 @@ def run_experiment(dataset_name,
         coverage_vec.append(coverage_cp_sign_re_qnet)
         length_vec.append(length_cp_sign_re_qnet)
         seed_vec.append(seed)
+        significance_vec.append( significance )
 
     ################### Quantile Random Forest
 
@@ -659,6 +675,7 @@ def run_experiment(dataset_name,
         coverage_vec.append(coverage_qforest)
         length_vec.append(length_qforest)
         seed_vec.append(seed)
+        significance_vec.append( significance )
 
     if 'cqr_quantile_forest' == test_method:
 
@@ -692,6 +709,7 @@ def run_experiment(dataset_name,
         coverage_vec.append(coverage_cp_qforest)
         length_vec.append(length_cp_qforest)
         seed_vec.append(seed)
+        significance_vec.append( significance )
 
     if 'cqr_asymmetric_quantile_forest' == test_method:
 
@@ -725,6 +743,7 @@ def run_experiment(dataset_name,
         coverage_vec.append(coverage_cp_sign_qforest)
         length_vec.append(length_cp_sign_qforest)
         seed_vec.append(seed)
+        significance_vec.append( significance )
 
 
 #        tmp = model.predict(X_test)
@@ -745,27 +764,27 @@ def run_experiment(dataset_name,
     ############### Summary
 
     coverage_str = 'Coverage (expected ' + str(100 - significance*100) + '%)'
-    results = np.array([[dataset_name, coverage_str, 'Avg. Length', 'Seed'],
-                     ['CP Linear', coverage_linear, length_linear, seed],
-                     ['CP Linear Local', coverage_linear_local, length_linear_local, seed],
+    results = np.array([[dataset_name, coverage_str, 'Avg. Length', 'Seed', 'Significance'],
+                     ['CP Linear', coverage_linear, length_linear, seed, significance],
+                     ['CP Linear Local', coverage_linear_local, length_linear_local, seed, significance],
 
-                     ['CP Neural Net', coverage_net, length_net, seed],
-                     ['CP Neural Net Local', coverage_net_local, length_net_local, seed],
+                     ['CP Neural Net', coverage_net, length_net, seed, significance],
+                     ['CP Neural Net Local', coverage_net_local, length_net_local, seed, significance],
 
-                     ['CP LWA Neural Net', coverage_lwa_net, length_lwa_net, seed],
-                     #['CP LWA Neural Net Local', coverage_lwa_net_local, length_lwa_net_local, seed],
+                     ['CP LWA Neural Net', coverage_lwa_net, length_lwa_net, seed, significance],
+                     #['CP LWA Neural Net Local', coverage_lwa_net_local, length_lwa_net_local, seed, significance],
 
-                     ['CP Random Forest', coverage_forest, length_forest, seed],
-                     ['CP Random Forest Local', coverage_forest_local, length_forest_local, seed],
-                     ['CP Quantile Net', coverage_cp_qnet, length_cp_qnet, seed],
-                     ['CP Asymmetric Quantile Net', coverage_cp_sign_qnet, length_cp_sign_qnet, seed],
-                     ['Quantile Net', coverage_qnet, length_qnet, seed],
-                     ['CP Rearrange Quantile Net', coverage_cp_re_qnet, length_cp_re_qnet, seed],
-                     ['CP Asymmetric Rearrange Quantile Net', coverage_cp_sign_re_qnet, length_cp_sign_re_qnet, seed],
-                     ['Rearrange Quantile Net', coverage_re_qnet, length_re_qnet, seed],
-                     ['CP Quantile Random Forest', coverage_cp_qforest, length_cp_qforest, seed],
-                     ['CP Asymmetric Quantile Random Forest', coverage_cp_sign_qforest, length_cp_sign_qforest, seed],
-                     ['Quantile Random Forest', coverage_qforest, length_qforest, seed]])
+                     ['CP Random Forest', coverage_forest, length_forest, seed, significance],
+                     ['CP Random Forest Local', coverage_forest_local, length_forest_local, seed, significance],
+                     ['CP Quantile Net', coverage_cp_qnet, length_cp_qnet, seed, significance],
+                     ['CP Asymmetric Quantile Net', coverage_cp_sign_qnet, length_cp_sign_qnet, seed, significance],
+                     ['Quantile Net', coverage_qnet, length_qnet, seed, significance],
+                     ['CP Rearrange Quantile Net', coverage_cp_re_qnet, length_cp_re_qnet, seed, significance],
+                     ['CP Asymmetric Rearrange Quantile Net', coverage_cp_sign_re_qnet, length_cp_sign_re_qnet, seed, significance],
+                     ['Rearrange Quantile Net', coverage_re_qnet, length_re_qnet, seed, significance],
+                     ['CP Quantile Random Forest', coverage_cp_qforest, length_cp_qforest, seed, significance],
+                     ['CP Asymmetric Quantile Random Forest', coverage_cp_sign_qforest, length_cp_sign_qforest, seed, significance],
+                     ['Quantile Random Forest', coverage_qforest, length_qforest, seed, significance]])
 
     results_ = pd.DataFrame(data=results[1:,1:],
                       index=results[1:,0],
@@ -783,13 +802,16 @@ def run_experiment(dataset_name,
         if not os.path.exists(outdir):
             os.mkdir(outdir)
 
-        out_name = outdir + 'results.csv'
+        #out_name = outdir + 'results.csv'
+        out_name = outdir + 'results-' + dataset_name  + '-significance.csv'
 
         df = pd.DataFrame({'name': dataset_name_vec,
                            'method': method_vec,
+                           'seed': seed_vec,
+                           'Significance' : significance_vec,
                            coverage_str : coverage_vec,
                            'Avg. Length' : length_vec,
-                           'seed': seed_vec})
+                           })
 
         if os.path.isfile(out_name):
             df2 = pd.read_csv(out_name)
