@@ -1,0 +1,202 @@
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+CQR Net: Percentage in the range (expecting 90.00): 90.032154
+CQR Net: Average length: 1.291748
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+CQR Net: Percentage in the range (expecting 90.00): 90.032154
+CQR Net: Average length: 0.788470
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+CQR Net: Percentage in the range (expecting 90.00): 90.032154
+CQR Net: Average length: 0.714816
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+CQR Net: Percentage in the range (expecting 90.00): 90.032154
+CQR Net: Average length: 0.656342
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+CQR Net: Percentage in the range (expecting 90.00): 90.032154
+CQR Net: Average length: 0.640871
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+CQR Net: Percentage in the range (expecting 90.00): 90.032154
+CQR Net: Average length: 0.596067
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+CQR Net: Percentage in the range (expecting 90.00): 90.032154
+CQR Net: Average length: 0.581837
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+CQR Net: Percentage in the range (expecting 90.00): 90.032154
+CQR Net: Average length: 0.583360
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+CQR Net: Percentage in the range (expecting 90.00): 90.032154
+CQR Net: Average length: 0.558108
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+CQR Net: Percentage in the range (expecting 90.00): 90.032154
+CQR Net: Average length: 0.552512
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+CQR Net: Percentage in the range (expecting 90.00): 90.032154
+CQR Net: Average length: 0.592670
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+CQR Net: Percentage in the range (expecting 90.00): 90.032154
+CQR Net: Average length: 0.562632
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+CQR Net: Percentage in the range (expecting 90.00): 90.032154
+CQR Net: Average length: 0.573958
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+CQR Net: Percentage in the range (expecting 90.00): 90.032154
+CQR Net: Average length: 0.571121
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+CQR Net: Percentage in the range (expecting 90.00): 90.032154
+CQR Net: Average length: 0.589676
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+CQR Net: Percentage in the range (expecting 90.00): 90.032154
+CQR Net: Average length: 0.647333
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+CQR Net: Percentage in the range (expecting 90.00): 90.032154
+CQR Net: Average length: 0.618990
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+CQR Net: Percentage in the range (expecting 90.00): 90.032154
+CQR Net: Average length: 0.716393
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+CQR Net: Percentage in the range (expecting 90.00): 90.032154
+CQR Net: Average length: 0.922487
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+CQR Net: Percentage in the range (expecting 90.00): 90.032154
+CQR Net: Average length: 3.164848
+ --> CQR Net --> max_cov, max_len, max_theta, 0.8+theta  90.03215434083602 0.5525123763142421 0.09473684210526316 0.8947368421052632
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+LWA-Net: Percentage in the range (expecting 90.00): 90.032154
+LWA-Net: Average length: 0.613933
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+LWA-Net: Percentage in the range (expecting 90.00): 90.032154
+LWA-Net: Average length: 0.592068
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+LWA-Net: Percentage in the range (expecting 90.00): 90.032154
+LWA-Net: Average length: 0.594499
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+LWA-Net: Percentage in the range (expecting 90.00): 90.032154
+LWA-Net: Average length: 0.619927
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+LWA-Net: Percentage in the range (expecting 90.00): 90.032154
+LWA-Net: Average length: 0.571238
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+LWA-Net: Percentage in the range (expecting 90.00): 90.032154
+LWA-Net: Average length: 0.586528
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+LWA-Net: Percentage in the range (expecting 90.00): 90.032154
+LWA-Net: Average length: 0.598223
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+LWA-Net: Percentage in the range (expecting 90.00): 90.032154
+LWA-Net: Average length: 0.576592
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+LWA-Net: Percentage in the range (expecting 90.00): 90.032154
+LWA-Net: Average length: 0.600371
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+LWA-Net: Percentage in the range (expecting 90.00): 90.032154
+LWA-Net: Average length: 0.610398
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+LWA-Net: Percentage in the range (expecting 90.00): 90.032154
+LWA-Net: Average length: 0.625872
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+LWA-Net: Percentage in the range (expecting 90.00): 90.032154
+LWA-Net: Average length: 0.619317
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+LWA-Net: Percentage in the range (expecting 90.00): 90.032154
+LWA-Net: Average length: 0.604784
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+LWA-Net: Percentage in the range (expecting 90.00): 90.032154
+LWA-Net: Average length: 0.609789
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+LWA-Net: Percentage in the range (expecting 90.00): 90.032154
+LWA-Net: Average length: 0.638923
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+LWA-Net: Percentage in the range (expecting 90.00): 90.032154
+LWA-Net: Average length: 0.641799
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+LWA-Net: Percentage in the range (expecting 90.00): 90.032154
+LWA-Net: Average length: 0.711586
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+LWA-Net: Percentage in the range (expecting 90.00): 90.032154
+LWA-Net: Average length: 0.781802
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+LWA-Net: Percentage in the range (expecting 90.00): 90.032154
+LWA-Net: Average length: 0.921992
+bike
+Ridge relative error: 0.278626
+Size: train (8708, 18), test (2178, 18)
+LWA-Net: Percentage in the range (expecting 90.00): 90.032154
+LWA-Net: Average length: 1.104570
+ --> LWA Net --> max_cov, max_len, max_lambda  90.03215434083602 0.5712380144175281 0.8400000000000001

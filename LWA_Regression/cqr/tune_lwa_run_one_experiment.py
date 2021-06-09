@@ -51,7 +51,8 @@ random_state = 1234 #np.arange(1) # np.arange(20)
 target_cov = 90
 n_vals = 20
 
-dataset_name = 'concrete'
+#dataset_name = 'concrete'
+dataset_name = 'bike' #'concrete'
 test_method = 'cqr_quantile_net'
 max_cov, max_len, max_theta = None, None, None
 for theta in np.linspace(0.0, 0.2, num=n_vals):
@@ -62,6 +63,7 @@ for theta in np.linspace(0.0, 0.2, num=n_vals):
    elif ( cur_cov >= target_cov ) and ( cur_len <= max_len ):
        max_cov, max_len, max_theta = cur_cov, cur_len, theta
 print(' --> CQR Net --> max_cov, max_len, max_theta, 0.8+theta ',  max_cov, max_len, max_theta, 0.8+max_theta )
+#assert(1==2)
 
 #n_vals=40
 test_method = 'lwa_neural_net'

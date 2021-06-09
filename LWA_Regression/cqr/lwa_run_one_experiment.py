@@ -40,12 +40,15 @@ from reproducible_experiments.run_cqr_experiment import run_experiment
                  'community']'''
 
 test_methods = ['cqr_quantile_net', 'lwa_neural_net']
-dataset_names = ['concrete' ]
+#dataset_names = ['concrete' ]
+dataset_names = ['bike'] #'concrete'
 
-theta = 0.115789
+#theta = 0.115789  # concrete
+theta = 0.094736   # bike
 quantiles_net = [theta, 0.8+theta]
 
-theta=0.86
+#theta=0.86   # concrete
+theta = 0.84  # Bike
 _lambda= (theta) / (1. - theta)
 _lambda1, _lambda2 = _lambda, _lambda
  
