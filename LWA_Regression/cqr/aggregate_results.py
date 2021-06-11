@@ -17,7 +17,7 @@ def get_mean_std_various_significance_levels( out_name, significance_list=[0.90,
     for significance in significance_list: 
         coverage_str = 'Coverage (expected ' + str(100 - significance*100) + '%)'
         tmp_df = df.loc[ df['Significance'] == significance ]
-        print(tmp_df)
+        #print(tmp_df)
         tmp_df = tmp_df[ [ 'name', 'method', 'seed', 'Significance', coverage_str, 'Avg. Length' ]  ]
 
         for method in methods:
