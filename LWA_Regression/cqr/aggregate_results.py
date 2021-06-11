@@ -17,6 +17,7 @@ def get_mean_std_various_significance_levels( out_name, significance_list=[0.90,
     for significance in significance_list: 
         coverage_str = 'Coverage (expected ' + str(100 - significance*100) + '%)'
         tmp_df = df.loc[ df['Significance'] == significance ]
+        print(tmp_df)
         tmp_df = tmp_df[ [ 'name', 'method', 'seed', 'Significance', coverage_str, 'Avg. Length' ]  ]
 
         for method in methods:
@@ -30,6 +31,10 @@ def get_mean_std_various_significance_levels( out_name, significance_list=[0.90,
             print( dataset, '\t', significance, '\t', coverage_str, '\t', method, '\t', mean_stats[coverage_str], '+-', std_stats[coverage_str], '\t', mean_stats['Avg. Length'], '+-', std_stats['Avg. Length'] )
             #exit(1)
 
-get_mean_std_various_significance_levels( './results/results-concrete-significance.csv', dataset='concrete' )
-get_mean_std_various_significance_levels( './results/results-bike-significance.csv', dataset='bike' )
+#get_mean_std_various_significance_levels( './results/results-concrete-significance.csv', dataset='concrete' )
+#get_mean_std_various_significance_levels( './results/results-bike-significance.csv', dataset='bike' )
 
+
+significance_list=[ round(1. - x, 5) for x in [0.90, 0.925, 0.95, 0.975]]
+print('Significance list = ', significance_list)
+get_mean_std_various_significance_levels( './results/results-concrete-significance-parallel.csv', dataset='concrete', significance_list=significance_list )

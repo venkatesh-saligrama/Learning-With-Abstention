@@ -307,7 +307,7 @@ class LWA_LearnerOptimized:
 
         sys.stdout.flush()
         model = copy.deepcopy(self.model)
-        model = model.to(device)
+        model = model.to(self.device)
         optimizer = self.optimizer_class(model.parameters())
         best_epoch = epochs
 

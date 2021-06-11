@@ -3,6 +3,8 @@ import sys
 import six
 sys.modules['sklearn.externals.six'] = six
 
+import warnings
+warnings.filterwarnings("ignore")
 
 import torch
 import random
@@ -47,6 +49,7 @@ def run_experiment(dataset_name,
                    quantiles_net = [0.1, 0.9],
                    significance = 0.1,
                    _lambda1=2.0, _lambda2=2.0,
+                   flush_summary=True,
                    save_to_csv=True):
     """ Estimate prediction intervals and print the average length and coverage
 
@@ -177,8 +180,8 @@ def run_experiment(dataset_name,
     # Number of neighbors used by nearest neighbor regression.
     n_neighbors = 11
 
-    print(dataset_name)
-    sys.stdout.flush()
+    #print(dataset_name)
+    #sys.stdout.flush()
 
     try:
         # load the dataset
@@ -801,10 +804,11 @@ def run_experiment(dataset_name,
                       index=results[1:,0],
                       columns=results[0,1:])
 
-    print("== SUMMARY == ")
-    print("dataset name: " + dataset_name)
-    print(results_)
-    sys.stdout.flush()
+    if flush_summary:
+        print("== SUMMARY == ")
+        print("dataset name: " + dataset_name)
+        print(results_)
+        sys.stdout.flush()
 
     if save_to_csv:
         results = pd.DataFrame(results)
