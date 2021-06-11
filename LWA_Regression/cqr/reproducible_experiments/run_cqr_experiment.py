@@ -155,8 +155,12 @@ def run_experiment(dataset_name,
     # and conditional mean neural network regression)
     # See AllQNet_RegressorAdapter and MSENet_RegressorAdapter in helper.py
     nn_learn_func = torch.optim.Adam
-    epochs = 1000
-    lr = 0.0005
+    #epochs = 1000
+    #lr = 0.0005
+
+    epochs = 50
+    lr = 0.01
+
     hidden_size = 64
     batch_size = 64
     dropout = 0.1
@@ -520,7 +524,7 @@ def run_experiment(dataset_name,
         #print( model.learner.loss_history )
         fig = plt.figure()
         plt.plot( model.learner.loss_history )
-        fig.savefig( './results/plot-convergence.png', dpi=1200 )
+        fig.savefig( './results/plot-convergence-lr-0.01-Epochs-50.png', dpi=1200 )
         coverage_cp_qnet, length_cp_qnet = helper.compute_coverage(y_test,y_lower,y_upper,significance,"CQR Net")
 
 
