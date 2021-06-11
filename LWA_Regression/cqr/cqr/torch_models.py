@@ -7,11 +7,11 @@ import torch.nn as nn
 from cqr import helper
 from sklearn.model_selection import train_test_split
 
-
+'''
 if torch.cuda.is_available():
     device = "cuda:0"
 else:
-    device = "cpu"
+    device = "cpu"'''
 
 ###############################################################################
 # Helper functions
@@ -737,7 +737,7 @@ class LearnerOptimizedCrossing:
         """
         sys.stdout.flush()
         model = copy.deepcopy(self.model)
-        model = model.to(device)
+        model = model.to(self.device)
         optimizer = self.optimizer_class(model.parameters())
         best_epoch = epochs
 

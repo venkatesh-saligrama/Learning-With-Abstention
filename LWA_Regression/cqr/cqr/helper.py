@@ -345,6 +345,7 @@ class LWANet_RegressorAdapter(RegressorAdapter):
                  dropout=0.1,
                  lr=0.01,
                  wd=1e-6,
+                 device='cuda:0',
                  test_ratio=0.2,
                  random_state=0,
                  _lambda1=1.0, _lambda2=1.0):
@@ -520,6 +521,7 @@ class AllQNet_RegressorAdapter(RegressorAdapter):
                  dropout=0.1,
                  lr=0.01,
                  wd=1e-6,
+                 device='cuda:0',
                  test_ratio=0.2,
                  random_state=0,
                  use_rearrangement=False):

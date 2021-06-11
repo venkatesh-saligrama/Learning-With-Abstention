@@ -1,5 +1,9 @@
 import os
 import sys
+import six
+sys.modules['sklearn.externals.six'] = six
+
+
 import torch
 import random
 import numpy as np
@@ -57,6 +61,11 @@ def run_experiment(dataset_name,
                   or not (False)
 
     """
+    _device_id = random_state_train_test%4
+    if torch.cuda.is_available():
+        device = "cuda:" + str(_device_id)
+    else:
+        device = "cpu"
 
     dataset_name_vec = []
     method_vec = []
@@ -345,6 +354,7 @@ def run_experiment(dataset_name,
                                                epochs = epochs,
                                                batch_size=batch_size,
                                                dropout=dropout,
+                                               device=device,
                                                lr=lr,
                                                wd=wd,
                                                test_ratio=cv_test_ratio,
@@ -493,6 +503,7 @@ def run_experiment(dataset_name,
                                              batch_size=batch_size,
                                              dropout=dropout,
                                              lr=lr,
+                                             device=device,
                                              wd=wd,
                                              test_ratio=cv_test_ratio,
                                              random_state=cv_random_state,
@@ -819,6 +830,14 @@ def run_experiment(dataset_name,
 
         df.to_csv(out_name, index=False)
 
+    df = pd.DataFrame({'name': dataset_name_vec,
+                       'method': method_vec,
+                       'seed': seed_vec,
+                       'Significance' : significance_vec,
+                       coverage_str : coverage_vec,
+                       'Avg. Length' : length_vec,
+                       })
+    return df
 
 
 

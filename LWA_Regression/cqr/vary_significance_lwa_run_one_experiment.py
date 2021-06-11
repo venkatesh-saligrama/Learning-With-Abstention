@@ -7,7 +7,11 @@ import six
 import sys
 sys.modules['sklearn.externals.six'] = six
 
+from joblib import Parallel, delayed
+
+import os
 import numpy as np
+import pandas as pd
 from reproducible_experiments.run_cqr_experiment import run_experiment
 #from run_cqr_experiment import run_experiment
 
@@ -41,8 +45,8 @@ from reproducible_experiments.run_cqr_experiment import run_experiment
 
 test_methods = ['cqr_quantile_net', 'lwa_neural_net']
 #test_methods = ['cqr_quantile_net'] #, 'lwa_neural_net']
-#dataset_names = ['concrete' ]
-dataset_names = ['bike'] #'concrete'
+dataset_names = ['concrete' ]
+#dataset_names = ['bike'] #'concrete'
 
 significance_list = [0.90, 0.925, 0.95, 0.975]
 
@@ -59,7 +63,13 @@ _lambda1, _lambda2 = _lambda, _lambda
 # vector of random seeds
 #random_state_train_test = np.arange(1) # np.arange(20)
 #random_state_train_test = np.arange(2) # np.arange(20)
-random_state_train_test = np.arange(20)
+#random_state_train_test = np.arange(20)
+n_jobs = 8
+random_state_train_test = np.arange(8).tolist()
+
+outdir = './results/'
+if not os.path.exists(outdir):
+    os.mkdir(outdir)
 
 for significance in significance_list:
     alpha = 1.0 - significance
@@ -72,16 +82,35 @@ for significance in significance_list:
 
     for test_method_id in range( len( test_methods ) ):
         for dataset_name_id in range( len(dataset_names) ):
+            dataset_name = dataset_names[dataset_name_id]
+            test_method = test_methods[test_method_id]
+
+            results = Parallel(n_jobs=n_jobs)(delayed( run_experiment )(  dataset_name, test_method, random_state, 
+                      quantiles_net=quantiles_net, significance=alpha, _lambda1=_lambda1, _lambda2=_lambda2, save_to_csv=False ) for random_state in random_state_train_test)
+            df = results[0]
+            for df2 in results[1:]:
+                df = pd.concat([df2, df], ignore_index=True)
+            #print(results)
+            print(df)
+            out_name = outdir + 'results-' + dataset_name  + '-significance.csv'
+
+            if os.path.isfile(out_name):
+                df2 = pd.read_csv(out_name)
+                df = pd.concat([df2, df], ignore_index=True)
+
+            df.to_csv(out_name, index=False)
+
+            exit(1)
+
+            '''
             for random_state_train_test_id in range( len( random_state_train_test ) ):
-                dataset_name = dataset_names[dataset_name_id]
-                test_method = test_methods[test_method_id]
                 random_state = random_state_train_test[random_state_train_test_id]
 
                 # run an experiment and save average results to CSV file
                 run_experiment(dataset_name, test_method, random_state, 
                       quantiles_net=quantiles_net,
-                      significance=significance,
-                      _lambda1=_lambda1, _lambda2=_lambda2 )
+                      significance=alpha,
+                      _lambda1=_lambda1, _lambda2=_lambda2 ) '''
 
 '''
 dataset_name = 'concrete' # 'community'
