@@ -48,11 +48,11 @@ from reproducible_experiments.run_cqr_experiment import run_experiment
 
 test_methods = ['cqr_quantile_net', 'lwa_neural_net']
 #test_methods = ['cqr_quantile_net'] #, 'lwa_neural_net']
-dataset_names = ['concrete' ]
-#dataset_names = ['bike'] #'concrete'
+#dataset_names = ['concrete' ]
+dataset_names = ['bike'] #'concrete'
 
-#significance_list = [0.90, 0.925, 0.95, 0.975]
-significance_list = [0.975]
+significance_list = [0.90, 0.925, 0.95, 0.975]
+#significance_list = [0.975]
 
 #theta = 0.115789  # concrete
 #theta = 0.094736   # bike
