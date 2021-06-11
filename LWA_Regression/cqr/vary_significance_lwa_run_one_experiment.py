@@ -46,13 +46,13 @@ from reproducible_experiments.run_cqr_experiment import run_experiment
                  'bike',
                  'community']'''
 
-test_methods = ['cqr_quantile_net', 'lwa_neural_net']
-#test_methods = ['cqr_quantile_net'] #, 'lwa_neural_net']
-#dataset_names = ['concrete' ]
-dataset_names = ['bike'] #'concrete'
+#test_methods = ['cqr_quantile_net', 'lwa_neural_net']
+test_methods = ['cqr_quantile_net'] #, 'lwa_neural_net']
+dataset_names = ['concrete' ]
+#dataset_names = ['bike'] #'concrete'
 
-significance_list = [0.90, 0.925, 0.95, 0.975]
-#significance_list = [0.975]
+#significance_list = [0.90, 0.925, 0.95, 0.975]
+significance_list = [0.90]
 
 #theta = 0.115789  # concrete
 #theta = 0.094736   # bike
@@ -68,8 +68,8 @@ _lambda1, _lambda2 = _lambda, _lambda
 #random_state_train_test = np.arange(1) # np.arange(20)
 #random_state_train_test = np.arange(2) # np.arange(20)
 #random_state_train_test = np.arange(20)
-n_jobs = 10 #8
-random_state_train_test = np.arange(20).tolist()
+n_jobs = 1#10 #8
+random_state_train_test = np.arange(1).tolist()
 
 outdir = './results/'
 if not os.path.exists(outdir):
@@ -97,7 +97,8 @@ for significance in significance_list:
                 df = pd.concat([df2, df], ignore_index=True)
             #print(results)
             print(df)
-            out_name = outdir + 'results-' + dataset_name  + '-significance-parallel.csv'
+            #out_name = outdir + 'results-' + dataset_name  + '-significance-parallel.csv'
+            out_name = outdir + 'results-' + dataset_name  + '-significance-tmp.csv'
 
             if os.path.isfile(out_name):
                 df2 = pd.read_csv(out_name)

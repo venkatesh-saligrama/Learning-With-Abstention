@@ -24,6 +24,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 from nonconformist.nc import QuantileRegAsymmetricErrFunc
 
+import matplotlib.pyplot as plt
 
 pd.set_option('precision', 3)
 
@@ -516,6 +517,10 @@ def run_experiment(dataset_name,
         y_lower, y_upper = helper.run_icp(nc, X_train, y_train, X_test, idx_train, idx_cal, significance)
         if plot_results:
             helper.plot_func_data(y_test,y_lower,y_upper,"CQR Net")
+        #print( model.learner.loss_history )
+        fig = plt.figure()
+        plt.plot( model.learner.loss_history )
+        fig.savefig( './results/plot-convergence.png', dpi=1200 )
         coverage_cp_qnet, length_cp_qnet = helper.compute_coverage(y_test,y_lower,y_upper,significance,"CQR Net")
 
 
