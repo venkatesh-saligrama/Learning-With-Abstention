@@ -51,8 +51,9 @@ test_methods = ['cqr_quantile_net', 'lwa_neural_net']
 dataset_names = ['concrete' ]
  
 # vector of random seeds
-#random_state_train_test = np.arange(20).tolist()
-random_state_train_test = np.arange(5).tolist()
+random_state_train_test = np.arange(20).tolist()
+#random_state_train_test = np.arange(5).tolist()
+#random_state_train_test = np.arange(2).tolist()
 random_state = 1234 #np.arange(1) # np.arange(20)
 
 #            test_method = test_methods[test_method_id]
@@ -61,13 +62,13 @@ random_state = 1234 #np.arange(1) # np.arange(20)
 import random
 
 n_jobs=10
-n_vals =4 #20
+n_vals =20
 
-#significance_list = [0.90, 0.925, 0.95, 0.975]
-significance_list = [0.925] #, 0.925, 0.95, 0.975]
+significance_list = [0.90, 0.91, 0.92, 0.93, 0.94, 0.95, 0.96, 0.97, 0.98, 0.99]
+#significance_list = [0.99] #, 0.925, 0.95, 0.975]
 
-dataset_name = 'concrete'
-#dataset_name = 'bike' #'concrete'
+#dataset_name = 'concrete'
+dataset_name = 'bike' #'concrete'
 test_method = 'cqr_quantile_net'
 for significance in significance_list:
   target_cov = 100*significance
