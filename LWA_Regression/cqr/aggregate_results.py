@@ -35,7 +35,11 @@ def get_mean_std_various_significance_levels( out_name, significance_list=[0.90,
 #get_mean_std_various_significance_levels( './results/results-bike-significance.csv', dataset='bike' )
 
 
-significance_list=[ round(1. - x, 5) for x in [0.90, 0.925, 0.95, 0.975]]
+#significance_list=[ round(1. - x, 5) for x in [0.90, 0.925, 0.95, 0.975]]
+significance_list=[ round(1. - x, 5) for x in  [0.90, 0.91, 0.92, 0.93, 0.94, 0.95, 0.96, 0.97, 0.98, 0.99]  ]
 print('Significance list = ', significance_list)
 #get_mean_std_various_significance_levels( './results/results-concrete-significance-parallel.csv', dataset='concrete', significance_list=significance_list )
-get_mean_std_various_significance_levels( './results/results-bike-significance-parallel.csv', dataset='bike', significance_list=significance_list )
+#get_mean_std_various_significance_levels( './results/results-bike-significance-parallel.csv', dataset='bike', significance_list=significance_list )
+
+
+get_mean_std_various_significance_levels( './results/results-bike-significance-tmp.csv', dataset='bike', significance_list=significance_list )
