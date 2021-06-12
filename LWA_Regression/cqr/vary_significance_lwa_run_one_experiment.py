@@ -51,8 +51,8 @@ test_methods = ['cqr_quantile_net'] #, 'lwa_neural_net']
 dataset_names = ['concrete' ]
 #dataset_names = ['bike'] #'concrete'
 
-#significance_list = [0.90, 0.925, 0.95, 0.975]
-significance_list = [0.90]
+significance_list = [0.90, 0.925, 0.95, 0.975]
+#significance_list = [0.90]
 
 #theta = 0.115789  # concrete
 #theta = 0.094736   # bike
@@ -68,8 +68,8 @@ _lambda1, _lambda2 = _lambda, _lambda
 #random_state_train_test = np.arange(1) # np.arange(20)
 #random_state_train_test = np.arange(2) # np.arange(20)
 #random_state_train_test = np.arange(20)
-n_jobs = 1#10 #8
-random_state_train_test = np.arange(1).tolist()
+n_jobs = 10 #8
+random_state_train_test = np.arange(20).tolist()
 
 outdir = './results/'
 if not os.path.exists(outdir):

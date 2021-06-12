@@ -203,13 +203,13 @@ def run_experiment(dataset_name,
 
 
     # fit a simple ridge regression model (sanity check)
-    model = linear_model.RidgeCV()
-    model = model.fit(X_train, np.squeeze(y_train))
-    predicted_data = model.predict(X_test).astype(np.float32)
+    #model = linear_model.RidgeCV()
+    #model = model.fit(X_train, np.squeeze(y_train))
+    #predicted_data = model.predict(X_test).astype(np.float32)
 
     # calculate the normalized mean squared error
-    print("Ridge relative error: %f" % (np.sum((np.squeeze(y_test)-predicted_data)**2)/np.sum(np.squeeze(y_test)**2)))
-    sys.stdout.flush()
+    #print("Ridge relative error: %f" % (np.sum((np.squeeze(y_test)-predicted_data)**2)/np.sum(np.squeeze(y_test)**2)))
+    #sys.stdout.flush()
 
     # reshape the data
     X_train = np.asarray(X_train)
@@ -522,9 +522,9 @@ def run_experiment(dataset_name,
         if plot_results:
             helper.plot_func_data(y_test,y_lower,y_upper,"CQR Net")
         #print( model.learner.loss_history )
-        fig = plt.figure()
-        plt.plot( model.learner.loss_history )
-        fig.savefig( './results/plot-convergence-lr-0.01-Epochs-50.png', dpi=1200 )
+        #fig = plt.figure()
+        #plt.plot( model.learner.loss_history )
+        #fig.savefig( './results/plot-convergence-lr-0.01-Epochs-50.png', dpi=1200 )
         coverage_cp_qnet, length_cp_qnet = helper.compute_coverage(y_test,y_lower,y_upper,significance,"CQR Net")
 
 
@@ -857,6 +857,8 @@ def run_experiment(dataset_name,
 def val_run_experiment(dataset_name,
                    test_method,
                    random_state_train_test,
+                   significance = 0.1,
+                   theta=0.1,
                    quantiles_net = [0.1, 0.9],              
                    _lambda1=19.0, _lambda2=19.0, 
                    save_to_csv=True):
@@ -880,6 +882,13 @@ def val_run_experiment(dataset_name,
     length_vec = []
     seed_vec = []
 
+    _device_id = random_state_train_test%4
+    if torch.cuda.is_available():
+        device = "cuda:" + str(_device_id)
+    else:
+        device = "cpu"
+
+
     seed = random_state_train_test
     random.seed(seed)
     np.random.seed(seed)
@@ -892,7 +901,7 @@ def val_run_experiment(dataset_name,
     test_ratio = 0.2
 
     # conformal prediction miscoverage level
-    significance = 0.1
+    #significance = 0.1
     # desired quantile levels, used by the quantile regression methods
     quantiles = [0.05, 0.95]
 
@@ -915,8 +924,12 @@ def val_run_experiment(dataset_name,
     # and conditional mean neural network regression)
     # See AllQNet_RegressorAdapter and MSENet_RegressorAdapter in helper.py
     nn_learn_func = torch.optim.Adam
-    epochs = 1000
-    lr = 0.0005
+    #epochs = 1000
+    #lr = 0.0005
+
+    epochs = 50
+    lr = 0.01
+
     hidden_size = 64
     batch_size = 64
     dropout = 0.1
@@ -957,13 +970,13 @@ def val_run_experiment(dataset_name,
 
 
     # fit a simple ridge regression model (sanity check)
-    model = linear_model.RidgeCV()
-    model = model.fit(X_train, np.squeeze(y_train))
-    predicted_data = model.predict(X_test).astype(np.float32)
+    #model = linear_model.RidgeCV()
+    #model = model.fit(X_train, np.squeeze(y_train))
+    #predicted_data = model.predict(X_test).astype(np.float32)
 
     # calculate the normalized mean squared error
-    print("Ridge relative error: %f" % (np.sum((np.squeeze(y_test)-predicted_data)**2)/np.sum(np.squeeze(y_test)**2)))
-    sys.stdout.flush()
+    #print("Ridge relative error: %f" % (np.sum((np.squeeze(y_test)-predicted_data)**2)/np.sum(np.squeeze(y_test)**2)))
+    #sys.stdout.flush()
 
     # reshape the data
     X_train = np.asarray(X_train)
@@ -983,9 +996,13 @@ def val_run_experiment(dataset_name,
     idx = np.random.permutation(n_train)
 
     # divide the data into proper training set and calibration set
-    n_half = int(np.floor(n_train/2))
-    idx_train, idx_cal = idx[:n_half], idx[n_half:2*n_half]
-    
+    #n_half = int(np.floor(n_train/2))
+    n_half = int(np.floor(0.8*n_train))
+    #idx_train, idx_cal = idx[:n_half], idx[n_half:2*n_half]
+    idx_train, idx_cal = idx[:n_half], idx[n_half:]
+
+    #print('train  size  ', X_train[idx_train].shape)    
+
     # zero mean and unit variance scaling of the train and test features
     scalerX = StandardScaler()
     scalerX = scalerX.fit(X_train[idx_train])
@@ -1010,6 +1027,7 @@ def val_run_experiment(dataset_name,
                                                hidden_size = hidden_size,
                                                learn_func = nn_learn_func,
                                                epochs = epochs,
+                                               device=device,
                                                batch_size=batch_size,
                                                dropout=dropout,
                                                lr=lr,
@@ -1022,7 +1040,7 @@ def val_run_experiment(dataset_name,
 
         y_lower, y_upper = helper.run_lwa_icp(nc, X_train, y_train, X_test, idx_train, idx_cal, significance)
         coverage_lwa_net, length_lwa_net = helper.compute_coverage(y_test,y_lower,y_upper,significance,"LWA-Net")
-        return coverage_lwa_net, length_lwa_net
+        return coverage_lwa_net, length_lwa_net, theta
 
     if 'cqr_quantile_net' == test_method:
 
@@ -1031,6 +1049,7 @@ def val_run_experiment(dataset_name,
                                              in_shape = in_shape,
                                              hidden_size = hidden_size,
                                              quantiles = quantiles_net,
+                                             device=device,
                                              learn_func = nn_learn_func,
                                              epochs = epochs,
                                              batch_size=batch_size,
@@ -1044,6 +1063,6 @@ def val_run_experiment(dataset_name,
 
         y_lower, y_upper = helper.run_icp(nc, X_train, y_train, X_test, idx_train, idx_cal, significance)
         coverage_cp_qnet, length_cp_qnet = helper.compute_coverage(y_test,y_lower,y_upper,significance,"CQR Net")
-        return coverage_cp_qnet, length_cp_qnet
+        return coverage_cp_qnet, length_cp_qnet, theta
 
 
