@@ -65,12 +65,14 @@ n_jobs=10
 n_vals =20
 
 #significance_list = [0.90, 0.91, 0.92, 0.93, 0.94, 0.95, 0.96, 0.97, 0.98, 0.99]
-significance_list = [0.96, 0.97, 0.98]
+#significance_list = [0.93, 0.96, 0.99]
+significance_list = [0.99]
 #significance_list = [ 0.99]
 #significance_list = [0.99] #, 0.925, 0.95, 0.975]
 
 #dataset_name = 'concrete'
-dataset_name = 'bike' #'concrete'
+#dataset_name = 'bike' #'concrete'
+dataset_name = 'blog_data' #'concrete'
 test_method = 'cqr_quantile_net'
 '''
 for significance in significance_list:
@@ -95,7 +97,7 @@ for significance in significance_list:
   del results
   gc.collect()
   print(' --> CQR Net --> significance, --> max_cov, max_len, max_theta, 0.8+theta ',  significance, max_cov, max_len, max_theta, 1. - 2*alpha+max_theta )
-#assert(1==2)
+  #assert(1==2)
 
   results = Parallel(n_jobs=n_jobs)(delayed( run_experiment )(  dataset_name, test_method, random_state, 
                   quantiles_net=[ max_theta, 1. - 2*alpha + max_theta ], significance=alpha, 
